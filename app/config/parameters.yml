@@ -4,9 +4,9 @@ parameters:
     database_port: null
     database_name: Homemob_db
     database_user: root
-    database_password: jockers
+    database_password: null
     mailer_transport: smtp
     mailer_host: smtp.gmail.com
     mailer_user: info@homemobilite.com
     mailer_password: null
-    secret: 1f04df62a0878d11e4805d98036c76cf3be86b33
+    secret: null
