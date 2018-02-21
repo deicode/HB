@@ -1,0 +1,64 @@
+
+
+    <div class="row">
+        <div class="col-md-3">
+            <aside class="sidebar-left">
+                <div class="sidebar-widget">
+                    <div class="Form">
+                        <input class="form-control" placeholder="Search..." type="text" />
+                    </div>
+                </div>
+
+                <div class="sidebar-widget">
+                    <h4>Précedents news</h4>
+                    <ul class="thumb-list">
+                        {% for datalastnews in news|slice(11,15) %}
+
+                        <li>
+                            <a href="#">
+                                <img src="{{ asset('bundles/emfrontend/assets/') }}uploads/images/news/{{ datalastnews.Images.title }}" alt="{{ datalastnews.Images.title }}" />
+                            </a>
+                            <div class="thumb-list-item-caption">
+                                <p class="thumb-list-item-meta">{{ datalastnews.dateajout|date('d-m-Y') }}</p>
+                                <p class="thumb-list-item-desciption"><a href="#"> {{ datalastnews.titre }} </a></p>
+                            </div>
+                        </li>
+                       {% endfor %}
+                    </ul>
+                </div>
+
+            </aside>
+        </div>
+        <div class="col-md-9">
+
+            {% for datanews in pagination %}
+            <!-- START BLOG POST -->
+
+            <div class="article post">
+                <header class="post-header">
+                    <a class="hover-img" href="{{ path('em_frontend_news',{'slug' : datanews.slug}) }}">
+                        <img src="{{ asset('bundles/emfrontend/assets/') }}uploads/images/news/{{ datanews.Images.title }}" alt="{{ datanews.Images.title }}" title="{{ datanews.titre }}" width="1200" height="300"/><i class="fa fa-link box-icon-# hover-icon round"></i>
+                    </a>
+                </header>
+                <div class="post-inner">
+                    <h4 class="post-title"><a class="text-darken" href="#">{{ datanews.titre }}</a></h4>
+                    <ul class="post-meta">
+                        <li><i class="fa fa-calendar"></i><a href="#">{{ datanews.dateajout|date('d-m-Y') }}</a>
+                        </li>
+                    </ul>
+                    <p class="post-desciption">
+                        {{ datanews.resume }}
+                    </p><a class="btn btn-small btn-primary" href="{{ path('em_frontend_news',{'slug' : datanews.slug}) }}">Lire l'article</a>
+                </div>
+            </div>
+            <!-- END BLOG POST -->
+            {% endfor %}
+
+            <!-- END BLOG POST -->
+            <div class="pagination">
+                {{ knp_pagination_render(pagination) }}
+
+            </div>
+        </div>
+    </div>
+    <div class="gap"></div>

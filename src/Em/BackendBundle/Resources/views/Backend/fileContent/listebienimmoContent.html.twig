@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="col-sm-10 col-md-11 col-lg-12">
+        <div class="timeline-wrapper">
+            <div class="timeline-date">Biens Immobiliers</div>
+           {% for data in entity %}
+            <div class="panel panel-post-item status">
+                <div class="panel-heading">
+                    <div class="media">
+                        <div class="media-left">
+                            <a href="#">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">{{ data.libelle }}</h4>
+                            <p class="media-usermeta">
+                                <span class="media-time"> <small> {{ data.dateadd|date('d-m-Y') }} </small> </span>
+                            </p>
+                        </div>
+                    </div><!-- media -->
+                    <ul class="panel-options">
+                        <li><a class="tooltips" href="" data-toggle="tooltip" title="" data-original-title="View Options"><i class="glyphicon glyphicon-option-vertical"></i></a></li>
+                    </ul>
+                </div><!-- panel-heading -->
+                <div class="panel-body">
+                        {#datanews.resume|raw #}
+                </div>
+                <div class="panel-footer">
+                    <ul class="list-inline">
+                        <li class="pull-right"> <a href="{{ path("em_backend_updatebienimmo", { 'idpage' : data.id}) }}"> Modifier </a></li>
+                    </ul>
+                </div>
+
+            </div><!-- panel panel-post -->
+           {% endfor %}
+<!-- panel panel-post -->
+
+            {{ knp_pagination_render(entity) }}
+
+        </div><!-- timeline-wrapper -->
+    </div>
+
+</div>

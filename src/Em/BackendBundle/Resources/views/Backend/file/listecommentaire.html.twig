@@ -1,0 +1,12 @@
+{% extends '::backend/backendLayout.html.twig' %}
+
+    {% block headLibelle %}
+        Gestion des commentaires sur Afrkhotel
+
+    {% endblock headLibelle %}
+
+{% block contenu %}
+
+    {% include('EmBackendBundle:Backend:fileContent/listecommentaireContent.html.twig') %}
+
+{% endblock contenu %}

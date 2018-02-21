@@ -1,0 +1,42 @@
+<div class="row col-lg-3 col-xs-12 small-spacing">
+    <ul class="list-group  text-white text-center">
+        <li class="list-group-item bg-info">
+            <strong>{{ chambre.typechambre }}</strong>
+        </li>
+        <li class="list-group-item bg-info">
+            <strong>{{ chambre.prixchambre|localizedcurrency('XOF') }}</strong>
+        </li>
+    </ul>
+
+    <form class="form-horizontal"  action="{{ path('em_frontend_reservartion_connected', {'idbien': chambre.id}) }}" method="post">
+        <input type="text" id="start" class="form-control" name="start" placeholder="Date de départ" {% if app.session.get('start') is defined %}  value="{{  app.session.get('start') }}" {% endif %}>
+        <input style="margin-top: 3px" type="text" id="end" class="form-control" placeholder="Date d'arrivée" name="end" {% if app.session.get('end') is defined %} value="{{  app.session.get('end') }}" {% endif %}>
+        <select name="chambre" class="form-control {% if  app.session.get('chambre') >=1 %} {% else %}items{% endif %}" style="margin-top: 3px">
+            {% if  app.session.get('chambre') >=1 %}
+                <option value="{{ app.session.get('chambre') }}">{{ app.session.get('chambre') }}</option>
+            {% else %}
+                <option value="1">Chambre</option>
+            {% endif %}
+
+        </select>
+        <select name="adulte" class="form-control {% if  app.session.get('adulte') >=1 %} {% else %}items{% endif %}" style="margin-top: 3px">
+            {% if  app.session.get('adulte') >=1 %}
+                <option value="{{ app.session.get('adulte') }}">{{ app.session.get('adulte') }}</option>
+            {% else %}
+                <option value="1">Adultes</option>
+            {% endif %}
+
+        </select>
+        <select name="enfant" class="form-control {% if  app.session.get('enfant') >=1 %} {% else %}items{% endif %}" style="margin-top: 3px">
+            {% if  app.session.get('enfant') >=1 %}
+                <option value="{{ app.session.get('enfant') }}">{{ app.session.get('enfant') }}</option>
+            {% else %}
+                <option value="">Enfants</option>
+            {% endif %}
+
+        </select>
+        <input type="hidden" id="nbjour"  name="nbjour" value="1">
+
+        <button type="submit" class="btn btn-success col-xs-12" style="margin-top:3px;" id="formreservation">Reserver</button>
+    </form>
+</div>

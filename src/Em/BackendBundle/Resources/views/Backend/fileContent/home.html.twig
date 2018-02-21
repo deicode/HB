@@ -1,0 +1,137 @@
+<!-- On verifie les roles pour ensuite afficher le dashboard qui convient -->
+{% if is_granted('ROLE_SUPERVISEUR') %}
+    {{ render(controller('EmBackendBundle:Hotelier:dashboardAdmin')) }}
+{% elseif is_granted('ROLE_PROPRIETAIRE') %}
+    {{ render(controller('EmBackendBundle:Hotelier:dashboardHotelier')) }}
+
+{% endif %}
+
+<div class="panel panel-site-traffic">
+    <div class="panel-heading">
+        <h4 class="panel-title">Nouvelles Réservations </h4>
+        <p>Liste des <code>dernières </code> reservations.</p>
+    </div>
+    <div class="table-responsive">
+
+        <table class="table table-bordered table-default table-striped nomargin">
+            <thead class="success">
+            <tr>
+                <th>N° reservation</th>
+                <th class="text-right">Agence Hôteliere</th>
+                <th class="text-right">Nom&Prenoms</th>
+                <th class="text-right">Phone</th>
+                <th class="text-right">Status</th>
+                <th class="text-right">Details</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for data in reservation|slice(0,10) %}
+                <tr>
+                    <td>{{ data.numeroreservation }}</td>
+                    <td class="text-right">{{ data.chambre.agences.nom }}</td>
+                    <td class="text-right">{{ data.nom }} {{ data.prenoms }}</td>
+                    <td class="text-right">{{ data.phone }}</td>
+                    {% if data.confirmer  %}
+                        <td class="text-right" title="Reservation validée par l'hôtelier "> Validée </td>
+                    {% else %}
+                        <td class="text-right" title=""> En cours </td>
+                    {% endif %}
+                    <td class="text-right">
+                        {% if data.confirmer %}
+                            <a href="#" title="Reservation validée par l'hôtelier"><i class="fa fa-thumbs-up"></i> </a>
+                        {% else %}
+                            <a href="{{ path('em_backend_reservations_confirmer',{'idreservation' : data.id|urlencrypt , 'status':'valider'})}}" title="reservation"><i class="fa fa-thumbs-down" style="color: #ff0000"></i> valider </a>
+                        {% endif %}
+
+                        <a href="{{ path('em_backend_reservations_details', {'idreservation' : data.id|urlencrypt }) }}" title="voir plus d'infos sur la reservation "> details <i class="fa fa-eye"></i></a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="panel-heading">
+        <ul class="panel-options">
+            <li><a><i class="fa fa-refresh"></i></a></li>
+        </ul>
+        <h4 class="panel-title text-success">Statistique de reservations</h4>
+     <!--   <p class="nomargin">Depuis 5 jours — dernière mise à jour le 06 janv, 2015</p>-->
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-xs-6 col-sm-4">
+                <div class="pull-left">
+                    <div class="icon icon ion-stats-bars"></div>
+                </div>
+                <div class="pull-left">
+                    <h4 class="panel-title">Reservations</h4>
+                    <h3></h3>
+
+                </div>
+            </div>
+            <!--
+            <div class="col-xs-6 col-sm-4">
+                <div class="pull-left">
+                    <div class="icon icon ion-eye"></div>
+                </div>
+                <h4 class="panel-title">Pageviews / Visitor</h4>
+                <h3>38.10</h3>
+                <h5 class="text-danger">5.70% decreased</h5>
+            </div>
+            <div class="col-xs-6 col-sm-4">
+                <div class="pull-left">
+                    <div class="icon icon ion-clock"></div>
+                </div>
+                <h4 class="panel-title">Time on Site</h4>
+                <h3>4:45</h3>
+                <h5 class="text-success">5.00% increased</h5>
+            </div>-->
+        </div><!-- row -->
+
+        <div class="mb20"></div>
+
+        <div id="basicflot" style="height: 263px"></div>
+
+    </div><!-- panel-body -->
+
+    <!-- table-responsive -->
+
+</div><!-- panel -->
+
+
+<!-- row panel-statistics -->
+{% if is_granted('ROLE_ADMIN') %}
+<div class="row row-col-join panel-earnings">
+    <div class="col-xs-3 col-sm-4 col-lg-3">
+        <div class="panel">
+            <ul class="panel-options">
+                <li><a><i class="glyphicon glyphicon-option-vertical"></i></a></li>
+            </ul>
+            <div class="panel-heading">
+                <h4 class="panel-title">Total Agences </h4>
+            </div>
+            <div class="panel-body">
+                <h3 class="earning-amount"> {{ hotelier|length }}</h3>
+
+
+                <ul class="list-group">
+                    <li class="list-group-item">semaine <span class="pull-right"> 0 </span></li>
+                    <li class="list-group-item">mois <span class="pull-right"> 0 </span></li>
+                </ul>
+                <hr class="invisible">
+
+            </div>
+        </div><!-- panel -->
+    </div>
+    <div class="col-xs-9 col-sm-8 col-lg-9">
+        <div class="panel">
+            <div class="panel-heading">
+                <h4 class="panel-title">Enregistrement Hôtelier</h4>
+            </div>
+            <div class="panel-body">
+                <div id="line-chart" class="body-chart"></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}

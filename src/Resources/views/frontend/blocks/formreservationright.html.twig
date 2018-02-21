@@ -1,0 +1,32 @@
+
+<div class="col-md-4 site-sidebar-content">
+    <aside class="sidebar">
+        <section class="widget widget-advance-search advance-search">
+            <h3 class="advance-search-widget-title"><i class="fa fa-search"></i>Reservez</h3>
+            <form class="advance-search-form" action="{{ path('em_frontend_recherchehome') }}" method="get">
+                <div class="row field-wrap">
+                    <div class="option-bar col-xs-12 property-location">
+                        <select name="location" id="location" class="search-select select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                            <option value="any">Selectionnez votre destination</option>
+
+                        </select>
+                    </div>
+                    <div class="option-bar col-xs-12 property-type">
+                        <select name="type" id="select-property-type" class="search-select select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                            <option value="any" selected="selected">Property Type (Any)</option>
+
+                        </select><span class="select2 select2-container select2-container--default" dir="ltr"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-select-property-type-container"><span class="select2-selection__rendered" id="select2-select-property-type-container" title="Property Type (Any)">Property Type (Any)</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                    </div>
+
+                    <div class="option-bar col-xs-12 submit-btn-wrappe">
+                        <input type="submit" value="Search" class="form-submit-btn">
+                    </div>
+                </div>
+                <!-- .field-wrap -->
+                <!-- .extra-search-fields -->
+            </form>
+            <!-- .advance-search-form -->
+        </section>
+    </aside>
+    <!-- .sidebar -->
+</div>

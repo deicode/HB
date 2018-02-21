@@ -1,0 +1,113 @@
+
+<div class="main-menu">
+    <header class="header">
+        <a href="{{ path("em_backend_proprietaire_homepage") }}" class="logo">Gestionnaire</a>
+        <button type="button" class="button-close fa fa-times js__menu_close"></button>
+        <div class="user">
+            <a href="{{ path('em_backend_proprietaire_homepage') }}" class="avatar" style="background-color: #808080">
+                <img src="{{ asset('bundles/emfrontend/assetsv2/') }}images/logo-header.png" width="155" height="58" alt="">
+                <span class="status online"></span>
+            </a>
+            <h5 class="name">
+                <a href="#">{{ proprietaire.username|capitalize }}</a>
+            </h5>
+            <h5 class="position">Propriétaire</h5>
+            <!-- /.name -->
+            <div class="control-wrap js__drop_down">
+                <i class="fa fa-caret-down js__drop_down_button"></i>
+                <div class="control-list">
+                    <div class="control-item">
+                        <a href="">
+                            <i class="fa fa-user"></i> Profil</a>
+                    </div>
+                    <div class="control-item">
+                        <a href="{{ path('em_backend_logout') }}">
+                            <i class="fa fa-sign-out"></i> Se deconnecter</a>
+                    </div>
+                </div>
+                <!-- /.control-list -->
+            </div>
+            <!-- /.control-wrap -->
+        </div>
+        <!-- /.user -->
+    </header>
+    <!-- /.header -->
+    <div class="content">
+
+        <div class="navigation">
+            <h5 class="title">Navigation</h5>
+            <!-- /.title -->
+            <ul class="menu js__accordion">
+                <li class="current">
+                    <a class="waves-effect" href="{{ path('em_backend_proprietaire_homepage') }}">
+                        <i class="menu-icon fa fa-home"></i>
+                        <span>Accueil</span>
+                    </a>
+                </li>
+                <li class="">
+                    <a class="waves-effect" href="{{ path('em_frontendv2_homepage') }}">
+                        <i class="menu-icon fa fa-reply"></i>
+                        <span>Retour au site</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="waves-effect arent-item js__control" href="">
+                        <i class="menu-icon fa fa-building"></i>
+                        <span>Appartement-Residence</span>
+                        <span class="menu-arrow fa fa-angle-down"></span>
+                    </a>
+                    <ul class="sub-menu js__content">
+                        <li>
+                            <a href="{{ path('em_backend_proprietaire_addagence_immo') }}">Inscrire mon agence</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('em_backend_proprietaire_listeimmo') }}">Mes Agences immo</a>
+                        </li>
+                    </ul>
+
+                </li>
+                <li>
+                    <a class="waves-effect parent-item js__control" href="#">
+                        <i class="menu-icon fa fa-bed"></i>
+                        <span>Hotel</span>
+                        <span class="menu-arrow fa fa-angle-down"></span>
+                    </a>
+                    <ul class="sub-menu js__content">
+                        <li>
+                            <a href="{{ path('em_backend_proprietaire_addagence') }}">Inscrire mon agence</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('em_backend_proprietaire_listehotels') }}">Mes Hôtels</a>
+                        </li>
+                    </ul>
+                    <!-- /.sub-menu js__content -->
+                </li>
+                <li>
+                    <a class="waves-effect" href="#">
+                        <i class="menu-icon fa fa-car"></i>
+                        <span>Vehicules</span>
+                        <span class="notice notice-yellow">0</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="waves-effect  parent-item js__control" href="#">
+                        <i class="menu-icon fa fa-shield"></i>
+                        <span>Reservations</span>
+                        <span class="notice notice-yellow">0</span>
+                        <span class="menu-arrow fa fa-angle-down"></span>
+                    </a>
+                    <ul class="sub-menu js__content">
+                        <li>
+                            <a href="{{ path('em_backend_proprietaire_reservationrecente') }}">Récentes</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('em_backend_proprietaire_reservationhistorique') }}">Historique</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navigation -->
+    </div>
+    <!-- /.content -->
+</div>

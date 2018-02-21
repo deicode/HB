@@ -1,0 +1,29 @@
+Em\BackendBundle\Entity\Communes:
+    type: entity
+    table: null
+    repositoryClass: Em\BackendBundle\Repository\CommunesRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nom:
+            type: string
+            length: 255
+        slug:
+            type: string
+            length: 255
+        description:
+            type: text
+        urlmap:
+            type: text
+    manyToOne:
+        Villes:
+            targetEntity: Em\BackendBundle\Entity\Villes
+            joinColumn:
+              name: villes_id
+              referencedColumnName: id
+            cascade: ["persist"]
+    lifecycleCallbacks: {  }

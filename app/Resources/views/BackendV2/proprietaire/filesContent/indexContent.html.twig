@@ -1,0 +1,212 @@
+{% block Contenu %}
+
+    <div id="wrapper">
+        <div class="main-content">
+            {% for flashMessage in app.session.flashbag.get('Notice')|slice(0,1) %}
+
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <strong>Hi !</strong>  {{ flashMessage }} .
+                </div>
+            {% endfor %}
+            <div class="row small-spacing">
+
+                {{ render(controller('EmBackendBundle:Proprietaire:listeTypeChambre',{'iduser': proprietaire.id})) }}
+
+
+                <div class="col-xs-12 col-lg-12">
+                    <div class="box-content card">
+                        <h4 class="box-title">
+                            <i class="fa fa-money ico"></i>Gerer vos biens</h4>
+
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-4 col-lg-4">
+                                    <a href="{{ path('em_backend_proprietaire_listeimmo') }}">
+                                        <div class="box-content bg-success">
+                                            <div class="statistics-box with-icon">
+                                                <i class="ico fa fa-home text-white"></i>
+                                                <h2 class="counter text-white">{{ immobilierssom }}</h2>
+                                                <p class="text-white">Appartements ou Residences</p>
+                                            </div>
+                                        </div>
+                                        <!-- /.box-content -->
+                                    </a>
+                                </div>
+
+                                <div class="col-xs-6 col-sm-4 col-lg-4">
+                                    <a href="#">
+                                        <div class="box-content  bg-info">
+                                            <div class="statistics-box with-icon">
+                                                <i class="ico fa fa-bed text-white"></i>
+                                                <h2 class="counter text-white">{{ hotelssom }}</h2>
+                                                <p class="text-white">Hotels</p>
+                                            </div>
+                                        </div>
+                                        <!-- /.box-content -->
+                                    </a>
+                                </div>
+
+                                <div class="col-xs-6 col-sm-4 col-lg-4">
+                                    <a href="#">
+                                        <div class="box-content bg-danger">
+                                            <div class="statistics-box with-icon">
+                                                <i class="ico fa fa-car text-white"></i>
+                                                <h2 class="counter text-white">0</h2>
+                                                <p class="text-white">Véhicules</p>
+                                            </div>
+                                        </div>
+                                        <!-- /.box-content -->
+                                    </a>
+                                </div>
+
+
+                                <div class="col-xs-6 col-sm-4 col-lg-4">
+                                    <a href="{{ path('em_backend_proprietaire_reservationrecente') }}">
+                                        <div class="box-content bg-info">
+                                            <div class="statistics-box with-icon">
+                                                <i class="ico fa fa-shopping-cart text-white"></i>
+                                                <h2 class="counter text-white">{{ reservation|length }}</h2>
+                                                <p class="text-white">Reservations en attente de validation</p>
+                                            </div>
+                                        </div>
+                                        <!-- /.box-content -->
+                                    </a>
+                                </div>
+
+                                <div class="col-xs-6 col-sm-4 col-lg-4">
+                                    <a href="{{ path('em_backend_proprietaire_parametre', {'iduser': proprietaire.id}) }}">
+                                        <div class="box-content  bg-danger">
+                                            <div class="statistics-box with-icon">
+                                                <i class="ico fa fa-info text-white"></i>
+                                                <h2 class="counter text-white">&nbsp;</h2>
+                                                <p class="text-white">Mes informations</p>
+                                            </div>
+                                        </div>
+                                        <!-- /.box-content -->
+                                    </a>
+                                </div>
+
+                                <div class="col-xs-6 col-sm-4 col-lg-4">
+                                    <a href="{{ path('em_backend_proprietaire_moncoffre') }}">
+                                        <div class="box-content bg-success">
+                                            <div class="statistics-box with-icon">
+                                                <i class="ico fa fa-bank text-white"></i>
+                                                <h2 class="counter text-white">{{ montanttransaction) }} CFA</h2>
+                                                <p class="text-white">Mon Porte-feuille</p>
+                                            </div>
+                                        </div>
+                                        <!-- /.box-content -->
+                                    </a>
+                                </div>
+
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.card-content -->
+                    </div>
+                    <!-- /.box-content card -->
+                </div>
+
+                <div class="col-xs-12">
+                    <div class="box-content  col-xs-12  bg-info">
+                        <h4 class="box-title text-white">Mes reservations périodiques</h4>
+                        <!-- /.box-title -->
+                        <div class="content widget-stat col-lg-4">
+                            <div class="percent bg-success">
+                                <i class="fa fa-arrow-up"></i>+40%</div>
+                            <!-- /.percent -->
+                            <div class="right-content">
+                                <h2 class="counter text-white">0</h2>
+                                <!-- /.counter -->
+                                <p class="text-white">Aujourd'hui</p>
+                                <!-- /.text -->
+                            </div>
+                            <!-- /.right-content -->
+                            <div class="clear"></div>
+                            <!-- /.clear -->
+                        </div>
+                        <!-- /.content widget-stat -->
+
+                        <div class="content widget-stat col-lg-4">
+                            <div class="percent bg-danger">
+                                <i class="fa fa-arrow-down"></i>-5%</div>
+                            <!-- /.percent -->
+                            <div class="right-content">
+                                <h2 class="counter text-white">0</h2>
+                                <!-- /.counter -->
+                                <p class="text-white">Cette Semaine</p>
+                                <!-- /.text -->
+                            </div>
+                            <!-- /.right-content -->
+                            <div class="clear"></div>
+                            <!-- /.clear -->
+                        </div>
+                        <!-- /.content widget-stat -->
+
+                        <div class="content widget-stat col-lg-4">
+                            <div class="percent bg-warning">
+                                <i class="fa fa-arrows-h"></i>0%</div>
+                            <!-- /.percent -->
+                            <div class="right-content">
+                                <h2 class="counter text-white">{{ reservation|length }}</h2>
+                                <!-- /.counter -->
+                                <p class="text-white">Ce Mois</p>
+                                <!-- /.text -->
+                            </div>
+                            <!-- /.right-content -->
+                            <div class="clear"></div>
+                            <!-- /.clear -->
+                        </div>
+                        <!-- /.content widget-stat -->
+
+                    </div>
+                    <!-- /.box-content -->
+
+                    <div class="box-content col-lg-4 col-xs-12">
+                        <h4 class="box-title">Parts activités Jour</h4>
+                        <!-- /.box-title -->
+
+                        <div class="content">
+                            <div id="chart-1" class="js__chart" data-type="donut"
+                                 data-chart="'Type'/'Number' | 'Immobiliers'/50 | 'Hotels'/20 | 'Vehicules'/20">
+                            </div>
+                        </div>
+                        <!-- /.content -->
+                    </div>
+                    <!-- /.box-content -->
+
+                    <div class="box-content col-lg-4 col-xs-12">
+                        <h4 class="box-title">Parts activités Semaine</h4>
+                        <!-- /.box-title -->
+
+                        <div class="content">
+                            <div id="chart-2" class="js__chart" data-type="donut"
+                                 data-chart="'Type'/'Number' | 'Immobiliers'/50 | 'Hotels'/20 | 'Vehicules'/20">
+                            </div>
+                        </div>
+                        <!-- /.content -->
+                    </div>
+                    <!-- /.box-content -->
+
+
+                    <div class="box-content col-lg-4 col-xs-12">
+                        <h4 class="box-title">Parts activités Mois</h4>
+                        <!-- /.box-title -->
+
+                        <div class="content">
+                            <div id="chart-3" class="js__chart" data-type="donut"
+                                 data-chart="'Type'/'Number' | 'Immobiliers'/50 | 'Hotels'/20 | 'Vehicules'/20">
+                            </div>
+                        </div>
+                        <!-- /.content -->
+                    </div>
+                    <!-- /.box-content -->
+                    <!-- </div> -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock Contenu %}
+

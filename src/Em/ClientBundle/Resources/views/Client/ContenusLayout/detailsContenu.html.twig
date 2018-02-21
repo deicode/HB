@@ -1,0 +1,87 @@
+<div class="row">
+    {{ render(controller('EmClientBundle:Client:renderMenuLeft')) }}
+    <div class="col-md-9">
+        <h4>Numéro reservation : <strong> {{ reservation.numeroreservation }}  </strong> du {{ reservation.dateadd|date('d-m-Y à H:i:s') }}</h4>
+        <div class="booking-item-container active">
+            <div class="booking-item active viewed">
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="booking-item-airline-logo">
+                            <img src="{{ asset('bundles/emfrontend/assets/') }}pics/chambres/{{reservation.chambre.images.title }}" alt="{{ reservation.chambre.images.title }}" title="{{ reservation.chambre.images.title }}" />
+                            <p>
+                                {%  set num = 1 %}
+                                {% for  num in  1..reservation.chambre.agences.grade %}
+                                    <i class="fa fa-star"></i>
+                                    {%  set num = num +1 %}
+                                {% endfor %}
+                            </p>
+                            <p>{{ reservation.chambre.agences.nom }}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="booking-item-flight-details">
+                            <div class="booking-item-departure">
+                                <p class="booking-item-date">Arrivée</p><i class="fa fa-plane fa-flip-vertical"></i>
+                                <h5>12:30 AM</h5>
+                                <p class="booking-item-destination">{{ reservation.datearrivee }}</p>
+                            </div>
+                            <div class="booking-item-arrival"><i class="fa fa-plane"></i>
+                                <p class="booking-item-date">Départ</p>
+                                <h5>12:00 PM</h5>
+                                <p class="booking-item-destination">{{ reservation.datedepart }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <p>Nombre Jours</p>
+                        <h5>{{ reservation.nbjour }}</h5>
+
+                    </div>
+                    <div class="col-md-3"><span class="booking-item-price">Fcfa {{ reservation.chambre.prixchambre }} </span><span>/Nuit</span>
+                        <p class="booking-item-flight-class">Class Hôtel: {{ reservation.chambre.typechambre }}</p><a class="btn btn-primary" href="#">Total Prix : Fcfa {{ reservation.prixtotal }}</a>
+                    </div>
+                </div>
+            </div>
+            <div class="booking-item-details">
+                <div class="row">
+                    <div class="col-md-6">
+
+                        <h5 class="list-title">Information Hôtel</h5>
+                        <ul class="list">
+                            <li>Telephone : {{ reservation.chambre.agences.telephone }}</li>
+                            <li>Adresse : {{ reservation.chambre.agences.adresse }}</li>
+                            <li>Commune : {{ reservation.chambre.agences.communes.nom }}</li>
+                            <li>Ville : {{ reservation.chambre.agences.villes.nom }}</li>
+
+                        </ul>
+                        <h5 class="list-title">Mode Paiement : </h5>
+                        <ul class="list">
+                            <li>{{ reservation.modepayement }}</li>
+                        </ul>
+
+                    </div>
+                    <div class="col-md-6">
+
+                        <h5 class="list-title">Information Reservation</h5>
+                        <ul class="list">
+                            <li>Adulte / {{ reservation.nbadulte }}</li>
+                            <li>Enfant / {{ reservation.nbenfant }}</li>
+                            <li>Chambre / {{ reservation.nbchambre }}</li>
+
+                        </ul>
+                        <h5>Information Client</h5>
+                        <h5 class="list-title">{{ reservation.modepayement }}</h5>
+                        <ul class="list">
+                            <li>Nom : {{ reservation.prenoms }} {{ reservation.nom }}</li>
+                            <li>Email : {{ reservation.email }}</li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="gap"></div>
+
+

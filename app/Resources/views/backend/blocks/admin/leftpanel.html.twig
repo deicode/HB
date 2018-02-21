@@ -1,0 +1,97 @@
+<div class="leftpanelinner">
+
+    <!-- ################## LEFT PANEL PROFILE ################## -->
+
+    <div class="media leftpanel-profile">
+        <div class="media-left">
+            <a href="{{ path('em_backend_homepage') }}">
+                <img src="{{ asset('bundles/emfrontend/assets/') }}images/logo-2.png" alt="" class="media-object img-thumbnail">
+            </a>
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">{{ user.username }}<a data-toggle="collapse" data-target="#loguserinfo" class="pull-right"><i class="fa fa-angle-down"></i></a></h4>
+            <span class="text-danger">Chez vous</span>
+        </div>
+    </div><!-- leftpanel-profile -->
+
+    <div class="leftpanel-userinfo collapse" id="loguserinfo">
+        <h5 class="sidebar-title">Address</h5>
+        <h5 class="sidebar-title">Contact</h5>
+        <ul class="list-group">
+
+            <li class="list-group-item">
+                <label class="pull-left">Email</label>
+                <span class="pull-right">{{ user.email }}</span>
+            </li>
+        </ul>
+    </div><!-- leftpanel-userinfo -->
+
+    <ul class="nav nav-tabs nav-justified nav-sidebar">
+        <li class="tooltips active" data-toggle="tooltip" title="Main Menu"><a data-toggle="tab" data-target="#mainmenu"><i class="tooltips fa fa-ellipsis-h"></i></a></li>
+        <li class="tooltips unread" data-toggle="tooltip" title="Check Mail"><a data-toggle="tab" data-target="#emailmenu"><i class="tooltips fa fa-envelope"></i></a></li>
+        <li class="tooltips" data-toggle="tooltip" title="Contacts"><a data-toggle="tab" data-target="#contactmenu"><i class="fa fa-user"></i></a></li>
+        <li class="tooltips" data-toggle="tooltip" title="Settings"><a data-toggle="tab" data-target="#settings"><i class="fa fa-cog"></i></a></li>
+        <li class="tooltips" data-toggle="tooltip" title="Deconnexion"><a href="{{ path('em_backend_logout') }}"><i class="fa fa-sign-out"></i></a></li>
+    </ul>
+
+    <div class="tab-content">
+
+        <!-- ################# MAIN MENU ################### -->
+        {% block menuLeft %}
+            {%  if is_granted('ROLE_ADMIN') %}
+                {{ render(controller('EmBackendBundle:Backend:adminMenuLeft')) }}   <!-- tab-pane -->
+            {% elseif(is_granted('ROLE_SUPERVISEUR')) %}
+                {{ render(controller('EmBackendBundle:Backend:superviseurMenuLeft')) }}   <!-- tab-pane -->
+            {% elseif(is_granted('ROLE_HOTELIER')) %}
+                {{ render(controller('EmBackendBundle:Backend:hotelierMenuLeft')) }}
+            {% endif %}
+        {% endblock menuLeft %}
+        <!-- ######################## EMAIL MENU ##################### -->
+
+        <div class="tab-pane" id="emailmenu">
+            <div class="sidebar-btn-wrapper">
+                <a href="#" class="btn btn-danger btn-block">Newsletters</a>
+            </div>
+
+            <h5 class="sidebar-title">Actionner</h5>
+          <!--  <ul class="nav nav-pills nav-stacked nav-quirk nav-mail">
+                <li><a href="#"><i class="fa fa-inbox"></i> <span>Total de mail (33333+)</span></a></li>
+                <li><a href="#"><i class="fa fa-pencil"></i> <span>Campagne newsletter</span></a></li>
+
+            </ul>-->
+
+        </div><!-- tab-pane -->
+
+        <!-- ################### CONTACT LIST ################### -->
+
+        <div class="tab-pane" id="contactmenu">
+            <div class="input-group input-search-contact">
+                <input type="text" class="form-control" placeholder="recherche">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+            </span>
+            </div>
+            <h5 class="sidebar-title">Users </h5>
+           <ul class="media-list media-list-contacts">
+            <!--    <li class="media">
+                    <a href="#">
+                        <div class="media-left">
+                            <img class="media-object img-circle" src="" alt="">
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">Christina R. Hill</h4>
+                            <span><i class="fa fa-phone"></i> 386-752-1860</span>
+                        </div>
+                    </a>
+                </li>-->
+
+            </ul>
+        </div><!-- tab-pane -->
+
+        <!-- #################### SETTINGS ################### -->
+
+
+
+    </div><!-- tab-content -->
+
+</div><!-- leftpanelinner -->

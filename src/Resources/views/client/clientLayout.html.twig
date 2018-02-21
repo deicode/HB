@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block Title %} HomeMobilite - Vente - Location - Loue {% endblock %}</title>
+    <link rel="icon" href="images/cropped-ms-icon-310x310-32x32.png" sizes="32x32" />
+    <link rel="icon" href="images/cropped-ms-icon-310x310-192x192.png" sizes="192x192" />
+    <link rel="apple-touch-icon-precomposed" href="images/cropped-ms-icon-310x310-180x180.png">
+    <!-- Google font-->
+    <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700,700italic,900' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Dosis:400,700,600,500' rel='stylesheet' type='text/css'>
+    <!-- Include the flexslider stylesheet -->
+    <link href="{{ asset('bundles/emfrontend/assets/') }}js/flexslider/flexslider.css" rel="stylesheet">
+    <!-- Include the lightslider stylesheet -->
+    <link href="{{ asset('bundles/emfrontend/assets/') }}js/lightslider/css/lightslider.min.css" rel="stylesheet">
+    <!-- Include the owl-carousel stylesheet -->
+    <link href="{{ asset('bundles/emfrontend/assets/') }}js/owl.carousel/owl.carousel.css" rel="stylesheet">
+    <!-- Include the swipebox stylesheet -->
+    <link href="{{ asset('bundles/emfrontend/assets/') }}js/swipebox/css/swipebox.min.css" rel="stylesheet">
+    <!-- Include the select2 stylesheet -->
+    <link href="{{ asset('bundles/emfrontend/assets/') }}js/select2/select2.css" rel="stylesheet">
+    <!-- Include the font-awesome stylesheet -->
+    <link href="{{ asset('bundles/emfrontend/assets/') }}css/font-awesome.min.css" rel="stylesheet">
+    <!-- Include the select2 stylesheet -->
+    <link href="{{ asset('bundles/emfrontend/assets/') }}css/animate.css" rel="stylesheet">
+    <link href="{{ asset('bundles/emfrontend/assets/') }}js/magnific-popup/magnific-popup.css" rel="stylesheet">
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="{{ asset('bundles/emfrontend/assets/') }}css/main.css"/>
+    <!-- Default Theme stylesheet -->
+    <link rel="stylesheet" href="{{ asset('bundles/emfrontend/assets/') }}css/theme.css"/>
+    <link rel="stylesheet" href="{{ asset('bundles/emclient/assets/') }}css/style.css"/>
+    <link rel="stylesheet" href="{{ asset('bundles/emclient/assets/') }}css/login.css"/>
+    {% block cssSoumett %}
+
+    {% endblock  cssSoumett %}
+
+</head>
+
+<body>
+
+{% block headerMenuFrontend %}
+    {{   render (controller("EmFrontendBundle:Frontend:headerMenuFrontend",{'slug': "slug"})) }}
+
+{% endblock headerMenuFrontend %}
+
+
+{% block Contenu %}
+
+
+{% endblock Contenu %}
+<!-- .site-content-wrapper -->
+{% block footer %}
+    {{ render(controller('EmFrontendBundle:Frontend:footerPage')) }}
+{% endblock footer %}
+
+<!-- .footer -->
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/jquery-1.12.3.min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/flexslider/jquery.flexslider-min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/lightslider/js/lightslider.min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/select2/select2.min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/owl.carousel/owl.carousel.min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/swipebox/js/jquery.swipebox.min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/jquery.hoverIntent.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/jquery.validate.min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/jquery.form.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/transition.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/jquery.appear.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/modal.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/meanmenu/jquery.meanmenu.min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/jquery.placeholder.min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/custom.js"></script>
+<link rel="stylesheet" href="{{ asset('bundles/emclient/assets/') }}js/login.js"/>
+{% block jsSoumett %}
+
+{% endblock jsSoumett %}
+<!-- .modal -->
+<script>
+    (function ($) {
+        "use strict";
+
+        if (jQuery().validate) {
+
+            //Login
+            $('#login-form').validate();
+
+            //Register
+            $('#register-form').validate();
+
+            //Forgot Password
+            $('#forgot-form').validate();
+        }
+
+        /*-----------------------------------------------------------------------------------*/
+        /* Modal dialog for Login and Register
+         /*-----------------------------------------------------------------------------------*/
+        var loginModal = $('#login-modal'),
+                modalSections = loginModal.find('.modal-section');
+
+        $('.activate-section').on('click', function (event) {
+            var targetSection = $(this).data('section');
+            modalSections.slideUp();
+            loginModal.find('.' + targetSection).slideDown();
+            event.preventDefault();
+        });
+
+    })(jQuery);
+</script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+Em\BackendBundle\Entity\Agences:
+    type: entity
+    table: null
+    repositoryClass: Em\BackendBundle\Repository\AgencesRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nom:
+            type: string
+            length: 255
+        title:
+            type: string
+            length: 255
+        dateadd:
+            type: datetime
+        grade:
+            type: string
+            length: 255
+        status:
+            type: string
+            length: 255
+            nullable: true
+        caracteristique:
+            type: string
+            length: 255
+        description:
+            type: string
+            length: 255
+        telephone:
+            type: string
+            length: 255
+            nullable: true
+        urlmap:
+            type: text
+            nullable: true
+        wifi:
+            type: boolean
+            nullable: true
+        piscine:
+            type: boolean
+            nullable: true
+        climatisation:
+            type: boolean
+            nullable: true
+        restaurant:
+            type: boolean
+            nullable: true
+        servicechambre:
+            type: boolean
+            nullable: true
+        petitdejeuner:
+            type: boolean
+            nullable: true
+        nightclub:
+            type: boolean
+            nullable: true
+        massage:
+            type: boolean
+            nullable: true
+        gym:
+            type: boolean
+            nullable: true
+        casino:
+            type: boolean
+            nullable: true
+        adresse:
+            type: string
+            length: 255
+            nullable: true
+        locked:
+            type: boolean
+        prixinit:
+            type: integer
+            nullable: true
+        ville:
+            type: string
+            length: 255
+        pays:
+            type: string
+            length: 255
+        pourcentagecommercial:
+            type: integer
+            nullable: true
+        recommander:
+            type: boolean
+
+    manyToOne:
+
+        proprietaire:
+            targetEntity: Em\BackendBundle\Entity\User
+            joinColumn:
+              name: user_id
+              referencedColumnName: id
+            cascade: ["persist"]
+
+    lifecycleCallbacks: {  }

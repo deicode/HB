@@ -1,0 +1,29 @@
+Em\BackendBundle\Entity\Informationsite:
+    type: entity
+    table: null
+    repositoryClass: Em\BackendBundle\Repository\InformationsiteRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        urlmap:
+            type: text
+        telephone:
+            type: string
+            length: 255
+        email:
+            type: string
+            length: 255
+        mobile:
+            type: string
+            length: 255
+        adresse:
+            type: text
+        urlfacebook:
+            type: text
+        description:
+            type: text
+    lifecycleCallbacks: {  }

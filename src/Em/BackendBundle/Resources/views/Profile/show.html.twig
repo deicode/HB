@@ -1,0 +1,13 @@
+
+{% extends '::backend/backendLayout.html.twig' %}
+
+    {% block headLibelle %}
+        Mon <span class="text-primary">Profile </span>
+
+    {% endblock headLibelle %}
+
+{% block contenu %}
+
+    {% include('EmBackendBundle:Profile:show_content.html.twig') %}
+
+{% endblock contenu %}

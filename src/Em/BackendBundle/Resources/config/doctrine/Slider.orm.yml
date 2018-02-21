@@ -1,0 +1,36 @@
+Em\BackendBundle\Entity\Slider:
+    type: entity
+    table: null
+    repositoryClass: Em\BackendBundle\Repository\SliderRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: 255
+            nullable: true
+        prix:
+            type: string
+            length: '10'
+            nullable: true
+        enabled:
+            type: boolean
+            nullable: true
+
+    manyToOne:
+        Images:
+            targetEntity: Em\FrontendBundle\Entity\Images
+            joinColumn:
+              name: images_id
+              referencedColumnName: id
+            cascade: ["persist"]
+        statusimmo:
+            targetEntity: Em\BackendBundle\Entity\Statusimmo
+            joinColumn:
+              name: statusimmo_id
+              referencedColumnName: id
+    lifecycleCallbacks: {  }

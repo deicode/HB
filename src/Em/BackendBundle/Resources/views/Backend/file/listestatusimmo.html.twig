@@ -1,0 +1,14 @@
+{% extends '::backend/backendLayout.html.twig' %}
+
+    {% block headLibelle %}
+       Liste des status immobiliers   <span class="text-primary">
+                <a href="{{ path('em_backend_addstatusimmo', {'idpage' : 'All'}) }}"> Ajouter Status </a>
+</span>
+
+    {% endblock headLibelle %}
+
+{% block contenu %}
+
+    {% include('EmBackendBundle:Backend:fileContent/listestatusimmoContent.html.twig') %}
+
+{% endblock contenu %}

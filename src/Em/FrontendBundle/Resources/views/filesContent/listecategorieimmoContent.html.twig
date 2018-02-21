@@ -1,0 +1,162 @@
+
+<div id="content-wrapper" class="site-content-wrapper site-pages">
+    <div id="content" class="site-content layout-boxed">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 site-main-content">
+                    <main id="main" class="site-main">
+                        <div class="page-listing-control clearfix">
+                            <div class="row">
+                                <div class="col-xs-7 col-lg-8">
+                                    <h3 class="heading results">{% if recherche is defined %} {{ recherche }} : {% endif %} <br>{% if Localite is defined %}{{ Localite.libelle }}{% else %} Tout {% endif %} {% if typeimmoencours.libelle is defined %}{{ typeimmoencours.libelle|capitalize }}{% endif %} trouvé(s) : {{ pagination|length }}</h3>
+                                </div>
+                                <div class="col-xs-5 col-lg-4 page-controls-wrapper">
+                                    <div class="sort-controls">
+                                        <select name="sort-properties" id="sort-properties" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                                            <option value="">Rechercher </option>
+                                            {% for data in paysall %}
+                                                <option value="{{ path('em_frontend_immorechercher', {'pays' : data.id,'categorie': slug }) }}">
+                                                    {{ data.libelle|capitalize }}
+                                                </option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <!-- .sort-controls -->
+                                </div>
+                                <!-- .page-controls-wrapper -->
+                            </div>
+                            <div class="row">
+
+                                <!-- .page-controls-wrapper -->
+                                <div class="entry-content clearfix">
+                                    <p> </p>
+                                    {% if service is defined %}
+                                        {{ service.contenus|raw }}
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <!-- .row -->
+                        </div>
+
+                        {% for data in pagination %}
+                            <article class="user-submit-property meta-item-half hentry clearfix">
+                                <div class="property-thumbnail col-xs-4 col-lg-3">
+                                    <a href="{{ path('em_frontend_detailimmo', {'bienimmo' : data.id}) }}">
+                                        {{ render(controller('EmFrontendBundle:Frontend:listeImageImmo', { 'entity': data})) }}
+
+                                    </a>
+                                </div>
+                                <div class="content-wrapper col-xs-8 col-lg-9">
+                                    <div class="title-and-meta">
+                                        <header class="entry-header">
+                                            <h3 class="entry-title">
+                                                <a href="{{ path('em_frontend_detailimmo', {'bienimmo' : data.id}) }}" rel="bookmark">{{ data.libelle }}  </a><span class="price">{{ data.prix|localizedcurrency('XOF') }}  </span>
+                                            </h3>
+                                        </header>
+                                        <!-- .entry-header -->
+                                        <div class="property-meta entry-meta clearfix">
+
+                                            <p>{{ data.description }}</p>
+                                            {% if data.surfacehabitable is not null %}
+                                                <div class="meta-item">
+                                                    <span class="meta-item-label"><small>Surface Habitale: </small></span>
+                                                    <span class="meta-item-value"><small>{{ data.surfacehabitable }}</small></span>
+                                                </div>
+                                            {% endif %}
+                                            {% if data.surfaceterrain is not null %}
+                                                <div class="meta-item">
+                                                    <span class="meta-item-label"><small>Surface Terrain: </small></span>
+                                                    <span class="meta-item-value"><small>{{ data.surfaceterrain }}</small></span>
+                                                </div>
+                                            {% endif %}
+                                            {% if data.nbrepiece is not null %}
+                                                <div class="meta-item">
+                                                    <span class="meta-item-label"><small>Nombre pièce: </small></span>
+                                                    <span class="meta-item-value"><small>{{ data.surfacehabitable }}</small></span>
+                                                </div>
+                                            {% endif %}
+                                            {% if data.jardin  %}
+                                                <div class="meta-item">
+                                                    <span class="meta-item-value"><small>Jardin </small></span>
+                                                </div>
+                                            {% endif %}
+                                            {% if data.piscine  %}
+                                                <div class="meta-item">
+                                                    <span class="meta-item-value"><small>Piscine </small></span>
+                                                </div>
+                                            {% endif %}
+                                            {% if data.balcon  %}
+                                                <div class="meta-item">
+                                                    <span class="meta-item-value"><small>Balcon </small></span>
+                                                </div>
+                                            {% endif %}
+                                            {% if data.terrasse  %}
+                                                <div class="meta-item">
+                                                    <span class="meta-item-value"><small>Terrasse </small></span>
+                                                </div>
+                                            {% endif %}
+                                            {% if data.parking  %}
+                                                <div class="meta-item">
+                                                    <span class="meta-item-value"><small>Parking </small></span>
+                                                </div>
+                                            {% endif %}
+                                            {% if data.garage  %}
+                                                <div class="meta-item">
+                                                    <span class="meta-item-value"><small>Garage </small></span>
+                                                </div>
+                                            {% endif %}
+                                            {% if data.cave  %}
+                                                <div class="meta-item">
+                                                    <span class="meta-item-value"><small>Cave </small></span>
+                                                </div>
+                                            {% endif %}
+                                            {% if data.ascenseur  %}
+                                                <div class="meta-item">
+                                                    <span class="meta-item-value"><small>Ascenceur </small></span>
+                                                </div>
+                                            {% endif %}
+
+                                            <div class="meta-item">
+                                                <span class="meta-item-label"><small>Status:</small></span>
+                                                <span class="meta-item-value approved"><small>{{ data.statusimmo.libelle }}</small></span>
+                                            </div>
+                                            <div class="meta-item">
+                                                <span class="meta-item-label"><small>Type:</small></span>
+                                                <span class="meta-item-value approved"><small>{{ data.typeimmo.libelle }}</small></span>
+                                            </div>
+                                            <div class="meta-item">
+                                                <span class="meta-item-label"><small> Pays:</small></span>
+                                                <span class="meta-item-value approved"><small>{{ data.pays.libelle }} </small></span>
+                                            </div>
+                                            <div class="meta-item">
+                                                <span class="meta-item-label">Villes:</span>
+                                                <span class="meta-item-value approved">{{ data.ville }}</span>                                        </div>
+                                        </div>
+
+                                        <!-- .property-meta -->
+                                    </div>
+                                    <!--.title-and-meta -->
+                                    <div class="action-buttons">
+                                        <a class="btn-default" target="_blank" href="{{ path('em_frontend_contact') }}"> Contact</a>
+                                        <small class="author-link"> <a rel="author" href="#">{{ data.pays.libelle }}-{{ data.ville }}</a></small>
+                                        <a href="#">reférence -  <strong>{{ data.reference }} </strong> </a>
+                                    </div>
+                                    <!-- .action-buttons -->
+                                </div>
+                                <!-- .content-wrapper -->
+                            </article>
+                        {% endfor  %}
+                    </main>
+                    <!-- .site-main -->
+                </div>
+                <!-- .site-main-content -->
+                {{ render(controller('EmFrontendBundle:Frontend:menuPageRight')) }}
+                <!-- .site-sidebar-content -->
+            </div>
+            <!-- .row -->
+        </div>
+        <!-- .container -->
+    </div>
+    <!-- .site-content -->
+</div>

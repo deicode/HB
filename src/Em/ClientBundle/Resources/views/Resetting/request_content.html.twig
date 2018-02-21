@@ -1,0 +1,35 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="container">
+    <div class="card card-container">
+        <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+        <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+        <div class="title">
+            <small>Mot de passe oublié ? <br/><strong>Réinitialise votre compte</strong></small>
+            <hr>
+            <hr class="short">
+            {% if invalid_username is defined %}
+                <p>{{ 'resetting.request.invalid_username'|trans({'%username%': invalid_username}) }}</p>
+            {% endif %}
+        </div>
+        <p id="profile-name" class="profile-name-card"></p>
+
+        <form  class="form-signin" method="post" action="{{ path("em_frontend_resetting_byemail") }}">
+
+            <span id="reauth-email" class="reauth-email"></span>
+            <input type="text" id="username" name="username" required="required" placeholder="nom@gmail.com"/>
+            <input type="hidden" name="_csrf_token" value="" />
+
+            <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Validez</button>
+        </form><!-- /form -->
+        <span class="pull-left"></span> <a href="{{ path('em_client_auth_serviceLogin') }}" class="forgot-password">
+            Connexion
+        </a>
+        <span class="pull-right">
+              <strong> <a href="{{ path('em_client_auth_registration_register') }}" class="forgot-password">
+                      Inscription
+                  </a></strong>
+        </span>
+
+    </div><!-- /card-container -->
+</div><!-- /container -->

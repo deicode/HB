@@ -1,0 +1,38 @@
+<div class="row">
+    {{ render(controller('EmClientBundle:Client:renderMenuLeft')) }}
+    <div class="col-md-9">
+        <p>
+            {% for flashMessage in app.session.flashbag.get('Notice')|slice(0,1) %}
+
+                <!-- main content -->
+                <button class="btn btn-success">Message ! {{ flashMessage }} </button>
+
+            {% endfor %}
+        </p>
+        <h4>Mes commentaires sur les hôtels visités</h4>
+        <table class="table table-bordered table-striped table-booking-history">
+            <thead>
+            <tr>
+                <th>Type</th>
+                <th>Hôtel</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% set compteur = 1 %}
+        {% for data in hotels|slice(0,15) %}
+            <tr>
+                <td class="booking-history-type"><i class="fa fa-building-o"></i><small>hotel-{{ compteur }}</small>
+                </td>
+
+                <td>{{ data.nom }}</td>
+                <td class="text-center"><a target="_blank" class="btn btn-default btn-sm" href="{{ path('em_frontend_hotelecaracteristique_user', { 'ville': data.villes.slug ,'idagence': data.id|urlencrypt } ) }}">réagir</a>
+                </td>
+            </tr>
+            {%  set compteur = compteur + 1 %}
+         {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="gap"></div>

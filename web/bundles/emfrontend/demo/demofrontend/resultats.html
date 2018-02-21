@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>HomeMobilite</title>
+
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="assets/styles/style-horizontal.css">
+
+    <!-- mCustomScrollbar -->
+    <link rel="stylesheet" href="assets/plugin/mCustomScrollbar/jquery.mCustomScrollbar.min.css">
+
+    <!-- Waves Effect -->
+    <link rel="stylesheet" href="assets/plugin/waves/waves.min.css">
+
+    <!-- Sweet Alert -->
+    <link rel="stylesheet" href="assets/plugin/sweet-alert/sweetalert.css">
+
+    <!-- Datepicker -->
+    <link rel="stylesheet" href="assets/plugin/datepicker/css/bootstrap-datepicker.min.css">
+
+    <!-- Color Picker -->
+    <link rel="stylesheet" href="assets/color-switcher/color-switcher.min.css">
+    <link rel="stylesheet" href="assets/styles/color/dark-blue.min.css">
+    <link rel="stylesheet" href="assets/persocss.css">
+    <link rel="stylesheet" href="assets/styles/flag-icon.min.css">
+
+    <style>
+        .nav>li {
+            background: #ddd !important;
+        }
+
+        .item-result {
+            margin-bottom: 10px;
+        }
+
+        .item-result-margin {
+            margin-bottom: 10px;
+            margin-top: 10px;
+            display: inline-block;
+            position: relative;
+        }
+
+        .item-result-margin:after {
+            position: absolute;
+            content: '';
+            border-bottom: solid #d2d7da;
+            width: 90%;
+            transform: translateX(-50%);
+            /* //bottom: -15px; */
+            left: 50%;
+        }
+
+        .tab-content {
+            padding: 15px;
+            border: 0px solid #ddd !important;
+            border-top: none;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header class="fixed-header">
+        <div class="header-top">
+            <div class="container">
+                <div class="pull-left">
+                    <a href="index.html" class="logo">
+                        <img src="assets/images/logo-header.png" alt="">
+                    </a>
+
+                </div>
+                <!-- /.pull-left -->
+                <div class="pull-right">
+                    <!-- /.ico-item hidden-on-desktop -->
+
+                    <div class="ico-item flag-icon flag-icon-fr"></div>
+                    <div class="ico-item flag-icon flag-icon-gb"></div>
+                    <!-- /.ico-item -->
+
+
+                    <div class="ico-item">
+                        <a href="login-proprietaire.html" class="ico-item">Soumettre son établissement</a>
+                    </div>
+                    <div class="ico-item">
+                        <a href="#" class="ico-item">Mes reservations</a>
+                    </div>
+                    <div class="ico-item">
+                        <a href="inscription.html" class="ico-item">S'inscrire</a>
+                    </div>
+                    <div class="ico-item">
+                        <a href="login.html" class="ico-item">Se connecter</a>
+                    </div>
+                    <!-- /.ico-item -->
+
+                    <!-- /.ico-item fa fa-fa-arrows-alt -->
+
+
+
+                    <!-- /.ico-item -->
+
+                    <!-- /.ico-item -->
+                </div>
+                <!-- /.pull-right -->
+            </div>
+            <!-- /.container -->
+        </div>
+        <!-- /.header-top -->
+
+        <!-- /.nav-horizontal -->
+    </header>
+    <!-- /.fixed-header -->
+
+    <!-- #color-switcher -->
+
+    <div id="wrapper">
+        <div class="main-content">
+            <div class="col-xs-12 container-with-background" style="min-height:20px;">
+                <h2 class="text-center text-white">Resultat recherche</h2>
+            </div>
+
+            <div class="container col-xs-12">
+                <div class="box-content col-lg-9 small-spacing col-xs-12">
+                    <h4 class="box-title">3 Etablissement(s) trouvé(s)</h4>
+                    <!-- /.box-title -->
+                    <ul class="nav nav-pills nav-justified" role="tablist">
+                        <li role="presentation" class="active">
+                            <a href="#hotels" aria-controls="hotels" role="tab" data-toggle="tab">Hotels</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#appartements" aria-controls="appartements" role="tab" data-toggle="tab">Appartements</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#residences" aria-controls="residences" role="tab" data-toggle="tab">Residence</a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="hotels">
+                            <div class="col-xs-12 item-result item-result-margin">
+                                <div class="profile-avatar col-lg-5  col-xs-12">
+                                    <img src="http://placehold.it/311x207" alt="" width="100%">
+                                    <a href="#" class="btn btn-block btn-friend">
+                                        <i class="fa fa-money"></i> A partir de : 20 000 CFA</a>
+                                    <a href="#" class="btn btn-block btn-inbox">
+                                        <i class="fa fa-shopping-cart"></i> Selectionner votre chambre</a>
+                                </div>
+                                <div class="col-lg-7 col-xs-12">
+                                    <h3>
+                                        <strong class="text-info">LEBARA-HOTEL | Abidjan, Côte D'Ivoire</strong>
+                                    </h3>
+                                    <p>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                    </p>
+                                    <p>
+                                        <ul class="list-inline text-success">
+                                            <li>Wifi</li>
+                                            <li>Piscine</li>
+                                            <li>Climatisation</li>
+                                            <li>Restaurant</li>
+                                            <li>Night Club</li>
+                                        </ul>
+                                    </p>
+                                    <p class="lead">
+                                        Hôtel à la déco contemporaine offrant des chambres au look moderne soigné avec wifi, restaurant et parking gratuit.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 item-result item-result-margin">
+                                <div class="profile-avatar col-lg-5  col-xs-12">
+                                    <img src="http://placehold.it/311x207" alt="" width="100%">
+                                    <a href="#" class="btn btn-block btn-friend">
+                                        <i class="fa fa-money"></i> A partir de : 20 000 CFA</a>
+                                    <a href="#" class="btn btn-block btn-inbox">
+                                        <i class="fa fa-shopping-cart"></i> Selectionner votre chambre</a>
+                                </div>
+                                <div class="col-lg-7 col-xs-12">
+                                    <h3>
+                                        <strong class="text-info">LEBARA-HOTEL | Abidjan, Côte D'Ivoire</strong>
+                                    </h3>
+                                    <p>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                    </p>
+                                    <p>
+                                        <ul class="list-inline text-success">
+                                            <li>Wifi</li>
+                                            <li>Piscine</li>
+                                            <li>Climatisation</li>
+                                            <li>Restaurant</li>
+                                            <li>Night Club</li>
+                                        </ul>
+                                    </p>
+                                    <p class="lead">
+                                        Hôtel à la déco contemporaine offrant des chambres au look moderne soigné avec wifi, restaurant et parking gratuit.
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="appartements">
+
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="residences">
+
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-content -->
+
+                <!-- <div class="col-lg-1">
+                    
+                </div> -->
+                <div class="box-content col-lg-3  col-xs-12 bg-info small-spacing">
+                    <h4 class="box-title bg-info text-white text-center">TROUVEZ VOTRE ETABLISSEMENT</h4>
+                    <!-- /.box-title -->
+                    <ul class="list-inline">
+                            <li class="form-group col-xs-12">
+                                <input type="text" class="form-control" id="exampleInputName2" placeholder="Destination">
+                            </li>
+                            <li class="form-group  col-xs-12">
+                                <input type="text" class="form-control datepicker" placeholder="Date de départ">
+                            </li>
+
+                            <li class="form-group  col-xs-12">
+                                <input type="text" class="form-control datepicker" placeholder="Date d'arrivée">
+                            </li>
+
+                            <li class="form-group  col-xs-12">
+                                <select class="form-control items">
+                                    <option value="">Chambres</option>
+                                </select>
+                            </li>
+                            <li class="form-group  col-xs-12">
+                                <select class="form-control items">
+                                    <option value="">Adultes</option>
+                                </select>
+                            </li>
+                            <li class="form-group  col-xs-12">
+                                <select class="form-control items">
+                                    <option value="">Enfants</option>
+                                </select>
+                            </li>
+                            <li class="form-group  col-xs-12">
+                                <button type="submit" class="btn btn-primary waves-effect waves-light col-xs-12">
+                                   Rechercher <i class="ico-item fa fa-search"></i> 
+                                </button>
+                            </li>
+                        </ul>
+                </div>
+                <!-- /.box-content -->
+            </div>
+
+            <div class="row col-xs-12" style="background:#353e44; ">
+                <footer class="footer">
+                    <div class="col-xs-12 col-lg-3">
+                        <h4 class="footer">Version Mobile</h4>
+                        <ul class="">
+                            <li>
+                                <i class="fa fa-cc-mastercard" aria-hidden="true"></i>
+                                <span class="sr-only"> </span>Mastercard</li>
+                            <li>
+                                <i class="fa fa-cc-visa" aria-hidden="true"></i>
+                                <span class="sr-only"> </span>Visa</li>
+                            <li>
+                                <i class="fa fa-cc-paypal" aria-hidden="true"></i>
+                                <span class="sr-only"> </span>Paypal</li>
+                            <!-- <li><i class="fa fa-cc-mastercard" aria-hidden="true"></i> <span class="sr-only"> </span>-mastercard</li> -->
+
+                        </ul>
+                    </div>
+
+                    <div class="col-xs-12 col-lg-3">
+                        <h4 class="footer">ETABLISSEMENTS</h4>
+                        <ul class="">
+                            <li>
+                                <a href="#">Appartements</a>
+                            </li>
+                            <li>
+                                <a href="#">Hôtels</a>
+                            </li>
+                            <li>
+                                <a href="#">Résidences</a>
+                            </li>
+                            <li>
+                                <a href="#">Location de voitures</a>
+                            </li>
+                        </ul>
+
+                        <h4 class="footer">SERVICES CLIENTS</h4>
+                        <ul class="">
+                            <li>
+                                <a href="#">Guide Vacances</a>
+                            </li>
+                            <li>
+                                <a href="#">Destinations populaires à l’étranger</a>
+                            </li>
+                            <li>
+                                <a href="#">Déposer une annonce</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-xs-12 col-lg-3">
+                        <h4 class="footer">MON COMPTE</h4>
+                        <ul class="">
+                            <li>
+                                <a href="#">Mes réservations</a>
+                            </li>
+                            <li>
+                                <a href="#">Espace propriétaire</a>
+                            </li>
+                        </ul>
+
+                        <h4 class="footer">DESTINATIONS</h4>
+                        <ul class="">
+                            <li>
+                                <a href="#">Région</a>
+                            </li>
+                            <li>
+                                <a href="#">Pays</a>
+                            </li>
+                            <li>
+                                <a href="#">Villes</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-xs-12 col-lg-3">
+                        <h4 class="footer">NOUS JOINDRE</h4>
+                        <ul class="">
+                            <li>
+                                <a href="#">info@homemobilite.com</a>
+                            </li>
+                            <li>
+                                <a href="#">+225 40 00 32 79</a>
+                            </li>
+                            <!-- <li>
+									<a href="#">Help</a>
+								</li> -->
+                        </ul>
+
+                        <h4 class="footer">EN SAVOIR PLUS</h4>
+                        <ul class="">
+                            <li>
+                                <a href="#">
+                                    Qui sommes-nous?
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">Carrière</a>
+                            </li>
+                            <li>
+                                <a href="#">Conseil</a>
+                            </li>
+                        </ul>
+                    </div>
+
+
+
+
+                </footer>
+            </div>
+
+        </div>
+        <!-- /.main-content -->
+    </div>
+    <!--/#wrapper -->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+		<script src="assets/script/html5shiv.min.js"></script>
+		<script src="assets/script/respond.min.js"></script>
+	<![endif]-->
+    <!-- 
+	================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="assets/scripts/jquery.min.js"></script>
+    <script src="assets/scripts/modernizr.min.js"></script>
+    <script src="assets/plugin/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/plugin/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="assets/plugin/nprogress/nprogress.js"></script>
+    <script src="assets/plugin/sweet-alert/sweetalert.min.js"></script>
+    <script src="assets/plugin/waves/waves.min.js"></script>
+    <!-- Datepicker -->
+    <script src="assets/plugin/datepicker/js/bootstrap-datepicker.min.js"></script>
+
+    <!-- Moment -->
+    <script src="assets/plugin/moment/moment.js"></script>
+    <!-- Demo Scripts -->
+    <script src="assets/scripts/form.demo.min.js"></script>
+
+    <script src="assets/scripts/main.js?v=1"></script>
+    <script src="assets/scripts/horizontal-menu.js"></script>
+    <script src="assets/color-switcher/color-switcher.min.js"></script>
+
+</body>
+
+</html>

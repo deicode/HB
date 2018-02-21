@@ -1,0 +1,91 @@
+
+
+<div class="panel">
+
+    {% for flashMessage in app.session.flashbag.get('notice')|slice(0,1) %}
+        <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <strong>Parfait !</strong>  {{ flashMessage }} .
+        </div>
+    {% endfor %}
+
+    <div class="panel-heading">
+        <h4 class="panel-title">Formulaire pub</h4>
+    </div>
+    <div class="panel-body">
+        <br>
+        <form action=""  enctype="multipart/form-data" class="form-horizontal" METHOD="post">
+            <div class="input-group mb15">
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default">Nom de la pub : </button>
+                </span>
+                {{ form_widget(form.titre, {'attr': {'class': 'form-control'}}) }}
+
+            </div>
+            <div class="input-group mb15">
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default">Prix à partir de : </button>
+                </span>
+                {{ form_widget(form.prixstart, {'attr': {'class': 'form-control' }}) }}
+            </div>
+            <div class="input-group mb15">
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default">Pourcentage de reduction : </button>
+                </span>
+                {{ form_widget(form.pourcentage, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="input-group mb15">
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default">Date debut Pub : </button>
+                </span>
+                {{ form_widget(form.datestart, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="input-group mb15">
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default">Date fin pub : </button>
+                </span>
+                {{ form_widget(form.dateend, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div class="input-group mb15">
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default">Hôtel : </button>
+                </span>
+                {{ form_widget(form.agences, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="input-group mb15">
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default">Image (1200 x 300): </button>
+                </span>
+                {{ form_widget(form.Images.url, {'attr': {'class': 'form-control'}}) }}
+
+            </div>
+            <hr>
+            {{ form_widget(form._token, {'attr': {'type' : 'hidden'}}) }}
+
+            <div class="row">
+                <div class="col-sm-9 col-sm-offset-3">
+                    <button class="btn btn-success btn-quirk btn-wide mr5">Envoyer</button>
+                    <button type="reset" class="btn btn-quirk btn-wide btn-default">Annuler</button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+
+
+</div>
+
+<div class="panel">
+    <div class="panel-heading">
+        <h4 class="panel-title">Liste des Publicités sur Homemobilite</h4>
+    </div>
+    <div class="panel-body">
+
+        {{ render(controller('EmBackendBundle:Backend:renderListePub')) }}
+
+    </div>
+
+
+</div>

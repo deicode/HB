@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html>
+
+{% block headFrontend %}
+
+    {% include('::frontend/blocks/headFrontend.html.twig') %}
+
+{% endblock headFrontend %}
+
+<body>
+{% block headerMenuFrontend %}
+    {{   render (controller("EmFrontendBundle:Frontend:headerMenuFrontend")) }}
+{% endblock headerMenuFrontend %}
+<!-- .site-header -->
+{% block topareaSlide %}
+     {{  render (controller("EmFrontendBundle:Frontend:blockTopareSlider")) }}
+
+{% endblock topareaSlide %}
+<!-- END TOP AREA  -->
+<div id="content-wrapper" class="site-content-wrapper">
+    <div id="content" class="site-content layout-boxed">
+        <main id="main" class="site-main">
+            {{  render (controller("EmFrontendBundle:Frontend:renderListeHotels")) }}
+
+            <section class="submit-property submit-property-one" style="background: url({{ asset('bundles/emfrontend/assets/') }}images/demo/hiw-bg.jpg) no-repeat center top;  background-size: cover;">
+                <div class="container">
+                    <header class="submit-property-header">
+                        <h3 class="sub-title">Bienvenue</h3>
+                        <h2 class="title"> Ajouter votre propriété à notre liste</h2>
+                        <p>
+                            Nous avons une grande base de clients pour commercialiser votre propriété à droite acheteurs. Alors commencez par suivre ces étapes simples.
+                        </p>
+                    </header>
+                    <div class="row submit-property-placeholders">
+                        <div class="col-sm-4 submit-property-placeholder">
+                            <div class="image-wrapper">
+                                <a href="#"><img src="{{ asset('bundles/emfrontend/assets/') }}images/demo/icon-1.svg" alt="Icon"/></a>
+                            </div>
+                            <h3 class="submit-property-title">Acceder au formulaire </h3>
+
+                        </div>
+                        <div class="col-sm-4 submit-property-placeholder">
+                            <div class="image-wrapper">
+                                <a href="#"><img src="{{ asset('bundles/emfrontend/assets/') }}images/demo/icon-2.svg" alt="Icon"/></a>
+                            </div>
+                            <h3 class="submit-property-title">Rediger votre demande </h3>
+
+                        </div>
+                        <div class="col-sm-4 submit-property-placeholder">
+                            <div class="image-wrapper">
+                                <a href="#"><img src="{{ asset('bundles/emfrontend/assets/') }}images/demo/icon-3.svg" alt="Icon"/></a>
+                            </div>
+                            <h3 class="submit-property-title"> Vous avez terminé!</h3>
+
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <a class="btn-large btn-green" href="{{ path('em_frontend_addbienimmo') }}">Soumettre votre  propriété</a>
+                    </div>
+                </div>
+                <!-- .container -->
+            </section>
+            <!-- .submit-property-section -->
+            <div class="featured-properties featured-properties-one">
+                <div class="container">
+                    <div class="row zero-horizontal-margin">
+                        {{  render (controller("EmFrontendBundle:Frontend:renderListeImmo")) }}
+
+                        <!-- .featured-properties-item -->
+                    </div>
+                    <!-- .row -->
+                </div>
+                <!-- .container -->
+            </div>
+            <!-- .featured-properties -->
+            <section class="partners">
+                <div class="container">
+                    <div class="row zero-horizontal-margin">
+                        <div class="col-xs-12">
+                            <h3 class="title">
+                                Nous travaillons comme <span>Partners</span> Avec des sociétés prestigieuses suivantes.
+                            </h3>
+                            <ul class="list-grid-layout list-unstyled">
+                                <li><a href="#"><img class="img-responsive" src="{{ asset('bundles/emfrontend/assets/') }}images/partner/ecofitness.png" alt="ecofitness"></a></li>
+                                <li><a href="#"><img class="img-responsive" src="{{ asset('bundles/emfrontend/assets/') }}images/partner/HATANAA.png" alt="hatanna"></a></li>
+                                <li><a href="#"><img class="img-responsive" src="{{ asset('bundles/emfrontend/assets/') }}images/partner/south-energies.png" alt="south-energies"></a></li>
+                                <li><a href="#"><img class="img-responsive" src="{{ asset('bundles/emfrontend/assets/') }}images/partner/tarro.png" alt="tarro"></a></li>
+                                <li><a href="#"><img class="img-responsive" src="{{ asset('bundles/emfrontend/assets/') }}images/partner/Tyxxos.png" alt="Tyxxos"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- .container -->
+            </section>
+            <!-- .partners -->
+            <!-- .home-recent-posts -->
+        </main>
+        <!-- .site-main -->
+        {% block footer %}
+            {{ render(controller('EmFrontendBundle:Frontend:footer')) }}
+        {% endblock footer %}
+        <!-- .footer -->
+    </div>
+    <!-- .site-content -->
+</div>
+<!-- .site-content-wrapper -->
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/jquery-1.12.3.min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/flexslider/jquery.flexslider-min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/lightslider/js/lightslider.min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/select2/select2.min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/owl.carousel/owl.carousel.min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/swipebox/js/jquery.swipebox.min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/jquery.hoverIntent.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/jquery.validate.min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/jquery.form.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/transition.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/jquery.appear.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/meanmenu/jquery.meanmenu.min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/jquery.placeholder.min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/custom.js"></script>
+
+<!-- .modal -->
+<script>
+    (function ($) {
+        "use strict";
+
+        if (jQuery().validate) {
+
+            //Login
+            $('#login-form').validate();
+
+            //Register
+            $('#register-form').validate();
+
+            //Forgot Password
+            $('#forgot-form').validate();
+        }
+
+        /*-----------------------------------------------------------------------------------*/
+        /* Modal dialog for Login and Register
+         /*-----------------------------------------------------------------------------------*/
+        var loginModal = $('#login-modal'),
+                modalSections = loginModal.find('.modal-section');
+
+        $('.activate-section').on('click', function (event) {
+            var targetSection = $(this).data('section');
+            modalSections.slideUp();
+            loginModal.find('.' + targetSection).slideDown();
+            event.preventDefault();
+        });
+
+    })(jQuery);
+</script>
+</body>
+</html>

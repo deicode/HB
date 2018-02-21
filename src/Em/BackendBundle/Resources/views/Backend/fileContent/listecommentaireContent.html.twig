@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-sm-10 col-md-11 col-lg-12">
+        <div class="timeline-wrapper">
+            <div class="timeline-date">Commentaires</div>
+           {% for data in pagination %}
+            <div class="panel panel-post-item status">
+                <div class="panel-heading">
+                    <div class="media">
+                        <div class="media-left">
+                            <a href="#">
+                                <img class="media-object img-circle" src="{{ asset('bundles/emfrontend/assets/img/') }}team/commentaire.png" alt="">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">{{ data.titre }}</h4>
+                            <p class="media-usermeta">
+                                <span class="media-time"> <small> {{ data.dateadd|date('d-m-Y') }} </small> </span>
+                            </p>
+                        </div>
+                    </div><!-- media -->
+                    <ul class="panel-options">
+                        <li><a class="tooltips" href="" data-toggle="tooltip" title="" data-original-title="View Options"><i class="glyphicon glyphicon-option-vertical"></i></a></li>
+                    </ul>
+                </div><!-- panel-heading -->
+                <div class="panel-body">
+                        {{ data.contenu|raw }}
+                </div>
+                <div class="panel-footer">
+                    <ul class="list-inline">
+                        <li><a href=""><i class="glyphicon glyphicon-user"></i> {{ data.client.username }}</a></li>
+                        <li><a data-target="#comment-1" data-toggle="collapse"><i class="glyphicon glyphicon-home"></i> Hôtel : {{ data.agences.nom }}</a></li>
+                        <li class="pull-right"> <a href="{{ path("em_backend_enabledcommentaire", { 'idcom' : data.id, 'status' : 'valider'}) }}"> | Valider </a><a href="{{ path("em_backend_enabledcommentaire", { 'idcom' : data.id, 'status' : 'suspendre'}) }}"> | Suspendre </a> <a href="{{ path("em_backend_enabledcommentaire", { 'idcom' : data.id, 'status' : 'activer'}) }}"> | Active sur Accueil site </a></li>
+                    </ul>
+                </div>
+
+            </div><!-- panel panel-post -->
+           {% endfor %}
+<!-- panel panel-post -->
+
+            {{ knp_pagination_render(pagination) }}
+
+        </div><!-- timeline-wrapper -->
+    </div>
+
+</div>

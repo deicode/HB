@@ -1,0 +1,3 @@
+em_backend_homepage_proprietaire:
+    path:     /
+    defaults: { _controller: EmBackendBundle:Proprietaire:index }

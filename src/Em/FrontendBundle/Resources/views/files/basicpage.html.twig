@@ -1,0 +1,14 @@
+{% extends '::frontend/layoutdetail.html.twig' %}
+{% block Title %} {{ entity.title }} | HomeMobilite  - Vente - Location - Loue {% endblock %}
+
+{% block titremenu %} <span class="btn-large btn-danger">{{ entity.titre|capitalize }}</span> {% endblock titremenu %}
+
+{% block headerMenuFrontend %}
+    {{   render (controller("EmFrontendBundle:Frontend:headerMenuFrontend",{'slug': slug})) }}
+{% endblock headerMenuFrontend %}
+
+{% block Contenu %}
+
+    {% include 'EmFrontendBundle:filesContent:basicpageContent.html.twig' %}
+
+{% endblock Contenu %}

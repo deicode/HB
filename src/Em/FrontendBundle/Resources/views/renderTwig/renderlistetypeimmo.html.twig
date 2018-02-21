@@ -1,0 +1,16 @@
+<div class="row">
+    {% for data in typeimmo %}
+        <div class="col-xs-6 custom-col-xs-12 col-sm-6 col-md-4">
+            <article class="hentry property-listing-three-post image-transition">
+                <div class="property-thumbnail">
+                    <a href="{% if data.slug =='htel-de-luxe' %} {{ path("em_frontend_listehotels") }} {% else %}{{ path("em_frontend_listeproprietesbycategorie",{'slug': data.slug }) }} {% endif %} ">
+                        <img width="360" height="237" src="{{ asset('bundles/emfrontend/assets/uploads/images/') }}Typeimmo/{{ data.Images.title }}" alt="Thumbnail">
+                    </a>
+                    <a href="{% if data.slug =='htel-de-luxe' %} {{ path("em_frontend_listehotels") }} {% else %}{{ path("em_frontend_listeproprietesbycategorie",{'slug': data.slug }) }} {% endif %}"><span class="property-status">{{ data.libelle|capitalize }}</span></a>
+                </div>
+                <!-- .property-thumbnail -->
+                <!-- .property-description -->
+            </article>
+        </div>
+    {% endfor %}
+</div>

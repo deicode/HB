@@ -1,0 +1,14 @@
+{% extends '::backend/backendLayout.html.twig' %}
+
+    {% block headLibelle %}
+        Gestion les villes et communes  <span class="text-primary">
+        <a href="{{ path('em_backend_addville', {'idpage' : 'All'}) }}"> Ajouter une ville </a>
+        | <a href="{{ path('em_backend_listeville') }}"> Liste des villes </a>
+        | <a href="{{ path('em_backend_listecommune') }}"> Liste des communes </a>    </span>
+    {% endblock headLibelle %}
+
+{% block contenu %}
+
+    {% include('EmBackendBundle:Backend:fileContent/listecommuneContent.html.twig') %}
+
+{% endblock contenu %}

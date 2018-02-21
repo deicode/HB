@@ -1,0 +1,82 @@
+
+<div class="box-content col-lg-8 col-xs-12">
+    <h4 class="box-title">{{ dataentity|length }} Etablissement(s) trouvé(s)</h4>
+    <!-- /.box-title -->
+    <ul class="nav nav-pills nav-justified" role="tablist">
+        <li role="presentation" class="active">
+            <a href="#hotels" aria-controls="hotels" role="tab" data-toggle="tab">Hotels</a>
+        </li>
+        <li role="presentation">
+            <a href="#appartements" aria-controls="appartements" role="tab" data-toggle="tab">Appartements</a>
+        </li>
+        <li role="presentation">
+            <a href="#residences" aria-controls="residences" role="tab" data-toggle="tab">Residence</a>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="hotels">
+            {% for data in hotels %}
+            <div class="col-xs-12 item-result item-result-margin">
+                <div class="profile-avatar col-lg-4  col-xs-12">
+
+                    <a href="{{ path('em_frontend_agence_detail',{'idagence': data.id}) }}">
+                        {{ render(controller('EmFrontendBundle:Frontend:listeImageAgence', {'entity': data })) }}
+                    </a>
+                    <a href="{{ path('em_frontend_agence_detail',{'idagence': data.id}) }}" class="btn btn-block btn-friend">
+                        <i class="fa fa-money"></i> A partir de : : {{ data.prixinit|localizedcurrency('XOF') }}</a>
+                    <a href="{{ path('em_frontend_agence_detail',{'idagence': data.id}) }}" class="btn btn-block btn-inbox">
+                        <i class="fa fa-shopping-cart"></i> Selectionner votre chambre</a>
+                </div>
+                <div class="col-lg-8 col-xs-12">
+                    <h3>
+                        <strong class="text-info">{{ data.nom }} | {{ data.ville}}</strong>
+                    </h3>
+                    <p>
+                        {%  set num = 1 %}
+                        {% for  num in  1..data.grade %}
+                            <i class="fa fa-star text-warning"></i>
+                            {%  set num = num +1 %}
+                        {% endfor %}
+                    </p>
+                    <p>
+                    <ul class="list-inline text-success">
+                        {% if data.wifi == 1 %}
+                        <li>Wifi</li>
+                        {% endif %}
+                         {% if data.piscine ==1 %}
+                            <li>Piscine</li>
+                       {% endif %}
+                        {% if data.piscine ==1 %}
+                            <li>Piscine</li>
+                        {% endif %}
+                        {% if data.climatisation ==1 %}
+                            <li>Climatisation</li>
+                        {% endif %}
+                        {% if data.gym ==1 %}
+                            <li> Gym</li>
+                        {% endif %}
+                        {% if data.restaurant ==1 %}
+                            <li> Restaurant</li>
+                        {% endif %}
+                    </ul>
+                    </p>
+                    <p class="lead">
+                    {{ data.description }}
+                    </p>
+
+
+                </div>
+            </div>
+
+            {% endfor %}
+            {{ knp_pagination_render(hotels) }}
+        </div>
+        <div role="tabpanel" class="tab-pane" id="appartements">
+
+        </div>
+        <div role="tabpanel" class="tab-pane" id="residences">
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="col-lg-3  col-xs-12">
+    <h4>
+        <i class="fa fa-search"></i> Recherche</h4>
+    <div class="list-group margin-top-20">
+        <a href="#" class="list-group-item active">Hotels</a>
+        <a href="#" class="list-group-item">Appartements</a>
+        <a href="#" class="list-group-item">Residences</a>
+        <a href="#" class="list-group-item">Location voitures</a>
+    </div>
+
+    <h5 class="hidden-xs"> Nous recommandons</h5>
+
+    <div class="box-content bordered primary margin-bottom-20 hidden-xs">
+        <div class="profile-avatar">
+            <img src="{{ asset('bundles/emfrontend/assets/pics/agences/') }}{{ dataimage.title }}" alt="{{ dataimage.title }}">
+            <h3>
+                <strong>{{ agence.pays }}</strong>
+            </h3>
+            <h4>{{ agence.nom }}</h4>
+            <p>{{ agence.description }}
+                <a href="#">En savoir plus</a>
+            </p>
+        </div>
+        <!-- .profile-avatar -->
+    </div>
+    <!-- /.box-content bordered -->
+</div>

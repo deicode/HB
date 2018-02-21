@@ -1,0 +1,46 @@
+<div class="panel">
+
+
+      {% for flashMessage in app.session.flashbag.get('notice')|slice(0,1) %}
+    <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <strong>Parfait !</strong>  {{ flashMessage }} .
+    </div>
+      {% endfor %}
+
+           <div class="panel-heading">
+               <h4 class="panel-title">NB: le nombre d'image de slide sur le site est de 3 donc les 3 dernières seront affichées</h4>
+               <p>Ajouter un nouveau <code><a href="{{ path('em_backend_addslidehome') }}" > slide </a></code> </p>
+           </div>
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table nomargin">
+                <thead>
+                <tr>
+
+                    <th>Ville</th>
+                    <th>Prix à partir de :</th>
+                    <th>date Ajout</th>
+                    <th>Nom Image</th>
+                    <th>Activer </th>
+                    <th>Action </th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for data in entitSlider %}
+                <tr>
+
+                    <td>{{ data.title }}</td>
+                    <td>{{ data.prix }}</td>
+                    <td>{{ data.images.dateadd|date('d:m:Y') }}</td>
+                    <td>{{ data.images.alt }}</td>
+                    <td> {% if data.enabled == true %} Oui {% else %} Non {% endif %}</td>
+                    <td><a href="{{ path('em_backend_slider_enabled', {'slider': data.id, 'action': 'oui'}) }}" title="Activer"><i class="fa fa-hand-o-up"></i></a>    |   <a href="{{ path('em_backend_slider_enabled', {'slider': data.id, 'action': 'non'}) }}" title="Désactiver"> <i class="fa fa-hand-o-down"></i></a> </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div><!-- table-responsive -->
+    </div>
+</div>

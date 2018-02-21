@@ -1,0 +1,32 @@
+{% extends "::client/clientLayout.html.twig" %}
+
+{% block menuleft %}
+
+    <div class="container col-xs-12 col-lg-3">
+        <div class="box-content">
+            <h4 class="box-title">
+                <i class="fa fa-user text-success"></i>  {{ user.username }}</h4>
+            <hr>
+            <h4 class="box-title">Mon compte</h4>
+            <!-- /.box-title -->
+            <div class="list-group margin-top-20">
+                <a href="{{ path('em_client_homepage') }}" class="list-group-item">
+                    <i class="fa fa-shopping-cart"></i> Mes reservations</a>
+                <a href="{{ path('em_client_parametre') }}" class="list-group-item active">
+                    <i class="fa fa-gear"></i> Parametres</a>
+                <a href="{{ path('em_client_auth_security_logout') }}" class="list-group-item">
+                    <i class="fa fa-power-off"></i> Deconnexion</a>
+            </div>
+        </div>
+        <!-- /.box-content -->
+
+        <!-- /.box-content -->
+    </div>
+{% endblock menuleft %}
+{% block Contenu %}
+
+    {% include('EmClientBundle:Client:ContenusLayout/parametreContenu.html.twig') %}
+
+{% endblock Contenu %}
+
+

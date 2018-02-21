@@ -1,0 +1,98 @@
+{% for flashMessage in app.session.flashbag.get('Notice')|slice(0,1) %}
+
+    <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <strong>Hi !</strong>  {{ flashMessage }} .
+    </div>
+{% endfor %}
+<div class="row panel-quick-page">
+    <div class="col-xs-4 col-sm-5 col-md-4 page-reports">
+        <div class="panel">
+            <a href="{{ path('em_backend_homepage') }}" title="Accueil">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Accueil</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="page-icon"><i class="icon ion-home"></i></div>
+                </div>
+            </a>
+
+        </div>
+
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4 page-products">
+        <div class="panel">
+            <a href="{{ path('em_backend_listehoteliers') }}">
+
+            <div class="panel-heading">
+                <h4 class="panel-title">Gestion Agences Hôtelières</h4>
+            </div>
+            <div class="panel-body">
+                <div class="page-icon"><i class="fa fa-shopping-cart"></i></div>
+            </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="col-xs-4 col-sm-4 col-md-4 page-support">
+        <div class="panel">
+            <a href="{{ path('em_backend_listepagesite') }}" title="Liste page du site">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Gerer les pages du site</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="page-icon"><i class="icon ion-ios-paper "></i></div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    {% if is_granted('ROLE_ADMIN') %}
+
+
+        <div class="col-xs-4 col-sm-5 col-md-4 page-user">
+
+            <div class="panel">
+                <a href="{{ path('em_backend_listebienimmo') }}">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Gestion Immobilières</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="page-icon"><i class="icon ion-person-stalker"></i></div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+
+
+    <div class="col-xs-6 col-sm-5 col-md-4 page-messages">
+        <div class="panel">
+
+            <a href="{{ path('em_backend_listenews') }}" title="écrire un article">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Nos Services</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="page-icon"><i class="icon ion-radio-waves"></i></div>
+                </div>
+            </a>
+
+        </div>
+    </div>
+
+    <div class="col-xs-8 col-sm-8 col-md-4 page-settings">
+        <div class="panel">
+            <a href="{{ path('em_backend_parametre', {'iduser' : user.id}) }}" >
+            <div class="panel-heading">
+                <h4 class="panel-title">Mes paramètres</h4>
+            </div>
+            <div class="panel-body">
+                <div class="page-icon"><i class="icon ion-gear-a"></i></div>
+            </div>
+            </a>
+        </div>
+    </div>
+    {% endif %}
+
+</div><!-- row -->

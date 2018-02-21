@@ -1,0 +1,77 @@
+Em\FrontendBundle\Entity\Reservations:
+    type: entity
+    table: null
+    repositoryClass: Em\FrontendBundle\Repository\ReservationsRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nom:
+            type: string
+            length: 255
+        prenoms:
+            type: string
+            length: 255
+        phone:
+            type: string
+            length: 255
+        email:
+            type: string
+            length: '50'
+        modepayement:
+            type: string
+            length: 255
+        prixtotal:
+            type: integer
+        typeaction:
+            type: string
+            length: 255
+        datearrivee:
+            type: string
+            length: '50'
+            nullable: true
+        datedepart:
+            type: string
+            length: '50'
+            nullable: true
+        nbadulte:
+            type: integer
+            nullable: true
+        nbenfant:
+            type: integer
+            nullable: true
+        nbchambre:
+            type: integer
+            nullable: true
+        nbjour:
+            type: integer
+            nullable: true
+        dateadd:
+            type: datetime
+        numeroreservation:
+            type: string
+            length: '15'
+        status:
+            type: string
+            length: 255
+        confirmer:
+            type: boolean
+
+    manyToOne:
+        chambre:
+            targetEntity: Em\BackendBundle\Entity\Chambre
+            joinColumn:
+              name: chambre_id
+              referencedColumnName: id
+            cascade: ["persist"]
+        proprietaire:
+            targetEntity: Em\BackendBundle\Entity\User
+            joinColumn:
+              name: user_id
+              referencedColumnName: id
+            cascade: ["persist"]
+
+    lifecycleCallbacks: {  }

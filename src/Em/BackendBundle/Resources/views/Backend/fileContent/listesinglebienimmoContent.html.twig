@@ -1,0 +1,234 @@
+<div class="mainpanel" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+
+<div class="contentpanel">
+
+    <ol class="breadcrumb breadcrumb-quirk">
+        <li><a href="{{ path('em_backend_homepage') }}"><i class="fa fa-home mr5"></i> Accueil</a></li>
+        <li><a href="#">Bien Immobilier</a></li>
+        <li class="active">Vue</li>
+    </ol>
+    {% for flashMessage in app.session.flashbag.get('notice')|slice(0,1) %}
+
+        <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <strong>Hi !</strong>  {{ flashMessage }} .
+        </div>
+    {% endfor %}
+    <div class="row">
+        <div class="col-sm-8 col-md-9 col-lg-10">
+            <div class="well well-asset-options{% if entity.locked == 1 %}-encours{% else %}-success{% endif %} clearfix">
+                <div class="btn-toolbar btn-toolbar-media-manager pull-left" role="toolbar">
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-info"><i class="fa fa-share"></i> Immobillier : </button>
+                        <button type="button" class="btn btn-default"> {{ entity.libelle }} </button>
+
+                    </div>
+
+                </div><!-- btn-toolbar -->
+
+                <div class="btn-group pull-right">
+
+
+                        {% if entity.locked == 1 %}
+                        <a href="{{ path('em_backend_enabledbienimmo', {'idbienimmo': entity.id, 'status' : 'valider'}) }}">
+                            <button class="btn btn-success">
+                             Valider
+                        </button>
+                        </a>
+                            {% else %}
+                                <a href="{{ path('em_backend_enabledbienimmo', {'idbienimmo': entity.id, 'status' : 'suspendre'}) }}">
+                                    <button class="btn btn-danger">
+                                        Suspendre
+                                    </button>
+                                </a>
+                           {% endif %}
+                            <a href="{{ path('em_backend_addbienimmo') }}">
+                                <button class="btn btn-info">
+                                    Ajouter Nouveau
+                                </button>
+                            </a>
+                            <a href="{{ path("em_backend_updatebienimmo", { 'idpage' : entity.id}) }}">
+                                <button class="btn btn-warning">
+                                    Modifier
+                                </button>
+                            </a>
+
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+
+                    <h4 class="panel-title mb5">Information</h4>
+                    <p class="mb15">toutes les infos du bien Immobilier <code>
+                        </code> || Status: <code>  {% if entity.locked == 1 %}- <strong> en cours de validation  </strong>{% else %}- <strong> success </strong>{% endif %} </code></p>
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs nav-primary">
+                        <li class="active"><a href="#popular5" data-toggle="tab"><strong>Slogan</strong></a></li>
+                        <li><a href="#recent5" data-toggle="tab"><strong> Caracteristique & status</strong></a></li>
+                        <li><a href="#comments5" data-toggle="tab"><strong>Description</strong></a></li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content mb20">
+                        <div class="tab-pane active" id="popular5">
+                            {{ entity.libelle }}
+                        </div>
+
+                        <div class="tab-pane" id="comments5">
+                            <strong> {{ entity.description }} </strong>
+                        </div>
+                    </div>
+                </div><!-- col-md-6 -->
+                <div class="col-md-6">
+
+                    <h4 class="panel-title mb5">Localisation </h4>
+                    <p class="mb15">Votre situation géographique <code> {% if entity.villes.nom  is defined %} {{ entity.villes.nom }} {% endif %}</code> / - / <code>{% if entity.communes.nom is defined %} {{ entity.communes.nom }} {% endif %}</code></p>
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs nav-success">
+                        <li class="active"><a href="#popular6" data-toggle="tab"><strong> Adresse</strong></a></li>
+                        <li><a href="#recent6" data-toggle="tab"><strong>Telephone </strong></a></li>
+                        <li><a href="#comments6" data-toggle="tab"><strong>Google Map</strong></a></li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content mb20">
+
+                        <div class="tab-pane" id="recent6">
+                            <strong> {{ entity.telephone }} </strong>
+                        </div>
+                        <div class="tab-pane" id="comments6">
+
+                            {{ entity.urlmap|raw }}
+                        </div>
+                    </div>
+                </div><!-- col-md-6 -->
+            </div>
+           <div class="row">
+               <div class="panel">
+                   <div class="panel-heading">
+                       <h4 class="panel-title">Equipement de votre agence</h4>
+                       <p>Liste des differents espaces de divertissements et de sports</p>
+                   </div>
+                   <div class="panel-body">
+                       <div class="row">
+                           <div class="col-md-6">
+
+                             {% if entity.jardin   %}
+                               <label class="ckbox ckbox-primary">
+                                   <input type="checkbox" checked="{{entity.jardin}}" ><span> jardin </span>
+
+                               </label>
+                             {% endif %}
+                                 {% if entity.piscine %}
+                                     <label class="ckbox ckbox-primary">
+                                         <input type="checkbox" checked="{{ entity.piscine }}" > <span> Piscine </span>
+                                     </label>
+                                 {% endif %}
+                                 {% if entity.balcon %}
+                                     <label class="ckbox ckbox-primary">
+                                         <input type="checkbox" checked="{{ entity.balcon }}" >   <span> Climatisation </span>
+                                    </label>
+                                 {% endif %}
+                                 {% if entity.terrasse %}
+                                     <label class="ckbox ckbox-primary">
+                                         <input type="checkbox" checked="{{ entity.terrasse}}" > <span> Restaurant </span>
+                                     </label>
+                                 {% endif %}
+                                 {% if entity.parking %}
+                                     <label class="ckbox ckbox-primary">
+                                         <input type="checkbox" checked=" {{entity.parking }}" >  <span> Service de chambre </span>
+                                     </label>
+                             {% endif %}
+
+
+                           </div><!-- col-md-6 -->
+
+                           <div class="col-md-6">
+                               {% if entity.garage   %}
+                                   <label class="ckbox ckbox-primary">
+                                       <input type="checkbox" checked="{{  entity.garage }}" >   <span>Petit Dejeuner </span>
+                                   </label>
+                               {% endif %}
+                               {% if entity.cave %}
+                                   <label class="ckbox ckbox-primary">
+                                       <input type="checkbox" checked="{{  entity.cave }}" >    <span> Night Club </span>
+                                   </label>
+                               {% endif %}
+                               {% if entity.ascenseur %}
+                                   <label class="ckbox ckbox-primary">
+                                       <input type="checkbox" checked="{{ entity.ascenseur }}" >  <span> Massage </span>
+                                   </label>
+                               {% endif %}
+
+
+
+                           </div>
+                       </div><!-- row -->
+                   </div><!-- panel-body -->
+               </div>
+           </div>
+            <div class="row filemanager">
+
+                {% for data in images|slice(0,6) %}
+
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 image">
+                    <div class="thmb">
+                        <label class="ckbox" style="display: none;">
+                            <input type="checkbox"><span></span>
+                        </label>
+                        <div class="btn-group fm-group" style="display: none;">
+                            <button type="button" class="btn btn-default dropdown-toggle fm-toggle" data-toggle="dropdown">
+                                <span class="caret"></span>
+                            </button>
+
+                        </div><!-- btn-group -->
+                        <div class="thmb-prev">
+                            <a href="">
+                                <img src="{{ asset('bundles/emfrontend/assets/') }}pics/bienimmo/{{ data.title }}" class="img-responsive" alt="">
+                            </a>
+                        </div>
+                        <h5 class="fm-title"><a href="">{{ data.alt }}</a></h5>
+                        <small class="text-muted">Date ajout : {{ data.dateadd|date('d-m-Y H:i:s') }}</small>
+                    </div><!-- thmb -->
+                </div><!-- col-xs-6 -->
+
+               {% endfor %}
+
+            </div><!-- row -->
+            <div class="row filemanager">
+
+                {% for data in images|slice(7,6) %}
+
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 image">
+                        <div class="thmb">
+                            <label class="ckbox" style="display: none;">
+                                <input type="checkbox"><span></span>
+                            </label>
+                            <div class="btn-group fm-group" style="display: none;">
+                                <button type="button" class="btn btn-default dropdown-toggle fm-toggle" data-toggle="dropdown">
+                                    <span class="caret"></span>
+                                </button>
+
+                            </div><!-- btn-group -->
+                            <div class="thmb-prev">
+                                <a href="">
+                                    <img src="{{ asset('bundles/emfrontend/assets/') }}pics/agences/{{ data.title }}" class="img-responsive" alt="">
+                                </a>
+                            </div>
+                            <h5 class="fm-title"><a href="">{{ data.alt }}</a></h5>
+                            <small class="text-muted">Date ajout : {{ data.dateadd|date('d-m-Y H:i:s') }}</small>
+                        </div><!-- thmb -->
+                    </div><!-- col-xs-6 -->
+
+                {% endfor %}
+
+            </div><!-- row -->
+        </div><!-- col-sm-9 -->
+
+    </div>
+</div>
+
+</div>

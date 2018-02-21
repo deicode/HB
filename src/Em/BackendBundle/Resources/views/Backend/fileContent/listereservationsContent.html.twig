@@ -1,0 +1,173 @@
+<div class="mainpanel">
+
+    <div class="contentpanel">
+
+        <ol class="breadcrumb breadcrumb-quirk">
+            <li><a href="#"><i class="fa fa-home mr5"></i> Accueil</a></li>
+            <li><a href="#">Biens</a></li>
+            <li class="active">Reservations</li>
+        </ol>
+
+        <div class="row">
+            <div class="col-sm-8 col-md-9 col-lg-10 people-list">
+
+                <div class="people-options clearfix">
+
+
+                    <div class="btn-group pull-right people-pager">
+                        <button type="button" class="btn btn-success"><i class="fa fa-user"></i></button>
+                    </div>
+                    <span class="people-count pull-right">Total reservations   <strong>34,404</strong> users</span>
+                </div><!-- people-options -->
+
+                <div class="row">
+                    <div class="panel panel-profile list-view">
+                        <div class="panel-heading">
+                            <div class="media">
+                                <div class="media-left">
+                                    <a href="#">
+                                        <img class="media-object width100" src="{{ asset('bundles/embackend/assets/') }}/images/photos/user1.png" alt="">
+                                    </a>
+                                </div>
+
+
+                                <div class="media-body">
+                                    <h4 class="media-heading"> Golf Hôtel</h4>
+                                    <p class="media-usermeta"><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i></p>
+                                </div>
+                            </div><!-- media -->
+                            <ul class="panel-options">
+                                <li><a class="tooltips" href="" data-toggle="tooltip" title="" data-original-title="View Options"><i class="glyphicon glyphicon-option-vertical"></i></a></li>
+                            </ul>
+                        </div><!-- panel-heading -->
+
+                        <div class="panel-body people-info">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="info-group">
+                                        <label>Location</label>
+                                        San Francisco, CA, USA
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="info-group">
+                                        <label>Email</label>
+                                        christina.hill@email.com
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="info-group">
+                                        <label>Phone</label>
+                                        386-7521860
+                                    </div>
+                                </div>
+                            </div><!-- row -->
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="info-group">
+                                        <label>Followers</label>
+                                        <h4>1,348</h4>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="info-group">
+                                        <label>Following</label>
+                                        <h4>232</h4>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="info-group">
+                                        <label>Social</label>
+                                        <div class="social-account-list">
+                                            <i class="fa fa-facebook-official"></i>
+                                            <i class="fa fa-twitter"></i>
+                                            <i class="fa fa-dribbble"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- row -->
+                        </div>
+                    </div>
+
+                </div><!-- row -->
+
+            </div><!-- col-sm-8 -->
+
+            <div class="col-sm-4 col-md-3 col-lg-2">
+
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Recherche</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label class="control-label center-block">Nom hôtelier :</label>
+                            <input type="text" class="form-control" placeholder="Entrer le nom de l'hôtel">
+                        </div>
+
+                        <button class="btn btn-success btn-block">Valider</button>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Derniers hoteliers validés</h4>
+                    </div>
+                    
+                    <div class="panel panel-site-traffic">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Nouvelles Réservations </h4>
+                            <p>Liste des <code>dernières </code> reservations.</p>
+                        </div>
+                        <div class="table-responsive">
+
+                            <table class="table table-bordered table-default table-striped nomargin">
+                                <thead class="success">
+                                <tr>
+                                    <th>N° reservation</th>
+                                    <th class="text-right">Agence Hôteliere</th>
+                                    <th class="text-right">Nom&Prenoms</th>
+                                    <th class="text-right">Phone</th>
+                                    <th class="text-right">Status</th>
+                                    <th class="text-right">Details</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for data in pagination %}
+                                <tr>
+                                    <td>{{ data.numeroreservation }}</td>
+                                    <td class="text-right">{{ data.chambre.agences.nom }}</td>
+                                    <td class="text-right">{{ data.nom }} {{ data.prenoms }}</td>
+                                    <td class="text-right">{{ data.phone }}</td>
+                                    {% if data.confirmer  %}
+                                         <td class="text-right" title="Reservation validée par l'hôtelier "> Validée </td>
+                                        {% else %}
+                                            <td class="text-right" title=""> En cours </td>
+                                    {% endif %}
+                                    <td class="text-right">
+                                        {% if data.confirmer %}
+                                        <a href="#" title="Reservation validée par l'hôtelier"><i class="fa fa-thumbs-up"></i> </a>
+                                           {% else %}
+                                               <a href="{{ path('em_backend_reservations_confirmer',{'idreservation' : data.id|urlencrypt , 'status':'valider'})}}" title="reservation"><i class="fa fa-thumbs-down" style="color: #ff0000"></i> </a>
+                                        {% endif %}
+
+                                        <a href="{{ path('em_backend_reservations_details', {'idreservation' : data.id|urlencrypt }) }}" title="voir plus d'infos sur la reservation "><i class="fa fa-eye"></i> </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                            {{ knp_pagination_render(pagination) }}
+                        </div>
+                        
+                        <!-- table-responsive -->
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div><!-- row -->
+
+    </div><!-- contentpanel -->
+
+</div><!-- mainpanel -->

@@ -1,0 +1,72 @@
+{% for flashMessage in app.session.flashbag.get('notice')|slice(0,1) %}
+
+    <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <strong>Parfait !</strong>  {{ flashMessage }} .
+    </div>
+{% endfor %}
+<div class="panel">
+    <div class="panel-heading">
+        <h4 class="panel-title">Mes transactions  </h4>
+    </div>
+    <div class="panel-body">
+        <div class="table-responsive">
+            <div id="dataTable1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div id="dataTable1_filter" class="dataTables_filter">
+                            <label>recherche:
+                                <input type="search" class="form-control input-sm" placeholder="" aria-controls="dataTable1">
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table id="dataTable1" class="table table-bordered table-striped-col dataTable" role="grid" aria-describedby="dataTable1_info">
+                                <thead>
+                                    <tr role="row">
+                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable1" rowspan="1"
+                                            colspan="1" aria-label="Name: activate to sort column descending" aria-sort="ascending" style="width: 253px;">Propriétaire
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable1" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 380px;">
+                                            Biens
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable1" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 197px;">
+                                            Total Transaction
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable1" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 163px;">
+                                            Actions
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for data in reservation %}
+                                        <tr role="row" class="even">
+                                            <td class="sorting_1">{{ data.hotelier.username }}</td>
+                                            <td>{{ data.chambre.agences.nom }}</td>
+                                            <td>{{ data.prixtotal }} Fcfa</td>
+                                            <td>  <ul class="table-options">
+                                                    <li><a href=""><i class="fa fa-street-view" title="voir ses reservations"></i></a></li>
+                                                    <li><a href=""><i class="fa fa-money" title="valider payement"></i></a></li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-7">
+                            {{ knp_pagination_render(reservation) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

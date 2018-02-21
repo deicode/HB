@@ -1,0 +1,15 @@
+{% extends '::frontend/layoutdetail.html.twig' %}
+{% block Title %} Reservation Hôtelière | HomeMobilite - Vente - Location - Loue {% endblock %}
+
+{% block headerMenuFrontend %}
+    {{   render (controller("EmFrontendBundle:Frontend:headerMenuFrontend",{'slug': 'activite'})) }}
+{% endblock headerMenuFrontend %}
+
+{% block titremenu %} <span class="btn-large btn-green">Reinitiaisation : Mot de passe  </span> {% endblock titremenu %}
+
+
+{% block Contenu %}
+
+    {% include("EmFrontendBundle:Resetting:checkEmailContent.html.twig") %}
+
+{% endblock Contenu %}

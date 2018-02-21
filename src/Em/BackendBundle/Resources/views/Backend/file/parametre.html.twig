@@ -1,0 +1,12 @@
+{% extends '::backend/backendLayout.html.twig' %}
+
+    {% block headLibelle %}
+        Mon Profile, <span class="text-primary">, Mes paramètres </span>
+
+    {% endblock headLibelle %}
+
+{% block contenu %}
+
+    {% include('EmBackendBundle:Backend:fileContent/parametreContent.html.twig') %}
+
+{% endblock contenu %}

@@ -1,0 +1,156 @@
+{% for flashMessage in app.session.flashbag.get('Notice')|slice(0,1) %}
+
+    <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <strong>Hi !</strong>  {{ flashMessage }} .
+    </div>
+{% endfor %}
+<div class="row panel-quick-page">
+    <div class="col-xs-4 col-sm-4 col-md-4 page-support">
+        <div class="panel">
+            <a href="{{ path('em_backend_listesingleagence', {'id': user.id}) }}">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Immobilier</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="page-icon"><i class="icon ion-home"></i></div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="col-xs-4 col-sm-4 col-md-4 page-messages">
+        <div class="panel">
+            <a href="{{ path('em_backend_listesingleagence', {'id': user.id}) }}">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Hôtels</h4>
+                </div>
+                <div                <div class="col-lg-12 hidden-xs">
+                    <div class="box-content card">
+                        <h4 class="box-title  bg-danger">
+                            <i class="fa fa-bed ico"></i>Mes modèles de chambres</h4>
+
+                        <div class="card-content">
+                            <ul class="list-group col-xs-4">
+                                <li class="list-group-item">
+                                    <span class="badge">0</span>
+                                    Chambre Simple
+                                    <i class="text-warning">&nbsp;</i>
+                                </li>
+
+                                <li class="list-group-item">
+                                    <span class="badge">0</span>
+                                    Chambre Standard
+                                    <i class="fa fa-star text-warning"></i>
+                                </li>
+
+                            </ul>
+
+                            <ul class="list-group  col-xs-4">
+
+                                <li class="list-group-item">
+                                    <span class="badge">0</span>
+                                    Suite Mini
+                                    <i class="fa fa-star text-warning"></i>
+                                    <i class="fa fa-star text-warning"></i>
+                                </li>
+
+                                <li class="list-group-item">
+                                    <span class="badge">0</span>
+                                    Suite Junior
+                                    <i class="fa fa-star text-warning"></i>
+                                    <i class="fa fa-star text-warning"></i>
+                                    <i class="fa fa-star text-warning"></i>
+                                </li>
+
+                            </ul>
+                            <ul class="list-group  col-xs-4">
+
+                                <li class="list-group-item">
+                                    <span class="badge">0</span>
+                                    Suite Senior
+                                    <i class="fa fa-star text-warning"></i>
+                                    <i class="fa fa-star text-warning"></i>
+                                    <i class="fa fa-star text-warning"></i>
+                                    <i class="fa fa-star text-warning"></i>
+                                </li>
+
+                                <li class="list-group-item">
+                                    <span class="badge">0</span>
+                                    Suite Executive
+                                    <i class="fa fa-star text-warning"></i>
+                                    <i class="fa fa-star text-warning"></i>
+                                    <i class="fa fa-star text-warning"></i>
+                                    <i class="fa fa-star text-warning"></i>
+                                    <i class="fa fa-star text-warning"></i>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <!-- /.card-content -->
+                    </div>
+                    <!-- /.box-content card -->
+                </div>
+ class="panel-body">
+                    <div class="page-icon"><i class="fa fa-bed"></i></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4 page-reports">
+        <div class="panel">
+            <div class="panel-heading">
+                <h4 class="panel-title">Vehicules</h4>
+            </div>
+            <div class="panel-body">
+                <div class="page-icon"><i class="fa fa-car"></i></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div><!-- row -->
+<div class="row panel-quick-page">
+    <div class="col-xs-4 col-sm-4 col-md-4 page-products">
+        <div class="panel">
+            <div class="panel-heading">
+                <h4 class="panel-title">Mes reservations</h4>
+            </div>
+            <div class="panel-body">
+                <div class="page-icon"><i class="fa fa-shopping-cart"></i></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4 page-settings">
+        <div class="panel">
+            <a href="{{ path('em_backend_parametre', {'iduser' : user.id}) }}" >
+            <div class="panel-heading">
+                <h4 class="panel-title">Mes informations</h4>
+            </div>
+            <div class="panel-body">
+                <div class="page-icon"><i class="icon ion-gear-a"></i></div>
+            </div>
+           </a>
+        </div>
+    </div>
+
+    <div class="col-xs-4 col-sm-4 col-md-4 page-privacy">
+        <div class="panel">
+            <a href="{{ path('em_backend_moncoffre_proprietaire') }}">
+                <div class="panel-heading">
+                    <h4 class="panel-title">mon porte-feuille</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="page-icon"><i class="icon ion-android-lock"></i></div>
+                </div>
+
+            </a>
+
+        </div>
+    </div>
+
+
+
+</div><!-- row -->

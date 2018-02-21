@@ -1,0 +1,13 @@
+{% extends "::client/clientLayout.html.twig" %}
+
+{% block titrePage %}
+    <div class="container">
+        <h3 class="page-title">Réinitialiser mot de passe  </h3>
+    </div>
+{% endblock titrePage %}
+
+{% block contenu %}
+
+    {% include('EmFrontendBundle:Resetting:request_content.html.twig') %}
+
+{% endblock contenu %}

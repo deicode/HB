@@ -1,0 +1,190 @@
+<footer class="site-footer site-footer-two">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 footer-logo">
+                <a href="#">
+                    <img class="img-responsive" src="{{ asset('bundles/emfrontend/assets/') }}images/logo.png" alt="Footer Logo"/>
+                </a>
+
+            </div>
+            <div class="col-lg-9 footer-widget-area">
+                <div class="row">
+                    <div class="col-sm-6 col-md-3">
+                        <section class="widget clearfix widget_lc_taxonomy">
+                            <h3 class="widget-title">Hebergement</h3>
+                            <ul>
+                                <li><a href="{{ path('em_frontend_listehotels') }}">location de luxe</a></li>
+                                <!--  <li><a href="{#{ path('em_frontend_listeproprietes', {'slug' : 'acheter'}) }#}">Acquerir un bien</a></li> !-->
+                                <li><a href="{{ path('em_backend_serviceLogin') }}"> Soumettre un bien </a></li>
+                                <li><a href="{{ path('em_frontend_listehotel_by_all') }}">Location saisonnière </a> </li>
+
+
+                            </ul>
+                        </section>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                      <!--  <section class="widget clearfix widget_recent_entries">
+                            <h3 class="widget-title">Séjours</h3>
+                            <ul>
+                                {#for data in pays
+                                    <li><a href="{{ path('em_frontend_listehotel_by', {'id' : data.id, 'slug': data.slug}) }}">{{ data.libelle|capitalize }}</a></li>
+                                endfor #}
+                            </ul>
+                        </section>-->
+                        <section class="widget clearfix widget_lc_taxonomy">
+                            <h3 class="widget-title">Location de Vehicules</h3>
+                            <!--<ul>
+
+                                <li><a href="{#{ path("em_frontend_basic_page", {'slug': "qui-sommes-nous"}) }}">Qui Sommes-nous</a></li>
+
+                                <li>
+                                    <a href="{#{ path('em_frontend_politique_page',{'slugs': 'carrire'}) }#}">Carrière</a>
+
+                                </li>
+                                <li>
+                                    <a href="{#{ path('em_frontend_politique_page',{'slugs': 'politique-et-conditions'}) }}">Politique et conditions</a>
+
+                                </li>
+                                <li>
+                                    <a href="{#{ path('em_frontend_contact') }#}"> Contactez-nous</a>
+
+                                </li>
+                            </ul>-->
+                        </section>
+
+
+                    </div>
+                    <div class="clearfix visible-sm"></div>
+                    <div class="col-sm-6 col-md-3">
+                        <section class="widget clearfix widget_lc_taxonomy">
+                            <h3 class="widget-title">Mon Compte</h3>
+                            <ul>
+                                <li><a href="{{ path('em_client_auth_serviceLogin') }}">Mes reservations</a></li>
+                                <li><a href="{{ path('em_client_auth_serviceLogin') }}">Espace Client</a></li>
+                                <li><a href="{{ path('em_backend_serviceLogin') }}">Espace Proprietaire</a> </li>
+                            </ul>
+                        </section>
+                    </div>
+                    <section class="widget clearfix widget_recent_entries">
+                        <h3 class="widget-title">Nous Joindre</h3>
+                        <ul>
+                            <li><a href="">info@homemobilite.com</a></li>
+                            <li><a href="">+225 4000-3279</a></li>
+                            <li>
+                                <a href="{{ path('em_frontend_contact') }}"> Contactez-nous</a>
+
+                            </li>
+                        </ul>
+                        <div class="social-networks clearfix">
+                            {#<a class="twitter" href="#twitter" target="_blank"><i class="fa fa-twitter fa-lg"></i></a>#}
+                            <a class="facebook" href="http://www.facebook.com" target="_blank"><i class="fa fa-facebook fa-lg"></i></a>
+                            {#<a class="linkedin" href="#linkedin" target="_blank"><i class="fa fa-linkedin fa-lg"></i></a><a class="google-plus" href="#google-plus" target="_blank"><i class="fa fa-google-plus fa-lg"></i></a><a class="instagram" href="#instagram" target="_blank"><i class="fa fa-instagram fa-lg"></i></a>
+                            <a class="youtube-square" href="#youtube" target="_blank"><i class="fa fa-youtube-square fa-lg"></i></a><a class="pinterest" href="#pinterest" target="_blank"><i class="fa fa-pinterest fa-lg"></i></a><a class="rss" href="#rss" target="_blank"><i class="fa fa-rss fa-lg"></i></a>#}
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 footer-logo">
+
+            </div>
+
+            <div class="col-lg-9 footer-widget-area">
+                <div class="row">
+                    <div class="col-sm-6 col-md-3">
+                        <section class="widget clearfix widget_lc_taxonomy">
+                            <h3 class="widget-title">Destinations</h3>
+                            <ul>
+                                <li><a href="{{ path('em_frontend_listehotels') }}">Pays</a></li>
+
+                                <li><a href="{{ path('em_frontend_listehotels') }}">Villes</a></li>
+
+                            </ul>
+                        </section>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <!--  <section class="widget clearfix widget_recent_entries">
+                            <h3 class="widget-title">Séjours</h3>
+                            <ul>
+                                {#for data in pays
+                                    <li><a href="{{ path('em_frontend_listehotel_by', {'id' : data.id, 'slug': data.slug}) }}">{{ data.libelle|capitalize }}</a></li>
+                                endfor #}
+                            </ul>
+                        </section>-->
+                        <section class="widget clearfix widget_recent_entries">
+                            <h3 class="widget-title">Etablissements</h3>
+                            <ul>
+                                <li>
+                                    <a href="{#{  path('em_frontend_page_statique', {'slug' : 'conseil'}) }#}">Hôtels</a>
+                                </li>
+
+                                <li >
+                                    <a href="{#{  path('em_frontend_page_statique', {'slug' : 'conseil'}) }#}">Appartements</a>
+                                </li>
+                                <li >
+                                    <a href="{#{  path('em_frontend_page_statique', {'slug' : 'conseil'}) }#}">Résidences</a>
+                                </li>
+                            </ul>
+                        </section>
+
+                    </div>
+                    <div class="clearfix visible-sm"></div>
+                    <div class="col-sm-6 col-md-3">
+                        <section class="widget clearfix widget_lc_taxonomy">
+                            <h3 class="widget-title">En Savoir plus</h3>
+                            <ul>
+                                <li><a href="{{ path("em_frontend_basic_page", {'slug': "qui-sommes-nous"}) }}">Qui Sommes-nous</a></li>
+                                <li><a href="{{ path('em_frontend_politique_page',{'slugs': 'carrire'}) }}">Carrière</a></li>
+                                <li>
+                                    <a href="{#{  path('em_frontend_page_statique', {'slug' : 'conseil'}) }#}">Conseil</a>
+                                </li>
+
+                                <li >
+                                    <a href="{#{ path('em_frontend_page_statique', {'slug' : 'espace-presse'}) }#}">Espace Presse</a>
+                                </li>
+
+                            </ul>
+                        </section>
+                    </div>
+
+                    <div class="col-sm-6 col-md-3">
+                        <section class="widget clearfix widget_lc_taxonomy">
+                            <h3 class="widget-title">Mode de payement</h3>
+                            <ul >
+
+
+                                <li class="testimonial" >
+                                    <span class="testimonial-author" >
+                                         <img src="{{ asset('bundles/emfrontend/assets/img/mobile-money/') }}Payer-cash.jpg" alt="Payer a l'hotel " title="Payer Cash">
+                                        <img src="{{ asset('bundles/emfrontend/assets/img/mobile-money/') }}mobilepayement.png" alt="mobilepayement" title="Payer via mobile">
+
+                                    </span>
+                                </li >
+                                <li class="testimonial" >
+                                    <span class="testimonial-author" >
+                                         <img src="{{ asset('bundles/emfrontend/assets/img/mobile-money/') }}paypal1.jpg" alt="Paypal" title="Payer par Paypal">
+                                    </span>
+                                </li >
+                            </ul>
+                        </section>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+             <p class="copyright-text pull-left">
+                <a href="#" style="color: #fff">Politique de confidentialité de homemobilite.com</a> |
+                 <a href="#" style="color: #fff">Conditions générales de homemobilite.com</a>
+             </p>
+
+            <p class="copyright-text pull-right">
+                2017 HomeMobilite <!--<span class="pull-right">Propulsé par <a href="#">E-mitic</a> </span>-->
+            </p>
+        </div>
+    </div>
+</footer>

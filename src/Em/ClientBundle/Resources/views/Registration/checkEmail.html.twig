@@ -1,0 +1,22 @@
+
+{% extends "FOSUserBundle::layoutregister.html.twig" %}
+
+        {%  block RegistrationBox %}
+
+            <div class="login-container">
+                <h2>
+                    <a href="#">E-mitic </a><!-- can use your logo-->
+                </h2>
+                <!-- BEGIN REGISTRATION BOX -->
+                <div id="login-box" class="login-box visible" style="width: 500px; background-color: #FFF">
+
+                    {% include("eloadOCUserBundle:Registration:checkEmailContent.html.twig") %}
+                      <br />
+                     <a href="{{ path('OC_user_registration_serviceLogin') }}"> Retour</a>
+                </div>
+
+            </div>
+
+
+   {% endblock RegistrationBox %}
+

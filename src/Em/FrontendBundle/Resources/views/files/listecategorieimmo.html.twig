@@ -1,0 +1,13 @@
+{% extends '::frontend/layoutdetail.html.twig' %}
+{% block Title %}{% if recherche is defined %} {{ recherche }} {% endif %}  {{ slug }} | HomeMobilite - Vente - Location - Loue {% endblock %}
+
+{% block headerMenuFrontend %}
+    {{   render (controller("EmFrontendBundle:Frontend:headerMenuFrontend",{'slug': slug})) }}
+{% endblock headerMenuFrontend %}
+
+{% block titremenu %}<span class="btn-large btn-danger"> {% if  pays is defined  %} {{ pays.libelle }} {% endif %} {% if recherche is defined %} |  {{ recherche }} :  |  {% endif %} {% if typeimmoencours.libelle is defined %}{{ typeimmoencours.libelle|capitalize }} {% else %} RECHERCHE {% endif %} </span>{% endblock titremenu %}
+{% block Contenu %}
+
+    {% include 'EmFrontendBundle:filesContent:listecategorieimmoContent.html.twig' %}
+
+{% endblock Contenu %}

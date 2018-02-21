@@ -1,0 +1,20 @@
+{% extends "::frontend/Layout.html.twig" %}
+ {% block breadcrumb %}
+     <ul class="breadcrumb">
+         <li><a href="{{ path('em_frontend_homepage') }}">Accueil</a>
+         </li>
+         <li ><a href="">Côte d'ivoire</a></li>
+         <li ><a href="">{{ datasincerooms.agences.villes.nom|lower }}</a></li>
+         <li ><a href="">{{ datasincerooms.agences.communes.nom|lower }}</a></li>
+         <li class="active">{{ datasincerooms.agences.nom|lower }}</li>
+     </ul>
+ {% endblock breadcrumb %}
+{% block titrenews %}
+
+
+{% endblock titrenews %}
+{% block contenu %}
+
+    {% include('EmFrontendBundle:ContenusLayout:detailshotelsContenu.html.twig') %}
+
+{% endblock contenu %}

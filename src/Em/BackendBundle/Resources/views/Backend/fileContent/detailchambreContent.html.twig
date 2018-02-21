@@ -1,0 +1,274 @@
+<div class="mainpanel">
+
+    <div class="contentpanel">
+        {% for flashMessage in app.session.flashbag.get('notice')|slice(0,1) %}
+
+            <div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <strong>Hi !</strong>  {{ flashMessage }} .
+            </div>
+        {% endfor %}
+        <div class="row profile-wrapper">
+            <div class="col-xs-12 col-md-3 col-lg-2 profile-left">
+                <div class="profile-left-heading">
+                    <ul class="panel-options">
+                        <li><a><i class="glyphicon glyphicon-option-vertical"></i></a></li>
+                    </ul>
+
+                    <a href="" class="profile-photo">
+                        <img class="img-circle img-responsive" src="{{ asset('bundles/emfrontend/assets/') }}pics/chambres/{{ chambre.images.title }}" alt="">
+                    </a>
+                    <button class="btn btn-danger btn-quirk btn-block profile-btn-follow">{{ chambre.agences.proprietaire.username }} : {{ chambre.agences.nom }} </button>
+
+
+                    <h3 class="profile-name">{{ chambre.typechambre }} <br> (Total: {{ chambre.totalchambre }} )</h3>
+                    <h4 class="profile-designation">status : {% if chambre.locked == 1 %}- <strong> en cours  </strong>{% else %}- <strong> validé </strong>{% endif %} </h4>
+
+                    <ul class="list-group">
+                        <li class="list-group-item">Reservations Validées <a href="#">0</a></li>
+                        <li class="list-group-item">Reservation en cours <a href="#">0</a></li>
+                        <li class="list-group-item">Total Reservations <a href="#">0</a></li>
+                    </ul>
+
+
+                    <button class="btn btn-success btn-quirk btn-block profile-btn-follow">Prix Chambre : {{ chambre.prixchambre }} FCFA</button>
+                </div>
+                <div class="profile-left-body">
+                    <h4 class="panel-title">Description</h4>
+                    <p>{{ chambre.description }}</p>
+
+                    <hr class="fadeout">
+
+                    <h4 class="panel-title">Equipements chambre</h4>
+                    <!-- code pas fashion j le reconnais on y reviendra  -->
+                    {% if chambre.climatisation %}
+                        <label class="ckbox ckbox-success">
+                            <input type="checkbox" checked="{{  chambre.climatisation }}" >    <span> climatisation  </span>
+                        </label>
+                    {% endif %}
+                    {% if chambre.douche %}
+                        <label class="ckbox ckbox-success">
+                            <input type="checkbox" checked="{{  chambre.douche }}" >    <span> douche </span>
+                        </label>
+                    {% endif %}
+                    {% if chambre.tvlcplasma %}
+                        <label class="ckbox ckbox-success">
+                            <input type="checkbox" checked="{{  chambre.tvlcplasma }}" >    <span> Tv LC Plasma </span>
+                        </label>
+                    {% endif %}
+                    {% if chambre.baignoire %}
+                        <label class="ckbox ckbox-success">
+                            <input type="checkbox" checked="{{  chambre.baignoire }}" >    <span> baignoire  </span>
+                        </label>
+                    {% endif %}
+                    {% if chambre.cuisine %}
+                        <label class="ckbox ckbox-success">
+                            <input type="checkbox" checked="{{  chambre.cuisine }}" >    <span> cuisine  </span>
+                        </label>
+                    {% endif %}
+                    {% if chambre.salon %}
+                        <label class="ckbox ckbox-success">
+                            <input type="checkbox" checked="{{  chambre.salon }}" >    <span> salon </span>
+                        </label>
+                    {% endif %}
+                    {% if chambre.refrigerateur %}
+                        <label class="ckbox ckbox-success">
+                            <input type="checkbox" checked="{{  chambre.refrigerateur }}" >    <span> réfrigerateur </span>
+                        </label>
+                    {% endif %}
+                    {% if chambre.bureau %}
+                        <label class="ckbox ckbox-success">
+                            <input type="checkbox" checked="{{  chambre.bureau }}" >    <span> bureau </span>
+                        </label>
+                    {% endif %}
+                    {% if chambre.filmalademande %}
+                        <label class="ckbox ckbox-success">
+                            <input type="checkbox" checked="{{  chambre.filmalademande }}" >    <span> film à la demande </span>
+                        </label>
+                    {% endif %}
+                    {% if chambre.telephone %}
+                        <label class="ckbox ckbox-success">
+                            <input type="checkbox" checked="{{  chambre.telephone }}" >    <span> telephone </span>
+                        </label>
+                    {% endif %}
+                    {% if chambre.tv %}
+                        <label class="ckbox ckbox-success">
+                            <input type="checkbox" checked="{{  chambre.tv }}" >    <span> tv </span>
+                        </label>
+                    {% endif %}
+                    {% if chambre.minibar %}
+                        <label class="ckbox ckbox-success">
+                            <input type="checkbox" checked="{{  chambre.minibar }}" >    <span> mini-bar </span>
+                        </label>
+                    {% endif %}
+
+
+                    <!-- Fin code not fashion -->
+                    <hr class="fadeout">
+
+                    <h4 class="panel-title">Capacité Max adulte</h4>
+                    <p><i class="glyphicon glyphicon-user mr5"></i>  {{ chambre.capacitemax }} </p>
+
+                    <hr class="fadeout">
+
+
+                    <h4 class="panel-title">Date ajout </h4>
+                    <p><i class="glyphicon glyphicon-time mr5"></i>  {{ chambre.dateadd|date('d-m-Y H:i:s') }} </p>
+
+                    <hr class="fadeout">
+
+
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-8 profile-right">
+                <div class="profile-right-body">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs nav-justified nav-line">
+                        <li class="active"><a href="#activity" data-toggle="tab" aria-expanded="true"><strong>Réservation en cours</strong></a></li>
+                        <li class=""><a href="#photos" data-toggle="tab" aria-expanded="false"><strong>Photos (20)</strong></a></li>
+
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="activity">
+                          {% for datareservation in reservation %}
+                            <div class="panel panel-profile list-view">
+                                <div class="panel-heading">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <a href="#">
+                                                <img alt="" src="{{ asset('bundles/emfrontend/assets/img/') }}businesspeople.png" class="media-object img-circle">
+
+                                            </a>
+                                        </div>
+                                        <div class="media-body">
+                                            <h4 class="media-heading">{{ datareservation.nom }} {{ datareservation.prenoms }}</h4>
+                                            <p class="media-usermeta"><i class="glyphicon glyphicon-briefcase"></i> Satus reservation : {{ datareservation.status }}</p>
+                                        </div>
+                                    </div><!-- media -->
+                                    <ul class="panel-options">
+                                        <li><a class="tooltips" href="" data-toggle="tooltip" title="" data-original-title="View Options"><i class="glyphicon glyphicon-option-vertical"></i></a></li>
+                                    </ul>
+                                </div><!-- panel-heading -->
+
+                                <div class="panel-body people-info">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="info-group">
+                                                <label>Numéro reservation</label>
+                                                <h4>{{ datareservation.numeroreservation }}</h4>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="info-group">
+                                                <label>Reservé le :</label>
+                                                <h4>{{ datareservation.dateadd|date('d-m-Y à H:i:s') }}</h4>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="info-group">
+                                                <label>Email</label>
+                                               <h4>{{ datareservation.email}}</h4>
+                                            </div>
+                                        </div>
+                                    </div><!-- row -->
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="info-group">
+                                                <label>Nombre Chambre(s) </label>
+                                                <h4>{{ datareservation.nbchambre}}</h4>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="info-group">
+                                                <label>Nombre enfant(s) </label>
+                                                <h4>{{ datareservation.nbenfant}}</h4>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="info-group">
+                                                <label>nombre adulte(s) :</label>
+                                                <h4>{{ datareservation.nbadulte}}</h4>
+                                            </div>
+                                        </div>
+                                    </div><!-- row -->
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="info-group">
+                                                <label>Date arrivée </label>
+                                                <h4>{{ datareservation.datearrivee}}</h4>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="info-group">
+                                                <label>Date depart </label>
+                                                <h4>{{ datareservation.datedepart}}</h4>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="info-group">
+                                                <label>Prix Total :</label>
+                                                <h4>{{ datareservation.prixtotal}}</h4>
+                                            </div>
+                                        </div>
+                                    </div><!-- row -->
+                                </div>
+                            </div>
+                          {% endfor %}
+                        </div><!-- tab-pane -->
+
+                        {{ knp_pagination_render(reservation) }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-lg-2 profile-sidebar">
+                <div class="row">
+                    <div class="col-sm-6 col-md-12">
+                        <div class="panel">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">Resumé chambre </h4>
+                            </div>
+                            <div class="panel-body">
+                                <ul class="media-list user-list">
+                                    <li class="media">
+                                        <div class="media-left">
+                                            <a href="#">
+                                                <img alt="" src="{{ asset('bundles/emfrontend/assets/img/') }}businesspeople.png" class="media-object img-circle">
+                                            </a>
+                                        </div>
+                                        <div class="media-body">
+                                            <h4 class="media-heading"><a href="">Total reservations</a></h4>
+                                            <span>{{ reservation|length }}</span>
+                                        </div>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div><!-- panel -->
+
+                        {% if is_granted('ROLE_ADMIN') %}
+                            {% if chambre.locked == 1 %}
+                            <a href="{{ path('em_backend_enabledchambre', {'idchambre': chambre.id, 'status' : 'valider'}) }}">
+                                <button class="btn btn-success">
+                                    Valider cette Chambre !
+                                </button>
+                            </a>
+                            {% else %}
+                                <a href="{{ path('em_backend_enabledchambre', {'idchambre': chambre.id, 'status' : 'suspendre'}) }}">
+                                    <button class="btn btn-danger">
+                                        Suspendre cette Chambre
+                                    </button>
+                                </a>
+                            {% endif %}
+                        {% endif %}
+
+                    </div>
+
+                </div><!-- row -->
+
+            </div>
+        </div><!-- row -->
+
+    </div>
+ </div>

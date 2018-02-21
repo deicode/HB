@@ -1,0 +1,106 @@
+<div class="container">
+    <h3>
+        <div class=" col-xs-12 text-center">
+            <p>
+                <span class="text-primary"> HomeMobilité,</span> Vous offres une facilité de réservations d’appartements, d’hôtels ou de résidences et de véhicules
+                partout où vous allez. </p>
+        </div>
+    </h3>
+
+
+    <div class="prj-list row">
+
+        {% for data in agences %}
+        <div class="col-lg-4 col-md-6 col-xs-12 margin-bottom-30">
+            <a href="{{ path('em_frontend_agence_detail', {'idagence' : data.id }) }}" class="prj-item">
+                <div class="top-project-section">
+                    <div class="project-icon">
+
+                        {{ render(controller('EmFrontendBundle:FrontendV2:listeImageAgence', {'entity': data })) }}
+
+                    </div>
+                </div>
+
+                <div class="bottom-project-section">
+                    <div class="meta">
+                        <p class="author">
+                            <span>{{ data.nom }}</span>
+                        </p>
+                    </div>
+
+                </div>
+                <div class="bottom-project-section">
+
+                    <div class="meta">
+                        <div class="points">
+                            <i class="fa fa-money"></i> {{  data.prixinit|localizedcurrency('XOF') }}
+                        </div>
+                        <!-- <div class="views">
+                                    <i class="fa fa-eye"></i> 40.6k
+                                </div> -->
+                        <span class="feedable-time timeago">{{ data.ville }}</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+
+        <!-- .col-lg-4 col-md-6 project-item -->
+    </div>
+    <!-- .prj-list row -->
+
+    <hr/>
+
+    <h3>
+        <div class=" col-xs-12 text-center">
+            <!-- /.lead -->
+            <p>
+                Vivez en toute tranquillité, quelle que soit la durée de votre séjour
+            </p>
+        </div>
+    </h3>
+
+    <div class="col-lg-12 col-md-12 col-xs-12">
+        <div class="box-content card danger">
+            <h4 class="box-title">Nos meilleures destinations</h4>
+            <!-- /.box-title -->
+
+            <div class="card-content">
+                <div class="col-md-3">
+                    <div class="list-group margin-top-20">
+                        <a href="#" class="list-group-item text-info">Abidjan</a>
+                        <a href="#" class="list-group-item text-info">Accra</a>
+                        <a href="#" class="list-group-item text-info">Lagos</a>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="list-group margin-top-20">
+                        <a href="#" class="list-group-item text-info">Libreville</a>
+                        <a href="#" class="list-group-item text-info">Paris</a>
+                        <a href="#" class="list-group-item text-info">Cotonou</a>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="list-group margin-top-20">
+                        <a href="#" class="list-group-item text-info">Dakar</a>
+                        <a href="#" class="list-group-item text-info">Bamako</a>
+                        <a href="#" class="list-group-item text-info">Québec</a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="list-group margin-top-20">
+                        <a href="#" class="list-group-item text-info">CAP</a>
+                        <a href="#" class="list-group-item text-info">Lomé</a>
+                        <a href="#" class="list-group-item text-info">Niamey</a>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.card-content -->
+        </div>
+        <!-- /.box-content -->
+    </div>
+
+</div>

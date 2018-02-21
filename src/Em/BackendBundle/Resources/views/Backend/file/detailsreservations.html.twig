@@ -1,0 +1,12 @@
+{% extends '::backend/backendLayout-B.html.twig' %}
+
+    {% block headLibelle %}
+       les reservations   <span class="text-primary">  Consulter </span>
+
+    {% endblock headLibelle %}
+
+{% block contenu %}
+
+    {% include('EmBackendBundle:Backend:fileContent/detailsreservationsContent.html.twig') %}
+
+{% endblock contenu %}

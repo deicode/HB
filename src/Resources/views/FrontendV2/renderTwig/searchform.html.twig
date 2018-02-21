@@ -1,0 +1,186 @@
+<div class="">
+    <div class="row container-with-background">
+        <div class="prj-header margin-bottom-30 proj-filter-header">
+            <ul class="filters">
+                <li>
+                    <a href="#" class="dfilter" data-filter="apparts" id="appartsform">Appartements</a>
+                </li>
+                <li>
+                    <a href="#" class="active dfilter" id="hotelsform">Hotels</a>
+                </li>
+                <li>
+                    <a href="#" class="dfilter" data-filter="voitures" id="autoform">Location de voiture</a>
+                </li>
+            </ul>
+            <!-- /.filters -->
+        </div>
+        <!-- /.prj-header -->
+
+        <div class="prj-list row">
+            <div class="container container-search">
+                <form id="formhotel" action="{{ path('em_frontend_recherchehome') }}" method="post" >
+
+                <ul class="list-inline margin-bottom-0 container hotels ul-search-result">
+                    <li  id="locationField" class="form-group">
+                        <input id="autocomplete" placeholder="Selectionnez votre destination"
+                               onFocus="geolocate()" type="text" name="location" class="form-control"/>
+
+                    </li>
+                    <li class="form-group">
+                        <input type="text" class="form-control" id="start" placeholder="Date d'arrivée" name="datestart" required="">
+
+                    </li>
+
+                    <li class="form-group">
+                        <input type="text" id="end" class="form-control" placeholder="Date de départ" name="dateend" required="">
+                    </li>
+
+                    <li class="form-group">
+
+                        <select name="chambre" id="select-status" class="form-control items" required="">
+                            <option value="Autres" selected="selected">Chambres </option>
+                            {# for data in status #}
+                            <option value="1">1 </option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="Autres">Autres</option>
+
+                            {# endfor #}
+
+                        </select>
+                    </li>
+                    <li class="form-group">
+
+                        <select name="adulte" id="select-status" class="form-control items">
+                            <option value="Autres" selected="selected">Adultes </option>
+                            {# for data in status #}
+                            <option value="1">1 </option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="Autres">Autres</option>
+
+                            {# endfor #}
+
+                        </select>
+                    </li>
+                    <li class="form-group">
+
+                        <select name="enfant" id="select-status" class="form-control items">
+                            <option value="Autres" selected="selected">Enfants </option>
+                            {# for data in status #}
+                            <option value="1">1 </option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="Autres">Autres</option>
+
+                            {# endfor #}
+
+                        </select>
+                    </li>
+                    <li class="form-group">
+                        <button type="submit" class="btn btn-primary waves-effect waves-light">
+                            <i class="ico-item fa fa-search"></i>
+                        </button>
+                    </li>
+                </ul>
+               </form>
+                <form id="formauto" action="{{ path('em_frontend_recherchehome') }}" method="post">
+
+
+                <ul class="list-inline margin-bottom-0 container voitures ul-search-result" >
+                    <li class="form-group">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active">
+                                <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Même lieu de retour</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Lieu de retour différent</a>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="home">
+                                <ul class="list-inline margin-bottom-0">
+                                    <li class="form-group">
+                                        <input type="text" class="form-control" id="exampleInputName2" placeholder="Où">
+                                    </li>
+                                    <li class="form-group">
+                                        <input type="text" class="form-control datepicker" placeholder="Date aller">
+                                    </li>
+
+                                    <li class="form-group">
+                                        <input type="text" class="form-control datepicker" placeholder="Date retour">
+                                    </li>
+
+                                    <li class="form-group">
+                                        <button type="submit" class="btn btn-primary waves-effect waves-light">
+                                            <i class="ico-item fa fa-search"></i>
+                                        </button>
+                                    </li>
+                                </ul>
+
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="profile">
+                                <ul class="list-inline margin-bottom-0">
+                                    <li class="form-group">
+                                        <input type="text" class="form-control" id="exampleInputName2" placeholder="De">
+                                    </li>
+                                    <li class="form-group">
+                                        <input type="text" class="form-control" id="exampleInputName2" placeholder="A">
+                                    </li>
+                                    <li class="form-group">
+                                        <input type="text" class="form-control datepicker" placeholder="Date aller">
+                                    </li>
+
+                                    <li class="form-group">
+                                        <input type="text" class="form-control datepicker" placeholder="Date retour">
+                                    </li>
+
+                                    <li class="form-group">
+                                        <button type="submit" class="btn btn-primary waves-effect waves-light">
+                                            <i class="ico-item fa fa-search"></i>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+               </form>
+                <!-- style="display:none;background:#e4e5ea" -->
+
+
+            </div>
+        </div>
+        <!-- .prj-list row -->
+    </div>
+
+</div>

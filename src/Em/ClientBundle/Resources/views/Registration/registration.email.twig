@@ -1,0 +1,16 @@
+{% block subject %}Confirmation d'inscription{% endblock %}
+
+{% block body_text %}
+    {% autoescape false %}
+    Bonjour {{ user.username }} !
+
+    Vous devez confirmé voter inscription  en cliquant sur le lien suivant : texte
+
+    Amicalement,
+    Administrateur de monsiteweb.com
+    {% endautoescape %}
+{% endblock %}
+
+{% block body_html %}
+        mon texte
+{% endblock %}

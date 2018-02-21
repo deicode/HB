@@ -1,0 +1,18 @@
+{% extends '::FrontendV2/layouts/layoutresultat.html.twig' %}
+{% block title %} Resultats Recherche- HomeMobilite  - Appartements - Hôtels - Voitures {%  endblock  title%}
+
+
+{% block header %}
+    {{   render (controller("EmFrontendBundle:FrontendV2:header")) }}
+{% endblock header %}
+
+ {% block searchformright %}
+     {{   render (controller("EmFrontendBundle:FrontendV2:searchFormRight")) }}
+
+ {% endblock searchformright  %}
+
+{% block Contenu %}
+
+    {% include '::FrontendV2/filesContent/resultatsrechercheContent.html.twig' %}
+
+{% endblock Contenu %}

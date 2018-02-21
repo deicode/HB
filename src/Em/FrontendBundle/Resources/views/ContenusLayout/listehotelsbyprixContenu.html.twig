@@ -1,0 +1,215 @@
+<!--PopSearch -->
+{{ render(controller('EmFrontendBundle:Frontend:blockPopSearch')) }}
+<h3 class="booking-title">{{ dataentity|length }}  hôtels trouvé(s) au prix de :
+    {% if prixsearch is defined %} {{ prixsearch }} FCFA
+
+    {% endif %}
+
+    <!--<small><a class="popup-text" href="#search-dialog" data-effect="mfp-zoom-out">Adapter la recherche</a></small>--></h3>
+
+<div class="row">
+<!-- Block left earch -->
+    <div class="col-md-3">
+        <aside class="booking-filters text-white">
+            <h3>Filtrer par:</h3>
+            <ul class="list booking-filters-list">
+                <li>
+                    <h5 class="booking-filters-title">Prix</h5>
+
+                    <form action="{{ path('em_frontend_searchbyprix') }}" class="header-search"  method="GET">
+                        <input type="number" name="prix" placeholder="votre prix ici , FCFA" class="form-control">
+                        <input type="submit" value="Go!" class="btn btn-primary btn-xs" required="true">
+                    </form>
+                </li>
+                <li>
+                    <h5 class="booking-filters-title">Etoiles</h5>
+                    <div class="checkbox">
+                        <a href="{{ path('em_frontend_listehotelbyetoile', {grade : 5|urlencrypt}) }}">
+                            <label>
+                                <i class="fa fa-check-square"></i> 5 étoiles
+                            </label>
+                        </a>
+                    </div>
+                    <div class="checkbox">
+                        <a href="{{ path('em_frontend_listehotelbyetoile', {grade : 4|urlencrypt}) }}">
+                            <label>
+                                <i class="fa fa-check-square"></i> 4 étoiles
+                            </label>
+                        </a>
+                    </div>
+                    <div class="checkbox">
+                        <a href="{{ path('em_frontend_listehotelbyetoile', {grade : 3|urlencrypt}) }}">
+                            <label>
+                                <i class="fa fa-check-square"></i> 3 étoiles
+                            </label>
+                        </a>
+                    </div>
+                    <div class="checkbox">
+                        <a href="{{ path('em_frontend_listehotelbyetoile', {grade : 2|urlencrypt}) }}">
+                            <label>
+                                <i class="fa fa-check-square"></i> 2 étoiles
+                            </label>
+                        </a>
+                    </div>
+                    <div class="checkbox">
+                        <a href="{{ path('em_frontend_listehotelbyetoile', {grade : 1|urlencrypt}) }}">
+                            <label>
+                                <i class="fa fa-check-square"></i>1 étoile
+                            </label>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <h5 class="booking-filters-title">Equipements</h5>
+                    <div class="checkbox">
+                        <label>
+                            <input class="i-check" type="checkbox" />Gym </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input class="i-check" type="checkbox" />Wi-fi </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input class="i-check" type="checkbox" />Piscine </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input class="i-check" type="checkbox" />Climatisation </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input class="i-check" type="checkbox" />Service Chambres</label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input class="i-check" type="checkbox" />Restaurant</label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input class="i-check" type="checkbox" />Petit Dejeuner</label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input class="i-check" type="checkbox" />Night Club</label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input class="i-check" type="checkbox" />Massage</label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input class="i-check" type="checkbox" />Casino</label>
+                    </div>
+                </li>
+                <li>
+                    <h5 class="booking-filters-title">Classe</h5>
+                    <div class="checkbox">
+                        <label>
+                            <input class="i-check" type="checkbox" />Suite éxécutive</label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input class="i-check" type="checkbox" />Suite senior</label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input class="i-check" type="checkbox" />Suite junior</label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input class="i-check" type="checkbox" />Mini suite</label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input class="i-check" type="checkbox" />Chambre standard</label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input class="i-check" type="checkbox" />Chambre simple</label>
+                    </div>
+
+                </li>
+                <li>
+                    <h5 class="booking-filters-title">Ville</h5>
+                    {{ render(controller('EmFrontendBundle:Frontend:labelVille')) }}
+
+
+                </li>
+                <li>
+                    <h5 class="booking-filters-title"> Commune</h5>
+                    {{ render(controller('EmFrontendBundle:Frontend:labelCommune')) }}
+
+                </li>
+            </ul>
+        </aside>
+
+    </div>
+<!--Fin Block left earch -->
+    <div class="col-md-9">
+        <div class="nav-drop booking-sort">
+            <h5 class="booking-sort-title"><a href="#">Trier: Disponibilité<i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a></h5>
+            <ul class="nav-drop-menu">
+                <li><a href="#">Price (low to high)</a>
+                </li>
+                <li><a href="#">Price (hight to low)</a>
+                </li>
+                <li><a href="#">Ranking</a>
+                </li>
+                <li><a href="#">Distance</a>
+                </li>
+                <li><a href="#">Number of Reviews</a>
+                </li>
+            </ul>
+        </div>
+        <ul class="booking-list">
+
+           {% for data in pagination %}
+            <li>
+                <a class="booking-item" href="{{ path('em_frontend_hotelecaracteristique', { 'ville': data.villes.slug ,'idagence': data.id|urlencrypt } ) }}">
+
+                <div class="row">
+                    {{ render(controller('EmFrontendBundle:Frontend:listeImageAgence', {'entity': data })) }}
+
+                    <div class="col-md-6">
+                            <div class="booking-item-rating">
+                                <ul class="icon-group booking-item-rating-stars">
+                                    {%  set num = 1 %}
+                                    {% for  num in  1..data.grade %}
+                                        <i class="fa fa-star"></i>
+                                        {%  set num = num +1 %}
+                                    {% endfor %}
+                                </ul><span class="booking-item-rating-number"><b > {{ data.grade }}</b> de 5</span>
+                            </div>
+                            <h5 class="booking-item-title">{{ data.nom }}</h5>
+                            <p class="booking-item-address"><i class="fa fa-map-marker"></i> {{ data.villes.nom }} {% if data.communes.nom  is defined %} ( {{ data.communes.nom }}) {% endif %}</p><small class="booking-item-last-booked">dernières vues: il y' a 1 heure</small>
+                        </div>
+                        <div class="col-md-3"><span class="booking-item-price-from">à partir de</span><span class="booking-item-price">{{ data.prixinit }} Fcfa </span> <span class="btn btn-primary"> Reserver </span>
+                        </div>
+                    </div>
+                </a>
+            </li>
+
+            {% endfor %}
+
+
+
+        </ul>
+        <div class="row">
+            <div class="col-md-6">
+                <p><small>{{ dataentity|length }} hotels  trouvés en Cote d'ivoire. &nbsp;&nbsp;Intervalle 1 – {{ pagination|length }}</small>
+                </p>
+
+                {{ knp_pagination_render(pagination) }}
+            </div>
+            <!--
+            <div class="col-md-6 text-right">
+                <p>
+                    Pas ce que vous cherchez ?  <a class="popup-text" href="#search-dialog" data-effect="mfp-zoom-out">Essayez à nouveau !</a>
+                </p>
+            </div>
+            -->
+        </div>
+    </div>
+</div>
+<div class="gap"></div>

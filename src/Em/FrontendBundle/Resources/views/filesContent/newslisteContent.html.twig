@@ -1,0 +1,46 @@
+
+<div id="content-wrapper" class="site-content-wrapper site-pages">
+    <div id="content" class="site-content layout-boxed">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 site-main-content">
+                    <main id="main" class="site-main default-page clearfix">
+                        {% for datanews in pagination %}
+
+                        <article class="blog-post clearfix hentry format-image">
+
+                                <a  href="{{ path('em_frontend_news',{'id': datanews.id , 'slug' : datanews.slug}) }}" title="{{ datanews.titre }}">
+                                    <img src="{{ asset('bundles/emfrontend/assets/') }}uploads/images/news/{{ datanews.Images.title }}"
+                                         alt="{{ datanews.Images.title }}" title="{{ datanews.titre }}" class="img-responsive" width="850" height="570"/>
+
+                                </a>
+
+                            <header class="entry-header blog-post-entry-header clearfix">
+                                <h1 class="entry-title">{{ datanews.titre }}</h1>
+                                <div class="entry-meta blog-post-entry-meta clearfix">
+                                 <p class="clearfix"> {{ datanews.resume }}</p>
+                                    <p class="clearfix pull-right">
+                                        <a  href="{{ path('em_frontend_news',{'id': datanews.id , 'slug' : datanews.slug}) }}" title="{{ datanews.titre }}">
+                                        Lire la suite ... </a>
+                                    </p>
+                                </div>
+                            </header>
+                           <p></p>
+                         </article>
+                            <p></p>
+                        {% endfor %}
+                        {{ knp_pagination_render(pagination) }}
+
+                    </main>
+                    <!-- .site-main -->
+                    </div>
+                <!-- .site-main-content -->
+                {{ render(controller('EmFrontendBundle:Frontend:menuPageRight')) }}
+                <!-- .site-sidebar-content -->
+            </div>
+            <!-- .row -->
+        </div>
+        <!-- .container -->
+    </div>
+    <!-- .site-content -->
+</div>

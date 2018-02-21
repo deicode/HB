@@ -1,0 +1,33 @@
+<div class="col-md-4">
+    <h4>Hotels à {{ ville }}</h4>
+    <ul class="booking-list">
+       {% for data in pagination %}
+        <li>
+            <div class="booking-item booking-item-small">
+                      <a class="booking-item" href="{{ path('em_frontend_hotelecaracteristique', { 'ville': data.villes.slug ,'idagence': data.id|urlencrypt } ) }}">
+
+                        <div class="row">
+                            {{ render(controller('EmFrontendBundle:Frontend:listeImageAgence', {'entity': data })) }}
+
+                            <div class="col-xs-5">
+                        <h5 class="booking-item-title">{{ data.nom }}</h5>
+                        <ul class="icon-group booking-item-rating-stars">
+                            {%  set num = 1 %}
+                            {% for  num in  1..data.grade %}
+                                <li><i class="fa fa-star"></i>
+                                </li>
+                                {%  set num = num +1 %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="col-xs-3"><span class="booking-item-price-from">A partir </span>
+                        <span class="booking-item-price-from">Fcfa  {{  data.prixinit }}</span>
+                    </div>
+                </div>
+                      </a>
+
+            </div>
+        </li>
+       {% endfor %}
+    </ul>
+</div>

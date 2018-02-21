@@ -1,0 +1,19 @@
+{% extends "::frontend/Layout.html.twig" %}
+ {% block breadcrumb %}
+     <ul class="breadcrumb">
+         <li><a href="{{ path('em_frontend_homepage') }}">Accueil</a>
+         </li>
+         <li class="active">Contact</li>
+     </ul>
+ {% endblock breadcrumb %}
+{% block titrenews %}
+    <div class="container">
+        <h1 class="page-title">Contactez nous</h1>
+    </div>
+{% endblock titrenews %}
+
+{% block contenu %}
+
+    {% include('EmFrontendBundle:ContenusLayout:contactContenu.html.twig') %}
+
+{% endblock contenu %}

@@ -1,0 +1,70 @@
+<footer class="site-footer site-footer-one">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 footer-logo">
+                <a href="#">
+                    <img class="img-responsive" src="{{ asset('bundles/emfrontend/assets/') }}images/logo.png" alt="Footer Logo"/>
+                </a>
+                <p class="copyright-text">
+                    © Copyright 2017 All rights reserved par <a href="#">E-mitic</a>
+                </p>
+            </div>
+            <div class="col-lg-9 footer-widget-area">
+                <div class="row">
+                    <div class="col-sm-6 col-md-3">
+                        <section class="widget clearfix widget_lc_taxonomy">
+                            <h3 class="widget-title">Nous Joindre</h3>
+                            <ul>
+
+                                <li>
+                                    <a href="{{ path('em_frontend_contact') }}"> Contactez-nous</a>
+
+                                </li>
+
+
+                            </ul>
+                        </section>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <section class="widget clearfix widget_recent_entries">
+                            <h3 class="widget-title">Séjours</h3>
+                            <ul>
+                                {% for data in pays %}
+                                    <li><a href="{{ path('em_frontend_listehotel_by', {'id' : data.id, 'slug': data.slug}) }}">{{ data.libelle|capitalize }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </section>
+                    </div>
+                    <div class="clearfix visible-sm"></div>
+                    <div class="col-sm-6 col-md-3">
+                        <section class="widget clearfix widget_lc_taxonomy">
+                            <h3 class="widget-title">Immobilier </h3>
+                            <ul>
+                                {% for data in status %}
+                                  <li><a href="
+                                  {% if data.slug == 'vendre' %}
+                                    {{ path('em_frontend_contact') }}
+                                  {% else %}
+                                       {{ path('em_frontend_listeproprietes', {'slug' : data.slug}) }}
+                                  {% endif %}
+                                  ">{{ data.libelle }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </section>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <section id="inspiry_social_media_icons-1" class="widget clearfix widget_inspiry_social_media_icons">
+                            <h3 class="widget-title">Nous suivre</h3>
+                            <div class="social-networks clearfix">
+                                {#<a class="twitter" href="#twitter" target="_blank"><i class="fa fa-twitter fa-lg"></i></a>#}
+                                <a class="facebook" href="http://www.facebook.com" target="_blank"><i class="fa fa-facebook fa-lg"></i></a>
+                                {#<a class="linkedin" href="#linkedin" target="_blank"><i class="fa fa-linkedin fa-lg"></i></a><a class="google-plus" href="#google-plus" target="_blank"><i class="fa fa-google-plus fa-lg"></i></a><a class="instagram" href="#instagram" target="_blank"><i class="fa fa-instagram fa-lg"></i></a>
+                                <a class="youtube-square" href="#youtube" target="_blank"><i class="fa fa-youtube-square fa-lg"></i></a><a class="pinterest" href="#pinterest" target="_blank"><i class="fa fa-pinterest fa-lg"></i></a><a class="rss" href="#rss" target="_blank"><i class="fa fa-rss fa-lg"></i></a>#}
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

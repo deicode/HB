@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!--<link rel="shortcut icon" href="../images/favicon.png" type="image/png">-->
+
+    <title>{% block title %} Homemobilite | Gestionnaire {% endblock title %}</title>
+
+    <link rel="stylesheet" href="{{ asset('bundles/embackend/assets/') }}lib/Hover/hover.css">
+    <link rel="stylesheet" href="{{ asset('bundles/embackend/assets/') }}lib/fontawesome/css/font-awesome.css">
+    <link rel="stylesheet" href="{{ asset('bundles/embackend/assets/') }}lib/weather-icons/css/weather-icons.css">
+    <link rel="stylesheet" href="{{ asset('bundles/embackend/assets') }}/lib/ionicons/css/ionicons.css">
+    <link rel="stylesheet" href="{{ asset('bundles/embackend/assets') }}/lib/jquery-toggles/toggles-full.css">
+    <link rel="stylesheet" href="{{ asset('bundles/embackend/assets') }}/lib/morrisjs/morris.css">
+
+    <link rel="stylesheet" href="{{ asset('bundles/embackend/assets') }}/css/quirk.css">
+
+    <script src="{{ asset('bundles/embackend/assets') }}/lib/modernizr/modernizr.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="{{ asset('bundles/embackend/assets') }}/lib/html5shiv/html5shiv.js"></script>
+    <script src="{{ asset('bundles/embackend/assets') }}/lib/respond/respond.src.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<header>
+    {% block header %}
+        {%  if is_granted('ROLE_ADMIN') %}
+            {{ render(controller('EmBackendBundle:Backend:adminHeader')) }}   <!-- tab-pane -->
+        {% elseif(is_granted('ROLE_SUPERVISEUR')) %}
+            {{ render(controller('EmBackendBundle:Backend:superviseurHeader')) }}   <!-- tab-pane -->
+        {% elseif(is_granted('ROLE_PROPRIETAIRE')) %}
+            {{ render(controller('EmBackendBundle:Backend:hotelierHeader')) }}
+        {% endif %}
+    {% endblock header %}
+</header>
+
+<section>
+
+    <div class="leftpanel">
+        {% block leftPanel %}
+            {%  if is_granted('ROLE_ADMIN') %}
+                {{ render(controller('EmBackendBundle:Backend:adminLeftPanel')) }}   <!-- tab-pane -->
+            {% elseif(is_granted('ROLE_SUPERVISEUR')) %}
+                {{ render(controller('EmBackendBundle:Backend:superviseurLeftPanel')) }}   <!-- tab-pane -->
+            {% elseif(is_granted('ROLE_PROPRIETAIRE')) %}
+                {{ render(controller('EmBackendBundle:Backend:hotelierLeftPanel')) }}
+            {% endif %}
+        {% endblock leftPanel %}
+
+    </div><!-- leftpanel -->
+
+    <div class="mainpanel">
+
+        <!--<div class="pageheader">
+          <h2><i class="fa fa-home"></i> Dashboard</h2>
+        </div>-->
+
+        <div class="contentpanel">
+
+            <div class="row">
+                <div class="col-md-9 col-lg-8 dash-left">
+                    {%  block headTitle %}
+                        <div class="panel panel-announcement">
+                            <ul class="panel-options">
+                                <li><a><i class="fa fa-refresh"></i></a></li>
+                                <li><a class="panel-remove"><i class="fa fa-remove"></i></a></li>
+                            </ul>
+                            <div class="panel-heading">
+                                <h4 class="panel-title">Bienvenue sur le gestionnaire de Homemobilite </h4>
+                            </div>
+                            <div class="panel-body">
+                                <h2><br>
+                                   {% block headLibelle %} Gerer   <span class="text-primary">, Appartement</span> {% endblock headLibelle %}   </h2>
+                             <!--   <h4>Explore this new template and see the beauty of Quirk! <a href="">Take a Tour!</a></h4>-->
+                            </div>
+                        </div><!-- panel -->
+                    {% endblock headTitle %}
+                    {% block contenu %}
+
+                    {% endblock contenu %}
+
+                </div><!-- col-md-9 -->
+                {% block rightResult %}
+                <div class="col-md-3 col-lg-4 dash-right">
+                    <!-- Restriction admin-->
+                    {% if is_granted('ROLE_SUPERVISEUR') %}
+                    <div class="row">
+                        {% if is_granted('ROLE_ADMIN') %}
+                            {% block bestResult %}
+
+                                <!-- Avis utilisateur -->
+
+
+                                <!-- col-md-12 -->
+                            {% endblock bestResult %}
+                        {% endif %}
+                       <!-- Nouvelle agence -->
+                        {{ render(controller('EmBackendBundle:Hotelier:nouvelleAgence')) }}
+                        <!-- Fin nouvelle agence -->
+                    </div><!-- row -->
+
+                    <div class="row">
+                        <div class="col-sm-5 col-md-12 col-lg-6">
+                            <!-- Liste chambre en attente de validation-->
+                            {{ render(controller('EmBackendBundle:Hotelier:nouvelleChambre')) }}
+                        </div>
+
+                        <div class="col-sm-5 col-md-12 col-lg-6">
+
+                            {{ render(controller('EmBackendBundle:Hotelier:lastHotelierValider')) }}
+
+                        </div>
+                        <div class="col-sm-5 col-md-12 col-lg-6">
+                            <!-- Liste chambre en attente de validation-->
+                            {{ render(controller('EmBackendBundle:Backend:newsBienimmo')) }}
+                        </div>
+                    </div><!-- row -->
+                    {% elseif is_granted('ROLE_HOTELIER') or is_granted('ROLE_PROPRIETAIRE') %}
+                        <div class="row">
+                            <div class="col-sm-5 col-md-12 col-lg-6">
+                                {{ render(controller('EmBackendBundle:Hotelier:listeTypeChambre')) }}
+                            </div><!-- col-sm-3 -->
+                        </div>
+                    {% endif %}
+                </div><!-- col-md-3 -->
+
+                {% endblock rightResult %}
+            </div><!-- row -->
+
+        </div><!-- contentpanel -->
+
+    </div><!-- mainpanel -->
+
+</section>
+
+<script src="{{ asset('bundles/embackend/assets') }}/lib/jquery/jquery.js"></script>
+<script src="{{ asset('bundles/embackend/assets') }}/lib/jquery-ui/jquery-ui.js"></script>
+<script src="{{ asset('bundles/embackend/assets') }}/lib/bootstrap/js/bootstrap.js"></script>
+<script src="{{ asset('bundles/embackend/assets') }}/lib/jquery-toggles/toggles.js"></script>
+
+<script src="{{ asset('bundles/embackend/assets') }}/lib/morrisjs/morris.js"></script>
+<script src="{{ asset('bundles/embackend/assets') }}/lib/raphael/raphael.js"></script>
+
+<script src="{{ asset('bundles/embackend/assets') }}/lib/flot/jquery.flot.js"></script>
+<script src="{{ asset('bundles/embackend/assets') }}/lib/flot/jquery.flot.resize.js"></script>
+<script src="{{ asset('bundles/embackend/assets') }}/lib/flot-spline/jquery.flot.spline.js"></script>
+<!-- ckeditor -->
+
+
+<script src="{{ asset('bundles/embackend/assets') }}/lib/jquery-knob/jquery.knob.js"></script>
+<script src="{{ asset('bundles/embackend/assets') }}/lib/dropzone/dropzone.js"></script>
+<script src="{{ asset('bundles/embackend/assets') }}/js/quirk.js"></script>
+
+
+
+<script src="{{ asset('bundles/embackend/assets') }}/lib/jquery.steps/jquery.steps.js"></script>
+<script src="{{ asset('bundles/embackend/assets') }}/lib/jquery-validate/jquery.validate.js"></script>
+<script src="{{ asset('bundles/embackend/assets') }}/js/sprinter-code.js"></script>
+
+
+<script>
+
+    $(document).ready(function() {
+
+        'use strict';
+
+        $('#wizard-basic, #wizard-basic2').steps({
+            headerTag: 'h3',
+            bodyTag: 'div',
+            transitionEffect: 'slideLeft',
+            autoFocus: true
+        });
+
+
+
+        var form = $('#wizard-form');
+        form.steps({
+            headerTag: 'h3',
+            bodyTag: 'div',
+            transitionEffect: 'slideLeft',
+            onStepChanging: function (event, currentIndex, newIndex) {
+
+                // Allways allow previous action even if the current form is not valid!
+                if (currentIndex > newIndex) { return true; }
+
+                // Needed in some cases if the user went back (clean up)
+                if (currentIndex < newIndex) {
+                    // To remove error styles
+                    form.find('.body:eq(' + newIndex + ') label.error').remove();
+                    form.find('.body:eq(' + newIndex + ') .error').removeClass('error');
+                }
+
+                form.validate().settings.ignore = ':disabled,:hidden';
+                return form.valid();
+            },
+            onFinishing: function (event, currentIndex) {
+                form.validate().settings.ignore = ':disabled';
+                return form.valid();
+            },
+            onFinished: function (event, currentIndex) {
+                alert('Submitted!');
+            }
+        }).validate({
+            highlight: function(element) {
+                $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+            },
+            success: function(element) {
+                $(element).closest('.form-group').removeClass('has-error');
+            }
+        });
+
+        $('#wizard-vertical').steps({
+            headerTag: 'h3',
+            bodyTag: 'div',
+            transitionEffect: 'slideLeft',
+            autoFocus: true,
+            stepsOrientation: 'vertical'
+        });
+
+
+    });
+</script>
+
+</body>
+</html>

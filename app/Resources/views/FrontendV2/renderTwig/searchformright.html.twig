@@ -1,0 +1,54 @@
+<div class="box-content col-lg-3  col-xs-12 bg-info">
+    <h4 class="box-title bg-info text-white text-center">TROUVEZ VOTRE ETABLISSEMENT</h4>
+    <!-- /.box-title -->
+    <ul class="list-inline">
+        <li class="form-group col-xs-12">
+            <input id="autocomplete" placeholder="Selectionnez votre destination"
+                   onFocus="geolocate()" type="text" name="location" class="form-control" {% if  app.session.get('location') is defined %} value="{{  app.session.get('location') }}" {% endif %}/>
+
+        </li>
+        <li class="form-group  col-xs-12">
+            <input type="text" id="start" class="form-control" name="datestart" placeholder="Date de départ" {% if app.session.get('start') is defined %}  value="{{  app.session.get('start') }}" {% endif %}>
+        </li>
+
+        <li class="form-group  col-xs-12">
+            <input type="text" id="end" class="form-control" placeholder="Date d'arrivée" name="dateend" {% if app.session.get('end') is defined %} value="{{  app.session.get('end') }}" {% endif %}>
+        </li>
+
+        <li class="form-group  col-xs-12">
+            <select class="form-control {% if  app.session.get('chambre') >=1 %} {% else %}items{% endif %}">
+                {% if  app.session.get('chambre') >=1 %}
+                    <option value="{{ app.session.get('chambre') }}">{{ app.session.get('chambre') }}</option>
+                {% else %}
+                    <option value="1">Chambre</option>
+                {% endif %}
+
+            </select>
+        </li>
+        <li class="form-group  col-xs-12">
+            <select class="form-control {% if  app.session.get('adulte') >=1 %} {% else %}items{% endif %}">
+                {% if  app.session.get('adulte') >=1 %}
+                    <option value="{{ app.session.get('adulte') }}">{{ app.session.get('adulte') }}</option>
+                {% else %}
+                    <option value="1">Adultes</option>
+                {% endif %}
+
+            </select>
+        </li>
+        <li class="form-group  col-xs-12">
+            <select class="form-control {% if  app.session.get('enfant') >=1 %} {% else %}items{% endif %}">
+                {% if  app.session.get('enfant') >=1 %}
+                    <option value="{{ app.session.get('enfant') }}">{{ app.session.get('enfant') }}</option>
+                {% else %}
+                    <option value="">Enfants</option>
+                {% endif %}
+
+            </select>
+        </li>
+        <li class="form-group  col-xs-12">
+            <button type="submit" class="btn btn-primary waves-effect waves-light col-xs-12" >
+                Reserver <i class="ico-item fa fa-search"></i>
+            </button>
+        </li>
+    </ul>
+</div>

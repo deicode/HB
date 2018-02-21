@@ -1,0 +1,233 @@
+
+<div class="row row-wrap">
+
+
+    <div class="col-md-8">
+        <form action="{{ path('em_frontend_reservartion_connected', { 'idbien' : chambre.id|urlencrypt }) }}" method="POST" class="form-horizontal" name="AfrikhotelFormReserv" id="AfrikhotelFormReserv">
+            <fieldset>
+                <legend>
+                    <h4><span class="btn btn-success"> 1 </span> <i class="fa fa-hand-o-right"></i> <a class="btn btn-ghost btn-success">Vos informations </a></h4>
+                </legend>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Prenoms </label>
+                            {{ form_widget(form.prenoms, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-lg-offset-1">
+                        <div class="form-group ">
+                            <label>Nom</label>
+                            {{ form_widget(form.nom ,{'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group ">
+                            <label>Email</label>
+                            {{ form_widget(form.email ,{'attr': {'class': 'form-control'}}) }}
+
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-lg-offset-1">
+                        <div class="form-group form-group">
+                            <label>Phone</label>
+                            {{ form_widget(form.phone ,{'attr': {'class': 'form-control'}}) }}
+                            {{ form_widget(form._token, {'attr': {'type' : 'hidden'}}) }}
+
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-lg-offset-1">
+                        <div class="form-group form-group">
+                            {#
+                            <input type="hidden" name="apikey" value="{{params['apikey']}}"/>
+                            <input type="hidden" name="cpm_site_id" value="{{ params['cpm_site_id'] }}"/>
+                            <input type="hidden" name="cpm_currency" value="{{ params['cpm_currency'] }}"/>
+                            <input type="hidden" name="cpm_page_action" value="{{ params['cpm_page_action'] }}"/>
+                            <input type="hidden" name="cpm_payment_config" value="{{ params['cpm_payment_config'] }}"/>
+                            <input type="hidden" name="cpm_version" value="{{ params['cpm_version'] }}"/>
+                            <input type="hidden" name="cpm_language" value="{{ params['cpm_language'] }}"/>
+                            <input type="hidden" name="cpm_trans_date" value="{{ params['cpm_trans_date'] }}"/>
+                            <input type="hidden" name="cpm_trans_id" value="{{ params['cpm_trans_id'] }}"/>
+                            <input type="hidden" name="cpm_designation" value="{{ params['cpm_designation'] }}"/>
+                            <input type="hidden" name="cpm_amount" value="{{ params['cpm_amount'] }}"/>
+                            <input type="hidden" name="signature" value="{{ params['signature'] }}"/>
+                            <input type="hidden" name="cpm_custom" value="{{ params['cpm_custom'] }}"/>
+                            <input type="hidden" name="notify_url" value="{{ params['notify_url'] }}"/>
+                            <input type="hidden" name="return_url" value="{{ params['return_url'] }}"/>
+                            <input type="hidden" name="cancel_url" value="{{ params['cancel_url'] }}"/>
+                            #}
+                        </div>
+                    </div>
+                </div>
+
+            </fieldset>
+
+            <fieldset>
+                <legend>
+                    <h4><span class="btn btn-success"> 2 </span> <i class="fa fa-hand-o-right"></i> <a class="btn btn-ghost btn-success">Mode de Paiement </a></h4>
+                </legend>
+
+                <div class="row">
+                    <div class="row" >
+                        <div class="col-md-6" >
+                            <div class="radio radio-small">
+                                <label for="reservations_modepayement_0" class="required">
+
+                                    <input  class="i-radio" type="radio" id="reservations_modepayement_0" name="reservations[modepayement]" required="required"  value="Payer_a_hotel" >
+
+                                    <div class="testimonial">
+
+                                        <div class="testimonial-author">
+                                            <img src="{{ asset('bundles/emfrontend/assets/img/mobile-money') }}/Payer-cash.jpg" alt="Payer a l'hotel " title="Payer Cash">
+                                            <p class="testimonial-author-name">Payer à l'hôtel</p>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6" >
+                            <div class="radio radio-small"  >
+
+
+                                <label for="reservations_modepayement_1">
+
+                                    <input   class="i-radio" type="radio" id="reservations_modepayement_1" name="reservations[modepayement]" required="required" value="Orange_Money">
+
+                                    <div class="testimonial">
+
+                                        <div class="testimonial-author" >
+                                            <img src="{{ asset('bundles/emfrontend/assets/img/mobile-money') }}/orange.png" alt="Orange_money" title="Payer via Orange">
+                                            <p class="testimonial-author-name">Orange Money</p>
+                                        </div>
+                                    </div>
+                                </label>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" >
+                        <div class="col-md-6" >
+
+                            <div class="radio radio-small" >
+
+                                <label for="reservations_modepayement_2" class="required"  >
+
+                                    <input onclick="" class="active i-radio" type="radio" id="reservations_modepayement_2" name="reservations[modepayement]" required="required" value="MTN_Mobile_Money">
+
+                                    <div class="testimonial">
+
+                                        <div class="testimonial-author">
+                                            <img src="{{ asset('bundles/emfrontend/assets/img/mobile-money') }}/mtn.jpg" alt="Image Alternative text" title="Payer via Moov">
+                                            <p class="testimonial-author-name">MTN  Money</p>
+                                        </div>
+                                    </div>
+                                </label>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-6" >
+                            <div class="radio radio-small" >
+
+                                <label for="reservations_modepayement_3">
+
+                                    <input class="i-radio" type="radio" id="reservations_modepayement_3" name="reservations[modepayement]" required="required" value="Moov_Money">
+
+                                    <div class="testimonial">
+
+                                        <div class="testimonial-author">
+                                            <img src="{{ asset('bundles/emfrontend/assets/img/mobile-money') }}/flooz.jpg" alt="Image Alternative text" title="Payer via Moov">
+                                            <p class="testimonial-author-name">Moov Money</p>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- data reservation -->
+                <input  type="hidden" name="adulte" value="{{ app.session.get('adulte') }}">
+                <input  type="hidden" name="enfant" value="{{ app.session.get('enfant') }}">
+                <input  type="hidden" name="chambrechoisis" value="{{ app.session.get('chambrechoisis') }}">
+
+                <input  type="hidden" name="nbjour" value="{{ app.session.get('nbjour') }}">
+                <input  type="hidden" name="datestart" value="{{ app.session.get('datestart') }}">
+                <input  type="hidden" name="prixtotal" value="{{ app.session.get('prixtotal') }}">
+                <input  type="hidden" name="dateend" value="{{ app.session.get('dateend') }}">
+
+
+
+            </fieldset>
+
+            <div class="gap gap-small"></div>
+
+            <fieldset>
+                <legend>
+                    <h4><span class="btn btn-success"> 3 </span> <i class="fa fa-hand-o-right"></i> <a class="btn btn-ghost btn-success">Proceder au payement</a></h4>
+                </legend>
+
+                <input  onclick="vrai()" id="submitreservation" class="btn btn-success pull-right" type="submit" value="Valider, Reserver maintenant à la facture de  {{ app.session.get('prixtotal') }} Fcfa">
+            </fieldset>
+        </form>
+    </div>
+
+    <div class="col-md-4">
+        <div class="booking-item-payment">
+            <header class="clearfix">
+                <a class="booking-item-payment-img" href="#">
+                    <img src="{{ asset('bundles/emfrontend/assets/') }}pics/chambres/" alt="" title="">
+                </a>
+                <h5 class="booking-item-payment-title"><a href="#">{# chambre.nomprenoms.nom #}</a></h5>
+                <ul class="icon-group booking-item-rating-stars">
+                    {#{%  set num = 1 %}
+                    {% for  num in  1..chambre.agences.grade %}
+                        <i class="fa fa-star"></i>
+                        {%  set num = num +1 %}
+                    {% endfor %}#}
+                </ul>
+            </header>
+            <ul class="booking-item-payment-details">
+                <li>
+                    <h5>{# chambre.typeimmo.libelle #}</h5>
+                    <div class="booking-item-payment-date">
+                        <p class="booking-item-payment-date-day">Arrivée</p>
+                        <p class="booking-item-payment-date-weekday">{{ app.session.get('') }}</p>
+                    </div><i class="fa fa-arrow-right booking-item-payment-date-separator"></i>
+                    <div class="booking-item-payment-date">
+                        <p class="booking-item-payment-date-day">Depart</p>
+                        <p class="booking-item-payment-date-weekday">{{ app.session.get('') }}</p>
+                    </div>
+                </li>
+                <li>
+                    <h5>Chambre (Total : {{ app.session.get('chambrechoisis') }}) </h5>
+
+                    <p class="booking-item-payment-item-title">Adulte : {{ app.session.get('adulte') }} </p>
+                    <p class="booking-item-payment-item-title"> Enfant : {{ app.session.get('enfant') }} </p>
+
+                    <ul class="booking-item-payment-price">
+                        <li>
+                            <p class="booking-item-payment-price-title">{{ app.session.get('nbjour') }} Nuits</p>
+                            <p class="booking-item-payment-price-amount">{{ chambre.prixchambre }} Fcfa<small>/jour</small>
+                            </p>
+                        </li>
+
+                    </ul>
+                </li>
+            </ul>
+            <p class="booking-item-payment-total">Total : <span>Fcfa {{ app.session.get('prixtotal') }}</span>
+            </p>
+        </div>
+    </div>
+</div>
+<div class="gap gap-small"></div>
+
+
+
+
+
+

@@ -1,0 +1,59 @@
+<h3 class="mb20">Avis sur {{ agencesentity.nom }}</h3>
+
+<div class="row row-wrap">
+    <div class="col-md-8">
+        <ul class="booking-item-reviews list">
+            {% for data in pagination %}
+            <li>
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="booking-item-review-person">
+                            <a class="booking-item-review-person-avatar round" href="#">
+                                <img src="{{ asset('bundles/emfrontend/assets/img/') }}team/commentaire.png" alt="commentaire" title="commentaire">
+                            </a>
+                            <p class="booking-item-review-person-name"><a href="#">{{ data.client.username }}</a>
+                            </p>
+                            <p class="booking-item-review-person-loc">Note : <small><a href="#">{{ data.note }}</a></small></p>
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="booking-item-review-content">
+                            <h5>{{ data.titre }}</h5>
+                            <ul class="icon-group booking-item-rating-stars">
+                                <li>{{ data.dateadd|date('d-m-Y') }}
+                                </li>
+
+                            </ul>
+                            <p>{{ data.contenu }}
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+        <div class="row wrap">
+            <div class="col-md-5">
+                <p><small> {{ pagination|length }} Commentaires</small>
+                </p>
+            </div>
+            <div class="col-md-7">
+                {{ knp_pagination_render(pagination) }}
+            </div>
+        </div>
+        <div class="gap gap-small"></div>
+
+
+     <!-- form commentaire -->
+        {% if is_granted('ROLE_USER') %}
+          {{ render(controller('EmFrontendBundle:Frontend:addCommentaire',  {'idagence' :  agencesentity.id })) }}
+       {% endif %}
+    </div>
+
+ <!--  Autre Hôtel
+   -->
+    {{ render(controller('EmFrontendBundle:Frontend:renderAutreHotel', {'ville' : agencesentity.villes.nom })) }}
+
+
+</div>

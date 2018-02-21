@@ -1,0 +1,47 @@
+<div class="panel">
+    <div class="panel-heading">
+        <h4 class="panel-title">Formulaire slide </h4>
+    </div>
+    <div class="panel-body">
+        <br>
+        <form action=""  enctype="multipart/form-data" class="form-horizontal" METHOD="post">
+            <div class="input-group mb15">
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default">Nom de la ville : </button>
+                </span>
+                {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+
+            </div>
+            <div class="input-group mb15">
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default">Status : </button>
+                </span>
+                {{ form_widget(form.statusimmo, {'attr': {'class': 'form-control'}}) }}
+
+            </div>
+            <div class="input-group mb15">
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default">Prix à partir de : </button>
+                </span>
+                {{ form_widget(form.prix, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="input-group mb15">
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default">Image (2048 x 1365): </button>
+                </span>
+                {{ form_widget(form.Images.url, {'attr': {'class': 'form-control'}}) }}
+
+            </div>
+            <hr>
+            {{ form_widget(form._token, {'attr': {'type' : 'hidden'}}) }}
+
+            <div class="row">
+                <div class="col-sm-9 col-sm-offset-3">
+                    <button class="btn btn-success btn-quirk btn-wide mr5">Envoyer</button>
+                    <button type="reset" class="btn btn-quirk btn-wide btn-default">Annuler</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

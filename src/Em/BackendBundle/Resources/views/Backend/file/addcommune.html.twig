@@ -1,0 +1,12 @@
+{% extends '::backend/backendLayout.html.twig' %}
+
+    {% block headLibelle %}
+        Gestion les communes   <span class="text-primary"> <a href="{{ path('em_backend_listeville') }}"> Voir liste des villes</a></span>
+
+    {% endblock headLibelle %}
+
+{% block contenu %}
+
+    {% include('EmBackendBundle:Backend:fileContent/addcommuneContent.html.twig') %}
+
+{% endblock contenu %}

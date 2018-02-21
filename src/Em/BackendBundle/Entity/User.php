@@ -1,0 +1,278 @@
+<?php
+
+namespace Em\BackendBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
+use Symfony\Component\Validator\Constraints as Assert;
+use \Doctrine\Common\Collections\ArrayCollection;
+
+/**
+ * @ORM\Entity
+ */
+class User extends BaseUser
+{
+    /**
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+
+    public function __construct(User $data = null){
+
+        if(!empty($data)){
+            $this->username       = $data->getUsername();
+
+            $this->email          = $data->getEmail();
+            $this->password       = '';
+
+            $this->roles          = $data->getRoles();
+
+            $this->ville          = $data->getVille();
+            $this->pays           = $data->getPays();
+            $this->phone          = $data->getPhone();
+
+
+        }
+
+        $this->salt = base_convert(sha1(uniqid(mt_rand(), true)), 16, 36);
+        $this->enabled = false;
+        $this->locked = false;
+        $this->expired = false;
+        $this->roles = array();
+        $this->credentialsExpired = false;
+    }
+
+    /**
+     * @var string
+     */
+    protected  $pays;
+
+    /**
+     * @Assert\Length(
+     *      min = 3,
+     *      max = 50,
+     *      minMessage = "Votre doit contenir au minimum {{ limit }} caractères",
+     *      maxMessage = "Votre doit contenir au maximum {{ limit }} caractères"
+     * )
+     *
+     * @var string
+     */
+    protected  $nom;
+
+    /**
+     * @Assert\Length(
+     *      min = 3,
+     *      max = 50,
+     *      minMessage = "Votre doit contenir au minimum {{ limit }} caractères",
+     *      maxMessage = "Votre doit contenir au maximum {{ limit }} caractères"
+     * )
+     *
+     * @var string
+     */
+    protected  $prenoms;
+
+
+    /**
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "Your first name must be at least {{ limit }} characters long",
+     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters"
+     * )
+     * @var string
+     */
+    protected  $adresse;
+
+    /**
+     * @var string
+     */
+    protected  $ville;
+
+    /**
+     * @Assert\Length(
+     *      min = 8,
+     *      max = 8,
+     *      minMessage = "votre numéro doit être au minimum {{ limit }} caractères",
+     *      maxMessage = "votre numéro doit être au maximum {{ limit }} caractères"
+     * )
+     * @var string
+     */
+    protected  $phone;
+
+    /**
+     * @var \DateTime
+     */
+    protected  $dateinscrit;
+
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return User
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Set phone
+     *
+     * @param string $phone
+     *
+     * @return User
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * Get phone
+     *
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * Set adresse
+     *
+     * @param string $adresse
+     *
+     * @return User
+     */
+    public function setAdresse($adresse)
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    /**
+     * Get adresse
+     *
+     * @return string
+     */
+    public function getAdresse()
+    {
+        return $this->adresse;
+    }
+
+    /**
+     * Set ville
+     *
+     * @param string $ville
+     *
+     * @return User
+     */
+    public function setVille($ville)
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    /**
+     * Get ville
+     *
+     * @return string
+     */
+    public function getVille()
+    {
+        return $this->ville;
+    }
+
+    /**
+     * Set pays
+     *
+     * @param string $pays
+     *
+     * @return User
+     */
+    public function setPays($pays)
+    {
+        $this->pays = $pays;
+
+        return $this;
+    }
+
+    /**
+     * Get pays
+     *
+     * @return string
+     */
+    public function getPays()
+    {
+        return $this->pays;
+    }
+
+    /**
+     * Set dateinscrit
+     *
+     * @param \DateTime $dateinscrit
+     *
+     * @return User
+     */
+    public function setDateinscrit($dateinscrit)
+    {
+        $this->dateinscrit = $dateinscrit;
+
+        return $this;
+    }
+
+    /**
+     * Get dateinscrit
+     *
+     * @return \DateTime
+     */
+    public function getDateinscrit()
+    {
+        return $this->dateinscrit;
+    }
+
+    /**
+     * Set prenoms
+     *
+     * @param string $prenoms
+     *
+     * @return User
+     */
+    public function setPrenoms($prenoms)
+    {
+        $this->prenoms = $prenoms;
+
+        return $this;
+    }
+
+    /**
+     * Get prenoms
+     *
+     * @return string
+     */
+    public function getPrenoms()
+    {
+        return $this->prenoms;
+    }
+}

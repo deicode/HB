@@ -1,0 +1,62 @@
+{% extends '::FrontendV2/layouts/layoutpage.html.twig' %}
+{% block title %} Agence - HomeMobilite  - Appartements - Hôtels - Voitures {%  endblock  title%}
+
+
+{% block header %}
+    {{   render (controller("EmFrontendBundle:FrontendV2:header")) }}
+{% endblock header %}
+
+{% block titre %}{{ agence.nom }} | {{ agence.ville }} {% endblock titre %}
+
+ {% block menuleft %}
+     {{   render (controller("EmFrontendBundle:FrontendV2:menuLeft")) }}
+
+ {% endblock menuleft  %}
+
+{% block Contenu %}
+
+    {% include '::FrontendV2/filesContent/detailagenceContent.html.twig' %}
+
+{% endblock Contenu %}
+
+{% block scriptjs %}
+
+    <script src="{{ asset('bundles/emfrontend/assetsv2/') }}scripts/jquery.min.js"></script>
+    <script src="{{ asset('bundles/emfrontend/assetsv2/') }}scripts/modernizr.min.js"></script>
+    <script src="{{ asset('bundles/emfrontend/assetsv2/') }}plugin/bootstrap/js/bootstrap.min.js"></script>
+    <script src="{{ asset('bundles/emfrontend/assetsv2/') }}plugin/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="{{ asset('bundles/emfrontend/assetsv2/') }}plugin/nprogress/nprogress.js"></script>
+    <script src="{{ asset('bundles/emfrontend/assetsv2/') }}plugin/sweet-alert/sweetalert.min.js"></script>
+    <script src="{{ asset('bundles/emfrontend/assetsv2/') }}plugin/waves/waves.min.js"></script>
+    <!-- Datepicker -->
+    <script src="{{ asset('bundles/emfrontend/assetsv2/') }}plugin/datepicker/js/bootstrap-datepicker.min.js"></script>
+
+    <!-- Moment -->
+    <script src="{{ asset('bundles/emfrontend/assetsv2/') }}plugin/moment/moment.js"></script>
+    <!-- Demo Scripts -->
+    <script src="{{ asset('bundles/emfrontend/assetsv2/') }}scripts/form.demo.min.js"></script>
+
+    <script src="{{ asset('bundles/emfrontend/assetsv2/') }}scripts/main.js?v=1"></script>
+    <script src="{{ asset('bundles/emfrontend/assetsv2/') }}scripts/horizontal-menu.js"></script>
+    <script src="{{ asset('bundles/emfrontend/assetsv2/') }}color-switcher/color-switcher.min.js"></script>
+    <script src="{{ asset('bundles/emfrontend/assetsv2/') }}plugin/lightslider/js/lightslider.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#imageGallery').lightSlider({
+                gallery: true,
+                item: 1,
+                loop: true,
+                thumbItem: 9,
+                slideMargin: 0,
+                enableDrag: false,
+                currentPagerPosition: 'left',
+                onSliderLoad: function (el) {
+                    el.lightGallery({
+                        selector: '#imageGallery .lslide'
+                    });
+                }
+            });
+        });</script>
+
+{% endblock scriptjs %}

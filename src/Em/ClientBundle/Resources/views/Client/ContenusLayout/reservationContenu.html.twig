@@ -1,0 +1,47 @@
+<div class="row">
+    {{ render(controller('EmClientBundle:Client:renderMenuLeft')) }}
+    <div class="col-md-9">
+        <h4>Mes reservations</h4>
+        <table class="table table-bordered table-striped table-booking-history">
+            <thead>
+            <tr>
+                <th>Type</th>
+                <th>identifiant</th>
+                <th>Hôtel</th>
+                <th>Date reservation</th>
+                <th>Prix</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="booking-history-type"><i class="fa fa-plane"></i><small>flight</small>
+                </td>
+                <td>New york City</td>
+                <td class="booking-history-title">London to New York City</td>
+                <td>4/12/2014</td>
+                <td>$350</td>
+                <td class="text-center"><i class="fa fa-check"></i>
+                </td>
+                <td class="text-center"><a class="btn btn-default btn-sm" href="{{ path('em_client_reservations_details') }}">détails</a>
+                </td>
+            </tr>
+            <tr>
+                <td class="booking-history-type"><i class="fa fa-building-o"></i><small>hotel</small>
+                </td>
+                <td class="booking-history-title">InterContinental New York Barclay</td>
+                <td>New york City</td>
+                <td>4/12/2014</td>
+                <td>$1200</td>
+                <td class="text-center"><i class="fa fa-check"></i>
+                </td>
+                <td class="text-center"><a class="btn btn-default btn-sm" href="{{ path('em_client_reservations_details') }}">détails</a>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="gap"></div>

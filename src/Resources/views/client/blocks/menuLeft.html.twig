@@ -1,0 +1,20 @@
+<div class="col-md-3">
+    <aside class="user-profile-sidebar">
+        <div class="user-profile-avatar text-center">
+            <img src="{{ asset('bundles/emfrontend/assets/') }}img/businesspeople.png" alt="Image user" title="AMaze" />
+            <h5> {{ user.username }} </h5>
+            <p>Member Depuis le - {{ user.dateinscrit|date('dd-mm-Y') }}</p>
+        </div>
+        <ul class="list user-profile-nav">
+            <li><a href="{{ path('em_client_homepage') }}"><i class="fa fa-user"></i>Accueil</a>
+            </li>
+            <li><a href="{{ path('em_client_parametre') }}"><i class="fa fa-cog"></i>Mes paramètres </a>
+            <li><a href="{{ path('em_client_reservation') }}"><i class="fa fa-clock-o"></i>Mes réservations</a>
+            </li>
+            <li><a href="{{ path('em_client_commentaire') }}"><i class="fa fa-group"></i>Mes commentaires</a>
+            </li>
+            <li><a href="{{ path('em_client_auth_security_logout') }}"><i class="fa fa-sign-out"></i>Deconnexion</a>
+            </li>
+        </ul>
+    </aside>
+</div>

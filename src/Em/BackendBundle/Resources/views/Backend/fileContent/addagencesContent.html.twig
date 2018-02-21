@@ -1,0 +1,212 @@
+<div class="mainpanel">
+
+    <div class="contentpanel">
+        <ol class="breadcrumb breadcrumb-quirk">
+            <li><a href="#"><i class="fa fa-home mr5"></i> Accueil</a></li>
+            <li><a href="#">Agence</a></li>
+            <li class="active">Hotelière</li>
+        </ol>
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="panel">
+                    <div class="panel-heading nopaddingbottom">
+                        <h4 class="panel-title">Inscrire votre agence Hôtelière</h4>
+                    </div>
+                    <div class="panel-body">
+                        <hr>
+                        <form id="basicForm" action="{{ path('em_backend_addagence') }}" enctype="multipart/form-data"  class="form-horizontal"  method="post">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Type de biens <span class="text-danger">*</span></label>
+                                <div class="col-sm-8">
+                                    {{ form_widget(form._token, {'attr': {'type' : 'hidden'}}) }}
+                                    {{ form_widget(form.caracteristique, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Nom du bien <span class="text-danger">*</span></label>
+                                <div class="col-sm-8">
+                                    {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Prix à partir de : <span class="text-danger">*</span></label>
+                                <div class="col-sm-8">
+                                    {{ form_widget(form.prixinit, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Slogan</label>
+                                <div class="col-sm-8">
+                                    {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Grade <span class="text-danger">*</span></label>
+                                <div class="col-sm-8">
+                                    {{ form_widget(form.grade, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Status <span class="text-danger">*</span></label>
+                                <div class="col-sm-8">
+                                    {{ form_widget(form.status, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                            
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Description<span class="text-danger">*</span></label>
+                                <div class="col-sm-8">
+                                    {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+
+                           <hr>
+                            <fieldset>
+                                <legend>Informations Geo</legend>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Telephone <span class="text-danger">*</span></label>
+                                    <div class="col-sm-8">
+                                        {{ form_widget(form.telephone, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Url Google map <span class="text-danger">*</span></label>
+                                    <div class="col-sm-8">
+                                        {{ form_widget(form.urlmap, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Adresse<span class="text-danger">*</span></label>
+                                    <div class="col-sm-8">
+                                        {{ form_widget(form.adresse, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Ville :</label>
+                                    <div class="col-sm-8">
+                                        <div id="locationField">
+                                            <input id="autocomplete" placeholder="Entrer la ville , ou departement ou commune"
+                                                   onFocus="geolocate()" type="text" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </fieldset>
+
+
+                            <hr>
+                            <fieldset>
+                                <legend>Equipements</legend>
+                             <div class="row">
+                                <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label ckbox ckbox-success">Wi-fi : </label>
+                                    <div class="col-sm-8">
+                                        {{ form_widget(form.wifi) }}
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Piscine : </label>
+                                    <div class="col-sm-8">
+                                        {{ form_widget(form.piscine) }}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Climatisation :<span class="text-danger">*</span></label>
+                                    <div class="col-sm-8">
+                                        {{ form_widget(form.climatisation) }}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                        <label class="col-sm-3 control-label">Service Chambres<span class="text-danger">*</span></label>
+                                        <div class="col-sm-8">
+                                            {{ form_widget(form.servicechambre) }}
+                                        </div>
+                                    </div>
+                                <div class="form-group">
+                                        <label class="col-sm-3 control-label">Petit Dejeuner :<span class="text-danger">*</span></label>
+                                        <div class="col-sm-8">
+                                            {{ form_widget(form.petitdejeuner) }}
+                                        </div>
+                                    </div>
+                               </div>
+
+                                <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Restaurant :</label>
+                                    <div class="col-sm-8">
+                                        {{ form_widget(form.restaurant) }}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Night Club :</label>
+                                    <div class="col-sm-8">
+                                        {{ form_widget(form.nightclub) }}
+                                    </div>
+                                </div>
+                               <div class="form-group">
+                                        <label class="col-sm-3 control-label">Massage :</label>
+                                        <div class="col-sm-8">
+                                            {{ form_widget(form.massage) }}
+                                        </div>
+                                    </div>
+                                <div class="form-group">
+                                        <label class="col-sm-3 control-label">Gym :</label>
+                                        <div class="col-sm-8">
+                                            {{ form_widget(form.gym) }}
+                                        </div>
+                                    </div>
+                                <div class="form-group">
+                                        <label class="col-sm-3 control-label">Casino</label>
+                                        <div class="col-sm-8">
+                                            {{ form_widget(form.casino) }}
+                                        </div>
+                               </div>
+
+                              </div>
+                             </div>
+                            </fieldset>
+                            <hr>
+
+                            <fieldset>
+                                <legend>Galerie de Photos</legend>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Selectionner les Photos <span class="text-danger">*</span></label>
+                                    <div class="col-sm-8">
+                                        <input type="file" name="files[]" multiple required="">
+                                    </div>
+                                </div>
+
+                            </fieldset>
+                          <hr>
+                            <br>
+                            <br>
+                           <fieldset>
+                               <div class="row">
+                                   <div class="form-group">
+                                   <div class="col-sm-9 col-sm-offset-3">
+                                       <button class="btn btn-success btn-quirk btn-wide mr5  pull-right">Inscrire</button>
+                                       <button type="reset" class="btn btn-quirk btn-wide btn-default  pull-left">Annuler</button>
+                                   </div>
+                                       </div>
+                               </div>
+                           </fieldset>
+
+
+                        </form>
+                    </div><!-- panel-body -->
+                </div><!-- panel -->
+
+            </div><!-- col-md-6 -->
+
+            <!-- col-md-6 -->
+
+        </div>
+    </div>
+
+ </div>

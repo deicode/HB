@@ -1,0 +1,12 @@
+{% extends '::backend/backendLayout-B.html.twig' %}
+
+    {% block headLibelle %}
+        Ajouter un Bien Immo ||  <span class="text-primary"> <a href="#"> Voir les Bien Immo</a></span>
+
+    {% endblock headLibelle %}
+
+{% block contenu %}
+
+    {% include('EmBackendBundle:Backend:fileContent/listesinglebienimmoContent.html.twig') %}
+
+{% endblock contenu %}

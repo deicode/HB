@@ -1,0 +1,23 @@
+Em\FrontendBundle\Entity\Fichiers:
+    type: entity
+    table: null
+    repositoryClass: Em\FrontendBundle\Repository\FichiersRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        url:
+            type: string
+            length: 255
+        title:
+            type: string
+            length: 255
+        alt:
+            type: string
+            length: 255
+        dateadd:
+            type: datetime
+    lifecycleCallbacks: {  }

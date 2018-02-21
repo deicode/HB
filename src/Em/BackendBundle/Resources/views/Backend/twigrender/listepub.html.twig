@@ -1,0 +1,28 @@
+<div class="table-responsive">
+    <table class="table table-bordered table-success table-striped nomargin">
+        <thead>
+        <tr>
+            <th>Ajouté le</th>
+            <th class="text-center">Proprietaire</th>
+            <th class="text-right">Titre</th>
+            <th class="text-right"> Prix  </th>
+            <th class="text-right"> Pourcentage promo </th>
+            <th class="text-right"> Date debut </th>
+            <th class="text-right"> Date Finale </th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for data in dataentity|slice(0,10) %}
+            <tr>
+                <td> {{ data.dateadd|date('d-m-Y') }}</td>
+                <td class="text-center">  {{ data.agences.nom }}</td>
+                <td class="text-center"> {{ data.titre }}</td>
+                <td class="text-center"> {{ data.prixstart }} </td>
+                <td class="text-center">{{ data.pourcentage }} </td>
+                <td class="text-center">{{ data.datestart|date('d-m-Y') }} </td>
+                <td class="text-center">{{ data.dateend|date('d-m-Y') }}  </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div><!-- table-responsive -->

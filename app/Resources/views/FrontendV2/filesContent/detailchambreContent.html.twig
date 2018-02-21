@@ -1,0 +1,55 @@
+<div class="row col-lg-9 col-xs-12 small-spacing">
+    <ul id="imageGallery">
+        <li data-thumb="{{ asset('bundles/emfrontend/assets/pics/chambres/') }}{{ chambre.images.title }}" data-src="{{ asset('bundles/emfrontend/assets/pics/chambres/') }}{{ chambre.images.title }}">
+            <img src="{{ asset('bundles/emfrontend/assets/pics/chambres/') }}{{ chambre.images.title }}" alt="{{chambre.images.title }}" title="{{chambre.images.title}}" >
+        </li>
+
+    </ul>
+
+    <p>
+    <h4 class="text-info">Description chambre</h4>
+                        <span class="text-left">
+                         {{ chambre.description }}
+                        </span>
+    </p>
+
+    <p>
+    <ul class="list-group">
+        <li class="list-group-item bg-info text-white text-center">
+            CONFORT CHAMBRE
+        </li>
+
+        <li class="list-group-item">
+            <ul class="list-inline">
+                {% if chambre.agences.wifi %}
+                    <li>
+                        <i class="fa fa-wifi"></i> Wi-Fi Internet
+                    </li>
+                {% endif %}
+                {% if chambre.agences.climatisation %}
+                     <li>
+                        <i class="fa fa-braille"></i> Climatisation
+                    </li>
+                {% endif %}
+                {% if chambre.agences.casino %}
+                    <li>
+
+                        <i class="fa fa-id-card-o"></i> Casino & Gambling
+                    </li>
+                {% endif %}
+                {% if chambre.agences.nightclub %}
+                    <li>
+                        <i class="fa fa-glass"></i> Bar/Lounge
+                    </li>
+                {% endif %}
+                {% if chambre.agences.gym %}
+                    <li>
+                        <i class="fa fa-deaf"></i> Salle Sport
+                    </li>
+                {% endif %}
+            </ul>
+        </li>
+
+    </ul>
+    </p>
+</div>

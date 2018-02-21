@@ -1,0 +1,150 @@
+em_frontendv2:
+    resource: "@EmFrontendBundle/Resources/config/routingv2.yml"
+    prefix:   /
+
+em_frontend:
+    resource: "@EmFrontendBundle/Resources/config/routing.yml"
+    prefix:   /v1
+
+
+
+em_backend:
+    resource: "@EmBackendBundle/Resources/config/routing.yml"
+    prefix:   Gestionnaire/access
+
+em_backend_proprietaire:
+    resource: "@EmBackendBundle/Resources/config/routingproprietaire.yml"
+    prefix:   /Gestionnaire/access/espace-proprietaire
+
+em_backend_root:
+    resource: "@EmBackendBundle/Resources/config/routingroot.yml"
+    prefix:   Gestionnaire/access/administrateur
+
+
+em_client:
+    resource: "@EmClientBundle/Resources/config/routing.yml"
+    prefix:   mon-compte/connecte/
+
+
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+# FOS USER BUNDLE ROUTES
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /change-password
+
+
+
+#Reinitialiser mot de passe
+
+em_frontend_resetting:
+    path:     reinitialiser-mot-de-passe/
+    defaults: { _controller: EmFrontendBundle:Resetting:request }
+##Bundle Frontend
+em_frontend_resetting_byemail:
+    path:     reinitialiser-mot-de-passe/email
+    defaults: { _controller: EmFrontendBundle:Resetting:sendEmail }
+
+em_frontend_resetting_check_email:
+    path:     reinitialiser-mot-de-passe/email/success
+    defaults: { _controller: EmFrontendBundle:Resetting:checkEmail }
+##Bundle Frontend
+
+em_client_security :
+    path:     mon-compte/connecte
+    defaults: { _controller: EmClientBundle:Client:index }
+
+em_client_auth_security_logout:
+    path:   mon-compte/logout
+    defaults:  { _controller:  FOSUserBundle:Security:logout }
+
+em_client_auth_serviceLogin:
+    pattern:   /mon-compte/ServiceLogin
+    defaults:  { _controller: EmClientBundle:Security:login }
+
+em_client_auth_security_check:
+    pattern:   mon-compte/login_check
+
+em_client_auth_registration_register:
+    path: mon-compte/Inscription
+    defaults: { _controller: EmClientBundle:Registration:register }
+
+em_client_auth_registration_check_email:
+    path:  mon-compte/enregistrement/user/success
+    defaults: { _controller: EmClientBundle:Registration:checkEmail }
+
+em_client_registration_confirmed:
+    path: mon-compte/register/confirmed
+    defaults: { _controller: EmClientBundle:Registration:confirmed }
+
+em_client_resetting_byemail:
+    path:  mon-compte/reinitialiser-mot-de-passe/email
+    defaults: { _controller: EmClientBundle:Resetting:sendEmail }
+
+#Reinitialiser mot de passe
+em_client_resetting:
+    path:  mon-compte/reinitialiser-mot-de-passe
+    defaults: { _controller: EmClientBundle:Resetting:request }
+
+##Bundle Backend
+em_backend_registration_register:
+      path:     Gestionnaire/creation-compte-proprietaire
+      defaults: { _controller: EmBackendBundle:Registration:register }
+
+em_backend_logout:
+    path:   /logout
+    defaults:  { _controller:  FOSUserBundle:Security:logout }
+
+em_backend_security:
+      path:     Gestionnaire/access
+      defaults: { _controller: EmBackendBundle:Backend:index }
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /Gestionnaire/access/profile
+
+fos_user_profile_edit:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /Gestionnaire/access/profile
+
+em_backend_resetting:
+    path:     reinitialiser-mot-de-passe/prorpietaire
+    defaults: { _controller: EmBackendBundle:Resetting:request }
+
+em_backend_serviceLogin:
+     pattern:   Gestionnaire/ServiceLogin
+     defaults:  { _controller: EmBackendBundle:Security:login }
+
+em_backend_logout:
+    path:   /logout
+    defaults:  { _controller:  FOSUserBundle:Security:logout }
+
+
+_console:
+    resource: "@CoreSphereConsoleBundle/Resources/config/routing.yml"
+    prefix: /Tour-controle/_console
+
+
+elfinder:
+     resource: "@FMElfinderBundle/Resources/config/routing.yml"

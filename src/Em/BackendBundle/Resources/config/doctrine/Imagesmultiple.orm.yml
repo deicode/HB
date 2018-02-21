@@ -1,0 +1,33 @@
+Em\BackendBundle\Entity\Imagesmultiple:
+    type: entity
+    table: null
+    repositoryClass: Em\BackendBundle\Repository\ImagesmultipleRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        url:
+            type: string
+            length: 255
+        title:
+            type: string
+            length: 255
+        alt:
+            type: string
+            length: 255
+        dateadd:
+            type: datetime
+
+    manyToOne:
+         agence:
+             targetEntity: Em\BackendBundle\Entity\Agences
+             joinColumn:
+               name: agence_id
+               referencedColumnName: id
+             cascade: ["persist"]
+
+
+    lifecycleCallbacks: {  }

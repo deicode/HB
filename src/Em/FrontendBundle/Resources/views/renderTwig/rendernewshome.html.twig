@@ -1,0 +1,29 @@
+
+{% for datanews in pagination %}
+    <div class="recent-posts-item">
+        <article class="clearfix format-image hentry">
+            <div class="post-thumbnail-container">
+                <figure class="post-thumbnail">
+                    <a href="{{ path('em_frontend_news',{'id': datanews.id , 'slug' : datanews.slug}) }}">
+
+                        <img class="img-responsive wp-post-image" src="{{ asset('bundles/emfrontend/assets/') }}uploads/images/news/{{ datanews.Images.title }}" alt="{{ datanews.Images.title }}" />
+
+                    </a>
+                </figure>
+            </div>
+            <!-- .post-thumbnail-container -->
+            <div class="post-content-wrapper">
+                <div class="post-header entry-header">
+                    <h4 class="post-title entry-title"><a href="{{ path('em_frontend_news',{'id': datanews.id , 'slug' : datanews.slug}) }}">{{ datanews.titre|truncate(100, true, '...' )}}</a></h4>
+                    <div class="post-meta entry-meta">
+                        <span class="author-link">le <a rel="author" href="#">{{ datanews.dateajout|date('d-m-Y') }}</a></span>
+                    </div>
+                </div>
+
+                <a class="read-more" href="{{ path('em_frontend_news',{'id': datanews.id , 'slug' : datanews.slug}) }}">Lire <i class="fa fa-arrow-circle-o-right"></i></a>
+            </div>
+            <!-- .post-content-wrapper -->
+        </article>
+    </div>
+
+{% endfor %}

@@ -1,0 +1,180 @@
+<div id="content-wrapper" class="site-content-wrapper site-pages">
+    <div id="content" class="site-content layout-boxed">
+        <div class="container">
+
+            <div class="col-md-8">
+                <form action="{{ path('em_frontend_reservartion_connected', { 'idbien' : chambre.id }) }}" method="POST" class="form-horizontal" name="AfrikhotelFormReserv" id="AfrikhotelFormReserv">
+                    <fieldset style="background-color: #FFF8FC">
+                        <legend>
+                            <h4><span class="btn btn-success"> 1 </span> <i class="fa fa-hand-o-right"></i> <a class="btn btn-ghost btn-success">Vos informations </a></h4>
+                        </legend>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Prenoms <span style="color: red">*</span></label>
+                                    {{ form_widget(form.prenoms, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 col-lg-offset-1">
+                                <div class="form-group ">
+                                    <label>Nom <span style="color: red">*</span></label>
+                                    {{ form_widget(form.nom,{'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <br>
+                                <div class="form-group">
+                                    <label>Email <span style="color: red">*</span></label>
+                                    {{ form_widget(form.email,{'attr': {'class': 'form-control'}}) }}
+
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-lg-offset-1">
+                                <div class="form-group">
+                                    <label>Phone <span style="color: red">*</span></label>
+                                    {{ form_widget(form.phone ,{'attr': {'class': 'form-control'}}) }}
+                                    {{ form_widget(form._token, {'attr': {'type' : 'hidden'}}) }}
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </fieldset>
+
+                    <fieldset style="background-color: #FFF8FC">
+                        <legend>
+                            <h4><span class="btn btn-success"> 2 </span> <i class="fa fa-hand-o-right"></i> <a class="btn btn-ghost btn-success">Mode de Paiement </a></h4>
+                        </legend>
+
+                        <div class="row">
+
+                                <div class="col-md-offset-2 col-md-3 " >
+                                    <input   type="radio" id="reservations_modepayement_0" name="reservations[modepayement]" required="required"  value="Payer_a_hotel" >
+
+                                    <label id="reservations_modepayement_00" for="reservations_modepayement_0" class="required">
+
+                                            <div class="testimonial">
+
+                                                <div class="testimonial-author">
+                                                    <img src="{{ asset('bundles/emfrontend/assets/img/mobile-money/') }}Payer-cash.jpg" alt="Payer a l'hotel " title="Payer Cash">
+                                                    <p class="testimonial-author-name">Payer à l'hôtel</p>
+                                                </div>
+                                            </div>
+                                        </label>
+                                </div>
+
+                                <div class="col-md-3" >
+                                    <input   type="radio" id="reservations_modepayement_1" name="reservations[modepayement]" required="required" value="Orange_Money" checked>
+
+                                    <label id="reservations_modepayement_11" for="reservations_modepayement_1" class="required">
+                                            <div class="testimonial">
+
+                                                <div class="testimonial-author" >
+                                                    <img src="{{ asset('bundles/emfrontend/assets/img/mobile-money/') }}mobilepayement.png" alt="mobilepayement" title="Payer via mobile">
+                                                    <p class="testimonial-author-name">Payement Mobile</p>
+                                                </div>
+                                            </div>
+                                            </label>
+
+                                </div>
+                            <div class="col-md-3" >
+                                <input   type="radio" id="reservations_modepayement_2" name="reservations[modepayement]" required="required" value="paypal" >
+
+                                <label id="reservations_modepayement_22" for="reservations_modepayement_2" class="required">
+                                    <div class="testimonial">
+
+                                        <div class="testimonial-author" >
+                                            <img src="{{ asset('bundles/emfrontend/assets/img/mobile-money/') }}paypal1.jpg" alt="paypalpayement" title="Payer via paypal">
+                                            <p class="testimonial-author-name">Payement Paypal</p>
+                                        </div>
+                                    </div>
+                                </label>
+
+                            </div>
+                        </div>
+                        <!-- data reservation -->
+                        <input  type="hidden" name="adulte" value="{{ app.session.get('adulte') }}">
+                        <input  type="hidden" name="enfant" value="{{ app.session.get('enfant') }}">
+                        <input  type="hidden" name="chambre" value="{{ app.session.get('chambre') }}">
+
+                        <input  type="hidden" name="nbjour" value="{{ app.session.get('nbjour') }}">
+                        <input  type="hidden" name="start" value="{{ app.session.get('start') }}">
+                        <input  type="hidden" name="prixtotal" value="{{ app.session.get('prixreserve') }}">
+                        <input  type="hidden" name="end" value="{{ app.session.get('end') }}">
+                        <input  type="hidden" name="prixreserve" value="{{ app.session.get('prixreserve') }}">
+
+
+
+                    </fieldset>
+
+                    <div class="gap gap-small"></div>
+
+                    <fieldset style="background-color: #FFF8FC">
+                        <legend>
+                            <h4><span class="btn btn-success"> 3 </span> <i class="fa fa-hand-o-right"></i> <a class="btn btn-ghost btn-success">Proceder au payement</a></h4>
+                        </legend>
+
+                        <input  onclick="vrai()" id="submitreservation" class="btn btn-green pull-right" type="submit" value="Reserver maintenant 25% de la facture , Valider {{ app.session.get('prixreserve')|localizedcurrency('XOF') }}">
+                    </fieldset>
+                </form>
+            </div>
+
+            <div class="col-md-4">
+                <div class="booking-item-payment">
+                    <header class="clearfix">
+                        <figure class="agent-image">
+                            <img src="{{ asset('bundles/emfrontend/assets/pics/chambres/') }}{{ chambre.images.title }}" alt="{{chambre.images.title }}" title="{{chambre.images.title}}" >
+                        </figure>
+                        <h5 class="booking-item-payment-title"><a href="#">{{ chambre.agences.nom }}</a></h5>
+                        <ul class="icon-group booking-item-rating-stars">
+                            {%  set num = 1 %}
+                            {% for  num in  1..chambre.agences.grade %}
+                                <i class="fa fa-star"></i>
+                                {%  set num = num +1 %}
+                            {% endfor %}
+                        </ul>
+                    </header>
+                    <ul class="booking-item-payment-details">
+                        <li>
+                            <h5>{# chambre.typeimmo.libelle #}</h5>
+                            <div class="booking-item-payment-date">
+                                <p class="booking-item-payment-date-day">Arrivée</p>
+                                <p class="booking-item-payment-date-weekday"><strong>{{ app.session.get('start') }}</strong></p>
+                            </div><i class="fa fa-arrow-right booking-item-payment-date-separator"></i>
+                            <div class="booking-item-payment-date">
+                                <p class="booking-item-payment-date-day">Depart</p>
+                                <p class="booking-item-payment-date-weekday"><strong>{{ app.session.get('end') }}</strong></p>
+                            </div>
+                        </li>
+                        <li>
+                            <h5>Chambre (Total : {{ app.session.get('chambre') }}) </h5>
+
+                            <p class="booking-item-payment-item-title">Adulte : {{ app.session.get('adulte') }} </p>
+                            <p class="booking-item-payment-item-title"> Enfant : {{ app.session.get('enfant') }} </p>
+
+                            <ul class="booking-item-payment-price">
+                                <li>
+                                    <p class="booking-item-payment-price-title">{{ app.session.get('nbjour') }} Nuits</p>
+                                    <p class="booking-item-payment-price-amount">{{ chambre.prixchambre|localizedcurrency('XOF') }}<small>/jour</small>
+                                    </p>
+                                </li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                    <p class="booking-item-payment-total">Total : <span>{{ app.session.get('prixtotal')|localizedcurrency('XOF') }}</span>
+                    </p>
+                </div>
+            </div>            <!-- .container-property-single -->
+        </div>
+        <!-- .container -->
+    </div>
+    <!-- .site-content -->
+</div>
+

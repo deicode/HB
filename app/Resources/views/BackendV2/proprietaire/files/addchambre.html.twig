@@ -1,0 +1,16 @@
+{% extends '::BackendV2/layouts/layout.html.twig' %}
+
+
+{% block title %}
+    Espace proprietaire | inscrire une agence
+{% endblock title %}
+
+
+{% block menuLeft %}
+    {% include('::BackendV2/blocks/proprietaire/menuleft.html.twig') %}
+{% endblock menuLeft %}
+
+{% block contenu %}
+    {% include('::BackendV2/proprietaire/filesContent/addchambreContent.html.twig') %}
+
+{% endblock contenu %}

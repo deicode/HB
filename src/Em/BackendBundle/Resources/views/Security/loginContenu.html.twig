@@ -1,0 +1,61 @@
+
+    <form  class="login100-form" method="post" action="{{ path("fos_user_security_check") }}">
+
+					<span class="login100-form-title p-b-59">
+						ESPACE PROPRIETAIRE
+					</span>
+
+        {% if error %}
+            <a class="btn btn-warning"> {{ error.messageKey|trans(error.messageData, 'security') }} </a>
+        {% endif %}
+    <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+        <span class="label-input100">Email</span>
+        <input type="email" name="_username"  value="{{ last_username }}" class="input100" placeholder="Tapez votre email">
+
+        <span class="focus-input100"></span>
+    </div>
+
+
+
+    <div class="wrap-input100 validate-input" data-validate="Password is required">
+        <span class="label-input100">Mot de passe</span>
+        <input type="password" name="_password" class="input100" placeholder="Tapez votre mot de passe">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+        <span class="focus-input100"></span>
+    </div>
+
+
+
+    <div class="flex-m w-full p-b-33">
+        <div class="contact100-form-checkbox">
+            <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+            <label class="label-checkbox100" for="ckb1">
+								<span class="txt1">
+									Se souvenir de moi
+								</span>
+            </label>
+        </div>
+
+        <a href="{{ path('em_backend_resetting') }}" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30" id="passwordlostlink">
+            Mot de passe oublié
+        </a>
+
+
+    </div>
+
+    <div class="container-login100-form-btn">
+        <div class="wrap-login100-form-btn">
+            <div class="login100-form-bgbtn"></div>
+            <button class="login100-form-btn">
+                Se connecter
+            </button>
+        </div>
+
+        <a href="{{ path('em_backend_registration_register') }}" class="txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
+            S'inscrire
+            <i class="fa fa-long-arrow-right m-l-5"></i>
+        </a>
+
+    </div>
+</form>

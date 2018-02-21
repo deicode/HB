@@ -1,0 +1,35 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<form  class="login100-form" method="post"  action="{{ path('fos_user_resetting_send_email') }}">
+
+                  <span class="login100-form-subtitle p-b-59">
+						Demande de Réinitialisation de mot de passe
+					</span>
+
+    {% if invalid_username is defined %}
+        <p>cet identifiant ou email n'existe pas dans notre système</p>
+    {% endif %}
+
+    <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+        <span class="label-input100">Email</span>
+        <input  class="input100"  type="email" id="username" name="username" required="required" />
+
+        <span class="focus-input100"></span>
+    </div>
+
+
+    <div class="container-login100-form-btn">
+        <div class="wrap-login100-form-btn">
+            <div class="login100-form-bgbtn"></div>
+            <button class="login100-form-btn">
+                valider
+            </button>
+        </div>
+
+        <a href="{{ path('em_frontend_homepage') }}"  class="txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
+           retour au site
+            <i class="fa fa-long-arrow-right m-l-5"></i>
+        </a>
+
+    </div>
+</form>

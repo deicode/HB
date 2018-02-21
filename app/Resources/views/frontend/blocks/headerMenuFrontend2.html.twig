@@ -1,0 +1,105 @@
+<!--<div class="page-loader">
+    <img class="page-loader-img" src="{##} asset('bundles/emfrontend/assets/') }}images/page-loader-img.gif" alt="Page Loader"/>
+</div>-->
+<div id="mobile-header" class="mobile-header hidden-md hidden-lg">
+    <div class="contact-number">
+        <svg xmlns="http://www.w3.org/2000/svg" class="contacts-icon-container" width="10" height="16" viewBox="0 0 10 16">
+            <path class="icon-phone-two" fill="#0dbae8" d="{{ informations.mobile }}"/>
+        </svg>
+        <span class="desktop-version hidden-xs">{{ informations.mobile }}</span>
+        <a class="mobile-version visible-xs-inline-block" href="tel://{{ informations.mobile }}" title="Make a Call">{{ informations.mobile }}</a>
+    </div>
+    <!-- .contact-number -->
+    <div class="mobile-header-nav">
+        <ul class="user-nav">
+            <li>
+                <a href="">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="contacts-icon-container" width="16" height="10" viewBox="0 0 16 10">
+                        <path class="icon-email-two" fill="#737a84" d="M15.09455,11.9789h-13.986c-.55 0-1-.447-1-1v-9.99c0-.55.448-.998 1-.998h13.986c.552 0 1 .447 1 1v9.99c0 .55-.448.998-1 .998zm-2.412-1.997l-3.02-3.02-.91.78c-.175.15-.402.24-.65.24-.25 0-.475-.09-.65-.24l-.913-.78-3.02 3.02h9.164zm-10.575-1.413l2.912-2.91-2.912-2.497v5.407zm1.703-6.58l4.291 3.679 4.293-3.68h-8.585zm7.375 3.67l2.912 2.91v-5.406l-2.912 2.495z"/>
+                    </svg>
+                    {{ informations.email }}
+                </a>
+            </li>
+        </ul>
+        <!-- .user-nav -->
+
+        <!-- .social-networks -->
+    </div>
+</div>
+<header class="site-header header header-variation-three">
+    <div class="container">
+        <div class="row zero-horizontal-margin">
+            <div class="col-lg-2 col-md-2 zero-horizontal-padding">
+                <div id="site-logo" class="site-logo">
+                    <div class="logo-inner-wrapper">
+                        <a href="{{ path('em_frontend_homepage') }}"><img class="img-responsive" style="height: 100px" src="{{ asset('bundles/emfrontend/assets/') }}images/logo.png" alt="Logo"/></a>
+                    </div>
+                </div>
+            </div>
+            <!-- .left-column -->
+            <div class="col-lg-10 col-md-10 zero-horizontal-padding hidden-xs hidden-sm">
+                <div class="header-top clearfix">
+
+                    <ul class="user-nav">
+
+                        <li><a href="{{ path('em_backend_serviceLogin') }}">Soumettre votre etablissment</a></li>
+
+                        <li><a href="{{ path('em_client_auth_serviceLogin') }}">Mes reservations</a></li>
+                        <li><a href="{{ path('em_client_auth_registration_register') }}">Inscription</a></li>
+
+                        <li><a href="{{ path('em_client_auth_serviceLogin') }}">Connexion</a></li>
+
+                        <!-- <li><a class="submit-property-link" href="{#{ path("em_frontend_addbienimmo") }#}"><i class="fa fa-plus-circle"></i>Soumettre un bien</a></li>-->
+
+
+                    </ul><!-- .user-nav -->
+                </div>
+                <!-- .header-top -->
+                <div class="header-bottom clearfix">
+
+                    <!-- .contact-number -->
+                    <nav id="site-main-nav" class="site-main-nav">
+                        <ul class="main-menu clearfix">
+                            <li class="{% if slug == 'home' %}current-menu-item {% endif %}">
+                                <a href="{{ path('em_frontend_homepage') }}" >Accueil</a>
+                            </li>
+
+
+                            <li class="{% if slug == 'liste-propriete-hotel' or slug == 'liste-proprietes' or slug == 'soumettre-bienimmo' or slug == 'activite'%}current-menu-item {% endif %}">
+                                <a href="{{ path('em_frontend_listehotels') }}">Hebergement</a>
+
+                            </li>
+                            <li class="#">
+                                <a href="{#{  path('em_frontend_page_statique', {'slug' : 'conseil'}) }#}"> Location de vehicules</a>
+                            </li>
+
+                            <li class="{%  if slug == 'conseil' %}current-menu-item {%  endif %}">
+                                <a href="{#{  path('em_frontend_page_statique', {'slug' : 'conseil'}) }#}">Conseil</a>
+                            </li>
+
+                            <!--  <li class="{##} if slug == 'qui-sommes-nous' %} current-menu-item {##} endif %}">
+                                <a href="#">Notre Agence</a>
+                                <ul class="sub-menu">
+                                    <li><a href="{#{ path("em_frontend_basic_page", {'slug': "qui-sommes-nous"}) }}">Qui Sommes-nous</a></li>
+
+                                    <li><a href="{#{ path('em_frontend_politique_page',{'slugs': 'carrire'}) }}">Carrière</a></li>
+                                    <li><a href="{##}{ path('em_frontend_politique_page',{'slugs': 'politique-et-conditions'}) }}">Politique et condition</a></li>
+                                    <li class="{# if slug == 'contact' %}current-menu-item {% endif %}">
+                                        <a href="{##}{ path('em_frontend_contact') }}">Contactez-nous</a>
+                                    </li>
+                                 </ul>
+                            </li>
+                            -->
+
+
+                        </ul>
+                    </nav>
+                </div>
+                <!-- .header-bottom -->
+            </div>
+            <!-- .right-column -->
+        </div>
+        <!-- .row -->
+    </div>
+    <!-- .container -->
+</header>

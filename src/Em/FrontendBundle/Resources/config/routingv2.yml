@@ -1,0 +1,24 @@
+em_frontendv2_homepage:
+    path:     /
+    defaults: { _controller: EmFrontendBundle:FrontendV2:index }
+
+
+em_frontend_recherchehome:
+    path:    recherche-home/
+    defaults: { _controller: EmFrontendBundle:FrontendV2:rechercheHome }
+
+em_frontend_agence_detail:
+    path:     detail-agence/{idagence}
+    defaults: { _controller: EmFrontendBundle:FrontendV2:detailAgence, idagence: null }
+
+em_frontend_chambre_encours_reserve:
+    path:    chambre-en-cours-reservation/{reference}
+    defaults: { _controller: EmFrontendBundle:FrontendV2:chambreencoursReservation }
+
+em_frontend_reservartion_connected:
+    path:     /mon-compte/reservation/{idbien}
+    defaults: { _controller: EmFrontendBundle:FrontendV2:reservation }
+
+em_frontend_reservartion_success:
+    path:     /mon-compte/reservation-success/{numreservat}
+    defaults: { _controller: EmFrontendBundle:FrontendV2:reservationSuccess }

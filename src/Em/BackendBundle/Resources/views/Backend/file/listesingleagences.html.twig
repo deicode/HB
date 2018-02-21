@@ -1,0 +1,12 @@
+{% extends '::backend/backendLayout-B.html.twig' %}
+
+    {% block headLibelle %}
+        Ajouter une Agence  ||  <span class="text-primary"> <a href="#"> Voir les Agences</a></span>
+
+    {% endblock headLibelle %}
+
+{% block contenu %}
+
+    {% include('EmBackendBundle:Backend:fileContent/listesingleagencesContent.html.twig') %}
+
+{% endblock contenu %}

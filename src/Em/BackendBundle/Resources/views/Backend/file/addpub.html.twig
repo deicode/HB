@@ -1,0 +1,12 @@
+{% extends '::backend/backendLayout.html.twig' %}
+
+    {% block headLibelle %}
+        Gerer la pub de la page  <span class="text-primary">, Accueil</span>
+
+    {% endblock headLibelle %}
+
+{% block contenu %}
+
+    {% include('EmBackendBundle:Backend:fileContent/addpubContent.html.twig') %}
+
+{% endblock contenu %}

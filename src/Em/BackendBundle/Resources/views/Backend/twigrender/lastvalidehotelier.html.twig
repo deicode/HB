@@ -1,0 +1,24 @@
+
+
+<div class="panel">
+    <div class="panel-heading">
+        <h4 class="panel-title">Derniers proprietaires inscrit</h4>
+    </div>
+    <div class="panel-body">
+        <ul class="media-list user-list">
+            {% for data in hoteleierslastvalide|slice(0,3) %}
+            <li class="media">
+                <div class="media-left">
+                    <a href="{{ path('em_backend_listehoteliernews') }}">
+                        <img class="media-object img-circle" src="{{ asset('bundles/embackend/assets/') }}/images/photos/hotelier-valide.png" alt="">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading"><a href="">{{ data.username }}</a></h4>
+                    email:  <span>{{ data.email }}</span>
+                </div>
+            </li>
+           {% endfor %}
+        </ul>
+    </div>
+</div>

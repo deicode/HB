@@ -1,0 +1,12 @@
+{% extends '::backend/backendLayout-B.html.twig' %}
+
+    {% block headLibelle %}
+        Ajouter une chambre  ||  <span class="text-primary"> <a href="{{ path('em_backend_litesingleagence') }}">  Liste Chambres </a></span>
+
+    {% endblock headLibelle %}
+
+{% block contenu %}
+
+    {% include('EmBackendBundle:Backend:fileContent/addchambreContent.html.twig') %}
+
+{% endblock contenu %}

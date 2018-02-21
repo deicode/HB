@@ -1,0 +1,75 @@
+{% block Contenu %}
+    <div id="wrapper">
+
+        <div class="main-content">
+            {% for flashMessage in app.session.flashbag.get('Notice')|slice(0,1) %}
+
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <strong>Hi !</strong>  {{ flashMessage }} .
+                </div>
+            {% endfor %}
+            <div class="row small-spacing">
+                <div class="box-content card">
+                    <h4 class="box-title">
+                        <i class="fa fa-building ico"></i>Historique des  reservations de vos agences </h4>
+
+                    <div class="card-content">
+                        <div class="col-sm-12" style="margin-bottom:0.5em">
+                            <a href="#"><button type="submit" class="btn btn-info btn-sm pull-right waves-effect waves-light">Ajouter un bien</button></a>
+                        </div>
+
+                        <table id="#table-bien" class="table table-bien table-striped table-bordered table-responsive display" style="width:100%">
+                            <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>N° Réservation</th>
+
+                                <th>Nom & Prénoms( client)</th>
+                                <th>Phone</th>
+                                <th>Status</th>
+                                <th>Details</th>
+                            </tr>
+                            </thead>
+                            <tfoot>
+                            <tr>
+                                <th>Type</th>
+                                <th>N° Réservation</th>
+
+                                <th>Nom & Prénoms</th>
+                                <th>Phone</th>
+                                <th>Status</th>
+                                <th>Details</th>
+                            </tr>
+                            </tfoot>
+                            <tbody>
+                            {% for data in entity %}
+                                <td>{{ data.chambre.agences.caracteristique }}</td>
+                                <td>{{ data.numeroreservation }}</td>
+                                <td>{{ data.nom }} | {{ data.prenoms }}</td>
+                                <td>{{ data.phone }}</td>
+                                <td>{{ data.status }}</td>
+
+                                <td>        {% if data.confirmer %}
+                                        <a href="#" title="Reservation validée par proprietaire"><i class="fa fa-thumbs-up"></i> </a>
+                                    {% else %}
+                                        <a href="{{ path('em_backend_proprietaire_reservations_confirmer',{'idreservation' : data.id|urlencrypt , 'status':'valider'})}}" title="reservation"><i class="fa fa-thumbs-down" style="color: #ff0000"></i> </a>
+                                    {% endif %}
+
+                                   |  <a href="{{ path('em_backend_proprietaire_reservations_details', {'idreservation' : data.id|urlencrypt }) }}" title="voir plus d'infos sur la reservation "><i class="fa fa-eye"></i> Consulter</a>
+                                </td>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        {{ knp_pagination_render(entity) }}
+
+                    </div>
+                    <!-- /.card-content -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock Contenu %}
+

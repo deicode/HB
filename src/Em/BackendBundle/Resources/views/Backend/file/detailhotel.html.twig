@@ -1,0 +1,11 @@
+{% extends '::backend/backendLayout-B.html.twig' %}
+
+    {% block headLibelle %}
+        <span class="text-primary">  Consultation Hotel </span>
+    {% endblock headLibelle %}
+
+{% block contenu %}
+
+    {% include('EmBackendBundle:Backend:fileContent/detailhotelContent.html.twig') %}
+
+{% endblock contenu %}

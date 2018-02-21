@@ -1,0 +1,62 @@
+<div class="tab-pane active" id="mainmenu">
+    <h5 class="sidebar-title">Favorites</h5>
+    <ul class="nav nav-pills nav-stacked nav-quirk">
+        <li class="active"><a href="{{ path('em_backend_homepage') }}"><i class="fa fa-home"></i> <span>Accueil</span></a></li>
+        <li><a href="{{ path('em_frontend_homepage') }}" target="_blank"> <span>retour au site</span></a></li>
+       <!-- <li><a href="#"><i class="fa fa-map-marker"></i> <span>Maps</span></a></li>-->
+    </ul>
+
+    <h5 class="sidebar-title">Actions</h5>
+    <ul class="nav nav-pills nav-stacked nav-quirk">
+        <li class="nav-parent">
+            <a href=""><i class="fa fa-check-square"></i> <span>Gestion Site</span></a>
+            <ul class="children">
+                <li><a href="{{ path('em_backend_addslidehome') }}">Changer le slide</a></li>
+                <li><a href="{{ path('em_backend_slidehome') }}">Liste slide</a></li>
+                <li><a href="{{ path('em_backend_listepagesite') }}">Gerer les pages</a></li>
+                <li><a href="">Bannieres pub</a></li>
+                <li><a href="{{ path('em_backend_listenews') }}">Gestion articles news</a></li>
+                <li><a href="#">Gerer commentaires</a></li>
+            </ul>
+        </li>
+        <li class="nav-parent"><a href=""><i class="fa fa-road"></i> <span>Gerer les villes</span></a>
+            <ul class="children">
+                <li><a href="{{ path('em_backend_listeville') }}">Gestion des villes</a></li>
+            </ul>
+        </li>
+        <li class="nav-parent"><a href=""><i class="fa fa-building-o"></i> <span>Hôteliers</span></a>
+            <ul class="children">
+                <li><a href="{{ path('em_backend_listehoteliernews') }}">Nouveaux</a></li>
+                <li><a href="{{ path('em_backend_listehoteliers') }}">Liste Hôteliers</a></li>
+                <li><a href="{{ path('em_backend_addagence') }}">Ajouter Agence</a></li>
+                <li><a href="{{ path('em_backend_litesingleagence') }}">Mon Agence</a></li>
+                <li><a href="{{ path('em_backend_listehoteliers') }}">Mon coffre</a></li>
+            </ul>
+        </li>
+        <li class="nav-parent"><a href=""><i class="fa fa-th-list"></i> <span>Chambres</span></a>
+            <ul class="children">
+                <li><a href="#">Ajouter</a></li>
+                <li><a href="#">Chambre simples</a>  </li>
+                <li><a href="#">Chambre standard</a> </li>
+                <li><a href="#">Mini suite</a>     </li>
+                <li><a href="#">Suite junior</a>   </li>
+                <li><a href="#">Suite senior</a>  </li>
+                <li><a href="#">Suite executive</a> </li>
+            </ul>
+        </li>
+        <li class="nav-parent"><a href=""><i class="fa fa-file-text"></i> <span>Réservations</span></a>
+            <ul class="children">
+                <li><a href="{{ path('em_backend_listereservation') }}">News(4)</a></li>
+                <li><a href="#">Historique(4)</a></li>
+
+            </ul>
+        </li>
+        <li class="nav-parent"><a href=""><i class="fa fa-user"></i> <span>users</span></a>
+            <ul class="children">
+                <li><a href="#">ajouter</a></li>
+                <li><a href="#">liste</a></li>
+
+            </ul>
+        </li>
+    </ul>
+</div>

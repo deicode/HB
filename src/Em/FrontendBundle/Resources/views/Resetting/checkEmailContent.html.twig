@@ -1,0 +1,26 @@
+{% trans_default_domain 'FOSUserBundle' %}
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <i class="fa fa-thumbs-up round box-icon-large box-icon-center box-icon-success mb30"></i>
+        <h2 class="text-center">Reinialisation éffectuée avec succès!</h2>
+        <h5 class="text-center mb30"> {{ 'resetting.check_email'|trans({'%email%': email}) }}</h5>
+
+        <h4 class="text-center">Découvrez nos hôtels </h4>
+        <ul class="list list-inline list-center">
+            <li><a class="btn btn-primary" href="{{ path('em_frontend_listehotelbyetoile', {grade : 5|urlencrypt }) }}">  <i class="fa fa-star"></i>  <i class="fa fa-star"></i>  <i class="fa fa-star"></i>  <i class="fa fa-star"></i> <i class="fa fa-star"></i></a>
+            </li>
+            <li><a class="btn btn-primary" href="{{ path('em_frontend_listehotelbyetoile', {grade : 4|urlencrypt }) }}"> <i class="fa fa-star"></i>  <i class="fa fa-star"></i>  <i class="fa fa-star"></i>  <i class="fa fa-star"></i></a>
+
+            </li>
+            <li><a class="btn btn-primary" href="{{ path('em_frontend_listehotelbyetoile', {grade : 3|urlencrypt }) }}">  <i class="fa fa-star"></i>  <i class="fa fa-star"></i>  <i class="fa fa-star"></i></a>
+
+            </li>
+            <li><a class="btn btn-primary" href="{{ path('em_frontend_listehotelbyetoile', {grade : 2|urlencrypt }) }}"> <i class="fa fa-star"></i>  <i class="fa fa-star"></i></a>
+
+            </li>
+            <li><a class="btn btn-primary" href="{{ path('em_frontend_listehotelbyetoile', {grade : 1|urlencrypt }) }}">  <i class="fa fa-star"></i></a>
+
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+{% extends '::backend/backendLayout.html.twig' %}
+
+    {% block headLibelle %}
+        Gerer vos biens  <span class="text-primary"></span>
+
+    {% endblock headLibelle %}
+
+{% block contenu %}
+
+    {% include('EmBackendBundle:Backend:fileContent/home.html.twig') %}
+
+{% endblock contenu %}

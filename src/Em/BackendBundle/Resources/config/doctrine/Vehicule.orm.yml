@@ -1,0 +1,16 @@
+Em\BackendBundle\Entity\Vehicule:
+    type: entity
+    table: null
+    repositoryClass: Em\BackendBundle\Repository\VehiculeRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        libelle:
+            type: string
+            length: 255
+
+    lifecycleCallbacks: {  }

@@ -1,0 +1,8 @@
+{% extends '::frontend/layoutdetail.html.twig' %}
+
+{% block headerMenuFrontend %}
+    {{   render (controller("EmFrontendBundle:Frontend:headerMenuFrontend",{'slug': 'activite'})) }}
+{% endblock headerMenuFrontend %}
+{% block Contenu %}
+    {% include 'EmFrontendBundle:filesContent:detailimmoContent.html.twig' %}
+{% endblock Contenu %}

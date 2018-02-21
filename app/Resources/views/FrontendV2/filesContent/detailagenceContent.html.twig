@@ -1,0 +1,61 @@
+<div class="col-lg-9 col-xs-12">
+    <div class="row">
+        <ul id="imageGallery">
+
+            {% for dataimage in dataimages %}
+                <li  data-thumb="{{ asset('bundles/emfrontend/assets/pics/agences/') }}{{ dataimage.title }}"
+                     data-src="{{ asset('bundles/emfrontend/assets/pics/agences/') }}{{ dataimage.title }}">
+                    <img src="{{ asset('bundles/emfrontend/assets/pics/agences/')}}{{ dataimage.title }}" alt="{{dataimage.title }}" title="{{dataimage.title}}" >
+                </li>
+
+            {% endfor %}
+        </ul>
+
+        <p>
+        <h4 class="text-info">Description du bien</h4>
+                            <span class="text-left">
+                            {{ agence.description}}
+                           </span>
+        </p>
+
+        <p>
+            {% for data in  dataallroom %}
+        <div class="profile-avatar col-lg-4 col-xs-12">
+            <a href="{{ path('em_frontend_chambre_encours_reserve', {'reference': data.id}) }}">
+                <img src="{{ asset('bundles/emfrontend/assets/') }}pics/chambres/{{data.images.title }}" alt="{{ data.images.title }}" title="{{ data.images.title }}" />
+
+            </a>
+            <table class="table table-hover no-margin">
+                <tbody>
+                <tr>
+                    <td class="text-success"> {{ data.typechambre }}</td>
+                </tr>
+                <tr>
+                    <td class="text-info">{{ data.prixchambre|localizedcurrency('XOF') }}</td>
+                </tr>
+                <tr>
+                    <td>{{ data.description }}</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="{{ path('em_frontend_chambre_encours_reserve', {'reference': data.id}) }}">
+                            <button class="btn btn-success  col-xs-12">Reserver</button>
+                        </a>
+
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        {% endfor %}
+        <!-- .profile-avatar -->
+
+        <!-- .profile-avatar -->
+        </p>
+    </div>
+
+    <div class="row">
+        <h4 class="text-info">Localisation</h4>
+        {{ agence.urlmap|raw  }}
+    </div>
+</div>

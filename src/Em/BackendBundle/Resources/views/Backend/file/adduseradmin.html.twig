@@ -1,0 +1,12 @@
+{% extends '::backend/backendLayout.html.twig' %}
+
+    {% block headLibelle %}
+        Ajouter un , <span class="text-primary">, Admin ou Superviseur  </span>
+
+    {% endblock headLibelle %}
+
+{% block contenu %}
+
+    {% include('EmBackendBundle:Backend:fileContent/adduseradminContent.html.twig') %}
+
+{% endblock contenu %}

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{% block title %} HomeMobilite - Bienvenue sur votre espace d'administration {% endblock title %}</title>
+    {% block scriptcss %}
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="{{ asset('bundles/emfrontend/assetsv2/') }}styles/style.css">
+
+    <!-- mCustomScrollbar -->
+    <link rel="stylesheet" href="{{ asset('bundles/emfrontend/assetsv2/') }}plugin/mCustomScrollbar/jquery.mCustomScrollbar.min.css">
+
+    <!-- Waves Effect -->
+    <link rel="stylesheet" href="{{ asset('bundles/emfrontend/assetsv2/') }}plugin/waves/waves.min.css">
+
+    <!-- Sweet Alert -->
+    <link rel="stylesheet" href="{{ asset('bundles/emfrontend/assetsv2/') }}plugin/sweet-alert/sweetalert.css">
+
+    <!-- Datepicker -->
+
+    <!-- Chartist Chart -->
+    <link rel="stylesheet" href="{{ asset('bundles/emfrontend/assetsv2/') }}plugin/chart/chartist/chartist.min.css">
+
+    <!-- Color Picker -->
+    <link rel="stylesheet" href="{{ asset('bundles/emfrontend/assetsv2/') }}color-switcher/color-switcher.min.css">
+    <link rel="stylesheet" href="{{ asset('bundles/emfrontend/assetsv2/') }}styles/color/dark-blue.min.css">
+    <link rel="stylesheet" href="{{ asset('bundles/emfrontend/assetsv2/') }}styles/persocss.css">
+    <link rel="stylesheet" href="{{ asset('bundles/emfrontend/assetsv2/') }}persocss.css">
+    <link rel="stylesheet" href="{{ asset('bundles/emfrontend/assetsv2/') }}styles/flag-icon.min.css">
+   {% endblock scriptcss %}
+</head>
+
+<body>
+{% block menuLeft %}
+
+{% endblock menuLeft %}
+<!-- /.main-menu -->
+
+<div class="fixed-navbar">
+    <div class="pull-left">
+        <button type="button" class="menu-mobile-button glyphicon glyphicon-menu-hamburger js__menu_mobile"></button>
+        <h1 class="page-title">Accueil</h1>
+        <!-- /.page-title -->
+    </div>
+    <!-- /.pull-left -->
+    <div class="pull-right">
+        <!-- <div class="ico-item">
+            <a href="#" class="ico-item fa fa-search js__toggle_open" data-target="#searchform-header"></a>
+            <form action="#" id="searchform-header" class="searchform js__toggle"><input type="search" placeholder="Search..." class="input-search"><button class="fa fa-search button-search" type="submit"></button></form>
+
+        </div> -->
+        <!-- /.ico-item -->
+        <div class="ico-item fa fa-arrows-alt js__full_screen"></div>
+        <!-- /.ico-item fa fa-fa-arrows-alt -->
+
+        <a href="#" class="ico-item fa fa-envelope notice-alarm js__toggle_open" data-target="#message-popup"></a>
+        <a href="#" class="ico-item pulse">
+            <span class="ico-item fa fa-bell notice-alarm js__toggle_open" data-target="#notification-popup"></span>
+        </a>
+        <a href="{{ path('em_backend_logout') }}" class="ico-item fa fa-power-off js__logout"></a>
+    </div>
+    <!-- /.pull-right -->
+</div>
+<!-- /.fixed-navbar -->
+
+<div id="notification-popup" class="notice-popup js__toggle" data-space="75">
+    <h2 class="popup-title">Notifications</h2>
+    <!-- /.popup-title -->
+    <div class="content">
+        <ul class="notice-list">
+
+
+        </ul>
+        <!-- /.notice-list -->
+        <a href="#" class="notice-read-more">Voir plus
+            <i class="fa fa-angle-down"></i>
+        </a>
+    </div>
+    <!-- /.content -->
+</div>
+<!-- /#notification-popup -->
+
+<div id="message-popup" class="notice-popup js__toggle" data-space="75">
+    <h2 class="popup-title">Messages
+        <a href="#" class="pull-right text-danger">Nouveau message</a>
+    </h2>
+    <!-- /.popup-title -->
+    <div class="content">
+        <ul class="notice-list">
+
+        </ul>
+        <!-- /.notice-list -->
+        <a href="#" class="notice-read-more">Voir plus
+            <i class="fa fa-angle-down"></i>
+        </a>
+    </div>
+    <!-- /.content -->
+</div>
+<!-- /#message-popup -->
+{% block contenu %}
+<div id="wrapper">
+    <div class="main-content">
+        <div class="row small-spacing">
+
+            <div class="col-lg-12 hidden-xs">
+                <div class="box-content card">
+                    <h4 class="box-title  bg-danger">
+                        <i class="fa fa-bed ico"></i>Mes modèles de chambres</h4>
+
+                    <div class="card-content">
+                        <ul class="list-group col-xs-4">
+                            <li class="list-group-item">
+                                <span class="badge">0</span>
+                                Chambre Simple
+                                <i class="text-warning">&nbsp;</i>
+                            </li>
+
+                            <li class="list-group-item">
+                                <span class="badge">0</span>
+                                Chambre Standard
+                                <i class="fa fa-star text-warning"></i>
+                            </li>
+
+                        </ul>
+
+                        <ul class="list-group  col-xs-4">
+
+                            <li class="list-group-item">
+                                <span class="badge">0</span>
+                                Suite Mini
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                            </li>
+
+                            <li class="list-group-item">
+                                <span class="badge">0</span>
+                                Suite Junior
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                            </li>
+
+                        </ul>
+                        <ul class="list-group  col-xs-4">
+
+                            <li class="list-group-item">
+                                <span class="badge">0</span>
+                                Suite Senior
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                            </li>
+
+                            <li class="list-group-item">
+                                <span class="badge">0</span>
+                                Suite Executive
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <!-- /.card-content -->
+                </div>
+                <!-- /.box-content card -->
+            </div>
+
+
+            <div class="col-xs-12 col-lg-12">
+                <div class="box-content card">
+                    <h4 class="box-title">
+                        <i class="fa fa-money ico"></i>Gerer vos biens</h4>
+
+                    <div class="card-content">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-4 col-lg-4">
+                                <a href="#">
+                                    <div class="box-content bg-success">
+                                        <div class="statistics-box with-icon">
+                                            <i class="ico fa fa-home text-white"></i>
+                                            <h2 class="counter text-white">2561</h2>
+                                            <p class="text-white">Immobiliers</p>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-content -->
+                                </a>
+                            </div>
+
+                            <div class="col-xs-6 col-sm-4 col-lg-4">
+                                <a href="#">
+                                    <div class="box-content  bg-info">
+                                        <div class="statistics-box with-icon">
+                                            <i class="ico fa fa-bed text-white"></i>
+                                            <h2 class="counter text-white">2561</h2>
+                                            <p class="text-white">Hotels</p>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-content -->
+                                </a>
+                            </div>
+
+                            <div class="col-xs-6 col-sm-4 col-lg-4">
+                                <a href="#">
+                                    <div class="box-content bg-danger">
+                                        <div class="statistics-box with-icon">
+                                            <i class="ico fa fa-car text-white"></i>
+                                            <h2 class="counter text-white">2561</h2>
+                                            <p class="text-white">Véhicules</p>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-content -->
+                                </a>
+                            </div>
+
+
+                            <div class="col-xs-6 col-sm-4 col-lg-4">
+                                <a href="reservations-recentes.html">
+                                    <div class="box-content bg-info">
+                                        <div class="statistics-box with-icon">
+                                            <i class="ico fa fa-shopping-cart text-white"></i>
+                                            <h2 class="counter text-white">2561</h2>
+                                            <p class="text-white">Mes reservations</p>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-content -->
+                                </a>
+                            </div>
+
+                            <div class="col-xs-6 col-sm-4 col-lg-4">
+                                <a href="profil.html">
+                                    <div class="box-content  bg-danger">
+                                        <div class="statistics-box with-icon">
+                                            <i class="ico fa fa-info text-white"></i>
+                                            <h2 class="counter text-white">&nbsp;</h2>
+                                            <p class="text-white">Mes informations</p>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-content -->
+                                </a>
+                            </div>
+
+                            <div class="col-xs-6 col-sm-4 col-lg-4">
+                                <a href="portefeuille.html">
+                                    <div class="box-content bg-success">
+                                        <div class="statistics-box with-icon">
+                                            <i class="ico fa fa-bank text-white"></i>
+                                            <h2 class="counter text-white">2561</h2>
+                                            <p class="text-white">Mon Porte-feuille</p>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-content -->
+                                </a>
+                            </div>
+
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.card-content -->
+                </div>
+                <!-- /.box-content card -->
+            </div>
+
+            <div class="col-xs-12">
+                <div class="box-content  col-xs-12  bg-info">
+                    <h4 class="box-title text-white">Mes reservations périodiques</h4>
+                    <!-- /.box-title -->
+                    <div class="content widget-stat col-lg-4">
+                        <div class="percent bg-success">
+                            <i class="fa fa-arrow-up"></i>+40%</div>
+                        <!-- /.percent -->
+                        <div class="right-content">
+                            <h2 class="counter text-white">976</h2>
+                            <!-- /.counter -->
+                            <p class="text-white">Aujourd'hui</p>
+                            <!-- /.text -->
+                        </div>
+                        <!-- /.right-content -->
+                        <div class="clear"></div>
+                        <!-- /.clear -->
+                    </div>
+                    <!-- /.content widget-stat -->
+
+                    <div class="content widget-stat col-lg-4">
+                        <div class="percent bg-danger">
+                            <i class="fa fa-arrow-down"></i>-5%</div>
+                        <!-- /.percent -->
+                        <div class="right-content">
+                            <h2 class="counter text-white">976</h2>
+                            <!-- /.counter -->
+                            <p class="text-white">Cette Semaine</p>
+                            <!-- /.text -->
+                        </div>
+                        <!-- /.right-content -->
+                        <div class="clear"></div>
+                        <!-- /.clear -->
+                    </div>
+                    <!-- /.content widget-stat -->
+
+                    <div class="content widget-stat col-lg-4">
+                        <div class="percent bg-warning">
+                            <i class="fa fa-arrows-h"></i>0%</div>
+                        <!-- /.percent -->
+                        <div class="right-content">
+                            <h2 class="counter text-white">976</h2>
+                            <!-- /.counter -->
+                            <p class="text-white">Ce Mois</p>
+                            <!-- /.text -->
+                        </div>
+                        <!-- /.right-content -->
+                        <div class="clear"></div>
+                        <!-- /.clear -->
+                    </div>
+                    <!-- /.content widget-stat -->
+
+                </div>
+                <!-- /.box-content -->
+
+                <div class="box-content col-lg-4 col-xs-12">
+                    <h4 class="box-title">Parts activités Jour</h4>
+                    <!-- /.box-title -->
+
+                    <div class="content">
+                        <div id="chart-1" class="js__chart" data-type="donut"
+                             data-chart="'Type'/'Number' | 'Immobiliers'/50 | 'Hotels'/20 | 'Vehicules'/20">
+                        </div>
+                    </div>
+                    <!-- /.content -->
+                </div>
+                <!-- /.box-content -->
+
+                <div class="box-content col-lg-4 col-xs-12">
+                    <h4 class="box-title">Parts activités Semaine</h4>
+                    <!-- /.box-title -->
+
+                    <div class="content">
+                        <div id="chart-2" class="js__chart" data-type="donut"
+                             data-chart="'Type'/'Number' | 'Immobiliers'/50 | 'Hotels'/20 | 'Vehicules'/20">
+                        </div>
+                    </div>
+                    <!-- /.content -->
+                </div>
+                <!-- /.box-content -->
+
+
+                <div class="box-content col-lg-4 col-xs-12">
+                    <h4 class="box-title">Parts activités Mois</h4>
+                    <!-- /.box-title -->
+
+                    <div class="content">
+                        <div id="chart-3" class="js__chart" data-type="donut"
+                             data-chart="'Type'/'Number' | 'Immobiliers'/50 | 'Hotels'/20 | 'Vehicules'/20">
+                        </div>
+                    </div>
+                    <!-- /.content -->
+                </div>
+                <!-- /.box-content -->
+                <!-- </div> -->
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock contenu %}
+
+
+{% block scriptjs %}
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+<script src="{{ asset('bundles/emfrontend/assetsv2/') }}script/html5shiv.min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assetsv2/') }}script/respond.min.js"></script>
+<![endif]-->
+<!--
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="{{ asset('bundles/emfrontend/assetsv2/') }}scripts/jquery.min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assetsv2/') }}scripts/modernizr.min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assetsv2/') }}plugin/bootstrap/js/bootstrap.min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assetsv2/') }}plugin/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assetsv2/') }}plugin/nprogress/nprogress.js"></script>
+<script src="{{ asset('bundles/emfrontend/assetsv2/') }}plugin/sweet-alert/sweetalert.min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assetsv2/') }}plugin/waves/waves.min.js"></script>
+<!-- Datepicker -->
+
+<!-- Moment -->
+<script src="{{ asset('bundles/emfrontend/assetsv2/') }}plugin/moment/moment.js"></script>
+<!-- Demo Scripts -->
+<script src="{{ asset('bundles/emfrontend/assetsv2/') }}scripts/form.demo.min.js"></script>
+
+<!-- Google Chart -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<!-- Form Wizard -->
+<script src="{{ asset('bundles/emfrontend/assetsv2/') }}plugin/form-wizard/prettify.js"></script>
+<script src="{{ asset('bundles/emfrontend/assetsv2/') }}plugin/form-wizard/jquery.bootstrap.wizard.min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assetsv2/') }}plugin/jquery-validation/jquery.validate.min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assetsv2/') }}scripts/form.wizard.init.js"></script>
+<script src="{{ asset('bundles/emfrontend/assetsv2/') }}scripts/form.wizard.init.min.js"></script>
+
+<!-- Chartist Chart -->
+<script src="{{ asset('bundles/emfrontend/assetsv2/') }}plugin/chart/chartist/chartist.min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assetsv2/') }}scripts/chart.chartist.init.min.js"></script>
+
+<script src="{{ asset('bundles/emfrontend/assetsv2/') }}scripts/main.js?v=1"></script>
+<script src="{{ asset('bundles/emfrontend/assetsv2/') }}scripts/horizontal-menu.js"></script>
+<script src="{{ asset('bundles/emfrontend/assetsv2/') }}color-switcher/color-switcher.min.js"></script>
+
+{% endblock scriptjs %}
+
+
+</body>
+
+</html>

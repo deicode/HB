@@ -1,0 +1,234 @@
+<div id="content-wrapper" class="site-content-wrapper site-pages">
+    <div id="content" class="site-content layout-boxed">
+        <div class="container">
+            <div class="container-property-single clearfix">
+                <div class="col-lg-8 zero-horizontal-padding property-slider-wrapper">
+                    <div class="single-property-slider gallery-slider flexslider">
+                        <ul class="slides">
+                            {% for dataimage in dataimages %}
+                            <li>
+                                <a class="swipebox" data-rel="gallery12" href="{{ asset('bundles/emfrontend/assets/') }}pics/{{ dataimage.url }}/{{ dataimage.title }}" alt="{{dataimage.title }}" title="{{dataimage.title}}">
+                                    <img src="{{ asset('bundles/emfrontend/assets/') }}pics/{{ dataimage.url }}/{{ dataimage.title }}" alt="{{dataimage.title }}" title="{{dataimage.title}}" >
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div id="property-featured-image" class="only-for-print">
+
+                        <img src="{{ asset('bundles/emfrontend/assets/') }}images/property/property-interior-6-850x570.jpg" alt="Villa in Coral Gables">
+                    </div>
+                </div>
+                <div class="col-lg-3 zero-horizontal-padding property-title-wrapper">
+                    <div class="single-property-wrapper">
+                        <header class="entry-header single-property-header">
+                            <h1 class="entry-title single-property-title">{{ entity.libelle }}</h1>
+                            <span class="single-property-price price">{{  entity.prix|localizedcurrency('XOF') }} </span>
+                        </header>
+                        <div class="property-meta entry-meta clearfix ">
+                            <div class="meta-item">
+                                <i class="meta-item-icon icon-pid">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="meta-icon-container" width="30" height="30" viewBox="0 0 48 48">
+                                        <path class="meta-icon" fill-rule="evenodd" clip-rule="evenodd" fill="#0DBAE8" d="M24 48c-13.255 0-24-10.744-24-24 0-13.255 10.745-24 24-24 13.256 0 24 10.746 24 24 0 13.256-10.744 24-24 24zm7.207-29.719h-.645l.365-2.163c.168-1.067-.699-2.107-1.795-2.107-.896 0-1.654.59-1.793 1.49l-.477 2.78h-3.787l.365-2.163c.167-1.067-.702-2.107-1.796-2.107-.897 0-1.653.59-1.795 1.49l-.477 2.78h-1.599c-.981 0-1.794.814-1.794 1.797s.813 1.798 1.794 1.798h.981l-.7 4.156h-1.263c-.981 0-1.794.814-1.794 1.797s.813 1.797 1.794 1.797h.646l-.39 2.274c-.197 1.18.701 2.105 1.794 2.105 1.01 0 1.655-.73 1.796-1.488l.504-2.893h3.786l-.393 2.276c-.197 1.066.7 2.105 1.796 2.105.896 0 1.654-.617 1.793-1.488l.506-2.893h1.6c.979 0 1.793-.814 1.793-1.797s-.814-1.797-1.793-1.797h-.984l.703-4.156h1.26c.984 0 1.797-.815 1.797-1.798s-.814-1.795-1.798-1.795zm-9.449 7.75l.702-4.156h3.784l-.699 4.156h-3.787z"></path>
+                                    </svg>
+                                </i>
+                                <div class="meta-inner-wrapper">
+                                    <span class="meta-item-label">Reference</span>
+                                    <span class="meta-item-value">{{ entity.reference }}</span>
+                                </div>
+                            </div>
+
+
+                            <div class="meta-item">
+                                <i class="meta-item-icon icon-tag">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="meta-icon-container" width="30" height="30" viewBox="0 0 48 48">
+                                        <path class="meta-icon" fill-rule="evenodd" clip-rule="evenodd" fill="#0DBAE8" d="M47.199 24.176l-23.552-23.392c-.504-.502-1.174-.778-1.897-.778l-19.087.09c-.236.003-.469.038-.696.1l-.251.1-.166.069c-.319.152-.564.321-.766.529-.497.502-.781 1.196-.778 1.907l.092 19.124c.003.711.283 1.385.795 1.901l23.549 23.389c.221.218.482.393.779.523l.224.092c.26.092.519.145.78.155l.121.009h.012c.239-.003.476-.037.693-.098l.195-.076.2-.084c.315-.145.573-.319.791-.539l18.976-19.214c.507-.511.785-1.188.781-1.908-.003-.72-.287-1.394-.795-1.899zm-35.198-9.17c-1.657 0-3-1.345-3-3 0-1.657 1.343-3 3-3 1.656 0 2.999 1.343 2.999 3 0 1.656-1.343 3-2.999 3z"></path>
+                                    </svg>
+                                </i>
+                                <div class="meta-inner-wrapper">
+                                    <span class="meta-item-label">Status</span>
+                                    <span class="meta-item-value">A vendre</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="favorite-and-print clearfix">
+                        <a class="add-to-fav" href="#" data-toggle="modal"><i class="fa fa-star"></i><small> {{ entity.typeimmo.libelle }} </small></a>
+
+                        <a class="printer-icon" href="javascript:window.print()"><i class="fa fa-print"></i>Imprimer</a>
+                    </div>
+                </div>
+                <div class="col-md-8 site-main-content property-single-content">
+                    <main id="main" class="site-main">
+                        <article class="hentry clearfix">
+                            <div class="entry-content clearfix">
+                                <h4 class="fancy-title">Description</h4>
+                                <div class="property-content">
+                                    <p>
+                                        {{ entity.description  }}
+
+                                    </p>
+                                </div>
+                                <div class="property-additional-details clearfix">
+                                    <h4 class="fancy-title">Details</h4>
+                                    <ul class="property-additional-details-list clearfix">
+
+
+                                        {% if entity.adresse is not null %}
+                                            <li>
+                                                <dl>
+                                                    <dt>Adresse :</dt>
+                                                    <dd>{{ entity.adresse }}</dd>
+                                                </dl>
+                                            </li>
+                                        {% endif %}
+                                        {% if entity.anneeconstruction is not null %}
+                                            <li>
+                                                <dl>
+                                                    <dt>Année de Construction:</dt>
+                                                    <dd>{{ entity.anneeconstruction }}</dd>
+                                                </dl>
+                                            </li>
+                                        {% endif %}
+
+                                        {% if entity.surfacehabitable is not null %}
+                                            <li>
+                                                <dl>
+                                                    <dt>Surface Habitale:</dt>
+                                                    <dd>{{ entity.surfacehabitable }}</dd>
+                                                </dl>
+                                            </li>
+                                        {% endif %}
+                                        {% if entity.surfaceterrain is not null %}
+                                            <li>
+                                                <dl>
+                                                    <dt>Surface Terrain: </dt>
+                                                    <dd>{{ entity.surfaceterrain }}</dd>
+                                                </dl>
+                                            </li>
+                                        {% endif %}
+                                        {% if entity.nbrepiece is not null %}
+                                            <li>
+                                                <dl>
+                                                    <dt>Nombre pièce: </dt>
+                                                    <dd>{{ entity.nbrepiece }}</dd>
+                                                </dl>
+                                            </li>
+                                        {% endif %}
+                                        {% if entity.jardin  %}
+                                            <li>
+                                                <dl>
+                                                    <dt>Jardin </dt>
+                                                </dl>
+                                            </li>
+                                        {% endif %}
+                                        {% if entity.piscine  %}
+                                            <li>
+                                                <dl>
+                                                    <dt>Piscine </dt>
+                                                </dl>
+                                            </li>
+                                        {% endif %}
+                                        {% if entity.balcon  %}
+                                            <li>
+                                                <dl>
+                                                    <dt>Balcon </dt>
+                                                </dl>
+                                            </li>
+                                        {% endif %}
+                                        {% if entity.terrasse  %}
+                                            <li>
+                                                <dl>
+                                                    <dt>terrasse </dt>
+                                                </dl>
+                                            </li>
+                                        {% endif %}
+                                        {% if entity.parking  %}
+                                            <li>
+                                                <dl>
+                                                    <dt>Parking </dt>
+                                                </dl>
+                                            </li>
+                                        {% endif %}
+                                        {% if entity.garage  %}
+                                            <li>
+                                                <dl>
+                                                    <dt>Garage </dt>
+                                                </dl>
+                                            </li>
+                                        {% endif %}
+                                        {% if entity.cave  %}
+                                            <li>
+                                                <dl>
+                                                    <dt>Cave </dt>
+                                                </dl>
+                                            </li>
+                                        {% endif %}
+                                        {% if entity.ascenseur  %}
+                                            <li>
+                                                <dl>
+                                                    <dt> Ascenceur</dt>
+                                                </dl>
+                                            </li>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </article>
+                        <section class="property-location-section clearfix">
+                            <h4 class="fancy-title">Location</h4>
+                            <div >
+                                {{ entity.urlmap|raw  }}
+
+                            </div>
+                            <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+                            <script type="text/javascript">
+                                function initialize() {
+                                    var myLatlng = new google.maps.LatLng(40.6845705, -74.1856747);
+                                    var mapCanvas = document.getElementById('property-map');
+                                    var mapOptions = {
+                                        center: myLatlng,
+                                        zoom: 11,
+                                        zoomControl: true,
+                                        zoomControlOptions: {
+                                            style: google.maps.ZoomControlStyle.SMALL
+                                        },
+                                        panControl: false,
+                                        mapTypeControl: true,
+                                        scrollwheel: false
+                                    };
+                                    var map = new google.maps.Map(mapCanvas, mapOptions);
+                                    var marker = new google.maps.Marker({
+                                        position: myLatlng,
+                                        map: map,
+                                        icon: 'images/map/single-family-home-map-icon.png',
+                                        title: 'Villa in Coral Gables'
+                                    });
+                                }
+                                google.maps.event.addDomListener(window, 'load', initialize);
+                            </script>
+                        </section>
+
+                        <div class="clearfix">
+                            <a href="{{path('em_frontend_reservartion_connected',{'idbien':entity.id})}}" id="submit-button" class="btn-small btn-orange pull-right">Reserver/acheter</a>
+                        </div>
+
+                    </main>
+                    <!-- .site-main -->
+                    {#{{ render(controller('EmFrontendBundle:Frontend:renderContact',{'entity': entity.id, 'reference': entity.reference })) }}#}
+                    {#{ render(controller('EmFrontendBundle:Frontend:renderReservation',{'entity': entity.id, 'reference': entity.reference })) }#}
+
+
+                </div>
+                <!-- .site-main-content -->
+                <!-- Menu Right Detail User -->
+                {{ render(controller('EmFrontendBundle:Frontend:menuPageRight')) }}
+                <!-- .site-sidebar-content -->
+            </div>
+            <!-- .container-property-single -->
+        </div>
+        <!-- .container -->
+    </div>
+    <!-- .site-content -->
+</div>

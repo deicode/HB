@@ -1,0 +1,12 @@
+{% extends '::backend/backendLayout.html.twig' %}
+
+    {% block headLibelle %}
+        Gerer les  <span class="text-primary">,  informations du site </span>
+
+    {% endblock headLibelle %}
+
+{% block contenu %}
+
+    {% include('EmBackendBundle:Backend:fileContent/informationsiteafficheContent.html.twig') %}
+
+{% endblock contenu %}

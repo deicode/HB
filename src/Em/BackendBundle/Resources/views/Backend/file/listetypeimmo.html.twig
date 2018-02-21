@@ -1,0 +1,14 @@
+{% extends '::backend/backendLayout.html.twig' %}
+
+    {% block headLibelle %}
+       Liste des Types immobiliers   <span class="text-primary">
+                <a href="{{ path('em_backend_addtypeimmo', {'idpage' : 'All'}) }}"> Ajouter un Type </a>
+</span>
+
+    {% endblock headLibelle %}
+
+{% block contenu %}
+
+    {% include('EmBackendBundle:Backend:fileContent/listetypeimmoContent.html.twig') %}
+
+{% endblock contenu %}

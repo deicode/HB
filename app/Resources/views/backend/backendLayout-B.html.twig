@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!--<link rel="shortcut icon" href="../images/favicon.png" type="image/png">-->
+
+    <title>{% block title %} Bienvenue {% endblock title %}</title>
+
+    <link rel="stylesheet" href="{{ asset('bundles/embackend/assets/') }}lib/Hover/hover.css">
+    <link rel="stylesheet" href="{{ asset('bundles/embackend/assets/') }}lib/fontawesome/css/font-awesome.css">
+    <link rel="stylesheet" href="{{ asset('bundles/embackend/assets/') }}lib/weather-icons/css/weather-icons.css">
+    <link rel="stylesheet" href="{{ asset('bundles/embackend/assets') }}/lib/ionicons/css/ionicons.css">
+    <link rel="stylesheet" href="{{ asset('bundles/embackend/assets') }}/lib/jquery-toggles/toggles-full.css">
+    <link rel="stylesheet" href="{{ asset('bundles/embackend/assets') }}/lib/morrisjs/morris.css">
+
+    <link rel="stylesheet" href="{{ asset('bundles/embackend/assets') }}/css/quirk.css">
+    <link rel="stylesheet" href="{{ asset('bundles/embackend/assets') }}/css/gmapstyle.css">
+
+    <script src="{{ asset('bundles/embackend/assets') }}/lib/modernizr/modernizr.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="{{ asset('bundles/embackend/assets') }}/lib/html5shiv/html5shiv.js"></script>
+    <script src="{{ asset('bundles/embackend/assets') }}/lib/respond/respond.src.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<header>
+    {% block header %}
+        {%  if is_granted('ROLE_ADMIN') %}
+            {{ render(controller('EmBackendBundle:Backend:adminHeader')) }}   <!-- tab-pane -->
+        {% elseif(is_granted('ROLE_SUPERVISEUR')) %}
+            {{ render(controller('EmBackendBundle:Backend:superviseurHeader')) }}   <!-- tab-pane -->
+        {% elseif(is_granted('ROLE_PROPRIETAIRE')) %}
+            {{ render(controller('EmBackendBundle:Backend:hotelierHeader')) }}
+        {% endif %}
+    {% endblock header %}
+</header>
+
+
+    <div class="leftpanel">
+        {% block leftPanel %}
+            {%  if is_granted('ROLE_ADMIN') %}
+                {{ render(controller('EmBackendBundle:Backend:adminLeftPanel')) }}   <!-- tab-pane -->
+            {% elseif(is_granted('ROLE_SUPERVISEUR')) %}
+                {{ render(controller('EmBackendBundle:Backend:superviseurLeftPanel')) }}   <!-- tab-pane -->
+            {% elseif(is_granted('ROLE_PROPRIETAIRE')) %}
+                {{ render(controller('EmBackendBundle:Backend:hotelierLeftPanel')) }}
+            {% endif %}
+        {% endblock leftPanel %}
+    </div><!-- leftpanel -->
+
+<section>
+  {% block contenu %}
+
+  {% endblock contenu %}
+
+
+</section>
+
+
+
+
+<script>
+    // This example displays an address form, using the autocomplete feature
+    // of the Google Places API to help users fill in the information.
+
+    // This example requires the Places library. Include the libraries=places
+    // parameter when you first load the API. For example:
+    // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+    var placeSearch, autocomplete;
+    var componentForm = {
+        street_number: 'short_name',
+        route: 'long_name',
+        locality: 'long_name',
+        administrative_area_level_1: 'short_name',
+        country: 'long_name',
+        postal_code: 'short_name'
+    };
+
+    function initAutocomplete() {
+        // Create the autocomplete object, restricting the search to geographical
+        // location types.
+        autocomplete = new google.maps.places.Autocomplete(
+                /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+                {types: ['geocode']});
+
+        // When the user selects an address from the dropdown, populate the address
+        // fields in the form.
+        autocomplete.addListener('place_changed', fillInAddress);
+    }
+
+    function fillInAddress() {
+        // Get the place details from the autocomplete object.
+        var place = autocomplete.getPlace();
+
+        for (var component in componentForm) {
+            document.getElementById(component).value = '';
+            document.getElementById(component).disabled = false;
+        }
+
+        // Get each component of the address from the place details
+        // and fill the corresponding field on the form.
+        for (var i = 0; i < place.address_components.length; i++) {
+            var addressType = place.address_components[i].types[0];
+            if (componentForm[addressType]) {
+                var val = place.address_components[i][componentForm[addressType]];
+               document.getElementById(addressType).value = val;
+               // document.getElementById(addressType).value =  place.getLatLng();
+            }
+        }
+    }
+
+    // Bias the autocomplete object to the user's geographical location,
+    // as supplied by the browser's 'navigator.geolocation' object.
+    function geolocate() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var geolocation = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude,
+
+                };
+                var circle = new google.maps.Circle({
+                    center: geolocation,
+                    radius: position.coords.accuracy
+                });
+                autocomplete.setBounds(circle.getBounds());
+            });
+        }
+    }
+</script>
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgMyyrT_VJQLgzBb16tuB181Y6n6hpwvs&libraries=places&callback=initAutocomplete" async defer></script>
+
+<script src="{{ asset('bundles/embackend/assets') }}/lib/jquery/jquery.js"></script>
+<script src="{{ asset('bundles/embackend/assets') }}/lib/jquery-ui/jquery-ui.js"></script>
+<script src="{{ asset('bundles/embackend/assets') }}/lib/bootstrap/js/bootstrap.js"></script>
+<script src="{{ asset('bundles/embackend/assets') }}/lib/jquery-toggles/toggles.js"></script>
+
+<script src="{{ asset('bundles/embackend/assets') }}/lib/morrisjs/morris.js"></script>
+<script src="{{ asset('bundles/embackend/assets') }}/lib/raphael/raphael.js"></script>
+
+<script src="{{ asset('bundles/embackend/assets') }}/lib/flot/jquery.flot.js"></script>
+<script src="{{ asset('bundles/embackend/assets') }}/lib/flot/jquery.flot.resize.js"></script>
+<script src="{{ asset('bundles/embackend/assets') }}/lib/flot-spline/jquery.flot.spline.js"></script>
+<!-- ckeditor -->
+
+
+<script src="{{ asset('bundles/embackend/assets') }}/lib/jquery-knob/jquery.knob.js"></script>
+<script src="{{ asset('bundles/embackend/assets') }}/lib/dropzone/dropzone.js"></script>
+<script src="{{ asset('bundles/embackend/assets') }}/js/quirk.js"></script>
+
+
+
+<script src="{{ asset('bundles/embackend/assets') }}/lib/jquery.steps/jquery.steps.js"></script>
+<script src="{{ asset('bundles/embackend/assets') }}/lib/jquery-validate/jquery.validate.js"></script>
+<script src="{{ asset('bundles/embackend/assets') }}/js/sprinter-code.js"></script>
+
+</body>
+</html>

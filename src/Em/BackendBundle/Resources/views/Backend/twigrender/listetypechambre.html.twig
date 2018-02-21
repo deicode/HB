@@ -1,0 +1,58 @@
+
+<div class="fm-sidebar">
+
+    <button class="btn btn-danger btn-quirk btn-block mb20">Chambre standing</button>
+
+    <div class="panel">
+        <div class="panel-heading">
+            <h4 class="panel-title">Mes modèles de chambres </h4>
+        </div>
+        <div class="panel-body">
+            <ul class="folder-list">
+                <li><a href="{% if agences is not null  %}{{ path('em_backend_detailchambre', {'slugchambre' : 'chambre-simple', 'agences':agences.id}) }}{% endif %}">
+                        <i class="fa fa-bed"></i>
+                        Chambre Simple
+                        {{ datatype['chambre-simple'].totalchambre }} chambre(s)
+                    </a>
+                </li>
+                <li><a href="{% if agences is not null  %} {{ path('em_backend_detailchambre', {'slugchambre' : 'chambre-standard', 'agences':agences.id}) }} {% endif %}">
+                        <i class="fa fa-newspaper-o"></i>
+                        Chambre standard
+                        {{ datatype['chambre-standard'].totalchambre }} chambre(s)
+                    </a>
+                </li>
+                <li><a href="{% if agences is not null  %}{{ path('em_backend_detailchambre', {'slugchambre' : 'mini-suite', 'agences':agences.id}) }}{% endif %}">
+                        <i class="fa fa-fax"></i>
+                        Mini Suite
+                        {{ datatype['mini-suite'].totalchambre }} chambre(s)
+                    </a>
+                </li>
+                <li><a href="{% if agences is not null  %}{{ path('em_backend_detailchambre', {'slugchambre' : 'suite-junior', 'agences':agences.id}) }}{% endif %}">
+                        <i class="fa fa-building-o"></i>
+                        Suite Junior
+                        {{ datatype['suite-junior'].totalchambre }} chambre(s)
+                    </a>
+                </li>
+                <li><a href="{% if agences is not null  %}{{ path('em_backend_detailchambre', {'slugchambre' : 'suite-senior', 'agences':agences.id}) }}{% endif %}">
+                        <i class="fa fa-building"></i>
+                        Suite Senior
+                        {{ datatype['suite-senior'].totalchambre }} chambre(s)
+                    </a>
+                </li>
+                <li><a href="{% if agences is not null  %}{{ path('em_backend_detailchambre', {'slugchambre' : 'suite-executive', 'agences':agences.id}) }}{% endif %}">
+                        <i class="fa fa-institution"></i>
+                        Suite Executive
+                        {{ datatype['suite-executive'].totalchambre }} chambre(s)
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <br>
+
+
+    <div class="mb30 clearfix"></div>
+
+
+</div>

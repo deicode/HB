@@ -1,0 +1,65 @@
+
+<div id="content-wrapper" class="site-content-wrapper site-pages">
+    <div id="content" class="site-content layout-boxed">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 site-main-content">
+                    <main id="main" class="site-main default-page clearfix">
+                        <article class="clearfix hentry">
+                            <div class="entry-content clearfix">
+                            <p>
+                                <img src="{{ asset('bundles/emfrontend/assets/') }}images/property/locataire-preemption.jpg" class="img-responsive">
+                            </p>
+                             {{ entity.contenu|raw }}
+                                <p>
+
+                                </p>
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+
+                                        <div class="content">
+                                            <img alt="locataire" class="img-circle" width="160" height="160" src="{{ asset('uploads/img/filemanager/') }}img-locataire1.png">
+
+                                            <p>
+                                                Faîtes le choix du type de biens que vous souhaitez louer dans le pays ou ville de la CEDEAO selon le critère ou le standing (appartements, studios ou lofts à selon vos critères de choix : prix, dates, durée de séjour, etc….)
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                        <div class="content">
+
+                                            <img alt="locataire"  class="img-circle" width="160" height="160" src="{{ asset('uploads/img/filemanager/') }}img-locataire2.jpg">
+
+                                            <p>
+                                                Après la sélection vous pouvez envoyer votre demande directement à HOMEMOBILITE en cliquant sur « ENVOYER ».
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                        <div class="content">
+                                            <img alt="locataire" class="img-circle" width="160" height="160" src="{{ asset('uploads/img/filemanager/') }}img-locataire3.jpg" >
+
+                                            <p>
+                                                Notre agence va vous contacter pour la suite de la procédure.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                          </div>
+                            <footer class="entry-footer"></footer>
+                        </article>
+                        {{  render (controller("EmFrontendBundle:Frontend:renderListeTypeImmo")) }}
+
+                    </main>
+                    <!-- .site-main -->
+                </div>
+                <!-- .site-main-content -->
+                {{ render(controller('EmFrontendBundle:Frontend:menuPageRight')) }}
+                <!-- .site-sidebar-content -->
+            </div>
+            <!-- .row -->
+        </div>
+        <!-- .container -->
+    </div>
+    <!-- .site-content -->
+</div>

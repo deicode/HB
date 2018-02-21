@@ -1,0 +1,60 @@
+Em\FrontendBundle\Entity\Commande:
+    type: entity
+    table: null
+    repositoryClass: Em\FrontendBundle\Repository\CommandeRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        montant:
+            type: integer
+            nullable: true
+        transid:
+            type: string
+            length: 255
+            nullable: true
+        methode:
+            type: string
+            length: 255
+            nullable: true
+        transstatus:
+            type: string
+            length: 255
+            nullable: true
+        signature:
+            type: string
+            length: 255
+            nullable: true
+        statut:
+            type: string
+            length: 255
+            nullable: true
+        errormessage:
+            type: string
+            length: 255
+            nullable: true
+        datecreation:
+            type: string
+            length: 15
+            nullable: true
+        datemodification:
+            type: string
+            length: 15
+            nullable: true
+        datepaiement:
+            type: string
+            length: 15
+            nullable: true
+
+    manyToOne:
+        reservations:
+            targetEntity: Em\FrontendBundle\Entity\Reservations
+            joinColumn:
+              name: reservations_id
+              referencedColumnName: id
+            cascade: ["persist"]
+
+    lifecycleCallbacks: {  }

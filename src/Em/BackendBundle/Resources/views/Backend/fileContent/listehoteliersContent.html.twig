@@ -1,0 +1,105 @@
+<div class="mainpanel" xmlns="http://www.w3.org/1999/html">
+
+    <div class="contentpanel">
+
+        <ol class="breadcrumb breadcrumb-quirk">
+            <li><a href="#"><i class="fa fa-home mr5"></i> Accueil</a></li>
+            <li><a href="#">Hôteliers</a></li>
+            <li class="active">Validés</li>
+        </ol>
+
+        <div class="row">
+            <div class="col-md-12">
+                {% for flashMessage in app.session.flashbag.get('Notice')|slice(0,1) %}
+
+                    <div class="alert alert-warning">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <strong>Error !</strong>  {{ flashMessage }} <a href="" class="alert-link"></a>.
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="col-sm-8 col-md-9 col-lg-10 people-list">
+
+                <div class="people-options clearfix">
+                    <div class="pull-left">
+                        <h4 class="text-info">Liste des hôteliers sur Afrikhotel</h4>
+                    </div>
+
+                    <div class="btn-group pull-right people-pager">
+                        <button type="button" class="btn btn-success"><i class="fa fa-user"></i></button>
+                    </div>
+                    <span class="people-count pull-right">Total  Hotelier validés <strong>{{ pagination|length }}</strong> sur  <strong>{{ hoteliersall|length }}</strong>  Hôteliers </span>
+                </div><!-- people-options -->
+
+                <div class="row">
+
+                    {% for data in  pagination %}
+                        <div class="col-md-6 col-lg-3">
+                            <div class="panel panel-profile grid-view">
+                                <div class="panel-heading">
+                                    <div class="text-center">
+                                        <a href="#" class="panel-profile-photo">
+                                            <img class="img-circle" src="{{ asset('bundles/embackend/assets/') }}/images/photos/hotelier-valide.png" alt="">
+                                        </a>
+                                        <h4 class="panel-profile-name">{{ data.username }}</h4>
+                                        <p class="media-usermeta"><i class="glyphicon glyphicon-briefcase"></i> Hôtelier</p>
+                                    </div>
+                                    <ul class="panel-options">
+                                        <li><a class="tooltips" href="" data-toggle="tooltip" title="View Options"><i class="glyphicon glyphicon-option-vertical"></i></a></li>
+                                    </ul>
+                                </div><!-- panel-heading -->
+                                <div class="panel-body people-info">
+
+                                    <div class="info-group">
+                                        <label>Date inscription</label>
+                                        {{ data.dateinscrit|date('d-m-Y H:i:s')}}
+                                    </div>
+                                    <div class="info-group">
+                                        <label>Email</label>
+                                        {{ data.email }}
+                                    </div>
+                                    <div class="info-group">
+                                        <label>Phone</label>
+                                        {{ data.phone }}
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <div class="info-group">
+                                                <button class="btn btn-default"><a href="{{ path('em_backend_listesingleagence', {'iduser': data.id}) }}">Voir Agence</a></button>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <div class="info-group">
+                                                <a href="{{ path('em_backend_enabled', {'iduser': data.id, 'status' : 'suspendre'}) }}">  <button class="btn btn-danger">Suspendre</button></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div><!-- panel-body -->
+                            </div><!-- panel -->
+                        </div><!-- col-md-6 -->
+
+                    {% endfor %}
+
+
+                    {{ knp_pagination_render(pagination) }}
+
+                </div><!-- row -->
+
+            </div><!-- col-sm-8 -->
+
+            <div class="col-sm-4 col-md-3 col-lg-2">
+
+
+                {{ render(controller('EmBackendBundle:Hotelier:lastHotelierValider')) }}
+
+
+            </div>
+        </div><!-- row -->
+
+    </div><!-- contentpanel -->
+
+</div><!-- mainpanel -->

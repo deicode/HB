@@ -1,0 +1,35 @@
+Em\BackendBundle\Entity\Pagesite:
+    type: entity
+    table: null
+    repositoryClass: Em\BackendBundle\Repository\PagesiteRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+
+    fields:
+        title:
+            type: string
+            length: 255
+        description:
+            type: string
+            length: 255
+        keywords:
+            type: string
+            length: 255
+        dateupdate:
+            type: datetime
+        titre:
+            type: string
+            length: 255
+        block:
+            type: integer
+        slug:
+            type: string
+            length: 255
+        contenu:
+            type: text
+
+    lifecycleCallbacks: {  }

@@ -1,0 +1,12 @@
+{% extends '::backend/backendLayout.html.twig' %}
+
+    {% block headLibelle %}
+        Gestion L'actualité   <span class="text-primary"> <a href="{{ path('em_backend_listenews') }}"> Voir liste </a></span>
+
+    {% endblock headLibelle %}
+
+{% block contenu %}
+
+    {% include('EmBackendBundle:Backend:fileContent/addnewsContent.html.twig') %}
+
+{% endblock contenu %}

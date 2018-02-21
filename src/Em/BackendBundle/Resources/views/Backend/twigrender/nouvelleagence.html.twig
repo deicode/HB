@@ -1,0 +1,27 @@
+<div class="col-sm-5 col-md-12 col-lg-6">
+    <div class="panel panel-warning">
+        <div class="panel-heading">
+            <h4 class="panel-title">Nouvelles Agences à valider</h4>
+        </div>
+        <div class="panel-body">
+            <ul class="media-list user-list">
+
+               {% for data in agence|slice(0,5) %}
+                <li class="media">
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="media-object img-circle" src="{{ asset('bundles/embackend/assets/') }}images/photos/hotel.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading nomargin"><a href="{{ path('em_backend_listesingleagence', {'id': data.id }) }}">Agence : {{ data.nom }}</a></h4>
+                        Hotelier : <a href=""> {{ data.hotelier.username }}</a>
+                        <small class="date"><i class="glyphicon glyphicon-time"></i> {{ data.dateadd|date('d:m:Y H:i:s') }}</small>
+                    </div>
+                </li>
+               {% endfor %}
+
+            </ul>
+        </div>
+    </div><!-- panel -->
+</div><!-- col-md-12 -->

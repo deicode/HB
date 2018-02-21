@@ -1,0 +1,320 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block Title %} HomeMobilite - Vente - Location - Loue {% endblock %}</title>
+    <link rel="icon" href="images/cropped-ms-icon-310x310-32x32.png" sizes="32x32" />
+    <link rel="icon" href="images/cropped-ms-icon-310x310-192x192.png" sizes="192x192" />
+    <link rel="apple-touch-icon-precomposed" href="images/cropped-ms-icon-310x310-180x180.png">
+    <!-- Google font-->
+    <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700,700italic,900' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Dosis:400,700,600,500' rel='stylesheet' type='text/css'>
+    <!-- Include the flexslider stylesheet -->
+    <link href="{{ asset('bundles/emfrontend/assets/') }}js/flexslider/flexslider.css" rel="stylesheet">
+    <!-- Include the lightslider stylesheet -->
+    <link href="{{ asset('bundles/emfrontend/assets/') }}js/lightslider/css/lightslider.min.css" rel="stylesheet">
+    <!-- Include the owl-carousel stylesheet -->
+    <link href="{{ asset('bundles/emfrontend/assets/') }}js/owl.carousel/owl.carousel.css" rel="stylesheet">
+    <!-- Include the swipebox stylesheet -->
+    <link href="{{ asset('bundles/emfrontend/assets/') }}js/swipebox/css/swipebox.min.css" rel="stylesheet">
+    <!-- Include the select2 stylesheet -->
+    <link href="{{ asset('bundles/emfrontend/assets/') }}js/select2/select2.css" rel="stylesheet">
+    <!-- Include the font-awesome stylesheet -->
+    <link href="{{ asset('bundles/emfrontend/assets/') }}css/font-awesome.min.css" rel="stylesheet">
+    <!-- Include the select2 stylesheet -->
+    <link href="{{ asset('bundles/emfrontend/assets/') }}css/animate.css" rel="stylesheet">
+    <link href="{{ asset('bundles/emfrontend/assets/') }}js/magnific-popup/magnific-popup.css" rel="stylesheet">
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="{{ asset('bundles/emfrontend/assets/') }}css/main.css"/>
+    <!-- Default Theme stylesheet -->
+    <link rel="stylesheet" href="{{ asset('bundles/emfrontend/assets/') }}css/theme.css"/>
+    <link rel="stylesheet" href="{{ asset('bundles/emfrontend/assets/js/datepick/css/') }}pikaday.css">
+
+    {% block cssSoumett %}
+
+    {% endblock  cssSoumett %}
+
+</head>
+<body>
+
+{% block headerMenuFrontend %}
+
+{% endblock headerMenuFrontend %}
+
+<!-- .site-header -->
+<div class="page-head " style="background: url({{ asset('bundles/emfrontend/assets/') }}images/hotel-banner.jpg) #494c53 no-repeat center top;  background-size: cover;">
+    <div class="container">
+        <div class="page-head-content">
+            <h1 class="page-title"><span>{% block titremenu %} Detail Ressource de HomeMobilite {% endblock titremenu %}</span></h1>
+        </div>
+    </div>
+</div>
+<!-- .page-head -->
+
+{% block Contenu %}
+
+
+{% endblock Contenu %}
+<!-- .site-content-wrapper -->
+{% block footer %}
+    {{ render(controller('EmFrontendBundle:Frontend:footerPage')) }}
+{% endblock footer %}
+
+<!-- .footer -->
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/jquery-1.12.3.min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/flexslider/jquery.flexslider-min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/lightslider/js/lightslider.min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/select2/select2.min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/owl.carousel/owl.carousel.min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/swipebox/js/jquery.swipebox.min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/jquery.hoverIntent.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/jquery.validate.min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/jquery.form.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/transition.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/jquery.appear.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/modal.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/meanmenu/jquery.meanmenu.min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/jquery.placeholder.min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/custom.js"></script>
+{% block jsSoumett %}
+
+{% endblock jsSoumett %}
+<!-- .modal -->
+<script>
+    (function ($) {
+        "use strict";
+
+        if (jQuery().validate) {
+
+            //Login
+            $('#login-form').validate();
+
+            //Register
+            $('#register-form').validate();
+
+            //Forgot Password
+            $('#forgot-form').validate();
+        }
+
+        /*-----------------------------------------------------------------------------------*/
+        /* Modal dialog for Login and Register
+         /*-----------------------------------------------------------------------------------*/
+        var loginModal = $('#login-modal'),
+                modalSections = loginModal.find('.modal-section');
+
+        $('.activate-section').on('click', function (event) {
+            var targetSection = $(this).data('section');
+            modalSections.slideUp();
+            loginModal.find('.' + targetSection).slideDown();
+            event.preventDefault();
+        });
+
+    })(jQuery);
+</script>
+<script>
+    // This example displays an address form, using the autocomplete feature
+    // of the Google Places API to help users fill in the information.
+
+    // This example requires the Places library. Include the libraries=places
+    // parameter when you first load the API. For example:
+    // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+    var placeSearch, autocomplete;
+    var componentForm = {
+        street_number: 'short_name',
+        route: 'long_name',
+        locality: 'long_name',
+        administrative_area_level_1: 'short_name',
+        country: 'long_name',
+        postal_code: 'short_name'
+    };
+
+    function initAutocomplete() {
+        // Create the autocomplete object, restricting the search to geographical
+        // location types.
+        autocomplete = new google.maps.places.Autocomplete(
+                /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+                {types: ['geocode']});
+
+        // When the user selects an address from the dropdown, populate the address
+        // fields in the form.
+        autocomplete.addListener('place_changed', fillInAddress);
+    }
+
+    function fillInAddress() {
+        // Get the place details from the autocomplete object.
+        var place = autocomplete.getPlace();
+
+        for (var component in componentForm) {
+            document.getElementById(component).value = '';
+            document.getElementById(component).disabled = false;
+        }
+
+        // Get each component of the address from the place details
+        // and fill the corresponding field on the form.
+        for (var i = 0; i < place.address_components.length; i++) {
+            var addressType = place.address_components[i].types[0];
+            if (componentForm[addressType]) {
+                var val = place.address_components[i][componentForm[addressType]];
+                document.getElementById(addressType).value = val;
+            }
+        }
+    }
+
+    // Bias the autocomplete object to the user's geographical location,
+    // as supplied by the browser's 'navigator.geolocation' object.
+    function geolocate() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var geolocation = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+                var circle = new google.maps.Circle({
+                    center: geolocation,
+                    radius: position.coords.accuracy
+                });
+                autocomplete.setBounds(circle.getBounds());
+            });
+        }
+    }
+</script>
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgMyyrT_VJQLgzBb16tuB181Y6n6hpwvs&libraries=places&callback=initAutocomplete" async defer></script>
+
+<!--Calcul date-->
+<script>
+    $('#formreservation').click(function(e) { // debu clic sur deprecier
+        //split
+         var $daystart = $('#start').val().split(' ');
+        var $datestartyear= $daystart['2'];
+        var $datestartday= $daystart['0'];
+        var  $datestartmonth;
+        //condition
+       if($daystart['1'] == 'Jan'){
+            $datestartmonth= 1;
+        }else if($daystart['1'] == 'Feb'){
+            $datestartmonth= 2;
+        }else if($daystart['1'] == 'Mar'){
+            $datestartmonth= 3;
+        }else if($daystart['1'] == 'Apr'){
+            $datestartmonth= 4;
+        }else if($daystart['1'] == 'May'){
+            $datestartmonth= 5;
+        }else if($daystart['1'] == 'Jun'){
+            $datestartmonth= 6;
+        }else if($daystart['1'] == 'Jul'){
+            $datestartmonth= 7;
+        }else if($daystart['1'] == 'Aug'){
+            $datestartmonth= 8;
+        }else if($daystart['1'] == 'Sep'){
+            $datestartmonth= 9;
+        }else if($daystart['1'] == 'Oct'){
+           $datestartmonth= 10;
+        }else if($daystart['1'] == 'Nov' ){
+             $datestartmonth= 11;
+        }else if($daystart['1'] == 'Dec'){
+           $datestartmonth= 12;
+        }
+
+
+        var $dayend = $('#end').val().split(' ');
+        var $dateendyear= $dayend['2'];
+        var $datendday= $dayend['0'];
+        var  $dateendmonth;
+        //condition
+        if($dayend['1'] == 'Jan'){
+            $dateendmonth= 1;
+        }else if($dayend['1'] == 'Feb'){
+            $dateendmonth= 2;
+        }else if($dayend['1'] == 'Mar'){
+            $dateendmonth= 3;
+        }else if($dayend['1'] == 'Apr'){
+            $dateendmonth= 4;
+        }else if($dayend['1'] == 'May'){
+            $dateendmonth= 5;
+        }else if($dayend['1'] == 'Jun'){
+            $dateendmonth= 6;
+        }else if($dayend['1'] == 'Jul'){
+            $dateendmonth= 7;
+        }else if($dayend['1'] == 'Aug'){
+            $dateendmonth= 8;
+        }else if($dayend['1'] == 'Sep'){
+            $dateendmonth= 9;
+        }else if($dayend['1'] == 'Oct'){
+            $dateendmonth= 10;
+        }else if($dayend['1'] == 'Nov' ){
+            $dateendmonth= 11;
+        }else if($dayend['1'] == 'Dec'){
+            $dateendmonth= 12;
+        }
+
+        // alert(parseInt(jrdepr));
+       // var datefin = new Date($datestartyear + '-' + $datestartmonth + '-' + $datestartday);
+       // var datedebut = new Date($dateendyear + '-' + $dateendmonth + '-' + $datendday);
+        var datefin = $dateendyear+$dateendmonth+$datendday;
+        var datedebut =  $datestartyear + $datestartmonth  + $datestartday ;
+
+        jrdepr = dateDiff(datedebut, datefin);
+         $('#nbjour').val(jrdepr);
+      });
+
+    function dateDiff(date1, date2){
+                           // Initialisation du retour
+        var $diff ;
+        $diff = date2 - date1;
+         if($diff ==0) $diff =1;
+
+        return $diff;
+    }
+</script>
+
+<script>
+    $('#reservations_modepayement_00').click(function(e) {
+        $('#submitreservation').val('Payer à l\'hotel, Valider');
+    });
+
+    $('#reservations_modepayement_11').click(function(e) {
+        $('#submitreservation').val('Reserver maintenant 25% de la facture , Valider {{ app.session.get('prixreserve')|localizedcurrency('XOF') }}');
+    });
+
+
+
+    $('#reservations_modepayement_22').click(function(e) {
+        $('#submitreservation').val('Reserver maintenant 25% de la facture , Valider {{ app.session.get('prixreserve')|localizedcurrency('XOF') }}');
+
+
+    });
+</script>
+
+<script src="{{ asset('bundles/emfrontend/assets/js/datepick/js/') }}moment.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/js/datepick/js/') }}pikaday.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/js/datepick/js/') }}verif.js"></script>
+
+
+<script>
+    var picker = new Pikaday({
+        field: document.getElementById('end'),
+        format: 'D MMM YYYY',
+        onSelect: function() {
+            console.log(this.getMoment().format('Do MMMM YYYY'));
+        }
+    });
+
+    var picker2 = new Pikaday({
+        field: document.getElementById('start'),
+        format: 'D MMM YYYY',
+        onSelect: function() {
+            console.log(this.getMoment().format('Do MMMM YYYY'));
+        }
+    });
+</script>
+
+
+</body>
+</html>

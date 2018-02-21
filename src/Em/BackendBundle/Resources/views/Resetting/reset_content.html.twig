@@ -1,0 +1,51 @@
+
+<form  class="login100-form" method="post"  action="{{ path('fos_user_resetting_reset', {'token': token})}}">
+
+
+                  <span class="login100-form-subtitle p-b-59">
+					Vous êtes  sur le point de changer votre  accès
+					</span>
+    {% if error is defined %}
+        <span style="color:#ff4f18"> {{ error.messageKey|trans(error.messageData, 'security') }}</span>
+    {% endif %}
+    {% if invalid_username is defined %}
+        <p>cet identifiant ou email n'existe pas dans notre système</p>
+    {% endif %}
+    {% if invalid_username is defined %}
+        <p>{{ 'resetting.request.invalid_username'|trans({'%username%': invalid_username}) }}</p>
+    {% endif %}
+    {% if error is defined %}
+        {{ error.messageKey|trans(error.messageData, 'security') }}
+    {% endif %}
+
+    <div class="wrap-input100 validate-input">
+        <span class="label-input100">Nouveau mot de passe</span>
+        {{ form_errors(form.plainPassword.first) }}
+        {{ form_widget(form.plainPassword.first, {'attr': {'class': 'form-control', 'placeholder': 'Nouveau Mot de passe'}}) }}
+
+        <span class="focus-input100"></span>
+    </div>
+    <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+        <span class="label-input100">Retaper Nouveau mot de passe</span>
+        {{ form_errors(form.plainPassword.second) }}
+        {{ form_widget(form.plainPassword.second, {'attr': {'class': 'form-control', 'placeholder' : 'Retaper Nouveau mot de passe'}}) }}
+        {{ form_widget(form._token, {'attr': {'type' : 'hidden'}}) }}
+
+        <span class="focus-input100"></span>
+    </div>
+
+    <div class="container-login100-form-btn">
+        <div class="wrap-login100-form-btn">
+            <div class="login100-form-bgbtn"></div>
+            <button class="login100-form-btn">
+                valider
+            </button>
+        </div>
+
+        <a href="{{ path('em_backend_registration_register') }}"  class="txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
+            S'inscrire
+            <i class="fa fa-long-arrow-right m-l-5"></i>
+        </a>
+
+    </div>
+</form>

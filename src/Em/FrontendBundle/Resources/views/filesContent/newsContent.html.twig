@@ -1,0 +1,37 @@
+
+<div id="content-wrapper" class="site-content-wrapper site-pages">
+    <div id="content" class="site-content layout-boxed">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 site-main-content">
+                    <main id="main" class="site-main default-page clearfix">
+                        <article class="blog-post clearfix hentry format-image">
+                            <figure>
+                                <a class="swipebox" href="{{ asset('bundles/emfrontend/assets/') }}uploads/images/news/{{ datanews.Images.title }}" title="{{ datanews.titre }}">
+                                    <img src="{{ asset('bundles/emfrontend/assets/') }}uploads/images/news/{{ datanews.Images.title }}"
+                                         alt="{{ datanews.Images.title }}" title="{{ datanews.titre }}" class="img-responsive" width="850" height="570"/>
+
+                                </a>
+                            </figure>
+                            <header class="entry-header blog-post-entry-header">
+                                <h1 class="entry-title">{{ datanews.titre }}</h1>
+
+                            </header>
+                            <div class="entry-content clearfix">
+                                    {{ datanews.contenus|raw }}
+                            </div>
+
+                        </article>
+                    </main>
+                    <!-- .site-main -->
+                </div>
+                <!-- .site-main-content -->
+                {{ render(controller('EmFrontendBundle:Frontend:menuPageRight')) }}
+                <!-- .site-sidebar-content -->
+            </div>
+            <!-- .row -->
+        </div>
+        <!-- .container -->
+    </div>
+    <!-- .site-content -->
+</div>

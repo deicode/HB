@@ -1,0 +1,62 @@
+{% extends '::backend/backendLayout.html.twig' %}
+
+    {% block headLibelle %}
+        Mon coffre Afrkhotel  <span class="text-primary">
+    {% endblock headLibelle %}
+
+{% block contenu %}
+
+    {% include('EmBackendBundle:Backend:fileContent/moncoffrerootContent.html.twig') %}
+
+{% endblock contenu %}
+
+    {% block rightResult %}
+    <div class="col-md-3 col-lg-4 dash-right">
+        <!-- Restriction admin-->
+        {% if is_granted('ROLE_SUPERVISEUR') %}
+            <div class="row">
+                {% if is_granted('ROLE_ADMIN') %}
+
+                        <div class="col-sm-5 col-md-12 col-lg-6">
+                            <div class="panel panel-danger panel-weather">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">Coffre Transaction</h4>
+                                </div>
+                                <div class="panel-body">
+                                    <ul class="media-list user-list">
+                                        <li class="media">
+                                            <div class="media-left">
+                                                <a href="#">
+                                                    <img class="media-object img-circle" src="{{ asset('bundles/embackend/assets/') }}/images/photos/user2.png" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="media-body">
+                                                <h4 class="media-heading nomargin"><a href="">Reservations confirmées</a></h4>
+                                                Effectif : <a href=""> {{ reservation|length }} </a>
+                                            </div>
+                                        </li>
+                                        <li class="media">
+                                            <div class="media-left">
+                                                <a href="#">
+                                                    <img class="media-object img-circle" src="{{ asset('bundles/embackend/assets/') }}/images/photos/user10.png" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="media-body">
+                                                <h4 class="media-heading nomargin"><a href="">Transaction</a></h4>
+                                                Total <a href=""> {{ prixtotal }} </a> Fcfa
+                                            </div>
+                                        </li>
+
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div><!-- col-md-12 -->
+
+                {% endif %}
+
+                <!-- Fin nouvelle agence -->
+            </div><!-- row -->
+        {% endif %}
+    </div>
+    {% endblock rightResult %}

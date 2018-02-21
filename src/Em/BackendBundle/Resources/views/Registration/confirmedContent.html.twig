@@ -1,0 +1,14 @@
+
+{% trans_default_domain 'FOSUserBundle' %}
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <h2 class="text-center">{{ 'registration.confirmed'|trans({'%username%': user.username}) }} !</h2>
+
+        {% if app.session is not empty %}
+            {% set targetUrl = app.session.get('_security.' ~ app.security.token.providerKey ~ '.target_path') %}
+            {% if targetUrl is not empty %}<p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>{% endif %}
+        {% endif %}
+
+        <h4 class="text-center">Découvrez nos produits </h4>
+    </div>
+</div>

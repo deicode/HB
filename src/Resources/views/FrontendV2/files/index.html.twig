@@ -1,0 +1,18 @@
+{% extends '::FrontendV2/layouts/layout.html.twig' %}
+{% block title %}  HomeMobilite  - Appartements - Hôtels - Voitures {%  endblock  title%}
+
+
+{% block header %}
+    {{   render (controller("EmFrontendBundle:FrontendV2:header")) }}
+{% endblock header %}
+
+ {% block searchform %}
+     {{   render (controller("EmFrontendBundle:FrontendV2:searchform")) }}
+
+ {% endblock searchform %}
+
+{% block Contenu %}
+
+    {% include '::FrontendV2/filesContent/indexContent.html.twig' %}
+
+{% endblock Contenu %}

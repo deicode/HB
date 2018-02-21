@@ -1,0 +1,19 @@
+<div class="homepage-slider slider-variation-three flexslider slider-loader">
+
+        <ul class="slides">
+            {% for data in slider %}
+            <li>
+                <div class="slide-overlay hidden-xs container">
+                    <div class="slide-inner-container">
+                        <span class="hometitle hidden-md">{{ data.title }}</span><br>
+                      <!--  <h4 style="text-align: center">Location de luxe - Location de long terme – Location saisonnière – Acquérir un bien- soumettre un bien !</h4>-->
+                    </div>
+                </div>
+                <a href="#">
+                    <img src="{{ asset('bundles/emfrontend/assets/uploads/images/slides/') }}{{ data.images.title }}" alt="slide2">
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+
+</div>

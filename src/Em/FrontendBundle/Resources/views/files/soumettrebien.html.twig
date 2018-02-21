@@ -1,0 +1,22 @@
+{% extends '::frontend/layoutdetail.html.twig' %}
+{% block Title %} Formulaire | HomeMobilite - Vente - Location - Loue {% endblock %}
+
+ {% block cssSoumett %}
+     <link rel="stylesheet" href="{{ asset('bundles/embackend/assets') }}/css/quirk.css">
+     <link rel="stylesheet" href="{{ asset('bundles/embackend/assets/') }}lib/fontawesome/css/font-awesome.css">
+     <link rel="stylesheet" href="{{ asset('bundles/embackend/assets/') }}lib/weather-icons/css/weather-icons.css">
+ {% endblock  cssSoumett %}
+
+{% block headerMenuFrontend %}
+    {{   render (controller("EmFrontendBundle:Frontend:headerMenuFrontend",{'slug': slug})) }}
+{% endblock headerMenuFrontend %}
+
+{% block titremenu %} <span class="btn-large btn-green">Soumettre Bien Immobilier </span> {% endblock titremenu %}
+
+{% block Contenu %}
+    {% include 'EmFrontendBundle:filesContent:soumettrebienimmoContent.html.twig' %}
+{% endblock Contenu %}
+
+{% block jsSoumett %}
+    <script src="{{ asset('bundles/embackend/assets') }}/lib/bootstrap/js/bootstrap.js"></script>
+{% endblock jsSoumett %}

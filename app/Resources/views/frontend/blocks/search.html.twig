@@ -1,0 +1,113 @@
+<div class="search-tabs search-tabs-bg search-tabs-to-top">
+    <div class="tabbable">
+        <ul class="nav nav-tabs" id="myTab">
+            <li class="active"><a href="#tab-1" data-toggle="tab"><i class="fa fa-building-o"></i> <span >Hotels</span></a>
+            </li>
+            <li><a href="#tab-4" data-toggle="tab"><i class="fa fa-car"></i> <span >Voitures</span></a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane fade in active" id="tab-1">
+                <h2>Rechercher et économiser sur les hôtels</h2>
+                <form action="{{ path('em_frontend_search') }}" method="post">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-map-marker input-icon"></i>
+                                <label>Ou vas-tu?</label>
+                                <input required="" class="form-control" placeholder="City, Airport, Point of Interest or U.S. Zip Code" type="text"  name="ville" id="ville"/>
+
+                                <div id="results"></div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="input-daterange" data-date-format="M d, D">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-calendar input-icon input-icon-highlight"></i>
+                                            <label> Arrivée </label>
+                                            <input class="form-control" name="start" type="text" required=""/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-calendar input-icon input-icon-highlight"></i>
+                                            <label> Depart </label>
+                                            <input class="form-control" name="end" type="text" required=""/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group form-group-lg form-group-select-plus">
+                                            <label>Chambres</label>
+                                            <div class="btn-group btn-group-select-num" data-toggle="buttons">
+                                                <label class="btn btn-primary active">
+                                                    <input type="radio" name="options" />1</label>
+                                                <label class="btn btn-primary">
+                                                    <input type="radio" name="options" />2</label>
+                                                <label class="btn btn-primary">
+                                                    <input type="radio" name="options" />3</label>
+                                                <label class="btn btn-primary">
+                                                    <input type="radio" name="options" />3+</label>
+                                            </div>
+                                            <select class="form-control hidden">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option selected="selected">4</option>
+                                                <option>5</option>
+                                                <option>6</option>
+                                                <option>7</option>
+                                                <option>8</option>
+                                                <option>9</option>
+                                                <option>10</option>
+                                                <option>11</option>
+                                                <option>12</option>
+                                                <option>13</option>
+                                                <option>14</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group form-group-lg form-group-select-plus">
+                                            <label>Invités</label>
+                                            <div class="btn-group btn-group-select-num" data-toggle="buttons">
+                                                <label class="btn btn-primary active">
+                                                    <input type="radio" name="options" />1</label>
+                                                <label class="btn btn-primary">
+                                                    <input type="radio" name="options" />2</label>
+                                                <label class="btn btn-primary">
+                                                    <input type="radio" name="options" />3</label>
+                                                <label class="btn btn-primary">
+                                                    <input type="radio" name="options" />3+</label>
+                                            </div>
+                                            <select class="form-control hidden">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option selected="selected">4</option>
+                                                <option>5</option>
+                                                <option>6</option>
+                                                <option>7</option>
+                                                <option>8</option>
+                                                <option>9</option>
+                                                <option>10</option>
+                                                <option>11</option>
+                                                <option>12</option>
+                                                <option>13</option>
+                                                <option>14</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gap gap-small"></div>
+                        <button class="btn btn-primary btn-lg pull-right" type="submit">Recherche d'hôtels</button>
+
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+       

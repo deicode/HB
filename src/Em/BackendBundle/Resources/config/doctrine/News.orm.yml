@@ -1,0 +1,45 @@
+Em\BackendBundle\Entity\News:
+    type: entity
+    table: null
+    repositoryClass: Em\BackendBundle\Repository\NewsRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: 255
+        description:
+            type: string
+            length: 255
+        keywords:
+            type: string
+            length: 255
+        dateajout:
+            type: datetime
+        dateedit:
+            type: datetime
+        titre:
+            type: string
+            length: 255
+        slug:
+            type: string
+            length: 255
+        resume:
+            type: text
+        contenus:
+            type: text
+        publish:
+            type: boolean
+
+    manyToOne:
+        Images:
+            targetEntity: Em\FrontendBundle\Entity\Images
+            joinColumn:
+              name: images_id
+              referencedColumnName: id
+            cascade: ["persist"]
+    lifecycleCallbacks: {  }

@@ -1,0 +1,18 @@
+<div class="panel panel-success list-announcement">
+    <div class="panel-heading">
+        <h4 class="panel-title">Bien Immo à valider</h4>
+    </div>
+    <div class="panel-body">
+        <ul class="list-unstyled mb20">
+            {% for data in bienimmo|slice(0,5) %}
+            <li>
+                <a href="{{ path('em_backend_listesinglebienimmo', {'id': data.id }) }}">{{ data.libelle }}</a>
+                <small>{{ data.dateadd|date('d:m:Y H:i:s') }}<a href="{{ path('em_backend_listesinglebienimmo', {'id': data.id }) }}">voir details</a></small>
+            </li>
+           {% endfor %}
+        </ul>
+    </div>
+    <div class="panel-footer">
+        <button class="btn btn-primary btn-block"> {{ bienimmo|length }} Bien(s) immo. à valider <i class="fa fa-arrow-right"></i></button>
+    </div>
+</div>

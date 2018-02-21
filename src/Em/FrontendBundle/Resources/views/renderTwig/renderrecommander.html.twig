@@ -1,0 +1,20 @@
+<section class="widget widget-featured-properties">
+    <h3 class="widget-title">Nous recommandons</h3>
+    <ul class="widget-featured-properties">
+        {% for data in pagination %}
+        <li>
+            <figure class="featured-properties-thumbnail">
+                <span class="price"> </span>
+                <a href="{{ path('em_frontend_detailimmo', {'bienimmo' : data.id}) }}">
+                    {{ render(controller('EmFrontendBundle:Frontend:listeImageImmo', { 'entity': data})) }}
+                </a>
+            </figure>
+            <small class="author-link"> <a rel="author" href="#">{{ data.pays.libelle }}-{{ data.ville }}</a></small>
+
+            <h4 class="featured-properties-title"><a href="{{ path('em_frontend_homepage') }}">{{ data.libelle }}</a></h4>
+            <p>{{ data.description|truncate(100, true, '...' ) }} <a href="{{ path('em_frontend_detailimmo', {'bienimmo' : data.id}) }}" class="read-more-link">En savoir plus</a></p>
+        </li>
+        {% endfor %}
+
+    </ul>
+</section>

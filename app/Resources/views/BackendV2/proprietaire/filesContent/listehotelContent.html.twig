@@ -1,0 +1,57 @@
+{% block Contenu %}
+    <div id="wrapper">
+        <div class="main-content">
+            <div class="row small-spacing">
+                <div class="box-content card">
+                    <h4 class="box-title">
+                        <i class="fa fa-building ico"></i>Liste Mes Hôtels </h4>
+
+                    <div class="card-content">
+                        <div class="col-sm-12" style="margin-bottom:0.5em">
+                            <a href="{{ path('em_backend_proprietaire_addagence_immo') }}"><button type="submit" class="btn btn-info btn-sm pull-right waves-effect waves-light">Ajouter un bien</button></a>
+                        </div>
+
+                        <table id="#table-bien" class="table table-bien table-striped table-bordered table-responsive display" style="width:100%">
+                            <thead>
+                            <tr>
+
+                                <th>Caracteristique</th>
+                                <th>Nom</th>
+                                <th>Téléphone</th>
+                                <th>Date d'inscription</th>
+                                <th>Détails</th>
+                            </tr>
+                            </thead>
+                            <tfoot>
+                            <tr>
+
+                                <th>Caracteristique</th>
+                                <th>Nom</th>
+                                <th>Téléphone</th>
+                                <th>Date d'inscription</th>
+                                <th>Détails</th>
+                            </tr>
+                            </tfoot>
+                            <tbody>
+                            {% for data in entity %}
+                                <tr>
+                            <td>{{ data.caracteristique }}</td>
+                           <td>{{ data.nom }}</td>
+                            <td>{{ data.telephone }}</td>
+                            <td>{{ data.dateadd|date('d-m-Y') }}</td>
+                            <td><a href="{{ path('em_backend_proprietaire_listesingleagence', {'id': data.id}) }}">details</a></td>
+                                   </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <!-- /.card-content -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock Contenu %}
+

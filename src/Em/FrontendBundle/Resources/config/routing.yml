@@ -1,0 +1,160 @@
+em_frontend_homepage:
+    path:     /
+    defaults: { _controller: EmFrontendBundle:Frontend:index }
+
+
+em_frontend_news:
+    path:     news/{id}/{slug}
+    defaults: { _controller: EmFrontendBundle:Frontend:news, id: null, slug: null }
+
+em_frontend_news_liste:
+    path:     news-liste/
+    defaults: { _controller: EmFrontendBundle:Frontend:newsliste }
+
+em_frontend_contact:
+    path:     contact/
+    defaults: { _controller: EmFrontendBundle:Frontend:contact }
+
+
+
+em_frontend_hoteletoile:
+    path:     listes-des-hotels-5-etoiles/
+    defaults: { _controller: EmFrontendBundle:Frontend:hoteletoile }
+
+
+em_frontend_hotelecaracteristique_user:
+    path:     /mon-compte/caracterisque-hotel/cote-d-ivoire/{ville}/{idagence}
+    defaults: { _controller: EmFrontendBundle:Frontend:detailsHotels, ville: null, idagence: null }
+
+
+em_frontend_quisommesnous:
+    path:     qui-sommes-nous/
+    defaults: { _controller: EmFrontendBundle:Frontend:quiSommesNous }
+
+em_frontend_proprietaire:
+    path:     proprietaire/
+    defaults: { _controller: EmFrontendBundle:Frontend:proprietaire }
+
+em_frontend_locataire:
+    path:     locataire/
+    defaults: { _controller: EmFrontendBundle:Frontend:locataire }
+
+em_frontend_conditiongenerale:
+    path:     conditions-generales/
+    defaults: { _controller: EmFrontendBundle:Frontend:conditionsGenerales }
+
+em_frontend_politiqueconfidentialite:
+    path:     politique-confidentialite/
+    defaults: { _controller: EmFrontendBundle:Frontend:politiqueConfidentialite }
+
+em_frontend_commentcamarche:
+    path:     comment-ca-marche/
+    defaults: { _controller: EmFrontendBundle:Frontend:commentMarche }
+
+em_frontend_listehotelbyville:
+    path:     agences-proprietaires/cote-d-ivoire/{ville}
+    defaults: { _controller: EmFrontendBundle:Frontend:listeHotelByVille }
+
+em_frontend_listehotelbyetoile:
+    path:    /cote-d-ivoire/hotels-{grade}
+    defaults: { _controller: EmFrontendBundle:Frontend:listeHotelByetoile, grade: null }
+
+em_frontend_hotelrechercher:
+    path:    hotels/rechercher
+    defaults: { _controller: EmFrontendBundle:Frontend:rechercher }
+    requirements:
+        _method: POST
+
+em_frontend_immorechercher:
+    path:    Selectionby/{pays}/{categorie}
+    defaults: { _controller: EmFrontendBundle:Frontend:rechercherImmo, pays: null, categorie: null }
+    #<requirements:
+        #_method: POST
+
+em_frontend_debug:
+    path: mydebug/
+    defaults: { _controller: EmFrontendBundle:Frontend:listeHotelsEtoilesHome }
+
+
+em_frontend_search_villecommune:
+    path:    search/{villecommune}
+    defaults: { _controller: EmFrontendBundle:Frontend:searchVilleCommune }
+
+em_frontend_recherchemenuright:
+    path:    recherche-menu-right/
+    defaults: { _controller: EmFrontendBundle:Frontend:rechercheMenuRight }
+
+em_frontend_addcommentaire:
+    path:    /mon-compte/add-commentaire/{idagence}
+    defaults: { _controller: EmFrontendBundle:Frontend:addCommentaire }
+
+em_frontend_addnewsletter:
+    path:    /add-newsletter
+    defaults: { _controller: EmFrontendBundle:Frontend:addNewsLetter }
+
+em_frontend_searchbyprix:
+    path:    recherche-par-prix/
+    defaults: { _controller: EmFrontendBundle:Frontend:searchingbyprice }
+
+
+em_frontend_listehotels:
+    path:     liste-hotels/
+    defaults: { _controller: EmFrontendBundle:Frontend:listeHotels }
+
+#ImmoOnline
+em_frontend_listeproprietes:
+    path:    liste-proprietes/{slug}
+    defaults: { _controller: EmFrontendBundle:Frontend:listeImmo , slug: null}
+
+em_frontend_listeproprietesbycategorie:
+    path:    liste-categorie-proprietes/{slug}
+    defaults: { _controller: EmFrontendBundle:Frontend:listeCategorieImmo , slug: null}
+
+em_frontend_listeproprietesbycountry:
+    path:    liste-propriete-country/{pays}/{slug}
+    defaults: { _controller: EmFrontendBundle:Frontend:listeCategorieImmoCountry , pays: null, slug: null}
+
+em_frontend_listehotel_by:
+    path:    liste-hotels/{id}/{slug}
+    defaults: { _controller: EmFrontendBundle:Frontend:listeHotelsBy }
+
+em_frontend_listeimmo_by:
+    path:    liste-immo/{id}/{slug}
+    defaults: { _controller: EmFrontendBundle:Frontend:listeImmoBy }
+
+em_frontend_listehotel_by_all:
+    path:    liste-propriete-hotel/
+    defaults: { _controller: EmFrontendBundle:Frontend:listeHotelsByAll }
+
+
+em_frontend_detailproprietes:
+    path:    detail-proprietes/
+    defaults: { _controller: EmFrontendBundle:Frontend:detailProprietes }
+
+em_frontend_detailimmo:
+    path:    detail-immobilier/{bienimmo}
+    defaults: { _controller: EmFrontendBundle:Frontend:detailImmo, bienimmo: null }
+
+em_frontend_hotelecaracteristique:
+    path:     caracterisque-hotel/{idagence}
+    defaults: { _controller: EmFrontendBundle:Frontend:detailscaracteristiqueHotels,slug: null, ville: null, idagence: null }
+
+
+em_frontend_basic_page:
+    path:    page/{slug}
+    defaults: { _controller: EmFrontendBundle:Frontend:basicPage, slug: null }
+
+em_frontend_politique_page:
+    path:    Politique-condition/{slugs}
+    defaults: { _controller: EmFrontendBundle:Frontend:Politique, slugs: null }
+
+em_frontend_page_statique:
+    path:    page-statique/{slug}
+    defaults: { _controller: EmFrontendBundle:Frontend:Pagestatique, slug: null }
+
+
+em_frontend_addbienimmo:
+    path:   soumettre-bienimmo/
+    defaults: { _controller:  EmFrontendBundle:Frontend:addBienimmo}
+
+

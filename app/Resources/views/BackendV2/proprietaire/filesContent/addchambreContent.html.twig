@@ -1,0 +1,207 @@
+{% block Contenu %}
+    <div id="wrapper">
+        <div class="row">
+            <div class="col-md-12">
+                {% for flashMessage in app.session.flashbag.get('Notice')|slice(0,1) %}
+
+                    <div class="alert alert-warning">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <strong>Error !</strong>  {{ flashMessage }} <a href="" class="alert-link"></a>.
+                    </div>
+                {% endfor %}
+            </div>
+          </div>
+        <div class="main-content">
+            <div class="row small-spacing">
+                <div class="box-content card">
+                    <h4 class="box-title">
+                        <i class="fa fa-fa-building  ico"></i>Ajouter une chambre à votre agence</h4>
+
+                    <div class="card-content">
+                        <div id="rootwizard-progress">
+                            <div class="tab-header">
+                                <div class="navbar">
+                                    <div class="navbar-inner">
+                                        <ul>
+                                            <li>
+                                                <a href="#tab-progress-1" data-toggle="tab">Chambre</a>
+                                            </li>
+                                            <li>
+                                                <a href="#tab-progress-3" data-toggle="tab">Equipements</a>
+                                            </li>
+                                            <li>
+                                                <a href="#tab-progress-4" data-toggle="tab">Photos</a>
+                                            </li>
+                                            <!-- <li>
+                                                <a href="#tab-progress-5" data-toggle="tab">Fifth</a>
+                                            </li> -->
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <form action="{% if entity is defined %}{{ path('em_backend_proprietaire_updateagence', {'id' : entity.id}) }} {% else %}{{ path('em_backend_proprietaire_addchambre', {'agences': agences.id}) }} {% endif %}" enctype="multipart/form-data" method="post">
+
+                                <div class="tab-content">
+                                    <div id="bar" class="progress">
+                                        <div class="progress-bar active progress-bar-success progress-bar-striped bar"></div>
+                                    </div>
+
+                                    <div class="tab-pane" id="tab-progress-1">
+                                        <div class="form-group  col-xs-12 col-sm-6 col-lg-3">
+                                            <label for="paysfield">Type de chambre
+                                                <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="controls">
+                                                {{ form_widget(form.typechambre, {'attr': {'class': 'form-control'}}) }}
+
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group  col-xs-12 col-lg-6">
+                                            <label for="libellefield">Type de lit
+                                                <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="controls">
+                                                {{ form_widget(form.typelit, {'attr': {'class': 'form-control', placeholder:'3 places ou 2 places'}}) }}
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-lg-3  col-sm-6 col-xs-6">
+                                            <label for="prixfield">Capacité Maximale de personnes
+                                                <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="controls">
+                                                {{ form_widget(form.capacitemax, {'attr': {'class': 'form-control'}}) }}
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-lg-3  col-sm-6 col-xs-6">
+                                            <label for="prixfield">Nombre de chambre de ce type
+                                                <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="controls">
+                                                {{ form_widget(form.totalchambre, {'attr': {'class': 'form-control'}}) }}
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-lg-3  col-sm-6 col-xs-6">
+                                            <label for="prixfield">Prix chambre
+                                                <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="controls">
+                                                {{ form_widget(form.prixchambre, {'attr': {'class': 'form-control'}}) }}
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-lg-3  col-sm-6 col-xs-6">
+                                            <label for="prixfield">Pourcentage sur prix
+
+                                            </label>
+                                            <div class="controls">
+                                                {{ form_widget(form._token, {'attr': {'type' : 'hidden'}}) }}
+                                                {{ form_widget(form.pourcentagesolde, {'attr': {'class': 'form-control'}}) }}
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group col-xs-12">
+                                            <label for="descriptionfield">Description
+                                                <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="controls">
+                                                {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="tab-pane" id="tab-progress-3">
+                                        <ul class="list-group col-lg-2 col-xs-12 col-sm-6">
+                                            <li class="list-group-item">
+                                                {{ form_widget(form.douche) }} &nbsp; Douche
+                                            </li>
+                                            <li class="list-group-item">
+                                                {{ form_widget(form.tvlcplasma) }} &nbsp; Tv LC Plasma
+                                            </li>
+                                        </ul>
+
+                                        <ul class="list-group col-lg-3 col-xs-12 col-sm-6">
+                                            <li class="list-group-item">
+                                                {{ form_widget(form.climatisation) }} &nbsp; Climatisation
+                                            </li>
+                                            <li class="list-group-item">
+                                                {{ form_widget(form.baignoire ) }}&nbsp; Baignoire
+                                            </li>
+                                        </ul>
+
+                                        <ul class="list-group col-lg-3 col-xs-12 col-sm-6">
+                                            <li class="list-group-item">
+                                                {{ form_widget(form.cuisine) }} &nbsp; Cuisine
+                                            </li>
+                                            <li class="list-group-item">
+                                                {{ form_widget(form.salon) }} &nbsp; Salon
+                                            </li>
+                                        </ul>
+
+                                        <ul class="list-group col-lg-2 col-xs-12 col-sm-6">
+                                            <li class="list-group-item">
+                                                {{ form_widget(form.refrigerateur) }}&nbsp; Refrigerateur
+                                            </li>
+                                            <li class="list-group-item">
+                                                {{ form_widget(form.filmalademande) }} &nbsp; Film à la demande
+                                            </li>
+                                        </ul>
+
+                                        <ul class="list-group col-lg-2 col-xs-12 col-sm-6">
+                                            <li class="list-group-item">
+                                                {{ form_widget(form.telephone) }} &nbsp; Telephone
+                                            </li>
+                                            <li class="list-group-item">
+                                                {{ form_widget(form.tv) }} &nbsp; TV
+
+                                            </li>
+                                            <li class="list-group-item">
+                                                {{ form_widget(form.minibar) }} &nbsp; Minibar
+                                                {{ form_widget(form.bureau) }} &nbsp; Bureau
+
+                                            </li>
+                                        </ul>
+
+
+                                    </div>
+                                    <div class="tab-pane" id="tab-progress-4">
+                                        {{ form_widget(form.images.url) }}
+                                    </div>
+                                    <!-- <div class="tab-pane" id="tab-progress-5">
+                                    5
+                                </div> -->
+
+                                    <ul class="pager wizard">
+                                        <li class="pull-left">
+                                            <a href="#">Revenir à mon agence</a>
+                                        </li>
+                                        <li class="previous">
+                                            <button type="reset" class="btn pull-left btn-xs">Précedent</button>
+
+                                        </li>
+                                        <li class="pull-right">
+                                            <button class="btn btn-xs">Valider</button>
+                                        </li>
+                                        <li class="next">
+                                            <a href="javascript:void(0)" class="submit" type="submit">Suivant</a>
+                                        </li>
+                                    </ul>
+
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                    <!-- /.card-content -->
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock Contenu %}
+

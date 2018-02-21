@@ -1,0 +1,69 @@
+
+<div id="content-wrapper" class="site-content-wrapper site-pages">
+    <div id="content" class="site-content layout-boxed">
+        <div class="container">
+
+            <div class="col-md-8">
+
+                <h2 class="text-center">
+                    <i class="fa fa-gift round box-icon-large box-icon-center box-icon-success animate-icon-left-to-right round mb30"></i>
+                    Merci , {{ reservation.prenoms }}  <br>votre reservation à été pré-enregistré !
+                </h2>
+                <i class="fa fa-hotel"></i> Numéro de reservation : <strong>{{ reservation.numeroreservation }}</strong>
+
+                <p> Veuillez confirmer votre reservation dès maintenant,
+                    en validant le lien qui vous a été envoyé sur votre adresse: <strong> {{ reservation.email }}</strong>
+                </p>
+
+            </div>
+
+            <div class="col-md-4">
+                <aside class="sidebar sidebar-property-detail">
+                <div class="widget widget-advance-search advance-search">
+                    <figure class="agent-image">
+                        <img src="{{ asset('bundles/emfrontend/assets/') }}pics/chambres/{{reservation.chambre.images.title }}" alt="{{ reservation.chambre.images.title }}" title="{{ reservation.chambre.images.title }}" />
+                    </figure>
+                    <ul class="booking-item-payment-details">
+                        <li>
+                            <h5>{{ reservation.chambre.typechambre }}</h5>
+                            <div class="booking-item-payment-date">
+                                <p class="booking-item-payment-date-day">Arrivée</p>
+                                <p class="booking-item-payment-date-weekday">{{ reservation.datearrivee }}</p>
+                            </div><i class="fa fa-arrow-right booking-item-payment-date-separator"></i>
+                            <div class="booking-item-payment-date">
+                                <p class="booking-item-payment-date-day">Depart</p>
+                                <p class="booking-item-payment-date-weekday">{{ reservation.datedepart }}</p>
+                            </div>
+                        </li>
+                        <li>
+                            <h5>Chambre (Total : {{ reservation.nbchambre }}) </h5>
+
+                            <p class="booking-item-payment-item-title">Adulte : {{ reservation.nbadulte}} </p>
+                            <p class="booking-item-payment-item-title"> Enfant : {{ reservation.nbenfant }} </p>
+
+                            <ul class="booking-item-payment-price">
+                                <li>
+                                    <p class="booking-item-payment-price-title">{{ reservation.nbjour }} Nuits</p>
+                                    <p class="booking-item-payment-price-amount">{{ reservation.chambre.prixchambre }} Fcfa<small>/jour</small>
+                                    </p>
+                                </li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                    <p class="booking-item-payment-total">Total : <span>Fcfa {{ reservation.prixtotal }}</span>
+                    </p>
+                </div>
+              </aside>
+            </div>
+
+        </div>
+        <!-- .container -->
+    </div>
+    <!-- .site-content -->
+</div>
+
+
+
+
+

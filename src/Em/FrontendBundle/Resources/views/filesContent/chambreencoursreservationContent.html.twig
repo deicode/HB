@@ -1,0 +1,137 @@
+<div id="content-wrapper" class="site-content-wrapper site-pages">
+    <div id="content" class="site-content layout-boxed">
+        <div class="container">
+            <div class="container-property-single clearfix">
+                <div class="col-lg-8 zero-horizontal-padding property-slider-wrapper">
+                    <div class="single-property-slider gallery-slider flexslider">
+                        <ul class="slides">
+
+                            <li>
+                                  <a class="swipebox" data-rel="gallery12" href="{{ asset('bundles/emfrontend/assets/pics/chambres/') }}{{datasincerooms.images.title }}" >
+                                    <img src="{{ asset('bundles/emfrontend/assets/pics/chambres/') }}{{ datasincerooms.images.title }}" alt="{{datasincerooms.images.title }}" title="{{datasincerooms.images.title}}" >
+                                  </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 zero-horizontal-padding property-title-wrapper">
+                    <div class="single-property-wrapper">
+                        <header class="entry-header single-property-header">
+                            <h1 class="entry-title single-property-title">{{ datasincerooms.agences.nom }} | {{ datasincerooms.typechambre }}</h1>
+                          <span class="single-property-price price">{{  datasincerooms.prixchambre|localizedcurrency('XOF') }} / Nuit</span>
+                        </header>
+                        <div class="property-meta entry-meta clearfix">
+                            {% if datasincerooms.agences.wifi %}
+                                <div class="meta-item">
+                                    <i class="fa fa-wifi"></i><span class="meta-item-label">Wi-Fi Internet</span>
+                                </div>
+                            {% endif %}
+                            {% if datasincerooms.agences.climatisation %}
+                                <div class="meta-item">
+                                    <i class="fa fa-braille"></i><span class="meta-item-label">Climatisation</span>
+                                </div>
+                            {% endif %}
+                            {% if datasincerooms.agences.casino %}
+                                <div class="meta-item">
+
+                                    <i class="fa fa-id-card-o"></i><span class="meta-item-label">Casino & Gambling</span>
+                                </div>
+                            {% endif %}
+                            {% if datasincerooms.agences.nightclub %}
+                                <div class="meta-item">
+                                    <i class="fa fa-glass"></i><span class="meta-item-label">Bar/Lounge</span>
+                                </div>
+                            {% endif %}
+                            {% if datasincerooms.agences.gym %}
+                                <div class="meta-item">
+                                    <i class="fa fa-deaf"></i><span class="meta-item-label">Salle Sport</span>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="favorite-and-print clearfix">
+
+                        <a class="add-to-fav" href="#" data-toggle="modal"><i class="fa fa-eye"></i> Hôtel</a>
+                        <a class="money-icon" href="#"><i class="fa fa-money"></i> Reserver</a>
+                    </div>
+                </div>
+                <section class="advance-search main-advance-search">
+                    <div class="container">
+                        <!-- .advance-search-form -->
+                        {{  render (controller("EmFrontendBundle:Frontend:formReservation",{'idbien': datasincerooms.id})) }}
+
+                    </div>
+                    <!-- .container -->
+                </section>
+
+                {{ render(controller('EmFrontendBundle:Frontend:menuPageRight')) }}
+
+                <div class="col-md-8 site-main-content property-single-content">
+                    <main id="main" class="site-main">
+
+                        <article class="hentry clearfix">
+
+                            <div class="entry-content clearfix">
+
+                                <h4 class="fancy-title">Description</h4>
+                                <div class="property-content">
+                                    <p>
+                                        {{ datasincerooms.agences.description  }}
+
+                                    </p>
+                                </div>
+
+                            </div>
+                        </article>
+                        <section class="property-location-section clearfix">
+                            <h4 class="fancy-title">Location</h4>
+                            <div >
+                                {{ datasincerooms.agences.urlmap|raw  }}
+
+                            </div>
+                            <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+                            <script type="text/javascript">
+                                function initialize() {
+                                    var myLatlng = new google.maps.LatLng(40.6845705, -74.1856747);
+                                    var mapCanvas = document.getElementById('property-map');
+                                    var mapOptions = {
+                                        center: myLatlng,
+                                        zoom: 11,
+                                        zoomControl: true,
+                                        zoomControlOptions: {
+                                            style: google.maps.ZoomControlStyle.SMALL
+                                        },
+                                        panControl: false,
+                                        mapTypeControl: true,
+                                        scrollwheel: false
+                                    };
+                                    var map = new google.maps.Map(mapCanvas, mapOptions);
+                                    var marker = new google.maps.Marker({
+                                        position: myLatlng,
+                                        map: map,
+                                        icon: 'images/map/single-family-home-map-icon.png',
+                                        title: 'Villa in Coral Gables'
+                                    });
+                                }
+                                google.maps.event.addDomListener(window, 'load', initialize);
+                            </script>
+                        </section>
+                        <div class="clearfix">
+                        </div>
+                    </main>
+                    <!-- .site-main -->
+
+                </div>
+                <!-- .site-main-content -->
+
+                <!-- Menu Right Detail User -->
+                <!-- .site-sidebar-content -->
+            </div>
+            <!-- .container-property-single -->
+        </div>
+        <!-- .container -->
+    </div>
+    <!-- .site-content -->
+</div>

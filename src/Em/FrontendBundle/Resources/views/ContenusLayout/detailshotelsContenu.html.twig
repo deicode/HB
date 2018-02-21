@@ -1,0 +1,322 @@
+
+<div class="booking-item-details">
+
+    <header class="booking-item-header">
+        <div class="row">
+            <div class="col-md-9">
+                <h2 class="lh1em">{{ datasincerooms.agences.nom }}</h2>
+                <p class="lh1em text-small"><i class="fa fa-map-marker"></i> {{ datasincerooms.agences.adresse }}</p>
+                <ul class="list list-inline text-small">
+                  <!--  <li><a href="#" title="nombre de vue"><i class="fa fa-eye"></i> 1</a>
+                    </li>-->
+
+                </ul>
+            </div>
+            <div class="col-md-3">
+              <!--  <p class="booking-item-header-price"><small> Prix minimum </small>  <span class="text-lg"></span>/nuit</p>-->
+            </div>
+        </div>
+    </header>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="tabbable booking-details-tabbable">
+                <ul class="nav nav-tabs" id="myTab">
+                    <li class="active"><a href="#tab-1" data-toggle="tab"><i class="fa fa-camera"></i>Galerie</a>
+                    </li>
+                    <li><a href="#tab-2" data-toggle="tab"><i class="fa fa-info-circle"></i>Description</a>
+                    </li>
+                    <li><a href="#google-map-tab" data-toggle="tab"><i class="fa fa-map-marker"></i>Map</a>
+                    </li>
+
+                    <li><a href="#tab-5" data-toggle="tab"><i class="fa fa-asterisk"></i>Equiments</a>
+                    </li>
+                    <li><a href="#tab-6" data-toggle="tab"><i class="fa fa-bars"></i>Voir les Hôtels de {% if datasincerooms.agences.communes.nom  is defined %} {{ datasincerooms.agences.communes.nom}} {% endif %} </a>
+                    </li>
+
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade in active" id="tab-1">
+                        <!-- START LIGHTBOX GALLERY -->
+                        <div class="row row-no-gutter" id="popup-gallery">
+                            {% for dataimage in dataimages %}
+                            <div class="col-md-2">
+                                <a class="hover-img popup-gallery-image" href="{{ asset('bundles/emfrontend/assets/') }}pics/{{ dataimage.url }}/{{ dataimage.title }}" data-effect="mfp-zoom-out">
+                                    <img src="{{ asset('bundles/emfrontend/assets/') }}pics/{{ dataimage.url }}/{{ dataimage.title }}" alt="{{dataimage.title }}" title="{{dataimage.title}}" /><i class="fa fa-plus round box-icon-small hover-icon i round"></i>
+                                </a>
+                            </div>
+                           {% endfor %}
+                        </div>
+                        <!-- END LIGHTBOX GALLERY -->
+                    </div>
+                    <div class="tab-pane fade" id="tab-2">
+                        <div class="mt20">
+                            <p>
+                                 {{ datasincerooms.agences.description  }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="google-map-tab">
+                        {{ datasincerooms.agences.urlmap|raw  }}
+                    </div>
+                    <div class="tab-pane fade" id="tab-5">
+                        <div class="row mt20">
+                            <div class="col-md-4">
+                                <ul class="booking-item-features booking-item-features-expand mb30 clearfix">
+                                    {% if datasincerooms.agences.wifi %}
+                                    <li>
+                                        <i class="im im-wi-fi"></i><span class="booking-item-feature-title">Wi-Fi Internet</span>
+                                    </li>
+                                    {% endif %}
+                                    {% if datasincerooms.agences.climatisation %}
+                                        <li><i class="im im-children"></i><span class="booking-item-feature-title">Climatisation</span>
+                                        </li>
+                                    {% endif %}
+                                    {% if datasincerooms.agences.casino %}
+                                        <li><i class="im im-casino"></i><span class="booking-item-feature-title">Casino & Gambling</span>
+                                        </li>
+                                    {% endif %}
+                                    {% if datasincerooms.agences.nightclub %}
+                                        <li><i class="im im-bar"></i><span class="booking-item-feature-title">Bar/Lounge</span>
+                                        </li>
+                                    {% endif %}
+                                    {% if datasincerooms.agences.gym %}
+                                    <li><i class="im im-fitness"></i><span class="booking-item-feature-title">Salle Sport</span>
+                                    </li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                            <div class="col-md-4">
+                                <ul class="booking-item-features booking-item-features-expand mb30 clearfix">
+                                    {% if datasincerooms.agences.piscine %}
+                                    <li><i class="im im-pool"></i><span class="booking-item-feature-title"> Piscine </span>
+                                    </li>
+                                    {% endif %}
+                                    {% if datasincerooms.agences.petitdejeuner %}
+                                    <li><i class="im im-spa"></i><span class="booking-item-feature-title">Petit dejeuner</span>
+                                    </li>
+                                    {% endif %}
+                                    {% if datasincerooms.agences.restaurant %}
+                                    <li><i class="im im-restaurant"></i><span class="booking-item-feature-title">Restaurant</span>
+                                    </li>
+                                    {% endif %}
+                                    {%  if datasincerooms.agences.servicechambre %}
+                                    <li><i class="im im-business-person"></i><span class="booking-item-feature-title">Service de chambre</span>
+                                    </li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="tab-6">
+                        <div class="mt20">
+                            <ul class="booking-list">
+
+                                {% for data in datacommunes|slice(0,8) %}
+                                <li>
+                                    <a class="booking-item" href="{{ path('em_frontend_hotelecaracteristique', { 'ville': data.villes.slug ,'idagence': data.id|urlencrypt } ) }}">
+                                        <div class="row">
+                                            {{ render(controller('EmFrontendBundle:Frontend:listeImageAgence', {'entity': data })) }}
+
+                                            <div class="col-md-6">
+                                                <div class="booking-item-rating">
+                                                    <ul class="icon-group booking-item-rating-stars">
+                                                        {%  set num = 1 %}
+                                                        {% for  num in  1..data.grade %}
+                                                            <i class="fa fa-star"></i>
+                                                            {%  set num = num +1 %}
+                                                        {% endfor %}
+                                                    </ul><span class="booking-item-rating-number"><b > {{ data.grade }}</b> de 5</span>
+                                                </div>
+                                                <h5 class="booking-item-title">{{ data.nom }}</h5>
+                                                <p class="booking-item-address"><i class="fa fa-map-marker"></i> {{ data.villes.nom }} {% if data.communes.nom  is defined %} ( {{ data.communes.nom }}) {% endif %}</p><small class="booking-item-last-booked">dernières vues: il y' a 1 heure</small>
+                                            </div>
+
+                                            <div class="col-md-3"><span class="booking-item-price-from">à partir de</span><span class="booking-item-price">{{ data.prixinit|localizedcurrency('XOF')}} }} Fcfa </span> <span class="btn btn-primary"> Reserver </span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="booking-item-meta">
+                <h2 class="lh1em mt40">{{ datasincerooms.agences.status }}</h2>
+              <!--  <h3>97% <small >de recommandation</small></h3>-->
+                <div class="booking-item-rating">
+                    <ul class="icon-list icon-group booking-item-rating-stars">
+                        {%  set num = 1 %}
+                        {% for  num in  1..datasincerooms.agences.grade %}
+                            <i class="fa fa-star"></i>
+                            {%  set num = num +1 %}
+                        {% endfor %}
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="gap gap-small"></div>
+    <h3>Chambres disponibles</h3>
+    <div class="row">
+    <!--@E-mitic -->
+        <!-- Liste chambre de l agence -->
+        <div class="col-md-9">
+            <ul class="booking-list" id="chambre">
+                {% for data in  dataallroom %}
+                <li >
+                    <a  href="{{ path('em_frontend_reservartion_connected', {'idchambre': data.id|urlencrypt }) }}" target="_blank" class="booking-item daterange" >
+
+                        <div class="row">
+                            <div class="col-md-3">
+
+                                <img src="{{ asset('bundles/emfrontend/assets/') }}pics/chambres/{{data.images.title }}" alt="{{ data.images.title }}" title="{{ data.images.title }}" />
+
+                            </div>
+                            <div class="col-md-6">
+                                <h5 class="booking-item-title">{{ data.typechambre }}</h5>
+                                <p class="text-small">{{ data.description }}</p>
+
+                            </div>
+                            <div class="col-md-3"> <span class="booking-item-price">{{ data.prixchambre }} Fcfa</span><span>/Nuit</span><br><span class="btn btn-primary">Reserver</span>
+                            </div>
+                        </div>
+
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <!--Fin chambre -->
+
+
+        <div class="col-md-3">
+            <div class="booking-item-dates-change">
+                <form id="#selctionsejour" method="post" name="selctionsejour">
+                    <div class="input-daterange" data-date-format="MM d, DD">
+                        <div class="form-group form-group-icon-left"><i class="fa fa-calendar input-icon input-icon-hightlight"></i>
+                            <label> Arrivée</label>
+                            <input id="start" class="form-control" name="start" type="text"  />
+                        </div>
+                        <div class="form-group form-group-icon-left"><i class="fa fa-calendar input-icon input-icon-hightlight"></i>
+                            <label> Départ </label>
+                            <input id="end" class="form-control" name="end" type="text"  />
+                        </div>
+                    </div>
+                    <div class="form-group form-group-select-plus">
+                        <label>Adultes</label>
+                        <div class="btn-group btn-group-select-num" data-toggle="buttons" id="adulte">
+                            <label class="btn btn-primary active">
+                                <input type="radio" name="adulte" value="1" />1</label>
+                            <label class="btn btn-primary">
+                                <input type="radio" name="adulte" value="2" />2</label>
+                            <label class="btn btn-primary">
+                                <input type="radio" name="adulte" value="3"/>3</label>
+                            <label class="btn btn-primary">
+                                <input type="radio" name="adulte" value="4"/>4</label>
+                            <label class="btn btn-primary">
+                                <input type="radio" name="adulte" value="5"/>5</label>
+                            <label class="btn btn-primary">
+                                <input type="radio" name="adulte" value="6+" />6+</label>
+                        </div>
+                        <select class="form-control hidden">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option selected="selected">6</option>
+                            <option >7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+                            <option>11</option>
+                            <option>12</option>
+                            <option>13</option>
+                            <option>14</option>
+                        </select>
+                    </div>
+                    <div class="form-group form-group-select-plus">
+                        <label>Enfants</label>
+                        <div class="btn-group btn-group-select-num" data-toggle="buttons" id="enfant">
+                            <label class="btn btn-primary active">
+                                <input type="radio" name="enfant" value="0" />0</label>
+                            <label class="btn btn-primary">
+                                <input type="radio" name="enfant" value="1" />1</label>
+                            <label class="btn btn-primary">
+                                <input type="radio" name="enfant" value="2" />2</label>
+                            <label class="btn btn-primary">
+                                <input type="radio" name="enfant" value="3" />3</label>
+                            <label class="btn btn-primary">
+                                <input type="radio" name="enfant" value="4" />4</label>
+                            <label class="btn btn-primary">
+                                <input type="radio" name="enfant" value="5+"/>5+</label>
+                        </div>
+                        <select class="form-control hidden">
+                            <option>0</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option selected="selected">5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+                            <option>11</option>
+                            <option>12</option>
+                            <option>13</option>
+                            <option>14</option>
+                        </select>
+                    </div>
+                    <div class="form-group form-group-select-plus">
+                        <label>Chambres</label>
+                        <div class="btn-group btn-group-select-num" data-toggle="buttons" id="chambrechoisis">
+                            <label class="btn btn-primary active">
+                                <input type="radio" name="chambrechoisis" value="1" />1</label>
+                            <label class="btn btn-primary">
+                                <input type="radio" name="chambrechoisis" value="2"/>2</label>
+                            <label class="btn btn-primary">
+                                <input type="radio" name="chambrechoisis" value="3"/>3</label>
+                            <label class="btn btn-primary">
+                                <input type="radio" name="chambrechoisis" value="4"/>4</label>
+                            <label class="btn btn-primary">
+                                <input type="radio" name="chambrechoisis" value="5"/>5</label>
+                            <label class="btn btn-primary">
+                                <input type="radio" name="chambrechoisis" value="6+"/>6+</label>
+                        </div>
+                        <select class="form-control hidden">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option selected="selected">6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+                            <option>11</option>
+                            <option>12</option>
+                            <option>13</option>
+                            <option>14</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    {{ render(controller('EmFrontendBundle:Frontend:renderCommentaire', {'idagence' :  datasincerooms.agences.id } )) }}
+</div>
+        <div class="gap gap-small"></div>
+
+

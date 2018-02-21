@@ -1,0 +1,47 @@
+
+<main id="main" class="site-main">
+    <div class="row">
+        <p>
+            {% for flashMessage in app.session.flashbag.get('Notice')|slice(0,1) %}
+
+                <!-- main content -->
+                <button class="btn-small btn-success">Message ! {{ flashMessage }} </button>
+
+            {% endfor %}
+        </p>
+    </div>
+    <div class="row zero-horizontal-margin column-container">
+
+        <div class="col-md-12 col-right-side contact-form-wrapper">
+            <section >
+                <h3 class="contact-form-heading">Envoyez Message | Telephone : {{ informations.mobile }}  </h3>
+
+                <form  class="contact-form" action="{{ path('em_frontend_contact') }}" method="post">
+                    <p>
+                        {{ form_widget(form.nomprenoms, {'attr': {'placeholder': 'Nom & prenoms*',  'class' : 'form-control'}}) }}
+
+                    </p>
+                    <p>
+                        {{ form_widget(form.email, {'attr': {'placeholder': 'E-mail address*', 'class' : 'form-control'}}) }}
+                    </p>
+                    <p>
+                        {{ form_widget(form.phone, {'attr': {'placeholder': 'Phone*', 'size' : '40', 'class' : 'form-control' }}) }}
+                    </p>
+                    <p>
+                        {{ form_widget(form.sujet, {'attr': {'placeholder': 'Objet de votre demande*','class' : 'form-control' }}) }}
+                        {{ form_widget(form._token, {'attr': {'type' : 'hidden'}}) }}
+
+                    </p>
+                    <p>
+                        {{ form_widget(form.message, {'attr': {'placeholder': 'Message*','class' : 'form-control' }}) }}
+
+                    </p>
+                    <div class="clearfix">
+                        <input type="submit" id="submit-button" name="submit" class="btn-small btn-orange pull-right" value="Envoyer Message">
+                        <img src="{{ asset('bundles/emfrontend/assets/') }}images/ajax-loader.gif" id="ajax-loader" class="pull-right" alt="Loading...">
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+</main>

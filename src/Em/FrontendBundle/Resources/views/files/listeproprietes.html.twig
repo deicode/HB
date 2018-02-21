@@ -1,0 +1,5 @@
+{% extends '::frontend/layoutpage.html.twig' %}
+
+{% block headerMenuFrontend %}
+    {{   render (controller("EmFrontendBundle:Frontend:headerMenuFrontend",{'slug': slug})) }}
+{% endblock headerMenuFrontend %}

@@ -1,0 +1,30 @@
+em_client_homepage:
+    path:     /
+    defaults: { _controller: EmClientBundle:Client:index }
+
+
+em_client_parametre:
+    path:     mes-paramtres/
+    defaults: { _controller: EmClientBundle:Client:parametre }
+
+em_client_motdepasse:
+    path:     changer-mot-de-passe/
+    defaults: { _controller: EmClientBundle:ChangePassword:changePassword }
+
+
+em_client_reservation:
+    path:     mes-reservations/
+    defaults: { _controller: EmClientBundle:Client:mesReservations }
+
+em_client_commentaire:
+    path:     mes-reactions/
+    defaults: { _controller: EmClientBundle:Client:commentaire }
+
+
+em_client_change_password:
+   path: parametre/modifer/acces
+   defaults: { _controller: EmClientBundle:ChangePassword:changePassword }
+
+em_client_reservations_details:
+   path: reservation/{idreservation}/details
+   defaults: { _controller: EmClientBundle:Client:reservationDetails }

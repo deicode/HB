@@ -1,0 +1,15 @@
+
+<form class="login100-form validate-form" method="post" id="form-signup">
+
+    <h2 class="text-center">Inscription éffectuée avec succès!</h2>
+    <h5 class="text-center mb30">{{ user.username }},merci de valider votre inscription depuis l'adresse <strong> {{ user.email }}</strong></h5>
+
+
+					<span class="pull-left">
+						<a href="{{path('em_frontend_homepage')}}"><strong>Retour au site</strong></a>
+					</span>
+	              <span class="pull-right">
+						<a href="{{path('em_backend_serviceLogin')}}"><strong>Accedez à votre compte</strong></a>
+					</span>
+
+</form>

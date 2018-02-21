@@ -1,0 +1,231 @@
+
+<!DOCTYPE html>
+<html>
+{% block headFrontend %}
+
+    {% include('::frontend/blocks/headFrontend.html.twig') %}
+
+{% endblock headFrontend %}
+
+<body class="inspiry-slider-two">
+{% block headerMenuFrontend %}
+    {{   render (controller("EmFrontendBundle:Frontend:headerMenuFrontend",{'slug':'home'})) }}
+{% endblock headerMenuFrontend %}
+<!-- .site-header -->
+{% block topareaSlide %}
+    {{  render (controller("EmFrontendBundle:Frontend:blockTopareSlider")) }}
+    <section class="advance-search main-advance-search">
+        <div class="container">
+            <!-- .advance-search-form -->
+            <span style="color: #3989c6"> <strong>HOME</strong></span><span style="color: #ef5050"><strong>MOBILITE</strong></span>
+            {{  render (controller("EmFrontendBundle:Frontend:searchForm")) }}
+
+        </div>
+        <!-- .container -->
+    </section>
+{% endblock topareaSlide %}
+<div id="content-wrapper" class="site-content-wrapper">
+    <div id="content" class="site-content layout-wide">
+        <main id="main" class="site-main">
+
+            <!-- .advance-search -->
+            <div class="property-listing-three">
+                <div class="container">
+                    <div class="welcome-text">
+                        <h2 class="title"> Expert dans la facilitation de mobilisation et d’hébergement partout dans le monde pour vos voyages et de séjour d’affaires, de vacances et de tourisme.  </h2>
+                      {% block informationsite %}
+
+
+                      {% endblock %}
+                    </div>
+                   <!-- render Liste type immo-->
+                    <header class="section-header">
+                        <h3 class="section-title">Bien plus que des hôtels... Découvrez le confort de nos maisons et appartements</h3>
+                    </header>
+                    {{  render (controller("EmFrontendBundle:Frontend:renderListeTypeImmo")) }}
+
+                    <!-- .row -->
+                </div>
+                <!-- .container -->
+            </div>
+            <!-- .property-listing-variation-three -->
+
+            <div class="featured-properties featured-properties-one">
+                <div class="container">
+                    <header class="section-header">
+                        <h3 class="section-title">Etablissements les plus visités</h3>
+                    </header>
+                    <div class="row zero-horizontal-margin">
+                        {{  render (controller("EmFrontendBundle:Frontend:renderListeImmo")) }}
+
+                    </div>
+
+                    <!-- .row -->
+                </div>
+                <!-- .container -->
+            </div>
+
+
+
+            <!-- .featured-properties-three -->
+            <!-- .submit-property-section -->
+
+
+            <!-- .home-recent-posts -->
+            <!-- .partners -->
+        </main>
+        <!-- .site-main -->
+    </div>
+    <!-- .site-content -->
+</div>
+<!-- .site-content-wrapper -->
+{% block footer %}
+    {{ render(controller('EmFrontendBundle:Frontend:footerPage')) }}
+{% endblock footer %}
+<!-- .footer -->
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/jquery-1.12.3.min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/flexslider/jquery.flexslider-min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/lightslider/js/lightslider.min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/select2/select2.min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/owl.carousel/owl.carousel.min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/swipebox/js/jquery.swipebox.min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/jquery.hoverIntent.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/jquery.validate.min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/jquery.form.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/transition.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/jquery.appear.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/meanmenu/jquery.meanmenu.min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/jquery.placeholder.min.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/') }}js/custom.js"></script>
+
+<!-- .modal -->
+<script>
+    (function ($) {
+        "use strict";
+
+        if (jQuery().validate) {
+
+            //Login
+            $('#login-form').validate();
+
+            //Register
+            $('#register-form').validate();
+
+            //Forgot Password
+            $('#forgot-form').validate();
+        }
+
+        /*-----------------------------------------------------------------------------------*/
+        /* Modal dialog for Login and Register
+         /*-----------------------------------------------------------------------------------*/
+        var loginModal = $('#login-modal'),
+                modalSections = loginModal.find('.modal-section');
+
+        $('.activate-section').on('click', function (event) {
+            var targetSection = $(this).data('section');
+            modalSections.slideUp();
+            loginModal.find('.' + targetSection).slideDown();
+            event.preventDefault();
+        });
+
+    })(jQuery);
+
+</script>
+
+<script>
+    // This example displays an address form, using the autocomplete feature
+    // of the Google Places API to help users fill in the information.
+
+    // This example requires the Places library. Include the libraries=places
+    // parameter when you first load the API. For example:
+    // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+    var placeSearch, autocomplete;
+    var componentForm = {
+        street_number: 'short_name',
+        route: 'long_name',
+        locality: 'long_name',
+        administrative_area_level_1: 'short_name',
+        country: 'long_name',
+        postal_code: 'short_name'
+    };
+
+    function initAutocomplete() {
+        // Create the autocomplete object, restricting the search to geographical
+        // location types.
+        autocomplete = new google.maps.places.Autocomplete(
+                /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+                {types: ['geocode']});
+
+        // When the user selects an address from the dropdown, populate the address
+        // fields in the form.
+        autocomplete.addListener('place_changed', fillInAddress);
+    }
+
+    function fillInAddress() {
+        // Get the place details from the autocomplete object.
+        var place = autocomplete.getPlace();
+
+        for (var component in componentForm) {
+            document.getElementById(component).value = '';
+            document.getElementById(component).disabled = false;
+        }
+
+        // Get each component of the address from the place details
+        // and fill the corresponding field on the form.
+        for (var i = 0; i < place.address_components.length; i++) {
+            var addressType = place.address_components[i].types[0];
+            if (componentForm[addressType]) {
+                var val = place.address_components[i][componentForm[addressType]];
+                document.getElementById(addressType).value = val;
+            }
+        }
+    }
+
+    // Bias the autocomplete object to the user's geographical location,
+    // as supplied by the browser's 'navigator.geolocation' object.
+    function geolocate() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var geolocation = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+                var circle = new google.maps.Circle({
+                    center: geolocation,
+                    radius: position.coords.accuracy
+                });
+                autocomplete.setBounds(circle.getBounds());
+            });
+        }
+    }
+</script>
+<script src="{{ asset('bundles/emfrontend/assets/js/datepick/js/') }}moment.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/js/datepick/js/') }}pikaday.js"></script>
+<script src="{{ asset('bundles/emfrontend/assets/js/datepick/js/') }}verif.js"></script>
+
+
+<script>
+    var picker = new Pikaday({
+        field: document.getElementById('end'),
+        format: 'D MMM YYYY',
+        onSelect: function() {
+            console.log(this.getMoment().format('Do MMMM YYYY'));
+        }
+    });
+
+    var picker2 = new Pikaday({
+        field: document.getElementById('start'),
+        format: 'D MMM YYYY',
+        onSelect: function() {
+            console.log(this.getMoment().format('Do MMMM YYYY'));
+        }
+    });
+</script>
+
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgMyyrT_VJQLgzBb16tuB181Y6n6hpwvs&libraries=places&callback=initAutocomplete" async defer></script>
+
+</body>
+</html>

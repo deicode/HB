@@ -1,0 +1,195 @@
+
+
+<div id="wrapper">
+    <div class="main-content">
+
+        <ol class="breadcrumb breadcrumb-quirk">
+            <li><a href="#"><i class="fa fa-home mr5"></i> Accueil</a></li>
+            <li><a href="#">Hôteliers</a></li>
+            <li class="active">Reservations</li>
+        </ol>
+
+        <div class="row">
+            <div class="col-sm-8 col-md-9 col-lg-10 people-list">
+
+                <div class="people-options clearfix">
+
+
+                    <div class="btn-group pull-left people-pager">
+                        <button type="button" class="btn btn-success"><i class="fa fa-hotel"></i></button>
+                    </div>
+                    <span class="people-count pull-left"> Numero reservation <strong> {{ reservation.numeroreservation }}</strong>  </span>
+                </div><!-- people-options -->
+
+                <div class="row">
+                    <div class="panel panel-profile list-view">
+                        <div class="panel-heading">
+                            <div class="media">
+                                <div class="media-left">
+                                    <a href="#">
+                                        <img  class="media-object width100" src="{{ asset('bundles/emfrontend/assets/') }}pics/chambres/{{reservation.chambre.images.title }}" alt="{{ reservation.chambre.images.title }}" title="{{ reservation.chambre.images.title }}" />
+
+                                    </a>
+                                </div>
+
+
+                                <div class="media-body">
+                                    <h4 class="media-heading"> {{ reservation.chambre.agences.nom }} </h4>
+                                    <span class="pull-right"> <strong> Proprietaire </strong> : {{ reservation.chambre.agences.proprietaire.username }} -
+                                                              <strong> Telephone </strong> :   {{ reservation.chambre.agences.proprietaire.phone }} -
+                                                              <strong> Ville </strong> :   {{ reservation.chambre.agences.ville }} -
+                                    </span>
+                                    <p class="media-usermeta">
+                                        {%  set num = 1 %}
+                                        {% for  num in  1..reservation.chambre.agences.grade %}
+                                            <i class="glyphicon glyphicon-star"></i>
+                                            {%  set num = num +1 %}
+                                        {% endfor %}
+                                    </p>
+                                </div>
+                            </div><!-- media -->
+
+                        </div><!-- panel-heading -->
+
+                        <div class="panel-body people-info">
+                            <h3 class="text-danger"> Information Client </h3>
+                            <div class="row">
+
+                                <div class="col-sm-3">
+                                    <div class="info-group">
+                                        <label>Nom & Prenoms</label>
+                                        <h4> {{ reservation.nom }} {{ reservation.prenoms }} </h4>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="info-group">
+                                        <label>Email</label>
+                                        <h4>{{ reservation.email }}</h4>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="info-group">
+                                        <label>Phone</label>
+                                        <h4>  {{ reservation.phone }} </h4>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="info-group">
+                                        <label>Reservé le</label>
+                                        <h4>  {{ reservation.dateadd|date('d-m-Y à H:i:s') }} </h4>
+                                    </div>
+                                </div>
+                            </div><!-- row -->
+                            <h3 class="text-danger">Information Paiement </h3>
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <div class="info-group">
+                                        <label>Prix /nuit</label>
+                                        <h4>{{ reservation.chambre.prixchambre }}</h4>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="info-group">
+                                        <label>Prix total</label>
+                                        <h4>{{ reservation.prixtotal }}</h4>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="info-group">
+                                        <label>Mode de paiement</label>
+                                        <h4>{{ reservation.modepayement }}</h4>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="info-group">
+                                        <label>Calss Chambre</label>
+                                        <h4>{{ reservation.chambre.typechambre }}</h4>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="info-group">
+                                        <label>Status</label>
+                                        <h4>{{ reservation.status }}</h4>
+                                    </div>
+                                </div>
+
+
+                            </div><!-- row -->
+                            <h3 class="text-danger">Information Reservation </h3>
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <div class="info-group">
+                                        <label>Date Arrivée</label>
+                                        <h4>{{ reservation.datearrivee }}</h4>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="info-group">
+                                        <label>Date Depart</label>
+                                        <h4>{{ reservation.datedepart }}</h4>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="info-group">
+                                        <label>Nombre jour</label>
+                                        <h4>{{ reservation.nbjour }}</h4>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="info-group">
+                                        <label>Adulte</label>
+                                        <h4>{{ reservation.nbadulte }}</h4>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="info-group">
+                                        <label>Enfant</label>
+                                        <h4>{{ reservation.nbenfant }}</h4>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="info-group">
+                                        <label>Nombre Chambre(s)</label>
+                                        <h4>{{ reservation.nbchambre }}</h4>
+                                    </div>
+                                </div>
+
+                            </div><!-- row -->
+                        </div>
+                    </div>
+
+                </div><!-- row -->
+
+            </div><!-- col-sm-8 -->
+
+            <div class="col-sm-4 col-md-3 col-lg-2">
+
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Dernières reservations {{ reservation.chambre.agences.nom }}  </h4>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="media-list user-list">
+                            {% for data in allreservation|slice(0,6) %}
+                                <li class="media">
+                                    <div class="media-left">
+                                        <a href="{{ path('em_backend_reservations_details', {'idreservation' : data.id|urlencrypt }) }}">
+                                            <i class="fa fa-hotel"></i>
+                                        </a>
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="media-heading"><a href="{{ path('em_backend_reservations_details', {'idreservation' : data.id|urlencrypt }) }}">{{ data.numeroreservation }}</a></h4>
+                                        <span>{{ data.dateadd|date('d-m-Y H:i:s') }}</span> par {{ data.nom }}
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+
+
+            </div>
+        </div><!-- row -->
+
+    </div>
+</div>

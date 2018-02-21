@@ -1,0 +1,40 @@
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="panel">
+            <div class="panel-heading nopaddingbottom">
+                <h4 class="panel-title">Gerer les etats</h4>
+            </div>
+            <div class="panel-body">
+                <hr>
+                <form id="basicForm" enctype="multipart/form-data"  action="{{ path('em_backend_addetatimmo', {'idpage' : idpage})}}" class="form-horizontal"  method="post">
+
+
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Renseigner Etat  <span class="text-danger">*</span></label>
+                        <div class="col-sm-7">
+                            {{ form_widget(form.libelle, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_widget(form._token, {'attr': {'type' : 'hidden'}}) }}
+
+                        </div>
+                    </div>
+
+                    <hr>
+
+
+                    <div class="row">
+                        <div class="col-sm-9 col-sm-offset-3">
+                            <button class="btn btn-success btn-quirk btn-wide mr5">Valider</button>
+                            <button type="reset" class="btn btn-quirk btn-wide btn-default">Annuler</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div><!-- panel-body -->
+        </div><!-- panel -->
+
+    </div><!-- col-md-6 -->
+
+    <!-- col-md-6 -->
+
+</div>

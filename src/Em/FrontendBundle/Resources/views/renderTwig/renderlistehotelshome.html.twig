@@ -1,0 +1,116 @@
+<div class="container">
+    <div class="row row-odd zero-horizontal-margin">
+
+        {% for data in pagination|slice(0,2) %}
+        <div class="col-xs-6 custom-col-xs-12">
+            <article class="row property-post-odd hentry property-listing-home property-listing-one meta-item-half">
+                <div class="property-thumbnail zero-horizontal-padding col-lg-6">
+                    <a href="{{ path('em_frontend_hotelecaracteristique',{'slug': data.villes.pays.slug,'idagence': data.id,'ville': data.villes.nom} ) }}">
+                        {{ render(controller('EmFrontendBundle:Frontend:listeImageAgence', {'entity': data })) }}
+
+                    </a>
+                </div>                <!-- .property-thumbnail -->
+                <div class="property-description clearfix col-lg-6">
+                    <header class="entry-header">
+                        <h6 class="author-link"> <a rel="author" href=""{{ path('em_frontend_hotelecaracteristique',{'slug': data.villes.pays.slug,'idagence': data.id,'ville': data.villes.nom} ) }}">{{ data.villes.pays.libelle }}-{{ data.villes.nom }}</a></h6>
+
+                        <h3 class="entry-title"><a href="#" rel="bookmark">{{ data.nom|capitalize }}</a></h3>
+                        <div class="price-and-status">
+                            <span class="price">{{  data.prixinit|localizedcurrency('XOF') }} </span>
+                            <a href="{{ path('em_frontend_hotelecaracteristique',{'slug': data.villes.pays.slug,'idagence': data.id,'ville': data.villes.nom} ) }}"><span class="property-status-tag">Séjourner</span></a>
+                        </div>
+
+                    </header>
+                    <div class="property-meta entry-meta clearfix">
+                        {% if data.wifi %}
+                        <div class="meta-item">
+                                <i class="fa fa-wi-fi"></i><span class="meta-item-label">Wi-Fi Internet</span>
+                        </div>
+                        {% endif %}
+                        {% if data.climatisation %}
+                        <div class="meta-item">
+                                <i class="fa ffa-braille"></i><span class="meta-item-label">Climatisation</span>
+                            </div>
+                        {% endif %}
+                        {% if data.casino %}
+                            <div class="meta-item">
+
+                              <i class="fa fa-id-card-o"></i><span class="meta-item-label">Casino & Gambling</span>
+                            </div>
+                        {% endif %}
+                        {% if data.nightclub %}
+                        <div class="meta-item">
+                                <i class="fa fa-glass"></i><span class="meta-item-label">Bar/Lounge</span>
+                        </div>
+                        {% endif %}
+                        {% if data.gym %}
+                            <div class="meta-item">
+                                <i class="fa fa-deaf"></i><span class="meta-item-label">Salle Sport</span>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <!-- .property-meta -->
+                </div>
+                <!-- .property-description -->
+            </article>
+            <!-- .property-post-odd -->
+        </div>
+        {% endfor %}
+    </div>
+    <!-- .row-odd -->
+    <div class="row row-even zero-horizontal-margin">
+        {% for data in pagination|slice(3,4) %}
+        <div class="col-xs-6 custom-col-xs-12">
+            <article class="row property-post-odd hentry property-listing-home property-listing-one meta-item-half">
+                <div class="property-thumbnail zero-horizontal-padding col-lg-6">
+                    <a href="{{ path('em_frontend_hotelecaracteristique',{'slug': data.villes.pays.slug,'idagence': data.id,'ville': data.villes.nom} ) }}">
+                        {{ render(controller('EmFrontendBundle:Frontend:listeImageAgence', {'entity': data })) }}
+                    </a>
+                </div>
+                <!-- .property-thumbnail -->
+                <div class="property-description clearfix col-lg-6">
+                    <header class="entry-header">
+                        <h3 class="entry-title"><a href="#" rel="bookmark">{{ data.nom|capitalize }}</a></h3>
+                        <div class="price-and-status">
+                            <span class="price">{{  data.prixinit|localizedcurrency('XOF') }}</span>
+                            <a href="{{ path('em_frontend_hotelecaracteristique',{'slug': data.villes.pays.slug,'idagence': data.id,'ville': data.villes.nom} ) }}"><span class="property-status-tag">Séjourner</span></a>
+                        </div>
+                    </header>
+                    <div class="property-meta entry-meta clearfix">
+                        {% if data.wifi %}
+                            <div class="meta-item">
+                                <i class="fa fa-wi-fi"></i><span class="meta-item-label">Wi-Fi Internet</span>
+                            </div>
+                        {% endif %}
+                        {% if data.climatisation %}
+                            <div class="meta-item">
+                                <i class="fa ffa-braille"></i><span class="meta-item-label">Climatisation</span>
+                            </div>
+                        {% endif %}
+                        {% if data.casino %}
+                            <div class="meta-item">
+
+                                <i class="fa fa-id-card-o"></i><span class="meta-item-label">Casino & Gambling</span>
+                            </div>
+                        {% endif %}
+                        {% if data.nightclub %}
+                            <div class="meta-item">
+                                <i class="fa fa-glass"></i><span class="meta-item-label">Bar/Lounge</span>
+                            </div>
+                        {% endif %}
+                        {% if data.gym %}
+                            <div class="meta-item">
+                                <i class="fa fa-deaf"></i><span class="meta-item-label">Salle Sport</span>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <!-- .property-meta -->
+                </div>
+                <!-- .property-description -->
+            </article>
+            <!-- .property-post-odd -->
+        </div>
+        {% endfor %}
+    </div>
+    <!-- .row-even -->
+</div>

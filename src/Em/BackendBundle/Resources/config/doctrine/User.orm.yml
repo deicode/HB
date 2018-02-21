@@ -1,0 +1,40 @@
+Em\BackendBundle\Entity\User:
+    type: entity
+    table: null
+    repositoryClass: Em\BackendBundle\Repository\UserRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+
+    fields:
+        nom:
+            type: string
+            length: 255
+            nullable: true
+        prenoms:
+            type: string
+            length: 255
+            nullable: true
+        phone:
+            type: string
+            length: 255
+            nullable: true
+        adresse:
+            type: text
+            nullable: true
+        ville:
+            type: string
+            length: 255
+            nullable: true
+        dateinscrit:
+            type: datetime
+            nullable: true
+        pays:
+            type: string
+            length: 255
+            nullable: true
+
+    lifecycleCallbacks: {  }

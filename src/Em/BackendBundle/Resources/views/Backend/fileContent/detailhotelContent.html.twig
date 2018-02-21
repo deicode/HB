@@ -1,0 +1,403 @@
+<div class="mainpanel">
+
+      <div class="contentpanel">
+
+        <div class="row profile-wrapper">
+          <div class="col-xs-12 col-md-3 col-lg-2 profile-left">
+            <div class="profile-left-heading">
+              <a href="" class="profile-photo"><img class="img-circle img-responsive" src="{{ asset('bundles/embackend/assets/images/') }}hotel-Icon.png" alt=""></a>
+              <h2 class="profile-name">{{hotel.nom}}</h2>
+              <h5 class="profile-name">{{hotel.caracteristique}}</h5>
+              <h4 class="profile-designation">
+                {% if hotel.grade == 5 %}
+                    <i class="glyphicon glyphicon-star"></i>
+                    <i class="glyphicon glyphicon-star"></i>
+                    <i class="glyphicon glyphicon-star"></i>
+                    <i class="glyphicon glyphicon-star"></i>
+                    <i class="glyphicon glyphicon-star"></i>
+                {% elseif hotel.grade == 4 %}
+                    <i class="glyphicon glyphicon-star"></i>
+                    <i class="glyphicon glyphicon-star"></i>
+                    <i class="glyphicon glyphicon-star"></i>
+                    <i class="glyphicon glyphicon-star"></i>
+                {% elseif hotel.grade == 3 %}
+                    <i class="glyphicon glyphicon-star"></i>
+                    <i class="glyphicon glyphicon-star"></i>
+                    <i class="glyphicon glyphicon-star"></i>
+                {% elseif hotel.grade == 2 %}
+                    <i class="glyphicon glyphicon-star"></i>
+                    <i class="glyphicon glyphicon-star"></i>
+                {% else %}
+                    <i class="glyphicon glyphicon-star"></i>
+                {% endif %}
+              </h4>
+              {#
+                <ul class="list-group">
+                  <li class="list-group-item">Posts <a href="timeline.html">1,333</a></li>
+                  <li class="list-group-item">Following <a href="people-directory.html">541</a></li>
+                  <li class="list-group-item">Followers <a href="people-directory-grid.html">32,434</a></li>
+                </ul>
+                <button class="btn btn-danger btn-quirk btn-block profile-btn-follow">Follow</button>
+              #}
+            </div>
+            <div class="profile-left-body">
+              <h4 class="panel-title">Description</h4>
+              <p>{{hotel.title}}</p>
+
+              <hr class="fadeout">
+
+              <h4 class="panel-title">Location</h4>
+              <p><i class="glyphicon glyphicon-map-marker mr5"></i>{{hotel.ville}}</p>
+
+              <hr class="fadeout">
+
+              <h4 class="panel-title">Commodités</h4>
+              <p>
+                {% if hotel.wifi == 1 %}
+                  <i class="fa fa-wifi"></i> Wifi <br>
+                {% endif %}
+
+                {% if hotel.piscine == 1 %}
+                  Piscine <br>
+                {% endif %}
+
+                {% if hotel.climatisation == 1 %}
+                  Climatisation <br>
+                {% endif %}
+
+                {% if hotel.restaurant == 1 %}
+                  Restaurant <br>
+                {% endif %}
+
+                {% if hotel.servicechambre == 1 %}
+                  Service de chambre <br>
+                {% endif %}
+
+                {% if hotel.petitdejeuner == 1 %}
+                  Petit dejeuner <br>
+                {% endif %}
+
+                {% if hotel.nightclub == 1 %}
+                  Night Club <br>
+                {% endif %}
+
+                {% if hotel.massage == 1 %}
+                  Massage <br>
+                {% endif %}
+
+                {% if hotel.gym == 1 %}
+                  Gym <br>
+                {% endif %}
+
+                {% if hotel.casino == 1 %}
+                  Casino <br>
+                {% endif %}
+              </p>
+
+              <hr class="fadeout">
+
+              <h4 class="panel-title">Contacts</h4>
+              <p><i class="glyphicon glyphicon-phone mr5"></i>{{hotel.telephone}}</p>
+
+              <hr class="fadeout">
+
+              <h4 class="panel-title">Social</h4>
+              <ul class="list-inline profile-social">
+                <li><a href=""><i class="fa fa-facebook-official"></i></a></li>
+                <li><a href=""><i class="fa fa-twitter"></i></a></li>
+                <li><a href=""><i class="fa fa-dribbble"></i></a></li>
+                <li><a href=""><i class="fa fa-linkedin"></i></a></li>
+              </ul>
+
+            </div>
+          </div>
+          <div class="col-md-9 col-lg-10 profile-right">
+            <div class="profile-right-body">
+              <!-- Nav tabs -->
+              <ul class="nav nav-tabs nav-justified nav-line">
+                <li class="active"><a href="#photos" data-toggle="tab"><strong>Photos ({{imagehotel|length}})</strong></a></li>
+                <li><a href="#chambre" data-toggle="tab"><strong>Chambres</strong></a></li>
+                <li><a href="#administrateur" data-toggle="tab"><strong>Administrateurs</strong></a></li>
+              </ul>
+
+              <!-- Tab panes -->
+              <div class="tab-content">
+                <div class="tab-pane active" id="photos">
+
+                  {% for data in imagehotel %}
+                    <div class="col-md-4">                        
+                      <div class="panel-body">
+                        <p>
+                          <div class="media">
+                            <img class="media-object width200" src="{{ asset('bundles/emfrontend/assets/pics/agences/') }}{{data.title}}" alt="">
+                          </div>
+                        </p>
+                        <div class="mb20"></div>
+                        <ul class="list-inline nomargin">
+                          <li>
+                            <a href="javascript:void({{data.id}});" id="suppressionImageHotel">
+                                <i class="fa fa-trash"></i> Supprimer
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  {% endfor %}
+                  <div class="col-md-4">
+                      <button class="btn btn-success" data-toggle="modal" data-target="#imageHotel">
+                        <i class="fa fa-image"></i> Plus d'image
+                      </button>
+                  </div>
+
+                </div><!-- tab-pane -->
+                <div class="tab-pane" id="chambre">
+                  <div class="panel-body">
+                      <div class="table-responsive">
+                          <table class="table nomargin">
+                              <thead>
+                                  <tr>
+                                      <th class="text-center">
+                                          <label class="ckbox ckbox-primary">
+                                              <input type="checkbox"><span></span>
+                                          </label>
+                                      </th>
+                                      <th>Type de chambre</th>
+                                      <th>Description</th>
+                                      <th>Prix Chambre</th>
+                                      <th class="text-center">Total chambre</th>
+                                      <th class="text-right">Commodités</th>
+                                      <th></th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  {% for i,data in chambre %}
+                                  <tr>
+                                      <td class="text-center">
+                                          <label class="ckbox ckbox-primary">
+                                              <input type="checkbox"><span></span>
+                                          </label>
+                                      </td>
+                                      <td>
+                                        <h4 class="media-heading">{{ data.typechambre }}</h4>
+                                      </td>
+                                      <td>{{ data.description }}</td>
+                                      <td>{{ data.prixchambre }}</td>
+                                      <td class="text-center">{{ data.totalchambre }}</td>
+                                      <td class="text-right">
+                                        {% if data.climatisation == 1 %}
+                                          Climatisation <br>
+                                        {% endif %}
+
+                                        {% if data.douche == 1 %}
+                                          Douche <br>
+                                        {% endif %}
+
+
+                                        {% if data.baignoire == 1 %}
+                                          Baignoire <br>
+                                        {% endif %}
+
+                                        {% if data.cuisine == 1 %}hotelie
+                                          Cuisine <br>
+                                        {% endif %}
+
+                                        {% if data.salon == 1 %}
+                                          Salon <br>
+                                        {% endif %}
+
+                                        {% if data.refrigerateur == 1 %}
+                                          Refrigerateur <br>
+                                        {% endif %}
+
+                                        {% if data.bureau == 1 %}
+                                          Bureau <br>
+                                        {% endif %}
+
+                                        {% if data.filmalademande == 1 %}
+                                          VOD (Vidéo à la demande) <br>
+                                        {% endif %}
+
+                                        {% if data.telephone == 1 %}
+                                          Telephone <br>
+                                        {% endif %}
+
+                                        {% if data.tv == 1 %}
+                                          TV <br>
+                                        {% endif %}
+
+                                        {% if data.minibar == 1 %}
+                                          Minibar <br>
+                                        {% endif %}
+                                      </td>
+                                      <td>
+                                          <ul class="table-options">
+                                              <li>
+                                                <a href="{{path('em_backend_updatechambre', {'id' : data.id})}}">
+                                                  <i class="fa fa-pencil"></i>
+                                                </a>
+                                              </li>
+                                              {% if data.locked == 0 %}
+                                                <li>
+                                                  <a href="{{ path('em_backend_chambreenabled', {'idChambre': data.id, 'status' : 'suspendre'}) }}" title="Suspendre">
+                                                    <i class="fa fa-close"></i>
+                                                  </a>
+                                                </li>
+                                              {% else %}
+                                                <li>
+                                                  <a href="{{ path('em_backend_chambreenabled', {'idChambre': data.id, 'status' : 'activer'}) }}" title="Activation">
+                                                    <i class="fa fa-check"></i>
+                                                  </a>
+                                                </li>
+                                              {% endif %}
+                                              <li><a href=""><i class="fa fa-trash"></i></a></li>
+                                          </ul>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                    <td colspan="7">
+                                      {% if imageallchambre != NULL %}
+                                        {% for data2 in imageallchambre[i] %}
+                                          <div class="col-md-4">                        
+                                            <div class="panel-body">
+                                              <p>
+                                                <div class="media">
+                                                  <img class="media-object width200" src="{{ asset('bundles/emfrontend/assets/pics/chambres/') }}{{data2.title}}" alt="">
+                                                </div>
+                                              </p>
+                                              <div class="mb20"></div>
+                                              <ul class="list-inline nomargin">
+                                                <li>
+                                                    <a href="javascript:void({{data2.id}});" id="suppressionImageChambre">
+                                                        <i class="fa fa-trash"></i> Supprimer
+                                                    </a>
+                                                </li>
+                                              </ul>
+                                            </div>
+                                          </div>
+                                        {% endfor %}
+                                      {% endif %}
+                                      <div class="col-md-4">
+                                          <button class="btn btn-success" data-toggle="modal" data-target="#imageChambre_{{i}}">
+                                              <i class="fa fa-image"></i> Plus d'image
+                                          </button>
+                                      </div>
+                                    </td>
+                                  </tr>
+
+                                  <!-- Ajout d'image de chambre -->
+                                  <div class="modal bounceIn animated" id="imageChambre_{{i}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <form method="post" action="{{path('em_backend_ajouterimagechambre')}}" enctype="multipart/form-data">
+                                      <div class="modal-dialog">
+                                        <div class="modal-content">
+                                          <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title" id="myModalLabel">Ajoutez des images pour cette chambre</h4>
+                                          </div>
+                                          <div class="modal-body">
+                                            <input type="file" name="files[]" multiple required="">
+                                          </div>
+                                          <input type="hidden" name="idChambre" value="{{data.id}}">
+                                          <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                          </div>
+                                        </div><!-- modal-content -->
+                                      </div>
+                                    </form>
+                                  </div>
+                                  <!-- modal -->
+                                  {% endfor %}
+                              </tbody>
+                              
+                          </table>
+                          
+                      </div><!-- table-responsive -->
+                  </div>
+                </div>
+                <div class="tab-pane" id="administrateur">
+                  <div class="panel-body">
+                      <div class="table-responsive">
+                          <table class="table nomargin">
+                              <thead>
+                                  <tr>
+                                      <th class="text-center">
+                                          <label class="ckbox ckbox-primary">
+                                              <input type="checkbox"><span></span>
+                                          </label>
+                                      </th>
+                                      <th>Nom</th>
+                                      <th>Email</th>
+                                      <th>Derniere Connexion</th>
+                                      <th class="text-center">Statut</th>
+                                      <th></th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  
+                                  <tr>
+                                      <td class="text-center">
+                                          <label class="ckbox ckbox-primary">
+                                              <input type="checkbox"><span></span>
+                                          </label>
+                                      </td>
+                                      <td>
+                                        <h4 class="media-heading">{{ hotel.proprietaire.username }}</h4>
+                                      </td>
+                                      <td>{{ hotel.proprietaire.email }}</td>
+                                      <td>{{ hotel.proprietaire.lastLogin|date('Y-m-d') }}</td>
+                                      <td class="text-center">
+                                        {% if hotel.proprietaire.enabled == 1 %}
+                                          Activé
+                                        {% else %}
+                                          Désactivé
+                                        {% endif %}
+                                      </td>
+                                      <td>
+                                          <ul class="table-options">
+                                            {% if hotel.proprietaire.enabled == 0 %}
+                                              <li><a href="" title="Activation"><i class="fa fa-check"></i></a></li>
+                                            {% else %}
+                                              <li><a href="" title="Desactivation"><i class="fa fa-close"></i></a></li>
+                                            {% endif %}
+                                              <li><a href=""><i class="fa fa-trash"></i></a></li>
+                                          </ul>
+                                      </td>
+                                  </tr>
+                                  
+                              </tbody>
+                              
+                          </table>
+                          
+                      </div><!-- table-responsive -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div><!-- row -->
+
+    </div><!-- contentpanel -->
+
+<!-- Ajouter des images pour votre hotel -->
+<div class="modal bounceIn animated" id="imageHotel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <form method="post" action="{{path('em_backend_ajouterimagehotel')}}" enctype="multipart/form-data">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Ajoutez des images pour votre hotel</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="file" name="files[]" multiple required="">
+                </div>
+                <input type="hidden" name="idHotel" value="{{hotel.id}}">
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermez</button>
+                    <button type="submit" class="btn btn-primary">Validez</button>
+                </div>
+            </div><!-- modal-content -->
+        </div><!-- modal-dialog -->
+    </form>
+</div>
+<!-- modal -->

@@ -1,0 +1,130 @@
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <p class="text-bigger">
+                {% if dataentity[0].block  is defined and dataentity[0].block == 1 %}
+                    {{ dataentity[0].contenu|raw}}
+                {% endif %}
+            </p>
+        </div>
+    </div>
+    <div class="gap"></div>
+</div>
+<div class="bg-holder">
+    <div class="bg-parallax" style="background-image:url({{ asset('bundles/emfrontend/assets/') }}img/jova.jpg);"></div>
+    <div class="bg-mask"></div>
+    <div class="bg-holder-content">
+        <div class="container">
+            <div class="gap gap-big text-white">
+                <div class="row">
+                    <div class="col-md-10">
+                        <h2>
+                            {% if dataentity[1].block  is defined and dataentity[1].block == 2 %}
+                                {{ dataentity[1].titre|raw}}
+                            {% endif %}
+                        </h2>
+
+                        {% if dataentity[1].block  is defined and dataentity[1].block == 2 %}
+                            {{ dataentity[1].contenu|raw}}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="gap"></div>
+    <h2>
+        {% if dataentity[2].block  is defined and dataentity[2].block == 3 %}
+            {{ dataentity[2].titre|raw}}
+        {% endif %}
+    </h2>
+    <div class="row">
+        <div class="col-md-8">
+            {% if dataentity[2].block  is defined and dataentity[2].block == 3 %}
+                {{ dataentity[2].contenu|raw}}
+            {% endif %}
+        </div>
+    </div>
+    <div class="gap"></div>
+    <h2>{% if dataentity[3].block  is defined and dataentity[3].block == 4 %}
+            {{ dataentity[3].titre|raw}}
+        {% endif %}
+    </h2>
+    <div class="row">
+        <div class="col-md-10">
+
+            {% if dataentity[3].block  is defined and dataentity[3].block == 4 %}
+                {{ dataentity[3].contenu|raw}}
+            {% endif %}
+        </div>
+    </div>
+    <div class="row row-wrap" data-gutter="60">
+        <div class="col-md-3">
+            <div class="thumb text-center">
+                <header class="thumb-header">
+                    <img class="round" src="{{ asset('bundles/emfrontend/assets/') }}img//team/sindou.png" alt="Sindou" title="AMaze" />
+                </header>
+                <div class="thumb-caption">
+                    <h5 class="thumb-title">Kone Sindou</h5>
+                    <p class="thumb-meta text-small">Directeur</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="thumb text-center">
+                <header class="thumb-header">
+                    <img class="round" src="{{ asset('bundles/emfrontend/assets/') }}img//team/assamoi.png" alt="Assamoi" title="Bubbles" />
+                </header>
+                <div class="thumb-caption">
+                    <h5 class="thumb-title">Assamoi Pierre</h5>
+                    <p class="thumb-meta text-small">Responsable commercial et marketing</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="thumb text-center">
+                <header class="thumb-header">
+                    <img class="round" src="{{ asset('bundles/emfrontend/assets/') }}img//team/second.png" alt="Adingra Nestor" title="Gamer Chick" />
+                </header>
+                <div class="thumb-caption">
+                    <h5 class="thumb-title">Adingra Nestor</h5>
+                    <p class="thumb-meta text-small"> Représentant Afrikhotel Europe</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="thumb text-center">
+                <header class="thumb-header">
+                    <img class="round" src="{{ asset('bundles/emfrontend/assets/') }}img/team/landry.png" alt="Landry" title="Chiara" />
+                </header>
+                <div class="thumb-caption">
+                    <h5 class="thumb-title">Assanvo Landry </h5>
+                    <p class="thumb-meta text-small">Charge clientèle et communication</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h4>{% if dataentity[4].block  is defined and dataentity[4].block == 5 %}
+            {{ dataentity[4].titre|raw}}
+        {% endif %}
+    </h4>
+    <div class="row">
+        <div class="col-md-10">
+            {% if dataentity[4].block  is defined and dataentity[0].block == 5 %}
+                {{ dataentity[4].contenu|raw}}
+            {% endif %}
+            <a href="{{ path('em_frontend_homepage') }}">Nous Contacter</a>
+        </div>
+    </div>
+    <div class="gap"></div>
+
+</div>
+
+<div class="container">
+</div>

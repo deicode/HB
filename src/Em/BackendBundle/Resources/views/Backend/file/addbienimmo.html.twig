@@ -1,0 +1,12 @@
+{% extends '::backend/backendLayout-B.html.twig' %}
+
+    {% block headLibelle %}
+        Ajouter un bien immobilier ||  <span class="text-primary"> <a href="{{ path('em_backend_litebienimmo') }}">  Liste des Biens Immobiliers</a></span>
+
+    {% endblock headLibelle %}
+
+{% block contenu %}
+
+    {% include('EmBackendBundle:Backend:fileContent/addbienimmoContent.html.twig') %}
+
+{% endblock contenu %}

@@ -1,0 +1,246 @@
+{% block Contenu %}
+    <div id="wrapper">
+        <div class="main-content">
+            <div class="row small-spacing">
+                <div class="box-content card">
+                    <h4 class="box-title">
+                        <i class="fa fa-fa-building  ico"></i>Inscrire votre agence Immobilière</h4>
+
+                    <div class="card-content">
+                        <div id="rootwizard-progress">
+                            <div class="tab-header">
+                                <div class="navbar">
+                                    <div class="navbar-inner">
+                                        <ul>
+                                            <li>
+                                                <a href="#tab-progress-1" data-toggle="tab">Information de base</a>
+                                            </li>
+                                            <li>
+                                                <a href="#tab-progress-2" data-toggle="tab">Informations Geographique</a>
+                                            </li>
+                                            <li>
+                                                <a href="#tab-progress-3" data-toggle="tab">Equipements</a>
+                                            </li>
+                                            <li>
+                                                <a href="#tab-progress-4" data-toggle="tab">Photos</a>
+                                            </li>
+                                            <!-- <li>
+                                                <a href="#tab-progress-5" data-toggle="tab">Fifth</a>
+                                            </li> -->
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <form action="{% if entity is defined %}{{ path('em_backend_proprietaire_updateagence', {'id' : entity.id}) }} {% else %}{{ path('em_backend_proprietaire_addagence_immo') }} {% endif %}" enctype="multipart/form-data" method="post">
+                                <div class="tab-content">
+                                    <div id="bar" class="progress">
+                                        <div class="progress-bar active progress-bar-success progress-bar-striped bar"></div>
+                                    </div>
+
+                                    <div class="tab-pane" id="tab-progress-1">
+                                        <div class="form-group  col-xs-12 col-sm-6 col-lg-3">
+                                            <label for="paysfield">Type de bien
+                                                <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="controls">
+                                                {{ form_widget(form.caracteristique, {'attr': {'class': 'form-control'}}) }}
+
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group  col-xs-12  col-sm-6 col-lg-3">
+                                            <label for="paysfield">Grade
+                                                <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="controls">
+                                                {{ form_widget(form.grade, {'attr': {'class': 'form-control'}}) }}
+
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group  col-xs-12  col-sm-6 col-lg-3">
+                                            <label for="paysfield">Status
+                                                <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="controls">
+                                                {{ form_widget(form.status, {'attr': {'class': 'form-control'}}) }}
+
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-lg-3  col-sm-6 col-xs-6">
+                                            <label for="prixfield">Prix à partir de
+                                                <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="controls">
+                                                {{ form_widget(form.prixinit, {'attr': {'class': 'form-control'}}) }}
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group  col-xs-12 col-lg-5">
+                                            <label for="libellefield">Nom du bien
+                                                <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="controls">
+                                                {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-xs-12  col-lg-7">
+                                            <label for="adressefield">slogan
+                                                <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="controls">
+                                                {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-xs-12">
+                                            <label for="descriptionfield">Description
+                                                <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="controls">
+                                                {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane" id="tab-progress-2">
+                                        <div class="form-group  col-xs-12 col-lg-5">
+                                            <label for="paysfield">Téléphone
+                                                <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="controls">
+                                                {{ form_widget(form.telephone, {'attr': {'class': 'form-control'}}) }}
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-xs-12  col-lg-12">
+                                            <label for="adressefield">Pays
+                                                <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="controls">
+                                                {{ form_widget(form.pays, {'attr': {'class': 'form-control'}}) }}
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-xs-12  col-lg-7">
+                                            <label for="adressefield">Ville
+                                                <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="controls">
+                                                <div id="locationField">
+                                                    <input id="autocomplete" placeholder="Entrer la ville , ou departement ou commune"
+                                                           onFocus="geolocate()" type="text" class="form-control" name="agences[ville]" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-xs-12  col-lg-12">
+                                            <label for="adressefield">Adresse
+                                                <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="controls">
+                                                {{ form_widget(form.adresse, {'attr': {'class': 'form-control'}}) }}
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group col-xs-12">
+                                            <label for="mapurlfield">Géolocalisation (Url map)
+                                                <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="controls">
+                                                {{ form_widget(form.urlmap, {'attr': {'class': 'form-control'}}) }}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane" id="tab-progress-3">
+                                        <ul class="list-group col-lg-2 col-xs-12 col-sm-6">
+                                            <li class="list-group-item">
+                                                {{ form_widget(form.wifi) }}&nbsp; Wi-Fi
+
+                                            </li>
+                                            <li class="list-group-item">
+                                                {{ form_widget(form.piscine) }} &nbsp; Piscine
+                                            </li>
+                                        </ul>
+
+                                        <ul class="list-group col-lg-3 col-xs-12 col-sm-6">
+                                            <li class="list-group-item">
+                                                {{ form_widget(form.climatisation) }} &nbsp; Climatisation
+                                            </li>
+                                            <li class="list-group-item">
+                                                {{ form_widget(form.servicechambre) }} &nbsp; Service en chambre
+                                            </li>
+                                        </ul>
+
+                                        <ul class="list-group col-lg-3 col-xs-12 col-sm-6">
+                                            <li class="list-group-item">
+                                                {{ form_widget(form.petitdejeuner) }} &nbsp; Petit-dejeuner
+                                            </li>
+                                            <li class="list-group-item">
+                                                {{ form_widget(form.restaurant) }} &nbsp; Restaurant
+                                            </li>
+                                        </ul>
+
+                                        <ul class="list-group col-lg-2 col-xs-12 col-sm-6">
+                                            <li class="list-group-item">
+                                                {{ form_widget(form.nightclub) }} &nbsp; Night-Club
+                                            </li>
+                                            <li class="list-group-item">
+                                                {{ form_widget(form.massage) }} &nbsp; Massage
+                                            </li>
+                                        </ul>
+
+                                        <ul class="list-group col-lg-2 col-xs-12 col-sm-6">
+                                            <li class="list-group-item">
+                                                {{ form_widget(form.gym) }} &nbsp; Gym
+                                            </li>
+                                            <li class="list-group-item">
+                                                {{ form_widget(form._token, {'attr': {'type' : 'hidden'}}) }}
+
+                                                {{ form_widget(form.casino) }} &nbsp; Casino
+                                            </li>
+                                        </ul>
+
+
+                                    </div>
+                                    <div class="tab-pane" id="tab-progress-4">
+                                        <label class="col-sm-3 control-label">Selectionner les Photos <span class="text-danger">*</span></label>
+
+                                        <input type="file" name="files[]" multiple required="">
+                                    </div>
+                                    <!-- <div class="tab-pane" id="tab-progress-5">
+                                    5
+                                </div> -->
+
+                                    <ul class="pager wizard">
+                                        <li class="pull-left">
+                                            <a href="#">Revenir à mon agence</a>
+                                        </li>
+                                        <li class="previous">
+                                            <button type="reset" class="btn pull-left btn-xs">Précedent</button>
+
+                                        </li>
+                                        <li class="pull-right">
+                                            <button class="btn btn-xs">Valider</button>
+                                        </li>
+                                        <li class="next">
+                                            <a href="javascript:void(0)" class="submit" type="submit">Suivant</a>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- /.card-content -->
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock Contenu %}
+

@@ -1,0 +1,280 @@
+<div id="content-wrapper" class="site-content-wrapper site-pages" xmlns="http://www.w3.org/1999/html">
+    <div id="content" class="site-content layout-boxed">
+        <div class="container">
+                <!-- Menu Right Detail User -->
+                <div class="row">
+                    <div class="col-md-12 site-main-content">
+                        <main id="main" class="site-main">
+                            <div class="row">
+                                <p>
+                                    {% for flashMessage in app.session.flashbag.get('Notice')|slice(0,1) %}
+
+                                        <!-- main content -->
+                                        <button class="btn-small btn-success">Message ! {{ flashMessage }} </button>
+
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            <div class="row zero-horizontal-margin column-container">
+
+                                <div class="col-md-12 contact-form-wrapper">
+                                    <div class="panel">
+                                        <div class="panel-heading nopaddingbottom">
+                                          <blockquote>{{ pagesite.contenu|raw }} </blockquote>
+                                        </div>
+                                        <div class="panel-body">
+                                            <form  action="{{ path('em_frontend_addbienimmo') }}" enctype="multipart/form-data"  class="form-horizontal"  method="post">
+
+                                                <fieldset>
+                                                    <legend>Informations du demandeur</legend>
+                                                    <div class="form-group">
+                                                        {{ form_errors(form.nomprenoms) }}
+
+                                                        <label class="col-sm-3 control-label">Nom  & Prenoms <span class="text-danger">*</span></label>
+                                                        <div class="col-sm-8">
+                                                            {{ form_widget(form.nomprenoms, {'attr': {'class': 'form-control'}}) }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        {{ form_errors(form.telephone) }}
+
+                                                        <label class="col-sm-3 control-label">Téléphone <span class="text-danger">*</span></label>
+                                                        <div class="col-sm-8">
+                                                            {{ form_widget(form.telephone, {'attr': {'class': 'form-control'}}) }}
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                                <hr>
+                                                <fieldset>
+                                                    <legend>Informations de votre bien</legend>
+                                                <div class="form-group">
+                                                    {{ form_errors(form.libelle) }}
+
+                                                    <label class="col-sm-3 control-label">Libelle : <span class="text-danger">*</span></label>
+                                                    <div class="col-sm-8">
+                                                        {{ form_widget(form.libelle, {'attr': {'class': 'form-control'}}) }}
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    {{ form_errors(form.prix) }}
+
+                                                    <label class="col-sm-3 control-label">Prix : <span class="text-danger">*</span></label>
+                                                    <div class="col-sm-8">
+                                                        {{ form_widget(form.prix, {'attr': {'class': 'form-control'}}) }}
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    {{ form_errors(form.adresse) }}
+
+                                                    <label class="col-sm-3 control-label">Adresse : <span class="text-danger">*</span></label>
+                                                    <div class="col-sm-8">
+                                                        {{ form_widget(form.adresse, {'attr': {'class': 'form-control'}}) }}
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                    {{ form_errors(form.etage) }}
+
+                                                    <label class="col-sm-3 control-label">Etage</label>
+                                                    <div class="col-sm-8">
+                                                        {{ form_widget(form.etage, {'attr': {'class': 'form-control'}}) }}
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    {{ form_errors(form.nbrepiece) }}
+
+                                                    <label class="col-sm-3 control-label">Nombre de chambre  </label>
+                                                    <div class="col-sm-8">
+                                                        {{ form_widget(form.nbrepiece, {'attr': {'class': 'form-control'}}) }}
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    {{ form_errors(form.anneeconstruction) }}
+
+                                                    <label class="col-sm-3 control-label">Annee Construction </label>
+                                                    <div class="col-sm-8">
+                                                        {{ form_widget(form.anneeconstruction, {'attr': {'class': 'form-control'}}) }}
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    {{ form_errors(form.surfacehabitable) }}
+
+                                                    <label class="col-sm-3 control-label">Surface Habitable </label>
+                                                    <div class="col-sm-8">
+                                                        {{ form_widget(form._token, {'attr': {'type' : 'hidden'}}) }}
+                                                        {{ form_widget(form.surfacehabitable, {'attr': {'class': 'form-control'}}) }}
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    {{ form_errors(form.surfaceterrain) }}
+
+                                                    <label class="col-sm-3 control-label">Surface Terrain </label>
+                                                    <div class="col-sm-8">
+                                                        {{ form_widget(form._token, {'attr': {'type' : 'hidden'}}) }}
+                                                        {{ form_widget(form.surfaceterrain, {'attr': {'class': 'form-control'}}) }}
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    {{ form_errors(form.description) }}
+
+                                                    <label class="col-sm-3 control-label">Description</label>
+                                                    <div class="col-sm-8">
+                                                        {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+                                                    </div>
+                                                </div>
+                                                </fieldset>
+
+                                                <hr>
+                                                <fieldset>
+                                                    <legend>Equipements & Localisation</legend>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label class="col-sm-3 control-label ckbox ckbox-success">Jardin : </label>
+                                                                <div class="col-sm-8">
+                                                                    {{ form_widget(form.jardin) }}
+                                                                </div>
+
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label class="col-sm-3 control-label">Piscine : </label>
+                                                                <div class="col-sm-8">
+                                                                    {{ form_widget(form.piscine) }}
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="col-sm-3 control-label">Balcon :</label>
+                                                                <div class="col-sm-8">
+                                                                    {{ form_widget(form.balcon) }}
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="col-sm-3 control-label">Terrasse : </label>
+                                                                <div class="col-sm-8">
+                                                                    {{ form_widget(form.terrasse) }}
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="col-sm-3 control-label">Parking :</label>
+                                                                <div class="col-sm-8">
+                                                                    {{ form_widget(form.parking) }}
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="col-sm-3 control-label">Garage :</label>
+                                                                <div class="col-sm-8">
+                                                                    {{ form_widget(form.garage) }}
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="col-sm-3 control-label">Ascenceur :</label>
+                                                                <div class="col-sm-8">
+                                                                    {{ form_widget(form.ascenseur, {'attr': {'class': 'form-control'}}) }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label class="col-sm-3 control-label">Pays : <span class="text-danger">*</span></label>
+                                                                <div class="col-sm-8">
+                                                                    {{ form_widget(form.pays, {'attr': {'class': 'form-control'}}) }}
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="col-sm-3 control-label">Ville : <span class="text-danger">*</span></label>
+                                                                <div class="col-sm-8">
+                                                                    {{ form_widget(form.ville, {'attr': {'class': 'form-control'}}) }}
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label class="col-sm-3 control-label">Type d'immobilier :<span class="text-danger">*</span> </label>
+                                                                <div class="col-sm-8">
+                                                                    {{ form_widget(form.typeimmo, {'attr': {'class': 'form-control'}}) }}
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label class="col-sm-3 control-label">Etat Immobilier : <span class="text-danger">*</span></label>
+                                                                <div class="col-sm-8">
+                                                                    {{ form_widget(form.etatimmo, {'attr': {'class': 'form-control'}}) }}
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="col-sm-3 control-label">Status Immobilier : <span class="text-danger">*</span></label>
+                                                                <div class="col-sm-8">
+                                                                    {{ form_widget(form.statusimmo, {'attr': {'class': 'form-control'}}) }}
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                                <hr>
+                                                <fieldset>
+                                                    <legend>Géolocalisation</legend>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+
+                                                            <div class="form-group">
+                                                                {{ form_errors(form.urlmap) }}
+
+                                                                <label class="col-sm-3 control-label">Urlmap<span class="text-danger">*</span></label>
+                                                                <div class="col-sm-8">
+                                                                    {{ form_widget(form.urlmap, {'attr': {'class': 'form-control'}}) }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+
+                                                <hr>
+                                                <fieldset>
+                                                    <legend>Photos</legend>
+
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Selectionner les Photos <span class="text-danger">*</span></label>
+                                                        <div class="col-sm-8">
+                                                            <input type="file" name="files[]" multiple required="">
+                                                        </div>
+                                                    </div>
+
+                                                </fieldset>
+                                                <hr>
+                                                <br>
+                                                <br>
+                                                <fieldset>
+                                                    <div class="row">
+                                                        <div class="form-group">
+                                                            <div class="col-sm-9 col-sm-offset-3">
+                                                                <button type="reset" class="btn btn-quirk btn-wide btn-default pull-right">Annuler</button>
+
+                                                                <button class="btn btn-success btn-quirk btn-wide mr5   pull-left">Inscrire</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+
+
+                                            </form>
+                                        </div><!-- panel-body -->
+                                    </div>
+                                </div>
+                            </div>
+                        </main>
+                        <!-- .site-main -->
+                    </div>
+                    <!-- .site-main-content -->
+                </div>
+
+
+                <!-- .site-sidebar-content -->
+            <!-- .container-property-single -->
+        </div>
+        <!-- .container -->
+    </div>
+    <!-- .site-content -->
+</div>

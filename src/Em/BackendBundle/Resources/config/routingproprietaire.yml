@@ -1,0 +1,80 @@
+em_backend_proprietaire_homepage:
+    path:     /
+    defaults: { _controller: EmBackendBundle:Proprietaire:index }
+
+em_backend_proprietaire_listeimmo:
+    path:   liste-immo/
+    defaults: { _controller: EmBackendBundle:Proprietaire:listeImmo }
+
+em_backend_proprietaire_listehotels:
+    path:   liste-de-mes-hotels/
+    defaults: { _controller: EmBackendBundle:Proprietaire:listeHotels }
+
+em_backend_proprietaire_reservationrecente:
+    path:   reservations-recentes/
+    defaults: { _controller: EmBackendBundle:Proprietaire:listeReservationRecente }
+
+em_backend_proprietaire_reservationhistorique:
+    path:   historique-des-reservations/
+    defaults: { _controller: EmBackendBundle:Proprietaire:listeReservationHistorique }
+
+
+em_backend_proprietaire_parametre:
+   path: parametre/{iduser}/infos
+   defaults: { _controller: EmBackendBundle:Proprietaire:parametres }
+
+em_backend_proprietaire_change_password:
+   path: parametre/modifer/acces
+   defaults: { _controller: EmBackendBundle:ChangePassword:changePassword }
+
+em_backend_proprietaire_moncoffre:
+   path: mon-coffre/
+   defaults: { _controller: EmBackendBundle:Proprietaire:monCoffreProprietaire  }
+
+em_backend_proprietaire_addagence:
+    path:   inscrire-votre-agence/
+    defaults: { _controller: EmBackendBundle:Proprietaire:addAgences }
+
+
+
+em_backend_proprietaire_addagence_immo:
+    path:   inscrire-votre-agence-immobilière/
+    defaults: { _controller: EmBackendBundle:Proprietaire:addAgenceimmo }
+
+
+
+em_backend_proprietaire_detailhotel:
+    path:   detail-agence/{id}/
+    defaults: { _controller: EmBackendBundle:Proprietaire:detailHotel, id: null }
+
+em_backend_proprietaire_hotelenabled:
+    path:    mon-agence/enabledhotel/{idHotel}/{status}
+    defaults: { _controller: EmBackendBundle:Backend:enabledHotel }
+
+em_backend_proprietaire_chambreenabled:
+    path:    mon-agence/enabledchambre/{idChambre}/{status}
+    defaults: { _controller: EmBackendBundle:Backend:enabledChambre }
+
+em_backend_proprietaire_listesingleagence:
+    path:   agence-detail/{id}
+    defaults: { _controller: EmBackendBundle:Proprietaire:listeSingleAgence, id: null }
+
+
+em_backend_proprietaire_addchambre:
+    path:   add-chambre/{agences}
+    defaults: { _controller: EmBackendBundle:Proprietaire:addChambre, agences: null }
+
+
+em_backend_proprietaire_updateagence:
+    path:   mise-a-jour-agence/{id}
+    defaults: { _controller: EmBackendBundle:Proprietaire:updateAgences, id: null }
+
+em_backend_proprietaire_reservations_details:
+   path: reservations/{idreservation}/details
+   defaults: { _controller: EmBackendBundle:Proprietaire:reservationDetails }
+
+
+em_backend_proprietaire_reservations_confirmer:
+   path: reservation/{idreservation}/confirmer/{status}
+   defaults: { _controller: EmBackendBundle:Proprietaire:reservationConfirmer }
+##Chambre

@@ -1,0 +1,12 @@
+{% extends '::backend/backendLayout-B.html.twig' %}
+
+    {% block headLibelle %}
+       Liste des  superviseurs et administrateurs d' Afrkhotel  <span class="text-primary">  Consulter </span>
+
+    {% endblock headLibelle %}
+
+{% block contenu %}
+
+    {% include('EmBackendBundle:Backend:fileContent/listeuseradminContent.html.twig') %}
+
+{% endblock contenu %}

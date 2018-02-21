@@ -1,0 +1,20 @@
+    {% extends "::frontend/Layout.html.twig" %}
+ {% block breadcrumb %}
+
+     <ul class="breadcrumb">
+         <li><a href="{{ path('em_frontend_homepage') }}">Home</a>
+         </li>
+         <li class="active">Comment ça marche</li>
+     </ul>
+ {% endblock breadcrumb %}
+{% block titrenews %}
+    <div class="container">
+        <h1 class="page-title">Comment ça marche ?</h1>
+    </div>
+{% endblock titrenews %}
+
+{% block contenu %}
+
+    {% include('EmFrontendBundle:ContenusLayout:commentmarcheContenu.html.twig') %}
+
+{% endblock contenu %}

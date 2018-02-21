@@ -1,0 +1,13 @@
+
+{% extends "::backend/backendLoginLayout.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block Contenu %}
+    {% block fos_user_content %}
+        <h4>Note :</h4>
+        <p>
+            {{ 'resetting.check_email'|trans({'%email%': email}) }}
+        </p>
+    {% endblock %}
+{% endblock Contenu %}
+
+

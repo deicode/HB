@@ -1,0 +1,79 @@
+Em\BackendBundle\Entity\Chambre:
+    type: entity
+    table: null
+    repositoryClass: Em\BackendBundle\Repository\ChambreRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+
+    fields:
+        typelit:
+            type: string
+            length: 255
+        capacitemax:
+            type: integer
+        dateadd:
+            type: datetime
+        totalchambre:
+            type: integer
+        prixinit:
+            type: string
+            nullable: true
+        prixchambre:
+            type: integer
+        pourcentagesolde:
+            type: integer
+        description:
+            type: string
+            length: 255
+        typechambre:
+             type: string
+             length: 255
+        slugchambre:
+             type: string
+             length: 255
+
+        climatisation:
+            type: boolean
+        douche:
+            type: boolean
+        tvlcplasma:
+            type: boolean
+        baignoire:
+            type: boolean
+        cuisine:
+            type: boolean
+        salon:
+            type: boolean
+        refrigerateur:
+            type: boolean
+        bureau:
+            type: boolean
+        filmalademande:
+            type: boolean
+        telephone:
+            type: boolean
+        tv:
+            type: boolean
+        minibar:
+            type: boolean
+        locked:
+            type: boolean
+
+    manyToOne:
+        agences:
+            targetEntity: Em\BackendBundle\Entity\Agences
+            joinColumn:
+              name: agence_id
+              referencedColumnName: id
+            cascade: ["persist"]
+        images:
+            targetEntity: Em\FrontendBundle\Entity\Images
+            joinColumn:
+              name: images_id
+              referencedColumnName: id
+            cascade: ["persist"]
+    lifecycleCallbacks: {  }

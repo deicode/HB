@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>HomeMobilite</title>
+
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="assets/styles/style-horizontal.css">
+
+    <!-- mCustomScrollbar -->
+    <link rel="stylesheet" href="assets/plugin/mCustomScrollbar/jquery.mCustomScrollbar.min.css">
+
+    <!-- Waves Effect -->
+    <link rel="stylesheet" href="assets/plugin/waves/waves.min.css">
+
+    <!-- Sweet Alert -->
+    <link rel="stylesheet" href="assets/plugin/sweet-alert/sweetalert.css">
+
+    <!-- Datepicker -->
+    <link rel="stylesheet" href="assets/plugin/datepicker/css/bootstrap-datepicker.min.css">
+
+    <!-- Color Picker -->
+    <link rel="stylesheet" href="assets/color-switcher/color-switcher.min.css">
+    <link rel="stylesheet" href="assets/styles/color/dark-blue.min.css">
+    <link rel="stylesheet" href="assets/persocss.css">
+    <link rel="stylesheet" href="assets/styles/flag-icon.min.css">
+    <link type="text/css" rel="stylesheet" href="assets/plugin/lightslider/css/lightslider.css" />
+    <style>
+        .nav>li {
+            background: #ddd !important;
+        }
+
+        .item-result {
+            margin-bottom: 10px;
+        }
+
+        .item-result-margin {
+            margin-bottom: 10px;
+            margin-top: 10px;
+            display: inline-block;
+            position: relative;
+        }
+
+        .item-result-margin:after {
+            position: absolute;
+            content: '';
+            border-bottom: solid #d2d7da;
+            width: 90%;
+            transform: translateX(-50%);
+            /* //bottom: -15px; */
+            left: 50%;
+        }
+
+        .tab-content {
+            padding: 15px;
+            border: 0px solid #ddd !important;
+            border-top: none;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header class="fixed-header">
+        <div class="header-top">
+            <div class="container">
+                <div class="pull-left">
+                    <a href="index.html" class="logo">
+                        <img src="assets/images/logo-header.png" alt="">
+                    </a>
+
+                </div>
+                <!-- /.pull-left -->
+                <div class="pull-right">
+                    <!-- /.ico-item hidden-on-desktop -->
+
+                    <div class="ico-item flag-icon flag-icon-fr"></div>
+                    <div class="ico-item flag-icon flag-icon-gb"></div>
+                    <!-- /.ico-item -->
+
+
+                    <div class="ico-item">
+                        <a href="login-proprietaire.html" class="ico-item">Soumettre son établissement</a>
+                    </div>
+                    <div class="ico-item">
+                        <a href="#" class="ico-item">Mes reservations</a>
+                    </div>
+                    <div class="ico-item">
+                        <a href="inscription.html" class="ico-item">S'inscrire</a>
+                    </div>
+                    <div class="ico-item">
+                        <a href="login.html" class="ico-item">Se connecter</a>
+                    </div>
+                    <!-- /.ico-item -->
+
+                    <!-- /.ico-item fa fa-fa-arrows-alt -->
+
+
+
+                    <!-- /.ico-item -->
+
+                    <!-- /.ico-item -->
+                </div>
+                <!-- /.pull-right -->
+            </div>
+            <!-- /.container -->
+        </div>
+        <!-- /.header-top -->
+
+        <!-- /.nav-horizontal -->
+    </header>
+    <!-- /.fixed-header -->
+
+    <!-- #color-switcher -->
+
+    <div id="wrapper">
+        <div class="main-content">
+            <div class="col-xs-12 container-with-background" style="min-height:20px;">
+                <h2 class="text-center text-white">
+                    <span class="bg-info">Reservation {{Zone}}</span>
+                </h2>
+            </div>
+
+            <div class="box-content container col-xs-12">
+
+                <div class="row col-lg-9 col-xs-12 small-spacing">
+                    <ul id="imageGallery">
+                        <li data-thumb="http://placehold.it/128x128" data-src="http://placehold.it/128x128">
+                            <img src="http://placehold.it/1280x500" />
+                        </li>
+                        <li data-thumb="http://placehold.it/128x128" data-src="http://placehold.it/128x128">
+                            <img src="http://placehold.it/1280x500" />
+                        </li>
+                    </ul>
+
+                    <p>
+                        <h4 class="text-info">Description chambre</h4>
+                        <span class="text-left">
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa porro iusto nisi vero dolorum assumenda, quis at officiis
+                            ullam nihil error a recusandae excepturi voluptatibus iure accusantium alias quae ipsa.
+                        </span>
+                    </p>
+
+                    <p>
+                        <ul class="list-group">
+                            <li class="list-group-item bg-info text-white text-center">
+                                CONFORT CHAMBRE
+                            </li>
+
+                            <li class="list-group-item">
+                                <ul class="list-inline">
+                                    <li>Wifi</li>
+                                    <li>Piscine</li>
+                                    <li>Climatisation</li>
+                                    <li>Restaurant</li>
+                                    <li>Night Club</li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </p>
+                </div>
+
+                <div class="row col-lg-3 col-xs-12 small-spacing">
+                    <ul class="list-group  text-white text-center">
+                        <li class="list-group-item bg-info">
+                            <strong>NOM CHAMBRE</strong>
+                        </li>
+                        <li class="list-group-item bg-info">
+                            <strong>PRIX</strong>
+                        </li>
+                    </ul>
+
+                    <form action="#" class="form-horizontal">
+                        <input type="text" class="form-control datepicker" placeholder="date arrivée">
+                        <input type="text" class="form-control datepicker" placeholder="date depart" style="margin-top:3px;">
+                        <select class="form-control items" style="margin-top:3px;">
+                            <option value="">Chambres</option>
+                        </select>
+                        <select class="form-control items" style="margin-top:3px;">
+                            <option value="">Adultes</option>
+                        </select>
+                        <select class="form-control items" style="margin-top:3px;">
+                            <option value="">Enfants</option>
+                        </select>
+
+                        <button type="submit" class="btn btn-success col-xs-12" style="margin-top:3px;">Reserver</button>
+                    </form>
+                </div>
+
+
+
+                <!-- /.box-content -->
+            </div>
+
+            <div class="row col-xs-12" style="background:#353e44; ">
+                <footer class="footer">
+                    <div class="col-xs-12 col-lg-3">
+                        <h4 class="footer">Version Mobile</h4>
+                        <ul class="">
+                            <li>
+                                <i class="fa fa-cc-mastercard" aria-hidden="true"></i>
+                                <span class="sr-only"> </span>Mastercard</li>
+                            <li>
+                                <i class="fa fa-cc-visa" aria-hidden="true"></i>
+                                <span class="sr-only"> </span>Visa</li>
+                            <li>
+                                <i class="fa fa-cc-paypal" aria-hidden="true"></i>
+                                <span class="sr-only"> </span>Paypal</li>
+                            <!-- <li><i class="fa fa-cc-mastercard" aria-hidden="true"></i> <span class="sr-only"> </span>-mastercard</li> -->
+
+                        </ul>
+                    </div>
+
+                    <div class="col-xs-12 col-lg-3">
+                        <h4 class="footer">ETABLISSEMENTS</h4>
+                        <ul class="">
+                            <li>
+                                <a href="#">Appartements</a>
+                            </li>
+                            <li>
+                                <a href="#">Hôtels</a>
+                            </li>
+                            <li>
+                                <a href="#">Résidences</a>
+                            </li>
+                            <li>
+                                <a href="#">Location de voitures</a>
+                            </li>
+                        </ul>
+
+                        <h4 class="footer">SERVICES CLIENTS</h4>
+                        <ul class="">
+                            <li>
+                                <a href="#">Guide Vacances</a>
+                            </li>
+                            <li>
+                                <a href="#">Destinations populaires à l’étranger</a>
+                            </li>
+                            <li>
+                                <a href="#">Déposer une annonce</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-xs-12 col-lg-3">
+                        <h4 class="footer">MON COMPTE</h4>
+                        <ul class="">
+                            <li>
+                                <a href="#">Mes réservations</a>
+                            </li>
+                            <li>
+                                <a href="#">Espace propriétaire</a>
+                            </li>
+                        </ul>
+
+                        <h4 class="footer">DESTINATIONS</h4>
+                        <ul class="">
+                            <li>
+                                <a href="#">Région</a>
+                            </li>
+                            <li>
+                                <a href="#">Pays</a>
+                            </li>
+                            <li>
+                                <a href="#">Villes</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-xs-12 col-lg-3">
+                        <h4 class="footer">NOUS JOINDRE</h4>
+                        <ul class="">
+                            <li>
+                                <a href="#">info@homemobilite.com</a>
+                            </li>
+                            <li>
+                                <a href="#">+225 40 00 32 79</a>
+                            </li>
+                            <!-- <li>
+									<a href="#">Help</a>
+								</li> -->
+                        </ul>
+
+                        <h4 class="footer">EN SAVOIR PLUS</h4>
+                        <ul class="">
+                            <li>
+                                <a href="#">
+                                    Qui sommes-nous?
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">Carrière</a>
+                            </li>
+                            <li>
+                                <a href="#">Conseil</a>
+                            </li>
+                        </ul>
+                    </div>
+
+
+
+
+                </footer>
+            </div>
+
+        </div>
+        <!-- /.main-content -->
+    </div>
+    <!--/#wrapper -->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+		<script src="assets/script/html5shiv.min.js"></script>
+		<script src="assets/script/respond.min.js"></script>
+	<![endif]-->
+    <!-- 
+	================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="assets/scripts/jquery.min.js"></script>
+    <script src="assets/scripts/modernizr.min.js"></script>
+    <script src="assets/plugin/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/plugin/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="assets/plugin/nprogress/nprogress.js"></script>
+    <script src="assets/plugin/sweet-alert/sweetalert.min.js"></script>
+    <script src="assets/plugin/waves/waves.min.js"></script>
+    <!-- Datepicker -->
+    <script src="assets/plugin/datepicker/js/bootstrap-datepicker.min.js"></script>
+
+    <!-- Moment -->
+    <script src="assets/plugin/moment/moment.js"></script>
+    <!-- Demo Scripts -->
+    <script src="assets/scripts/form.demo.min.js"></script>
+
+    <script src="assets/scripts/main.js?v=1"></script>
+    <script src="assets/scripts/horizontal-menu.js"></script>
+    <script src="assets/color-switcher/color-switcher.min.js"></script>
+    <script src="assets/plugin/lightslider/js/lightslider.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#imageGallery').lightSlider({
+                gallery: true,
+                item: 1,
+                loop: true,
+                thumbItem: 9,
+                slideMargin: 0,
+                enableDrag: false,
+                currentPagerPosition: 'left',
+                onSliderLoad: function (el) {
+                    el.lightGallery({
+                        selector: '#imageGallery .lslide'
+                    });
+                }
+            });
+        });</script>
+</body>
+
+</html>

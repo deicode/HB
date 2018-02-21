@@ -1,0 +1,12 @@
+{% extends '::backend/backendLayout-B.html.twig' %}
+
+    {% block headLibelle %}
+        Details Type Chambre ||  <span class="text-primary"> <a href="{{ path('em_backend_litesingleagence') }}">  Mon Agence</a></span>
+
+    {% endblock headLibelle %}
+
+{% block contenu %}
+
+    {% include('EmBackendBundle:Backend:fileContent/detailchambreContent.html.twig') %}
+
+{% endblock contenu %}

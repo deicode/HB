@@ -1,0 +1,18 @@
+<div class="panel panel-primary list-announcement">
+    <div class="panel-heading">
+        <h4 class="panel-title">Chambres à valider</h4>
+    </div>
+    <div class="panel-body">
+        <ul class="list-unstyled mb20">
+            {% for data in chambre|slice(0,5) %}
+            <li>
+                <a href="{{ path('em_backend_detailchambre', {'agences': data.agences.id , 'slugchambre': data.slugchambre }) }}">{{ data.typechambre }}</a>
+                <small>{{ data.dateadd|date('d:m:Y H:i:s') }}<a href="{{ path('em_backend_detailchambre', {'agences': data.agences.id , 'slugchambre': data.slugchambre }) }}">voir details</a></small>
+            </li>
+           {% endfor %}
+        </ul>
+    </div>
+    <div class="panel-footer">
+        <button class="btn btn-primary btn-block"> {{ chambre|length }} chambre(s) à valider <i class="fa fa-arrow-right"></i></button>
+    </div>
+</div>

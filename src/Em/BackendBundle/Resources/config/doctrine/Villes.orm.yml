@@ -1,0 +1,29 @@
+Em\BackendBundle\Entity\Villes:
+    type: entity
+    table: null
+    repositoryClass: Em\BackendBundle\Repository\VillesRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nom:
+            type: string
+            length: 255
+        slug:
+            type: string
+            length: 255
+        description:
+            type: text
+            column: Description
+
+    manyToOne:
+        pays:
+            targetEntity: Em\BackendBundle\Entity\Pays
+            joinColumn:
+              name: pays_id
+              referencedColumnName: id
+            cascade: ["persist"]
+    lifecycleCallbacks: {  }

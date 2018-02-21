@@ -1,0 +1,187 @@
+{% block Contenu %}
+    <div id="wrapper">
+        <div class="main-content">
+            <div class="row small-spacing">
+                <div class="box-content card">
+                    <h4 class="box-title">
+                        <i class="fa fa-building ico"></i>Etablissment :
+                        <span class="text-info">{{agence.nom}} </span>
+
+                        {% if agence.grade == 5 %}
+                            <i class="fa fa-star text-warning"></i>
+                            <i class="fa fa-star text-warning"></i>
+                            <i class="fa fa-star text-warning"></i>
+                            <i class="fa fa-star text-warning"></i>
+                            <i class="fa fa-star text-warning"></i>
+                        {% elseif agence.grade == 4 %}
+                            <i class="fa fa-star text-warning"></i>
+                            <i class="fa fa-star text-warning"></i>
+                            <i class="fa fa-star text-warning"></i>
+                            <i class="fa fa-star text-warning"></i>
+                        {% elseif agence.grade == 3 %}
+                            <i class="fa fa-star text-warning"></i>
+                            <i class="fa fa-star text-warning"></i>
+                            <i class="fa fa-star text-warning"></i>
+
+                        {% elseif agence.grade == 2 %}
+                            <i class="fa fa-star text-warning"></i>
+                            <i class="fa fa-star text-warning"></i>
+
+                        {% else %}
+                            <i class="fa fa-star text-warning"></i>
+
+                        {% endif %}
+                    </h4>
+
+                    <div class="card-content col-xs-12 col-lg-9">
+                        <div class="col-xs-12 container" style="margin-bottom:0.5em">
+                            {% if agence.locked == 1 %}
+                                <a href="{{ path('em_backend_enabledagence', {'idagence': agence.id, 'status' : 'valider'}) }}">
+                                    <button class="btn btn-success">
+                                        Valider cette Agence
+                                    </button>
+                                </a>
+                            {% else %}
+                                <a href="{{ path('em_backend_enabledagence', {'idagence': agence.id, 'status' : 'suspendre'}) }}">
+                                    <button class="btn btn-danger">
+                                        Suspendre cette Agence
+                                    </button>
+                                </a>
+                            {% endif %}
+                            <a href="{{ path('em_backend_proprietaire_addchambre', {'agences': agence.id}) }}">
+                                <button class="btn btn-info btn-sm  waves-effect waves-light margin-right-20">Ajouter chambre</button>
+                            </a>
+                            <a href="{{ path('em_backend_proprietaire_updateagence', {'id' : agence.id}) }}">
+                                <button class="btn btn-warning btn-sm  waves-effect waves-light margin-right-20">Modifier agence</button>
+                            </a>
+
+                            <h4>
+                                <div class="col-lg-4 col-xs-12 col-sm-6">
+                                    <p>
+                                        <label class="label text-info">Slogan:&nbsp; </label>
+                                        <strong> {{agence.title}}</strong>
+                                    </p>
+                                    <p>
+                                        <label class="label text-info">Caractéristique:&nbsp;</label>
+                                        <strong> {{agence.caracteristique}}</strong>
+                                    </p>
+                                    <p>
+                                        <label class="label text-info">Statut:&nbsp;</label>
+                                        <strong>Text</strong>
+                                    </p>
+                                    <p>
+                                        <label class="label text-info">Adresse:&nbsp;</label>
+                                        <strong> {{agence.adresse}}</strong>
+                                    </p>
+                                    <p>
+                                        <label class="label text-info">Telephone:&nbsp;</label>
+                                        <strong> {{agence.telephone}}</strong>
+                                    </p>
+                                </div>
+
+
+
+                                <div class="col-lg-4 col-xs-12 col-sm-6">
+                                    <label class="label text-info">Description:&nbsp;</label>
+                                    <p>
+                                    <h5 class="text-center">
+
+                                        {{agence.description}}
+                                    </h5>
+                                    </p>
+                                </div>
+                            </h4>
+
+                            {{ agence.urlmap|raw }}
+                        </div>
+
+
+
+                        <div class="row row-inline-block small-spacing js__isotope_items" style="margin-top:0.9em;">
+                            {% for data in imageagence|slice(0,6) %}
+
+                            <div class="col-md-4 col-sm-6 col-tb-6 col-xs-12 js__isotope_item beauty">
+                                <a href="{{ asset('bundles/emfrontend/assets/') }}pics/agences/{{ data.title }}" class="item-gallery lightview" data-lightview-group="group">
+                                    <img src="{{ asset('bundles/emfrontend/assets/') }}pics/agences/{{ data.title }}" alt="">
+                                    <h2 class="title">{{ data.alt }}</h2>
+                                    <!-- /.title -->
+                                </a>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <!-- /.row row-inline-block js__isotope_items -->
+                    </div>
+                    <!-- /.card-content -->
+                    <div class="col-xs-12 col-lg-3" style="margin-top:0.9em;">
+
+                        <ul class="list-group">
+                            <li class="list-group-item bg-success text-white text-center">
+                                EQUIPEMENT DE VOTRE AGENCE
+                            </li>
+
+                            <li class="list-group-item">
+                                <ul class="list-inline">
+                                    
+                                    {% if agence.wifi == 1 %}
+                                        <li>Wifi</li>
+                                    {% endif %}
+
+                                    {% if agence.piscine == 1 %}
+                                        <li>Piscine  </li>
+
+                                    {% endif %}
+
+                                    {% if agence.climatisation == 1 %}
+                                        <li> Climatisation </li>
+
+                                    {% endif %}
+
+                                    {% if agence.restaurant == 1 %}
+                                        <li> Restaurant </li>
+
+                                    {% endif %}
+
+                                    {% if agence.servicechambre == 1 %}
+                                        <li>Service de chambre </li>
+
+                                    {% endif %}
+
+                                    {% if agence.petitdejeuner == 1 %}
+                                        <li>Petit dejeuner </li>
+
+                                    {% endif %}
+
+                                    {% if agence.nightclub == 1 %}
+                                        <li>  Night Club </li>
+
+
+                                    {% endif %}
+
+                                    {% if agence.massage == 1 %}
+                                        <li> Massage  </li>
+
+                                    {% endif %}
+
+                                    {% if agence.gym == 1 %}
+                                        <li> Gym  </li>
+
+                                    {% endif %}
+
+                                    {% if agence.casino == 1 %}
+                                        <li> Casino </li>
+
+                                    {% endif %}
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock Contenu %}
+

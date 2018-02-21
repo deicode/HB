@@ -1,0 +1,28 @@
+<div class="col-sm-5 col-md-12 col-lg-6">
+    <div class="panel panel-danger panel-weather">
+        <div class="panel-heading">
+            <h4 class="panel-title">Avis des utilisateurs</h4>
+        </div>
+        <div class="panel-body">
+            <ul class="media-list user-list">
+
+                {% for data in pagination %}
+                  <li class="media">
+                    <div class="media-left">
+                        <a href="{{ path('em_backend_listecommentaires') }}">
+                            <img class="media-object img-circle" src="{{ asset('bundles/emfrontend/assets/img/') }}team/commentaire.png" alt="">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading nomargin"><a href="">{{ data.client.username }}</a></h4>
+                        <a href="{{ path('em_backend_listecommentaires') }}">{{ data.agences.nom }}</a>
+                       <p> {{ data.titre }} </p>
+                        <small class="date"><i class="glyphicon glyphicon-time"></i>{{ data.dateadd|date('d-m-Y') }}</small>
+                    </div>
+
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+<div class="panel">
+    {% for flashMessage in app.session.flashbag.get('Notice')|slice(0,1) %}
+
+        <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <strong>Parfait !</strong>  {{ flashMessage }} .
+        </div>
+    {% endfor %}
+    <div class="panel-body">
+        <br>
+        <form action=""  enctype="multipart/form-data" class="form-horizontal" METHOD="post">
+            <div class="input-group mb15">
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default">Pseudo : </button>
+                </span>
+                {{ form_widget(form.username, {'attr': {'class': 'form-control', 'readonly' : 'true'}}) }}
+
+            </div>
+            <div class="input-group mb15">
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default">Email : </button>
+                </span>
+                {{ form_widget(form.email, {'attr': {'class': 'form-control', 'readonly' : 'true'}}) }}
+
+            </div>
+            <div class="input-group mb15">
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default">Nom et Prénoms : </button>
+                </span>
+                {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="input-group mb15">
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default">Phone(*mobile) : </button>
+                </span>
+                {{ form_widget(form.phone ,{'attr': {'class': 'form-control'}}) }}
+
+            </div>
+            <hr>
+            <div class="input-group mb15">
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default">Pays : </button>
+                </span>
+                {{ form_widget(form.pays, {'attr': {'class': 'form-control'}}) }}
+
+            </div>
+            <hr>
+            <div class="input-group mb15">
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default">Ville : </button>
+                </span>
+                {{ form_widget(form.ville, {'attr': {'class': 'form-control'}}) }}
+
+            </div>
+            <hr>
+            <div class="input-group mb15">
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default">adresse : </button>
+                </span>
+                {{ form_widget(form.adresse, {'attr': {'class': 'form-control'}}) }}
+                {{ form_widget(form._token, {'attr': {'type' : 'hidden'}}) }}
+            </div>
+
+
+            <div class="row">
+                <div class="col-sm-9 col-sm-offset-3">
+                    <button class="btn btn-success btn-quirk btn-wide mr5">Envoyer</button>
+                    <button type="reset" class="btn btn-quirk btn-wide btn-default">Annuler</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

@@ -1,0 +1,139 @@
+<div class="mainpanel">
+    <div class="col-md-8">
+        {% for flashMessage in app.session.flashbag.get('Notice')|slice(0,1) %}
+            <div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <strong>Succes !</strong>  {{ flashMessage }} <a href="" class="alert-link"></a>.
+            </div>
+        {% endfor %}
+    </div>
+    <div class="contentpanel">
+
+        <ol class="breadcrumb breadcrumb-quirk">
+            <li><a href="{{path('em_backend_homepage')}}"><i class="fa fa-home mr5"></i> Accueil</a></li>
+            <li class="active">Hôtels</li>
+        </ol>
+
+        <div class="row">
+            {##}
+            <div class="col-sm-8 col-md-9 col-lg-10 people-list">
+
+                <div class="people-options clearfix">
+                    <div class="btn-group pull-right people-pager">
+                        <button type="button" class="btn btn-success"><i class="fa fa-hotel"></i></button>
+                    </div>
+                    <span class="people-count pull-right">Total hotel:   <strong>{{ pagination|length }}</strong> hotels</span>
+                </div><!-- people-options -->
+
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Liste des hôtels</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table nomargin">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">
+                                            <label class="ckbox ckbox-primary">
+                                                <input type="checkbox"><span></span>
+                                            </label>
+                                        </th>
+                                        <th>Nom</th>
+                                        <th>Caracteristique</th>
+                                        <th>Telephone</th>
+                                        <th>Date d'inscription</th>
+                                        <th class="text-right">détail</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for data in  pagination %}
+                                    <tr>
+                                        <td class="text-center">
+                                            <label class="ckbox ckbox-primary">
+                                                <input type="checkbox"><span></span>
+                                            </label>
+                                        </td>
+                                        <td><h4 class="media-heading">{{ data.nom }}</h4>
+                                            {% if data.grade == 5 %}
+                                                <i class="glyphicon glyphicon-star"></i>
+                                                <i class="glyphicon glyphicon-star"></i>
+                                                <i class="glyphicon glyphicon-star"></i>
+                                                <i class="glyphicon glyphicon-star"></i>
+                                                <i class="glyphicon glyphicon-star"></i>
+                                            {% elseif data.grade == 4 %}
+                                                <i class="glyphicon glyphicon-star"></i>
+                                                <i class="glyphicon glyphicon-star"></i>
+                                                <i class="glyphicon glyphicon-star"></i>
+                                                <i class="glyphicon glyphicon-star"></i>
+                                            {% elseif data.grade == 3 %}
+                                                <i class="glyphicon glyphicon-star"></i>
+                                                <i class="glyphicon glyphicon-star"></i>
+                                                <i class="glyphicon glyphicon-star"></i>
+                                            {% elseif data.grade == 2 %}
+                                                <i class="glyphicon glyphicon-star"></i>
+                                                <i class="glyphicon glyphicon-star"></i>
+                                            {% else %}
+                                                <i class="glyphicon glyphicon-star"></i>
+                                            {% endif %}
+                                        </td>
+                                        <td>{{ data.caracteristique }}</td>
+                                        <td>{{ data.telephone }}</td>
+                                        <td>{{ data.dateAdd|date('d-m-Y') }}</td>
+                                        <td class="text-right">
+                                            <a class="btn btn-primary" href="{{path('em_backend_detailhotel',{'id':data.id})}}">Détail</a>
+                                        </td>
+                                        <td>
+                                            <ul class="table-options">
+                                                {% if data.locked == 0 %}
+                                                    <li>
+                                                        <a href="{{ path('em_backend_hotelenabled', {'idHotel': data.id, 'status' : 'suspendre'}) }}" title="Suspendre"><i class="fa fa-close"></i></a>
+                                                    </li>
+                                                {% else %}
+                                                    <li>
+                                                        <a href="{{ path('em_backend_hotelenabled', {'idHotel': data.id, 'status' : 'activer'}) }}" title="Activation"><i class="fa fa-check"></i></a>
+                                                    </li>
+                                                {% endif %}
+                                                <li>
+                                                    <a href="{{path('em_backend_updateagence',{'id': data.id})}}" title="Modifiez l'hotel"><i class="fa fa-pencil"></i></a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void({{data.id}});" id="suppressionHotel"  title="Supprimez l'hotel"><i class="fa fa-trash"></i></a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                                
+                            </table>
+                            {{ knp_pagination_render(pagination) }}
+                        </div><!-- table-responsive -->
+                    </div>
+                </div><!-- panel -->
+            </div><!-- col-sm-8 -->
+
+            <div class="col-sm-4 col-md-3 col-lg-2">
+
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Recherche</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label class="control-label center-block">Nom hôtelier :</label>
+                            <input type="text" class="form-control" placeholder="Entrer le nom de l'hôtel">
+                        </div>
+
+                        <button class="btn btn-success btn-block">Valider</button>
+                    </div>
+                </div>
+
+            </div>
+            
+        </div><!-- row -->
+
+    </div><!-- contentpanel -->
+
+</div><!-- mainpanel -->

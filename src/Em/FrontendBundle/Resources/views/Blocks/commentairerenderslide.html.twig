@@ -1,0 +1,14 @@
+{% for data in pagination %}
+<div class="testimonial text-white mt50 hidden-sm hidden-xs">
+    <div class="testimonial-inner">
+        <blockquote>
+            <p>{{ data.contenu }}</p>
+        </blockquote>
+    </div>
+    <div class="testimonial-author">
+        <img src="{{ asset('bundles/emfrontend/assets/img/') }}team/commentaireslide.png" alt="commentaire" title="{{ data.client.username }}">
+        <p class="testimonial-author-name">{{ data.client.username }}</p><cite>à <a class="text-udl" href="#">{{ data.agences.nom }}</a></cite>
+    </div>
+</div>
+
+{% endfor %}

@@ -1,0 +1,131 @@
+Em\BackendBundle\Entity\Bienimmo:
+    type: entity
+    table: null
+    repositoryClass: Em\BackendBundle\Repository\BienimmoRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        adresse:
+            type: string
+            length: 255
+        libelle:
+            type: string
+            length: 255
+        prix:
+            type: bigint
+        recommander:
+            type: boolean
+            nulleable: true
+        description:
+            type: text
+        dateadd:
+            type: datetime
+        etage:
+            type: string
+            length: 255
+            nullable: true
+
+        anneeconstruction:
+            type: string
+            length: 255
+            nullable: true
+        surfacehabitable:
+            type: string
+            length: 255
+            nullable: true
+
+        surfaceterrain:
+            type: string
+            length: 255
+            nullable: true
+
+        nbrepiece:
+            type: string
+            length: 255
+            nullable: true
+
+        jardin:
+            type: boolean
+            nullable: true
+            nullable: true
+
+        piscine:
+            type: boolean
+            nullable: true
+        balcon:
+            type: boolean
+            nullable: true
+        terrasse:
+            type: boolean
+            nullable: true
+        parking:
+            type: boolean
+            nullable: true
+        garage:
+            type: boolean
+            nullable: true
+        cave:
+            type: boolean
+            nullable: true
+        ascenseur:
+            type: boolean
+            nullable: true
+        urlmap:
+            type: text
+            nullable: true
+        locked:
+            type: boolean
+            nullable: true
+        reference:
+            type: string
+        telephone:
+            type: string
+            nullable: true
+        ville:
+            type: string
+            nullable: true
+    manyToOne:
+        pays:
+            targetEntity: Em\BackendBundle\Entity\Pays
+            nullable: true
+            joinColumn:
+              name: pays_id
+              referencedColumnName: id
+
+
+        statusimmo:
+            targetEntity: Em\BackendBundle\Entity\Statusimmo
+            joinColumn:
+              name: statusimmo_id
+              referencedColumnName: id
+
+        typeimmo:
+            targetEntity: Em\BackendBundle\Entity\Typeimmo
+            joinColumn:
+              name: typeimmo_id
+              referencedColumnName: id
+
+        etatimmo:
+            targetEntity: Em\BackendBundle\Entity\Etatimmo
+            joinColumn:
+              name: etatimmo_id
+              referencedColumnName: id
+
+        typesaison:
+            targetEntity: Em\BackendBundle\Entity\Typesaison
+            joinColumn:
+              name: typesaison_id
+              referencedColumnName: id
+
+        nomprenoms:
+            targetEntity: Em\BackendBundle\Entity\User
+            joinColumn:
+              name: user_id
+              referencedColumnName: id
+
+
+    lifecycleCallbacks: {  }

@@ -1,0 +1,50 @@
+{% for flashMessage in app.session.flashbag.get('notice')|slice(0,1) %}
+
+    <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <strong>Parfait !</strong>  {{ flashMessage }} .
+    </div>
+{% endfor %}
+<div class="panel">
+    <div class="panel-heading">
+        <h4 class="panel-title">Gerer les types immobiliers</h4>
+    </div>
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-success table-striped nomargin">
+                <thead>
+                <tr>
+                    <th class="text-center">
+                        <label class="ckbox ckbox-warning">
+                            <input type="checkbox"><span></span>
+                        </label>
+                    </th>
+                    <th>Libelle</th>
+                    <th class="text-right"> Action </th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for data in entity|slice(0,15) %}
+                <tr>
+                    <td class="text-center">
+                        <label class="ckbox ckbox-success">
+                            <input type="checkbox"><span></span>
+                        </label>
+                    </td>
+                    <td>{{ data.libelle }}</td>
+                    <td class="text-right">
+                        <ul class="table-options">
+                            <li><a href="{{ path('em_backend_addtypeimmo', {'idpage' : data.id }) }}" title="Modifer"><i class="fa fa-chevron-up"></i></a></li>
+
+                        </ul>
+                    </td>
+                </tr>
+               {% endfor %}
+                </tbody>
+            </table>
+        </div><!-- table-responsive -->
+    </div>
+</div>
+
+
+

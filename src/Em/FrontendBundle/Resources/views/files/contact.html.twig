@@ -1,0 +1,13 @@
+{% extends '::frontend/layoutcontact.html.twig' %}
+
+{% block headerMenuFrontend %}
+    {{   render (controller("EmFrontendBundle:Frontend:headerMenuFrontend",{'slug': slug})) }}
+{% endblock headerMenuFrontend %}
+    {% block urlmap %}
+        {{ informations.urlmap|raw }}
+    {% endblock urlmap %}
+
+    {% block Contenu %}
+        {% include 'EmFrontendBundle:ContenusLayout:contactContenu.html.twig' %}
+
+    {% endblock Contenu %}

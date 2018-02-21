@@ -1,0 +1,29 @@
+Em\BackendBundle\Entity\Typeimmo:
+    type: entity
+    table: null
+    repositoryClass: Em\BackendBundle\Repository\TypeimmoRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        libelle:
+            type: string
+            length: 255
+        description:
+            type: text
+        slug:
+            type: string
+            length: 255
+        publish:
+            type: boolean
+    manyToOne:
+        Images:
+            targetEntity: Em\FrontendBundle\Entity\Images
+            joinColumn:
+              name: images_id
+              referencedColumnName: id
+            cascade: ["persist"]
+    lifecycleCallbacks: {  }

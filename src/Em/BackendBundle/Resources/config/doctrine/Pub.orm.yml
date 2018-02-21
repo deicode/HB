@@ -1,0 +1,40 @@
+Em\BackendBundle\Entity\Pub:
+    type: entity
+    table: null
+    repositoryClass: Em\BackendBundle\Repository\PubRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        titre:
+            type: string
+            length: 255
+        dateadd:
+            type: datetime
+        datestart:
+            type: date
+        dateend:
+            type: date
+        pourcentage:
+            type: integer
+
+        prixstart:
+            type: string
+            length: 255
+    manyToOne:
+        Images:
+            targetEntity: Em\FrontendBundle\Entity\Images
+            joinColumn:
+              name: images_id
+              referencedColumnName: id
+            cascade: ["persist"]
+        agences:
+            targetEntity: Em\BackendBundle\Entity\Agences
+            joinColumn:
+              name: agence_id
+              referencedColumnName: id
+            cascade: ["persist"]
+    lifecycleCallbacks: {  }

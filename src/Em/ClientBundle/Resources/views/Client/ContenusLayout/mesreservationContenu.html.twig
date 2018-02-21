@@ -1,0 +1,39 @@
+<div class="row">
+    {{ render(controller('EmClientBundle:Client:renderMenuLeft')) }}
+    <div class="col-md-9">
+        <h4>Mes reservations</h4>
+        <table class="table table-bordered table-striped table-booking-history">
+            <thead>
+            <tr>
+                <th>Type</th>
+                <th>identifiant</th>
+                <th>Hôtel</th>
+                <th>Date reservation</th>
+                <th>Prix total (Fcfa)</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% set compteur = 1 %}
+        {% for data in mesreservations|slice(0,15) %}
+            <tr>
+                <td class="booking-history-type"><i class="fa fa-building-o"></i><small>hotel-{{ compteur }}</small>
+                </td>
+                <td class="booking-history-title">{{ data.numeroreservation }}</td>
+                <td>{{ data.chambre.agences.nom }}</td>
+                <td>{{ data.dateadd|date('d-m-Y à H:i:s') }}</td>
+                <td>{{ data.prixtotal }}</td>
+                <td class="text-center">
+                    {{ data.status }}
+                </td>
+                <td class="text-center"><a class="btn btn-default btn-sm" href="{{ path('em_client_reservations_details', {'idreservation' : data.id|urlencrypt }) }}">détails</a>
+                </td>
+            </tr>
+            {%  set compteur = compteur + 1 %}
+         {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="gap"></div>

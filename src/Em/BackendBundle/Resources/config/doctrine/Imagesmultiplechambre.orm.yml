@@ -1,0 +1,32 @@
+Em\BackendBundle\Entity\Imagesmultiplechambre:
+    type: entity
+    table: null
+    repositoryClass: Em\BackendBundle\Repository\ImagesmultiplechambreRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        url:
+            type: string
+            length: 255
+        title:
+            type: string
+            length: 255
+        alt:
+            type: string
+            length: 255
+        dateadd:
+            type: datetime
+    manyToOne:
+        chambre:
+            targetEntity: Em\BackendBundle\Entity\Chambre
+            joinColumn:
+               name: chambre_id
+               referencedColumnName: id
+            cascade: ["persist"]
+
+
+    lifecycleCallbacks: {  }

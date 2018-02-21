@@ -1,0 +1,31 @@
+<div class="homepage-slider slider-variation-one flexslider">
+    <ul class="slides">
+        {% for data in slider|slice(0,2) %}
+        <li>
+            <div class="slide-overlay hidden-xs">
+                <div class="container">
+                    <div class="slide-inner-container">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <h3 class="slide-entry-title entry-title">
+                                    <a href="#" rel="bookmark">{{ data.title|capitalize }}</a>
+                                </h3>
+                                <div class="price-and-status">
+                                    <span class="price">{{ data.prix|localizedcurrency('XOF') }}</span>
+                                    <a href="#">
+                                        <span class="property-status-tag">{{ data.statusimmo.libelle|capitalize }}</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="#">
+                <img src="{{ asset('bundles/emfrontend/assets/uploads/') }}images/slides/{{ data.images.title }}" alt="{{ data.images.title }}">
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+

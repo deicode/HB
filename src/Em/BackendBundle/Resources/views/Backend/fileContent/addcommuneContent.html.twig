@@ -1,0 +1,57 @@
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="panel">
+            <div class="panel-heading nopaddingbottom">
+                <h4 class="panel-title">Gerer les Communes</h4>
+            </div>
+            <div class="panel-body">
+                <hr>
+                <form id="basicForm" method="post" action="{{ path('em_backend_addcommune') }}" class="form-horizontal" novalidate="novalidate">
+
+
+                    <div class="form-group has-error">
+                        <label class="col-sm-3 control-label">Nom de communes <span class="text-danger">*</span></label>
+                        <div class="col-sm-8">
+                            {{ form_widget(form.nom ,{'attr': {'class': 'form-control'}}) }}
+                       </div>
+                    </div>
+                    <div class="form-group has-error">
+                        <label class="col-sm-3 control-label">Ville <span class="text-danger">*</span></label>
+                        <div class="col-sm-8">
+
+                            {{ form_widget(form.villes ,{'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group has-error">
+                        <label class="col-sm-3 control-label">Urlmap <span class="text-danger">*</span></label>
+                        <div class="col-sm-8">
+                            {{ form_widget(form.urlmap ,{'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group has-error">
+                        <label class="col-sm-3 control-label">Description  <span class="text-danger">*</span></label>
+                        <div class="col-sm-8">
+                            {{ form_widget(form._token, {'attr': {'type' : 'hidden'}}) }}
+
+                            {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="row">
+                        <div class="col-sm-9 col-sm-offset-3">
+                            <button class="btn btn-success btn-quirk btn-wide mr5">Envoyer</button>
+                            <button type="reset" class="btn btn-quirk btn-wide btn-default">Annuler</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div><!-- panel-body -->
+        </div><!-- panel -->
+
+    </div><!-- col-md-6 -->
+
+    <!-- col-md-6 -->
+
+</div>

@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>HomeMobilite</title>
+
+	<!-- Main Styles -->
+	<link rel="stylesheet" href="assets/styles/style-horizontal.css">
+
+	<!-- mCustomScrollbar -->
+	<link rel="stylesheet" href="assets/plugin/mCustomScrollbar/jquery.mCustomScrollbar.min.css">
+
+	<!-- Waves Effect -->
+	<link rel="stylesheet" href="assets/plugin/waves/waves.min.css">
+
+	<!-- Sweet Alert -->
+	<link rel="stylesheet" href="assets/plugin/sweet-alert/sweetalert.css">
+
+	<!-- Datepicker -->
+	<link rel="stylesheet" href="assets/plugin/datepicker/css/bootstrap-datepicker.min.css">
+
+	<!-- Color Picker -->
+	<link rel="stylesheet" href="assets/color-switcher/color-switcher.min.css">
+	<link rel="stylesheet" href="assets/styles/color/dark-blue.min.css">
+	<link rel="stylesheet" href="assets/persocss.css">
+	<link rel="stylesheet" href="assets/styles/flag-icon.min.css">
+
+	<style>
+		.nav>li {
+			background: #ddd !important;
+		}
+
+		.tab-content {
+			padding: 15px;
+			border: 0px solid #ddd !important;
+			border-top: none;
+		}
+	</style>
+
+</head>
+
+<body>
+	<header class="fixed-header">
+		<div class="header-top">
+			<div class="container">
+				<div class="pull-left">
+					<a href="index.html" class="logo">
+						<img src="assets/images/logo-header.png" alt="">
+					</a>
+
+				</div>
+				<!-- /.pull-left -->
+				<div class="pull-right">
+					<!-- /.ico-item hidden-on-desktop -->
+
+					<div class="ico-item flag-icon flag-icon-fr"></div>
+					<div class="ico-item flag-icon flag-icon-gb"></div>
+					<!-- /.ico-item -->
+
+
+					<div class="ico-item">
+						<a href="login-proprietaire.html" class="ico-item">Soumettre son établissement</a>
+					</div>
+					<div class="ico-item">
+						<a href="#" class="ico-item">Mes reservations</a>
+					</div>
+					<div class="ico-item">
+						<a href="inscription.html" class="ico-item">S'inscrire</a>
+					</div>
+					<div class="ico-item">
+						<a href="login.html" class="ico-item">Se connecter</a>
+					</div>
+					<!-- /.ico-item -->
+
+					<!-- /.ico-item fa fa-fa-arrows-alt -->
+
+
+
+					<!-- /.ico-item -->
+
+					<!-- /.ico-item -->
+				</div>
+				<!-- /.pull-right -->
+			</div>
+			<!-- /.container -->
+		</div>
+		<!-- /.header-top -->
+
+		<!-- /.nav-horizontal -->
+	</header>
+	<!-- /.fixed-header -->
+
+	<!-- #color-switcher -->
+
+	<div id="wrapper">
+		<div class="main-content">
+			<div class="">
+				<div class="row container-with-background">
+					<div class="prj-header margin-bottom-30 proj-filter-header">
+						<ul class="filters">
+							<li>
+								<a href="#" class=" dfilter" data-filter="apparts ">Appartements</a>
+							</li>
+							<li>
+								<a href="#" class="active dfilter" data-filter="hotels">Hotels</a>
+							</li>
+							<li>
+								<a href="#" class=" dfilter" data-filter="voitures ">Location de voiture</a>
+							</li>
+						</ul>
+						<!-- /.filters -->
+						<div class="prj-list row">
+							<div class="container container-search">
+								<ul class="list-inline margin-bottom-0 container hotels ul-search-result">
+									<li class="form-group">
+										<input type="text" class="form-control" id="exampleInputName2" placeholder="Destination">
+									</li>
+									<li class="form-group">
+										<input type="text" class="form-control datepicker" placeholder="Date de départ">
+									</li>
+
+									<li class="form-group">
+										<input type="text" class="form-control datepicker" placeholder="Date d'arrivée">
+									</li>
+
+									<li class="form-group">
+										<select class="form-control items">
+											<option value="">Chambres</option>
+										</select>
+									</li>
+									<li class="form-group">
+										<select class="form-control items">
+											<option value="">Adultes</option>
+										</select>
+									</li>
+									<li class="form-group">
+										<select class="form-control items">
+											<option value="">Enfants</option>
+										</select>
+									</li>
+									<li class="form-group">
+										<button type="submit" class="btn btn-primary waves-effect waves-light">
+											<i class="ico-item fa fa-search"></i>
+										</button>
+									</li>
+								</ul>
+								<ul class="list-inline margin-bottom-0 container apparts ul-search-result" style="display:none;">
+									<li class="form-group">
+										<input type="text" class="form-control" id="exampleInputName2" placeholder="Destination">
+									</li>
+									<li class="form-group">
+										<input type="text" class="form-control datepicker" placeholder="Date d'arrivée">
+									</li>
+
+									<li class="form-group">
+										<input type="text" class="form-control datepicker" placeholder="Date de depart">
+									</li>
+
+									<li class="form-group">
+										<select class="form-control items">
+											<option value="">Chambres</option>
+										</select>
+									</li>
+									<li class="form-group">
+										<select class="form-control items">
+											<option value="">Adultes</option>
+										</select>
+									</li>
+									<li class="form-group">
+										<select class="form-control items">
+											<option value="">Enfants</option>
+										</select>
+									</li>
+									<li class="form-group">
+										<button type="submit" class="btn btn-primary waves-effect waves-light">
+											<i class="ico-item fa fa-search"></i>
+										</button>
+									</li>
+								</ul>
+								<ul class="list-inline margin-bottom-0 container voitures ul-search-result" style="display:none;">
+									<li class="form-group">
+										<ul class="nav nav-tabs" role="tablist">
+											<li role="presentation" class="active">
+												<a href="#home" aria-controls="home" role="tab" data-toggle="tab">Même lieu de retour</a>
+											</li>
+											<li role="presentation">
+												<a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Lieu de retour différent</a>
+											</li>
+										</ul>
+
+										<div class="tab-content">
+											<div role="tabpanel" class="tab-pane active" id="home">
+												<ul class="list-inline margin-bottom-0">
+													<li class="form-group">
+														<input type="text" class="form-control" id="exampleInputName2" placeholder="Où">
+													</li>
+													<li class="form-group">
+														<input type="text" class="form-control datepicker" placeholder="Date aller">
+													</li>
+
+													<li class="form-group">
+														<input type="text" class="form-control datepicker" placeholder="Date retour">
+													</li>
+
+													<li class="form-group">
+														<button type="submit" class="btn btn-primary waves-effect waves-light">
+															<i class="ico-item fa fa-search"></i>
+														</button>
+													</li>
+												</ul>
+
+											</div>
+											<div role="tabpanel" class="tab-pane" id="profile">
+												<ul class="list-inline margin-bottom-0">
+													<li class="form-group">
+														<input type="text" class="form-control" id="exampleInputName2" placeholder="De">
+													</li>
+													<li class="form-group">
+														<input type="text" class="form-control" id="exampleInputName2" placeholder="A">
+													</li>
+													<li class="form-group">
+														<input type="text" class="form-control datepicker" placeholder="Date aller">
+													</li>
+
+													<li class="form-group">
+														<input type="text" class="form-control datepicker" placeholder="Date retour">
+													</li>
+
+													<li class="form-group">
+														<button type="submit" class="btn btn-primary waves-effect waves-light">
+															<i class="ico-item fa fa-search"></i>
+														</button>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</li>
+
+								</ul>
+
+								<!-- style="display:none;background:#e4e5ea" -->
+
+
+							</div>
+						</div>
+					</div>
+					<!-- /.prj-header -->
+
+
+					<!-- .prj-list row -->
+				</div>
+
+			</div>
+
+			<!-- <div class="container">
+				<h2>
+					<blockquote>
+						<p>Vous offrir une facilité de réservations d’appartements, d’hôtels ou de résidences et de véhicules partout où vous
+							allez. </p>
+						<footer>
+							<cite>HomeMobilité</cite>
+						</footer>
+					</blockquote>
+				</h2>
+			</div> -->
+
+
+			<div class="container">
+				<h3>
+					<div class=" col-xs-12 text-center">
+						<p>
+							<span class="text-primary">Home</span><span class="text-danger">Mobilité</span>, Vous offres une facilité de réservations d’appartements, d’hôtels ou de résidences et de véhicules
+							partout où vous allez. </p>
+					</div>
+				</h3>
+
+
+				<div class="prj-list row">
+
+					<div class="col-lg-4 col-md-6 col-xs-12 margin-bottom-30">
+						<a href="#" class="prj-item">
+							<div class="top-project-section">
+								<div class="project-icon">
+									<img src="http://placehold.it/184x170" alt="">
+								</div>
+							</div>
+
+							<div class="bottom-project-section">
+								<div class="meta">
+									<p class="author">
+										<span>Description</span>
+									</p>
+								</div>
+
+							</div>
+							<div class="bottom-project-section">
+
+								<div class="meta">
+									<div class="points">
+										<i class="fa fa-money"></i> 50 000 F
+									</div>
+									<!-- <div class="views">
+												<i class="fa fa-eye"></i> 40.6k
+											</div> -->
+									<span class="feedable-time timeago">Abidjan</span>
+								</div>
+							</div>
+						</a>
+					</div>
+					<!-- .col-lg-4 col-md-6 project-item -->
+
+					<div class="col-lg-4 col-md-6 col-xs-12 margin-bottom-30">
+						<a href="#" class="prj-item">
+							<div class="top-project-section">
+								<div class="project-icon">
+									<img src="http://placehold.it/184x170" alt="">
+								</div>
+							</div>
+
+							<div class="bottom-project-section">
+								<div class="meta">
+									<p class="author">
+										<span>Description</span>
+									</p>
+								</div>
+
+							</div>
+							<div class="bottom-project-section">
+
+								<div class="meta">
+									<div class="points">
+										<i class="fa fa-money"></i> 50 000 F
+									</div>
+									<!-- <div class="views">
+													<i class="fa fa-eye"></i> 40.6k
+												</div> -->
+									<span class="feedable-time timeago">Abidjan</span>
+								</div>
+							</div>
+						</a>
+					</div>
+					<!-- .col-lg-4 col-md-6 project-item -->
+
+					<div class="col-lg-4 col-md-6 col-xs-12 margin-bottom-30">
+						<a href="#" class="prj-item">
+							<div class="top-project-section">
+								<div class="project-icon">
+									<img src="http://placehold.it/184x170" alt="">
+								</div>
+							</div>
+
+							<div class="bottom-project-section">
+								<div class="meta">
+									<p class="author">
+										<span>Description</span>
+									</p>
+								</div>
+
+							</div>
+							<div class="bottom-project-section">
+
+								<div class="meta">
+									<div class="points">
+										<i class="fa fa-money"></i> 50 000 F
+									</div>
+									<!-- <div class="views">
+														<i class="fa fa-eye"></i> 40.6k
+													</div> -->
+									<span class="feedable-time timeago">Abidjan</span>
+								</div>
+							</div>
+						</a>
+					</div>
+					<!-- .col-lg-4 col-md-6 project-item -->
+
+					<div class="col-lg-4 col-md-6 col-xs-12 margin-bottom-30">
+						<a href="#" class="prj-item">
+							<div class="top-project-section">
+								<div class="project-icon">
+									<img src="http://placehold.it/184x170" alt="">
+								</div>
+							</div>
+
+							<div class="bottom-project-section">
+								<div class="meta">
+									<p class="author">
+										<span>Description</span>
+									</p>
+								</div>
+
+							</div>
+							<div class="bottom-project-section">
+
+								<div class="meta">
+									<div class="points">
+										<i class="fa fa-money"></i> 50 000 F
+									</div>
+									<!-- <div class="views">
+															<i class="fa fa-eye"></i> 40.6k
+														</div> -->
+									<span class="feedable-time timeago">Abidjan</span>
+								</div>
+							</div>
+						</a>
+					</div>
+					<!-- .col-lg-4 col-md-6 project-item -->
+
+					<div class="col-lg-4 col-md-6 col-xs-12 margin-bottom-30">
+						<a href="#" class="prj-item">
+							<div class="top-project-section">
+								<div class="project-icon">
+									<img src="http://placehold.it/184x170" alt="">
+								</div>
+							</div>
+
+							<div class="bottom-project-section">
+								<div class="meta">
+									<p class="author">
+										<span>Description</span>
+									</p>
+								</div>
+
+							</div>
+							<div class="bottom-project-section">
+
+								<div class="meta">
+									<div class="points">
+										<i class="fa fa-money"></i> 50 000 F
+									</div>
+									<!-- <div class="views">
+																<i class="fa fa-eye"></i> 40.6k
+															</div> -->
+									<span class="feedable-time timeago">Abidjan</span>
+								</div>
+							</div>
+						</a>
+					</div>
+					<!-- .col-lg-4 col-md-6 project-item -->
+
+					<div class="col-lg-4 col-md-6 col-xs-12 margin-bottom-30">
+						<a href="#" class="prj-item">
+							<div class="top-project-section">
+								<div class="project-icon">
+									<img src="http://placehold.it/184x170" alt="">
+								</div>
+							</div>
+
+							<div class="bottom-project-section">
+								<div class="meta">
+									<p class="author">
+										<span>Description</span>
+									</p>
+								</div>
+
+							</div>
+							<div class="bottom-project-section">
+
+								<div class="meta">
+									<div class="points">
+										<i class="fa fa-money"></i> 50 000 F
+									</div>
+									<!-- <div class="views">
+																	<i class="fa fa-eye"></i> 40.6k
+																</div> -->
+									<span class="feedable-time timeago">Abidjan</span>
+								</div>
+							</div>
+						</a>
+					</div>
+					<!-- .col-lg-4 col-md-6 project-item -->
+				</div>
+				<!-- .prj-list row -->
+
+				<hr/>
+
+				<h3>
+					<div class=" col-xs-12 text-center">
+						<!-- /.lead -->
+						<p>
+							Vivez en toute tranquillité, quelle que soit la durée de votre séjour
+						</p>
+					</div>
+				</h3>
+
+				<div class="col-lg-12 col-md-12 col-xs-12">
+					<div class="box-content card danger">
+						<h4 class="box-title">Nos meilleures destinations</h4>
+						<!-- /.box-title -->
+						<strong>
+							<div class="card-content">
+								<div class="col-md-3">
+									<div class="list-group margin-top-20">
+										<a href="#" class="list-group-item text-info">Abidjan</a>
+										<a href="#" class="list-group-item text-info">Accra</a>
+										<a href="#" class="list-group-item text-info">Lagos</a>
+									</div>
+								</div>
+
+								<div class="col-md-3">
+									<div class="list-group margin-top-20">
+										<a href="#" class="list-group-item text-info">Libreville</a>
+										<a href="#" class="list-group-item text-info">Paris</a>
+										<a href="#" class="list-group-item text-info">Cotonou</a>
+									</div>
+								</div>
+
+								<div class="col-md-3">
+									<div class="list-group margin-top-20">
+										<a href="#" class="list-group-item text-info">Dakar</a>
+										<a href="#" class="list-group-item text-info">Bamako</a>
+										<a href="#" class="list-group-item text-info">Québec</a>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="list-group margin-top-20">
+										<a href="#" class="list-group-item text-info">CAP</a>
+										<a href="#" class="list-group-item text-info">Lomé</a>
+										<a href="#" class="list-group-item text-info">Niamey</a>
+									</div>
+								</div>
+
+							</div>
+							<!-- /.card-content -->
+						</strong>
+					</div>
+					<!-- /.box-content -->
+				</div>
+
+			</div>
+
+			<div class="row" style="background:#353e44; ">
+				<footer class="footer">
+					<div class="col-xs-12 col-lg-3">
+						<h4 class="footer">Version Mobile</h4>
+						<ul class="">
+							<li>
+								<i class="fa fa-cc-mastercard" aria-hidden="true"></i>
+								<span class="sr-only"> </span>Mastercard</li>
+							<li>
+								<i class="fa fa-cc-visa" aria-hidden="true"></i>
+								<span class="sr-only"> </span>Visa</li>
+							<li>
+								<i class="fa fa-cc-paypal" aria-hidden="true"></i>
+								<span class="sr-only"> </span>Paypal</li>
+							<!-- <li><i class="fa fa-cc-mastercard" aria-hidden="true"></i> <span class="sr-only"> </span>-mastercard</li> -->
+
+						</ul>
+					</div>
+
+					<div class="col-xs-12 col-lg-3">
+						<h4 class="footer">ETABLISSEMENTS</h4>
+						<ul class="">
+							<li>
+								<a href="#">Appartements</a>
+							</li>
+							<li>
+								<a href="#">Hôtels</a>
+							</li>
+							<li>
+								<a href="#">Résidences</a>
+							</li>
+							<li>
+								<a href="#">Location de voitures</a>
+							</li>
+						</ul>
+
+						<h4 class="footer">SERVICES CLIENTS</h4>
+						<ul class="">
+							<li>
+								<a href="#">Guide Vacances</a>
+							</li>
+							<li>
+								<a href="#">Destinations populaires à l’étranger</a>
+							</li>
+							<li>
+								<a href="#">Déposer une annonce</a>
+							</li>
+						</ul>
+					</div>
+
+					<div class="col-xs-12 col-lg-3">
+						<h4 class="footer">MON COMPTE</h4>
+						<ul class="">
+							<li>
+								<a href="#">Mes réservations</a>
+							</li>
+							<li>
+								<a href="#">Espace propriétaire</a>
+							</li>
+						</ul>
+
+						<h4 class="footer">DESTINATIONS</h4>
+						<ul class="">
+							<li>
+								<a href="#">Région</a>
+							</li>
+							<li>
+								<a href="#">Pays</a>
+							</li>
+							<li>
+								<a href="#">Villes</a>
+							</li>
+						</ul>
+					</div>
+
+					<div class="col-xs-12 col-lg-3">
+						<h4 class="footer">NOUS JOINDRE</h4>
+						<ul class="">
+							<li>
+								<a href="#">info@homemobilite.com</a>
+							</li>
+							<li>
+								<a href="#">+225 40 00 32 79</a>
+							</li>
+							<!-- <li>
+									<a href="#">Help</a>
+								</li> -->
+						</ul>
+
+						<h4 class="footer">EN SAVOIR PLUS</h4>
+						<ul class="">
+							<li>
+								<a href="#">
+									Qui sommes-nous?
+								</a>
+							</li>
+							<li>
+								<a href="#">Carrière</a>
+							</li>
+							<li>
+								<a href="#">Conseil</a>
+							</li>
+						</ul>
+					</div>
+
+
+
+
+				</footer>
+			</div>
+
+		</div>
+		<!-- /.main-content -->
+	</div>
+	<!--/#wrapper -->
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		<script src="assets/script/html5shiv.min.js"></script>
+		<script src="assets/script/respond.min.js"></script>
+	<![endif]-->
+	<!-- 
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="assets/scripts/jquery.min.js"></script>
+	<script src="assets/scripts/modernizr.min.js"></script>
+	<script src="assets/plugin/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/plugin/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script src="assets/plugin/nprogress/nprogress.js"></script>
+	<script src="assets/plugin/sweet-alert/sweetalert.min.js"></script>
+	<script src="assets/plugin/waves/waves.min.js"></script>
+	<!-- Datepicker -->
+	<script src="assets/plugin/datepicker/js/bootstrap-datepicker.min.js"></script>
+
+	<!-- Moment -->
+	<script src="assets/plugin/moment/moment.js"></script>
+	<!-- Demo Scripts -->
+	<script src="assets/scripts/form.demo.min.js"></script>
+
+	<script src="assets/scripts/main.js?v=1"></script>
+	<script src="assets/scripts/horizontal-menu.js"></script>
+	<script src="assets/color-switcher/color-switcher.min.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<div id="content-wrapper" class="site-content-wrapper site-pages">
+    <div id="content" class="site-content layout-boxed">
+        <div class="container">
+
+
+            <div class="row">
+
+
+                <div class="col-xs-9 site-main-content">
+                    <main id="main" class="site-main">
+                        <div class="white-box user-profile-wrapper">
+                            <form action="{{ path('em_client_parametre') }}"  METHOD="post">
+                                <!-- .row -->
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-option">
+                                            <label>Pseudo (login)</label>
+                                            {{ form_widget(form.username, {'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-option">
+                                            <label>Nom & Prénoms</label>
+                                            {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-option">
+                                            <label>E-mail</label>
+                                            {{ form_widget(form.email, {'attr': {'class': 'form-control', 'readonly' : 'true'}}) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- .row -->
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-option">
+                                            <label>Phone </label>
+                                            {{ form_widget(form.phone ,{'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-option">
+                                            <label>Ville</label>
+                                            {{ form_widget(form.ville, {'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                    </div>
+                                </div>
+                             <div class="row">
+                                 <div class="col-md-8">
+                                     <div class="form-option">
+                                         <label> Adress</label>
+                                         {{ form_widget(form.adresse, {'attr': {'class': 'form-control'}}) }}
+                                         {{ form_widget(form._token, {'attr': {'type' : 'hidden'}}) }}
+                                     </div>
+                                 </div>
+                             </div>
+                                <!-- .row -->
+                                <div class="form-option">
+                                    <input type="submit" id="update-user" name="update-user" class="btn col-xs-12 btn-info btn-sm pull-right waves-effect waves-light" value="Valider la mise à jour">
+                                </div>
+                                <p id="form-message"></p>
+                                <ul id="form-errors"></ul>
+                            </form>
+                            <!-- #inspiry-edit-user -->
+                        </div>
+                        <!-- .user-profile-wrapper -->
+                    </main>
+                    <!-- .site-main -->
+                </div>
+                <!-- .site-main-content -->
+            </div>
+
+
+            <!-- .container-property-single -->
+        </div>
+        <!-- .container -->
+    </div>
+    <!-- .site-content -->
+</div>
+
+<!-- .page-head -->

@@ -1,0 +1,104 @@
+<div class="col-lg-12 hidden-xs">
+    <div class="box-content card">
+        <h4 class="box-title  bg-danger">
+            <i class="fa fa-bed ico"></i>Mes modèles de chambres</h4>
+
+        <div class="card-content">
+            <ul class="list-group col-xs-4">
+
+                <li class="list-group-item"><a href="{% if agences is not null  %}{{ path('em_backend_detailchambre', {'slugchambre' : 'chambre-simple', 'agences':agences.id}) }}{% endif %}">
+
+                       <span class="badge">
+                           {{ datatype['chambre-simple']['somchambre'] }}
+                       </span>
+                        Chambre Simple
+                        <i class="text-warning">&nbsp;</i>
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="{% if agences is not null  %}
+                {{ path('em_backend_detailchambre', {'slugchambre' : 'chambre-standard', 'agences':agences.id}) }}{% endif %}">
+
+                       <span class="badge">
+
+                           {{ datatype['chambre-standard']['somchambre'] }}
+                       </span>
+                        Chambre Standard
+                        <i class="fa fa-star text-warning"></i>
+                    </a>
+                </li>
+
+            </ul>
+
+            <ul class="list-group  col-xs-4">
+
+                <li class="list-group-item">
+                    <a href="{% if agences is not null  %}
+                {{ path('em_backend_detailchambre', {'slugchambre' : 'mini-suite', 'agences':agences.id}) }}{% endif %}">
+
+                       <span class="badge">
+                           {{ datatype['mini-suite']['somchambre'] }}
+                       </span>
+                        Suite Mini
+                        <i class="fa fa-star text-warning"></i>
+                        <i class="fa fa-star text-warning"></i>
+                    </a>
+
+                </li>
+
+                <li class="list-group-item">
+                    <a href="{% if agences is not null  %}
+                {{ path('em_backend_detailchambre', {'slugchambre' : 'suite-junior', 'agences':agences.id}) }}{% endif %}">
+
+                       <span class="badge">
+                           {{ datatype['suite-junior']['somchambre']}}
+                       </span>
+                        Suite Junior
+                        <i class="fa fa-star text-warning"></i>
+                        <i class="fa fa-star text-warning"></i>
+                        <i class="fa fa-star text-warning"></i>
+                    </a>
+                </li>
+
+
+            </ul>
+            <ul class="list-group  col-xs-4">
+
+                <li class="list-group-item">
+                    <a href="{% if agences is not null  %}{{ path('em_backend_detailchambre', {'slugchambre' : 'suite-senior', 'agences':agences.id}) }}{% endif %}">
+
+                         <span class="badge">
+                        {{ datatype['suite-senior']['somchambre'] }}
+                            </span>
+                        Suite Senior
+                        <i class="fa fa-star text-warning"></i>
+                        <i class="fa fa-star text-warning"></i>
+                        <i class="fa fa-star text-warning"></i>
+                        <i class="fa fa-star text-warning"></i>
+                    </a>
+
+                </li>
+
+                <li class="list-group-item">
+                    <a href="{% if agences is not null  %}{{ path('em_backend_detailchambre', {'slugchambre' : 'suite-executive', 'agences':agences.id}) }}{% endif %}">
+
+                         <span class="badge">
+                        {{ datatype['suite-executive']['somchambre'] }}
+                            </span>
+                        Suite  Executive
+                        <i class="fa fa-star text-warning"></i>
+                        <i class="fa fa-star text-warning"></i>
+                        <i class="fa fa-star text-warning"></i>
+                        <i class="fa fa-star text-warning"></i>
+                        <i class="fa fa-star text-warning"></i>
+
+                    </a>
+
+                </li>
+
+            </ul>
+        </div>
+        <!-- /.card-content -->
+    </div>
+    <!-- /.box-content card -->
+</div>

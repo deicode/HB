@@ -1,0 +1,12 @@
+{% extends '::backend/backendLayout-B.html.twig' %}
+
+    {% block headLibelle %}
+       Liste des Agences  Hôtelières <span class="text-primary">  Consulter </span>
+
+    {% endblock headLibelle %}
+
+{% block contenu %}
+
+    {% include('EmBackendBundle:Backend:fileContent/listehoteliers2Content.html.twig') %}
+
+{% endblock contenu %}

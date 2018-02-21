@@ -1,0 +1,23 @@
+
+{% for data in pagination %}
+<div class="zero-horizontal-padding col-xs-6 col-md-3">
+    <article class="hentry featured-property-post featured-property-post-even">
+        <div class="property-thumbnail">
+            <a href="{{ path('em_frontend_detailimmo', {'bienimmo' : data.id}) }}">
+                {{ render(controller('EmFrontendBundle:Frontend:listeImageImmo', {'entity': data })) }}
+            </a>
+        </div>
+        <!-- .property-thumbnail -->
+        <div class="property-description" style="height: 156px;">
+            <header class="entry-header">
+                <h4 class="entry-title"><a href="{{ path('em_frontend_detailimmo', {'bienimmo' : data.id}) }}" rel="bookmark"> {{  data.libelle|capitalize }}  </a></h4>
+                <div class="price-and-status">
+                    <a href="#"><span class="property-status-tag">{{ data.typeimmo.libelle|capitalize }}</span></a>
+                </div>
+            </header>
+        </div>
+        <!-- .property-description -->
+    </article>
+</div>
+{% endfor %}
+

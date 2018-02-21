@@ -1,0 +1,212 @@
+{% extends '::FrontendV2/layouts/layoutpage.html.twig' %}
+{% block title %} Reservation  - HomeMobilite  - Appartements - Hôtels - Voitures {%  endblock  title%}
+
+
+{% block header %}
+    {{   render (controller("EmFrontendBundle:FrontendV2:header")) }}
+{% endblock header %}
+
+{% block titre %} réservation {{ chambre.typechambre }} chez {{ chambre.agences.nom }}  {% endblock titre %}
+
+ {% block menuleft %}
+
+     <div class="col-lg-4  col-xs-12">
+
+         <div class="list-group margin-top-20">
+             <a href="#" class="list-group-item bg-info text-white">
+                 <strong>{{ chambre.agences.nom }}</strong>
+             </a>
+
+             <a href="#" class="list-group-item">
+
+                 {%  set num = 1 %}
+                 {% for  num in  1..chambre.agences.grade %}
+                     <i class="fa fa-star text-warning"></i>
+                     {%  set num = num +1 %}
+                 {% endfor %}
+                 </ul>
+             </a>
+
+             <a href="#" class="list-group-item">
+                 <i class="fa fa-arrow-right"></i>Arrivée:
+                 <strong>{{ app.session.get('start') }}</strong>
+             </a>
+
+             <a href="#" class="list-group-item">
+                 <i class="fa fa-arrow-left"></i>Depart:
+                 <strong>{{ app.session.get('end') }}</strong>
+             </a>
+
+             <a href="#" class="list-group-item">Chambre(s):
+                 <strong>{{ app.session.get('chambre') }}</strong>
+             </a>
+             <a href="#" class="list-group-item">Adulte(s):
+                 <strong>{{ app.session.get('adulte') }}</strong>
+             </a>
+             <a href="#" class="list-group-item">Enfant(s):
+                 <strong> {{ app.session.get('enfant') }}</strong>
+             </a>
+             <a href="#" class="list-group-item">Nuit(s):
+                 <strong>{{ app.session.get('nbjour') }} </strong>
+             </a>
+             <a href="#" class="list-group-item">Prix:
+                 <strong>{{ chambre.prixchambre|localizedcurrency('XOF') }}</strong>
+             </a>
+
+         </div>
+
+
+         <!-- /.box-content bordered -->
+     </div>
+
+ {% endblock menuleft  %}
+
+{% block Contenu %}
+
+    {% include '::FrontendV2/filesContent/reservationContent.html.twig' %}
+
+{% endblock Contenu %}
+
+{% block scriptjs %}
+
+    <script src="{{ asset('bundles/emfrontend/assetsv2/') }}scripts/jquery.min.js"></script>
+    <script src="{{ asset('bundles/emfrontend/assetsv2/') }}scripts/modernizr.min.js"></script>
+    <script src="{{ asset('bundles/emfrontend/assetsv2/') }}plugin/bootstrap/js/bootstrap.min.js"></script>
+    <script src="{{ asset('bundles/emfrontend/assetsv2/') }}plugin/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="{{ asset('bundles/emfrontend/assetsv2/') }}plugin/nprogress/nprogress.js"></script>
+    <script src="{{ asset('bundles/emfrontend/assetsv2/') }}plugin/sweet-alert/sweetalert.min.js"></script>
+    <script src="{{ asset('bundles/emfrontend/assetsv2/') }}plugin/waves/waves.min.js"></script>
+    <!-- Datepicker -->
+    <script src="{{ asset('bundles/emfrontend/assetsv2/') }}plugin/datepicker/js/bootstrap-datepicker.min.js"></script>
+
+    <!-- Moment -->
+    <script src="{{ asset('bundles/emfrontend/assetsv2/') }}plugin/moment/moment.js"></script>
+    <!-- Demo Scripts -->
+    <script src="{{ asset('bundles/emfrontend/assetsv2/') }}scripts/form.demo.min.js"></script>
+
+    <script src="{{ asset('bundles/emfrontend/assetsv2/') }}scripts/main.js?v=1"></script>
+    <script src="{{ asset('bundles/emfrontend/assetsv2/') }}scripts/horizontal-menu.js"></script>
+    <script src="{{ asset('bundles/emfrontend/assetsv2/') }}color-switcher/color-switcher.min.js"></script>
+    <script src="{{ asset('bundles/emfrontend/assetsv2/') }}plugin/lightslider/js/lightslider.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#imageGallery').lightSlider({
+                gallery: true,
+                item: 1,
+                loop: true,
+                thumbItem: 9,
+                slideMargin: 0,
+                enableDrag: false,
+                currentPagerPosition: 'left',
+                onSliderLoad: function (el) {
+                    el.lightGallery({
+                        selector: '#imageGallery .lslide'
+                    });
+                }
+            });
+        });</script>
+    <script>
+        $('#formreservation').click(function(e) { // debu clic sur deprecier
+            //split
+            var $daystart = $('#start').val().split(' ');
+            var $datestartyear= $daystart['2'];
+            var $datestartday= $daystart['0'];
+            var  $datestartmonth;
+            //condition
+            if($daystart['1'] == 'janv.'){
+                $datestartmonth= 1;
+            }else if($daystart['1'] == 'févr.'){
+                $datestartmonth= 2;
+            }else if($daystart['1'] == 'mars'){
+                $datestartmonth= 3;
+            }else if($daystart['1'] == 'avri.'){
+                $datestartmonth= 4;
+            }else if($daystart['1'] == 'Mai'){
+                $datestartmonth= 5;
+            }else if($daystart['1'] == 'juin'){
+                $datestartmonth= 6;
+            }else if($daystart['1'] == 'juil.'){
+                $datestartmonth= 7;
+            }else if($daystart['1'] == 'août'){
+                $datestartmonth= 8;
+            }else if($daystart['1'] == 'sept.'){
+                $datestartmonth= 9;
+            }else if($daystart['1'] == 'oct.'){
+                $datestartmonth= 10;
+            }else if($daystart['1'] == 'nov.' ){
+                $datestartmonth= 11;
+            }else if($daystart['1'] == 'dec.'){
+                $datestartmonth= 12;
+            }
+
+
+            var $dayend = $('#end').val().split(' ');
+            var $dateendyear= $dayend['2'];
+            var $datendday= $dayend['0'];
+            var  $dateendmonth;
+            //condition
+            if($dayend['1'] == 'janv.'){
+                $dateendmonth= 1;
+            }else if($dayend['1'] == 'févr.'){
+                $dateendmonth= 2;
+            }else if($dayend['1'] == 'mars'){
+                $dateendmonth= 3;
+            }else if($dayend['1'] == 'avri.'){
+                $dateendmonth= 4;
+            }else if($dayend['1'] == 'Mai'){
+                $dateendmonth= 5;
+            }else if($dayend['1'] == 'juin'){
+                $dateendmonth= 6;
+            }else if($dayend['1'] == 'juil.'){
+                $dateendmonth= 7;
+            }else if($dayend['1'] == 'août'){
+                $dateendmonth= 8;
+            }else if($dayend['1'] == 'sept.'){
+                $dateendmonth= 9;
+            }else if($dayend['1'] == 'oct.'){
+                $dateendmonth= 10;
+            }else if($dayend['1'] == 'nov.' ){
+                $dateendmonth= 11;
+            }else if($dayend['1'] == 'dec.'){
+                $dateendmonth= 12;
+            }
+
+            // alert(parseInt(jrdepr));
+            // var datefin = new Date($datestartyear + '-' + $datestartmonth + '-' + $datestartday);
+            // var datedebut = new Date($dateendyear + '-' + $dateendmonth + '-' + $datendday);
+            var datefin = $dateendyear+$dateendmonth+$datendday;
+            var datedebut =  $datestartyear + $datestartmonth  + $datestartday ;
+
+            jrdepr = dateDiff(datedebut, datefin);
+            $('#nbjour').val(jrdepr);
+        });
+
+        function dateDiff(date1, date2){
+            // Initialisation du retour
+            var $diff ;
+            $diff = date2 - date1;
+            if($diff ==0) $diff =1;
+
+            return $diff;
+        }
+    </script>
+
+    <script>
+        $('#reservations_modepayement_00').click(function(e) {
+            $('#submitreservation').val('Payer à l\'hotel, Valider');
+        });
+
+        $('#reservations_modepayement_11').click(function(e) {
+            $('#submitreservation').val('Reserver maintenant 25% de la facture , Valider {{ app.session.get('prixreserve')|localizedcurrency('XOF') }}');
+        });
+
+
+
+        $('#reservations_modepayement_22').click(function(e) {
+            $('#submitreservation').val('Reserver maintenant 25% de la facture , Valider {{ app.session.get('prixreserve')|localizedcurrency('XOF') }}');
+
+
+        });
+    </script>
+{% endblock scriptjs %}

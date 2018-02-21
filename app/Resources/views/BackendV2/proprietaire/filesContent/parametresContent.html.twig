@@ -1,0 +1,118 @@
+<div id="wrapper">
+    <div class="main-content">
+        <div class="row small-spacing">
+            <div class="box-content card">
+                <h4 class="box-title">
+                    <i class="fa fa-info ico"></i>Mon Profil</h4>
+                {% for flashMessage in app.session.flashbag.get('Notice')|slice(0,1) %}
+
+                    <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <strong>Parfait !</strong>  {{ flashMessage }} .
+                    </div>
+                {% endfor %}
+                <div class="card-content">
+                    <div class="col-lg-6 col-xs-12">
+                        <div class="box-content card white">
+                            <h4 class="box-title">Mes Informations</h4>
+                            <!-- /.box-title -->
+                            <div class="card-content">
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label for="inputIdentifiant" class="col-sm-2 control-label">Identifiant</label>
+                                        <div class="col-sm-10">
+                                            {{ form_widget(form.username, {'attr': {'class': 'form-control', 'readonly' : 'true'}}) }}
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                                        <div class="col-sm-10">
+                                            {{ form_widget(form.email, {'attr': {'class': 'form-control', 'readonly' : 'true'}}) }}
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputNom" class="col-sm-2 control-label">Nom</label>
+                                        <div class="col-sm-10">
+                                            {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="inputPrenoms" class="col-sm-2 control-label">Prenoms</label>
+                                        <div class="col-sm-10">
+                                            {{ form_widget(form.prenoms, {'attr': {'class': 'form-control'}}) }}
+                                            {{ form_widget(form._token, {'attr': {'type' : 'hidden'}}) }}
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPrenoms" class="col-sm-2 control-label">Phone</label>
+                                        <div class="col-sm-10">
+                                            {{ form_widget(form.phone ,{'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPrenoms" class="col-sm-2 control-label">Adresse</label>
+                                        <div class="col-sm-10">
+                                            {{ form_widget(form.adresse, {'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group margin-bottom-0">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <button type="submit" class="btn btn-info btn-sm pull-right waves-effect waves-light">Valider</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.card-content -->
+                        </div>
+                        <!-- /.box-content -->
+                    </div>
+                    <!-- /.col-lg-6 col-xs-12 -->
+
+                    <div class="col-lg-6 col-xs-12">
+                        <div class="box-content card white">
+                            <h4 class="box-title">Changer mon mot de passe</h4>
+                            <!-- /.box-title -->
+                            <div class="card-content">
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label for="inputCurrentPassword" class="col-sm-4 control-label">Mot de passe actuel</label>
+                                        <div class="col-sm-8">
+                                            <input type="password" required class="form-control" required id="inputCurrentPassword" placeholder="Mot de passe actuel">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputNewPassword" class="col-sm-4 control-label">Nouveau mot de passe </label>
+                                        <div class="col-sm-8">
+                                            <input type="password" required class="form-control" required id="inputNewPassword" placeholder="Nouveau mot de passe">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputConfirmPassword" class="col-sm-4 control-label">Confirmer nouveau mot de passe</label>
+                                        <div class="col-sm-8">
+                                            <input type="password" required class="form-control" required id="inputConfirmPassword" placeholder="Confirmer nouveau mot de passe">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group margin-bottom-0">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <button type="submit" class="btn btn-danger btn-sm pull-right waves-effect waves-light">Changer mes accès</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.card-content -->
+                        </div>
+                        <!-- /.box-content -->
+                    </div>
+                    <!-- /.col-lg-6 col-xs-12 -->
+
+                </div>
+                <!-- /.card-content -->
+            </div>
+        </div>
+    </div>
+</div>

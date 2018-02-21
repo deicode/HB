@@ -1,0 +1,76 @@
+
+<div id="content-wrapper" class="site-content-wrapper site-pages">
+    <div id="content" class="site-content layout-boxed">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 site-main-content">
+                    <main id="main" class="site-main default-page clearfix">
+                        <article class="clearfix hentry">
+                            <div class="entry-content clearfix">
+                            <p>
+                                <img src="{{ asset('bundles/emfrontend/assets/') }}images/property/vente-bien-immobilier.jpg" class="img-responsive">
+                            </p>
+                             {{ entity.contenu|raw }}
+                                <p>
+
+                                </p>
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+
+                                        <div class="content">
+                                            <img alt="contact" class="img-circle" width="160" height="160" src="{{ asset('uploads/img/filemanager/') }}contact-proprietaire.jpg">
+
+                                            <p>
+                                                Contacter un de nos conseillers immobiliers afin de faire évaluer le pénitentiel revenu de votre Bien immobilier .
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                        <div class="content">
+
+                                            <img alt="key"  class="img-circle" width="160" height="160" src="{{ asset('uploads/img/filemanager/') }}proprio-key.jpg">
+
+                                            <p>
+                                                Notre expert pourra après une visite de votre propriété déterminer le probable revenu et le mode de location approprie ( temporaire ou à long terme )
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                        <div class="content">
+                                            <img alt="signature" class="img-circle" width="160" height="160" src="{{ asset('uploads/img/filemanager/') }}proprio-signature.jpg" >
+
+                                            <p>
+                                                Vous procèderez a la signature des documents administratif donnant mandant a notre organisation de proposer vos bien aux potentiels clients
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <footer class="entry-footer">
+                                <div class="pull-left">
+                                    <a  class="btn-large btn-red" href="{{ path('em_frontend_page_statique', {'slug':'prestation-de-gestion-saisonniere'}) }}{# asset('uploads/files/') tarif-proprietaire.pdf#}" target="_blank">
+
+                                        <i class="fa fa-eye"></i> Tarif Propriétaire</a>
+                                </div>
+                                <div class="pull-right">
+                                    <a class="btn-large btn-green" href="{{ path('em_frontend_addbienimmo') }}">Soumettre votre  propriété</a>
+                                </div>
+                                <p></p>
+                            </footer>
+                        </article>
+
+
+                    </main>
+
+                    <!-- .site-main -->
+                </div>
+                <!-- .site-main-content -->
+                {{ render(controller('EmFrontendBundle:Frontend:menuPageRight')) }}
+                <!-- .site-sidebar-content -->
+            </div>
+            <!-- .row -->
+        </div>
+        <!-- .container -->
+    </div>
+    <!-- .site-content -->
+</div>

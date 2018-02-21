@@ -1,0 +1,331 @@
+em_backend_homepage:
+    path:     /
+    defaults: { _controller: EmBackendBundle:Backend:index }
+
+#route du menuLeft Gestion Site
+em_backend_slidehome:
+    path:   liste-slide-home/
+    defaults: { _controller: EmBackendBundle:Backend:listeSlideHome }
+
+em_backend_addslidehome:
+    path:   add-slide-home/
+    defaults: { _controller: EmBackendBundle:Backend:addSlideHome }
+
+em_backend_addpub:
+    path:   add-pub/
+    defaults: { _controller: EmBackendBundle:Backend:addPub }
+
+em_backend_createpagesite:
+    path:   page-site/{idpage}/
+    defaults: { _controller: EmBackendBundle:Backend:createPagesite, idpage : null }
+    requirements:
+       id: \d+
+em_backend_createpagesite:
+    path:   update-page-site/
+    defaults: { _controller: EmBackendBundle:Backend:updatePagesite }
+
+em_backend_listepagesite:
+    path:   liste-pages-site/
+    defaults: { _controller: EmBackendBundle:Backend:listePageSite }
+
+em_backend_bannierepub:
+    path:   banniere-pub/
+    defaults: { _controller: EmBackendBundle:Backend:bannierePub }
+
+em_backend_addnews:
+    path:   add-news/{idpage}/
+    defaults: { _controller: EmBackendBundle:Backend:addNews , idpage : null }
+    requirements:
+       id: \d+
+
+em_backend_listenews:
+    path:   liste-news/
+    defaults: { _controller: EmBackendBundle:Backend:listeNews }
+
+em_backend_listecommentaires:
+    path:   liste-commentaires/
+    defaults: { _controller: EmBackendBundle:Backend:listeCommentaires }
+
+em_backend_createallform:
+    path:   ajout/{nameentity}/{nameviewform}/{urlredirect}
+    defaults: { _controller: EmBackendBundle:Backend:createAllForm , nameentity: null, nameviewform: null, urlredirect: null}
+    requirements:
+       id: -?\d+
+#Fin route Gestion site
+
+
+
+
+
+
+#--- route menuLeft Ville
+em_backend_addville:
+    path:   add-ville/{idpage}
+    defaults: { _controller: EmBackendBundle:Backend:addVille ,idpage : null}
+
+em_backend_listeville:
+    path:   liste-ville/
+    defaults: { _controller: EmBackendBundle:Backend:listeVille }
+
+em_backend_addcommune:
+    path:   add-commune/
+    defaults: { _controller: EmBackendBundle:Backend:addCommune }
+
+
+#--- End route menuLeft ville
+
+#--- route menuLeft Chambre
+em_backend_addchambre:
+    path:   add-chambre/{agences}
+    defaults: { _controller: EmBackendBundle:Hotelier:addChambre, agences: null }
+
+em_backend_listechambre:
+    path:   liste-chambre/{typechambre}
+    defaults: { _controller: EmBackendBundle:Backend:listeChambre }
+
+em_backend_detailchambre:
+    path:   detail-chambre/{agences}/{slugchambre}
+    defaults: { _controller: EmBackendBundle:Hotelier:detailChambre, slugchambre: null, agences: null }
+#Fin route menuLeft Hotel
+
+
+#--- route menuLeft Reservation
+em_backend_reservations_details:
+   path: reservation/{idreservation}/details
+   defaults: { _controller: EmBackendBundle:Backend:reservationDetails }
+
+em_backend_listereservation:
+    path:   liste-reservation/
+    defaults: { _controller: EmBackendBundle:Backend:listeReservation }
+
+em_backend_listereservationproprietaire:
+    path:   liste-reservation-proprietaire/
+    defaults: { _controller: EmBackendBundle:Hotelier:listeReservationProprietaire }
+
+em_backend_historiquereservation:
+    path:   historique-reservation/
+    defaults: { _controller: EmBackendBundle:Backend:historiqueReservation }
+
+em_backend_reservations_confirmer:
+   path: reservation/{idreservation}/confirmer/{status}
+   defaults: { _controller: EmBackendBundle:Backend:reservationConfirmer }
+#Fin route menuLeft Reservation
+
+
+#Debut route hotelier
+#--- route menuLeft Hoteliers
+
+
+em_backend_listehoteliernews:
+    path:   nouveaux-hoteliers-a-valider/
+    defaults: { _controller: EmBackendBundle:Hotelier:listenewsHotelierNews }
+
+em_backend_listehoteliers:
+    path:   liste-hoteliers/
+    defaults: { _controller: EmBackendBundle:Hotelier:listeHotelier }
+
+
+em_backend_listecommune:
+    path:   liste-commune/
+    defaults: { _controller: EmBackendBundle:Backend:listeCommune }
+
+#Fin route menuLeft Hoteliers
+em_backend_enabled:
+    path:   action-hotelier/{iduser}/{status}
+    defaults: { _controller: EmBackendBundle:Hotelier:enabled, iduser: null, status: null }
+
+
+em_backend_enabledcommentaire:
+    path:   action-commentaire/{idcom}/{status}
+    defaults: { _controller: EmBackendBundle:Backend:enabled, idcom: null, status: null }
+
+
+em_backend_enabledagence:
+    path:   action-agence/{idagence}/{status}
+    defaults: { _controller: EmBackendBundle:Hotelier:enabledAgence, idagence: null, status: null }
+
+em_backend_enabledchambre:
+    path:   action-chambre/{idchambre}/{status}
+    defaults: { _controller: EmBackendBundle:Hotelier:enabledChambre, idchambre: null, status: null }
+
+
+em_backend_addagence:
+    path:   ajouter-une-agence-hoteliere/
+    defaults: { _controller: EmBackendBundle:Hotelier:addAgences }
+
+em_backend_addbien:
+    path:   ajouter-un-bien-immobilier/
+    defaults: { _controller: EmBackendBundle:Hotelier:addBiens }
+
+em_backend_updateagence:
+    path:   mise-a-jour-une-agence-hoteliere/{id}
+    defaults: { _controller: EmBackendBundle:Hotelier:updateAgences, id: null }
+
+em_backend_listesingleagence:
+    path:   agence-info/{id}
+    defaults: { _controller: EmBackendBundle:Hotelier:listeSingleAgence, id: null }
+
+
+em_backend_listeallagence:
+    path:   Agences-hotelieres-valide/
+    defaults: { _controller: EmBackendBundle:Hotelier:listeAllAgence }
+
+#Finroute hotelier
+
+
+#Information website
+
+em_backend_informationsite:
+   path: information-site/{idinfo}
+   defaults: { _controller: EmBackendBundle:Backend:informationSite, idinfo: null }
+
+em_backend_information:
+   path: infos-site/
+   defaults: { _controller: EmBackendBundle:Backend:informationSiteAffiche }
+
+em_backend_parametre:
+   path: parametre/{iduser}/infos
+   defaults: { _controller: EmBackendBundle:Backend:parametres }
+
+em_backend_change_password:
+   path: parametre/modifer/acces
+   defaults: { _controller: EmBackendBundle:ChangePassword:changePassword }
+
+em_backend_adduser_admin:
+   path: ajouter-user-immo/
+   defaults: { _controller: EmBackendBundle:Backend:addUserAdmin }
+
+em_backend_admin_liste:
+   path: liste-user-immo/
+   defaults: { _controller: EmBackendBundle:Backend:listeUserAdmin }
+
+em_backend_moncoffre_root:
+   path: moncoffre-root-immo/
+   defaults: { _controller: EmBackendBundle:Backend:monCoffreRoot  }
+
+em_backend_moncoffre_proprietaire:
+   path: moncoffre-hotelier-immo/
+   defaults: { _controller: EmBackendBundle:Backend:monCoffreProprietaire  }
+
+## Search Code
+
+em_backend_search_code:
+    path:    search-reservation/{code}
+    defaults: { _controller: EmBackendBundle:Backend:searchReservation, code: null }
+
+em_backend_extract_newsletter_contact:
+    path:    extract-contact/
+    defaults: { _controller: EmBackendBundle:Backend:dataNewsletter }
+
+
+em_backend_slider_enabled:
+    path:    slider-action/{slider}/{action}
+    defaults: { _controller: EmBackendBundle:Backend:enabledSlideHome }
+
+
+#--- route menuLeft Pays
+em_backend_addpays:
+    path:   add-pays/{idpage}
+    defaults: { _controller: EmBackendBundle:Backend:addPays ,idpage : null}
+
+em_backend_listepays:
+    path:   liste-pays/
+    defaults: { _controller: EmBackendBundle:Backend:listePays }
+
+
+#--- route menuLeft Etatimmo
+em_backend_addetatimmo:
+    path:   add-etatimmo/{idpage}
+    defaults: { _controller: EmBackendBundle:Backend:addEtatimmo ,idpage : null}
+
+em_backend_listeetatimmo:
+    path:   liste-etatimmo/
+    defaults: { _controller: EmBackendBundle:Backend:listeEtatimmo }
+
+#--- route menuLeft Statusimmo
+em_backend_addstatusimmo:
+    path:   add-statusimmo/{idpage}
+    defaults: { _controller: EmBackendBundle:Backend:addStatusimmo ,idpage : null}
+
+em_backend_listestatusimmo:
+    path:   liste-statusimmo/
+    defaults: { _controller: EmBackendBundle:Backend:listeStatusimmo }
+
+
+#--- route menuLeft Typeimmo
+em_backend_addtypeimmo:
+    path:   add-typeimmo/{idpage}
+    defaults: { _controller: EmBackendBundle:Backend:addTypeimmo ,idpage : null}
+
+em_backend_listetypeimmo:
+    path:   liste-typeimmo/
+    defaults: { _controller: EmBackendBundle:Backend:listeTypeimmo }
+
+
+#--- route Typesaison
+em_backend_addtypesaison:
+    path:   add-typesaison/
+    defaults: { _controller: EmBackendBundle:Backend:addTypesaison }
+
+
+
+
+#--- route menuLeft Bienimmo
+em_backend_addbienimmo:
+    path:   add-bienimmo/
+    defaults: { _controller: EmBackendBundle:Backend:addBienimmo}
+em_backend_updatebienimmo:
+    path:   add-bienimmo/{idpage}
+    defaults: { _controller: EmBackendBundle:Backend:updateBienimmo, idpage : null}
+em_backend_listebienimmo:
+    path:   liste-bienimmo/
+    defaults: { _controller: EmBackendBundle:Backend:listeBienimmo }
+
+em_backend_listesinglebienimmo:
+    path:   bienimmo-info/{id}
+    defaults: { _controller: EmBackendBundle:Backend:listeSingleBienimmo, id: null }
+
+em_backend_enabledbienimmo:
+    path:   action-bienimmo/{idbienimmo}/{status}
+    defaults: { _controller: EmBackendBundle:Backend:enabledBienimmo, idbienimmo: null, status: null }
+
+
+em_backend_detailhotel:
+    path:   detail-hotel/{id}/
+    defaults: { _controller: EmBackendBundle:Hotelier:detailHotel, id: null }
+
+em_backend_hotelenabled:
+    path:    /enabledhotel/{idHotel}/{status}
+    defaults: { _controller: EmBackendBundle:Backend:enabledHotel }
+
+em_backend_chambreenabled:
+    path:    /enabledchambre/{idChambre}/{status}
+    defaults: { _controller: EmBackendBundle:Backend:enabledChambre }
+
+em_backend_ajaxville:
+    path:  /ajaxville/
+    defaults: { _controller: EmBackendBundle:Backend:ajaxville }
+
+em_backend_ajaxsuppressionimagechambre:
+    path:    /ajaxsuppressionimagechambre
+    defaults: { _controller: EmBackendBundle:Backend:ajaxsuppressionimagechambre }
+
+em_backend_ajouterimagechambre:
+    path:    /ajouterimagechambre
+    defaults: { _controller: EmBackendBundle:Hotelier:addImageChambre }
+
+em_backend_ajouterimagechambretwo:
+    path:    /ajouterimagechambretwo
+    defaults: { _controller: EmBackendBundle:Hotelier:addImageChambretwo }
+
+em_backend_ajaxsuppressionimagehotel:
+    path:    /ajaxsuppressionimagehotel
+    defaults: { _controller: EmBackendBundle:Backend:ajaxsuppressionimagehotel }
+
+em_backend_ajouterimagehotel:
+    path:    /ajouterimagehotel
+    defaults: { _controller: EmBackendBundle:Hotelier:addImageHotel }
+
+em_backend_updatechambre:
+    path:   mise-a-jour-une-chambre/{id}
+    defaults: { _controller: EmBackendBundle:Hotelier:updateChambre, id: null }

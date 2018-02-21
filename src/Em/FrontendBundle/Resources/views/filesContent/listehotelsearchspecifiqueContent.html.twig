@@ -1,0 +1,267 @@
+<div class="col-md-8 site-main-content">
+
+    <main id="main" class="site-main">
+        <div class="page-listing-control clearfix">
+            <div class="row">
+                <div class="col-xs-6 col-lg-7">
+                    <h3 class="heading results">{{ dataentity|length }} Etablissement(s) trouvé(s)</h3>
+                </div>
+
+            </div>
+            <div class="row">
+
+                <!-- .page-controls-wrapper -->
+                <div class="entry-content clearfix">
+                    <p> </p>
+                    {% if service.contenus is defined %}
+                        {{ service.contenus|raw }}
+                    {% endif %}
+                </div>
+            </div>
+            <!-- .row -->
+
+            <div class="row">
+                <div id="hotel-0" class="col-xs-4 btn-large btn-green text-center widget-advance-search">Hôtels ({{hotels|length}} )</div>
+                <div id="appart-0" class="col-xs-4 btn-large btn-danger  text-center">Appartements ({{ appartements|length }})</div>
+                <div id="resid-0" class="col-xs-4 btn-large btn-danger  text-center">Residences ({{residences|length}})</div>
+
+            </div>
+        </div>
+        <!-- .page-listing-control -->
+        <!-- .property-listing-simple-2 -->
+
+       <div id="hotel-1">
+           {% for data in hotels %}
+               <article  class="property-listing-simple property-listing-simple-2 hentry clearfix">
+                   <div class="property-thumbnail col-sm-5 zero-horizontal-padding">
+                       <div class="price-wrapper">
+                           <span class="price">A partir de : {{ data.prixinit|localizedcurrency('XOF') }}  </span>
+                       </div>
+                       <a href="{{ path('em_frontend_hotelecaracteristique',{'idagence': data.id}) }}">
+
+                           {{ render(controller('EmFrontendBundle:Frontend:listeImageAgence', {'entity': data })) }}
+                       </a>
+                   </div>
+                   <!-- .property-thumbnail -->
+                   <div class="title-and-meta col-sm-7">
+                       <header class="entry-header">
+                           <h3 class="entry-title"><span class="icon-group booking-item-rating-stars">
+                            {%  set num = 1 %}
+                                   {% for  num in  1..data.grade %}
+                                       <i class="fa fa-star"></i>
+                                       {%  set num = num +1 %}
+                                   {% endfor %}
+                        </span><a href="{{ path('em_frontend_hotelecaracteristique',{'idagence': data.id}) }}" rel="bookmark">{{ data.nom }} | {{ data.ville}}</a></h3>
+                       </header>
+                       <div class="property-content">
+                           <p>{{ data.description }}</p>
+
+                       </div>
+                       <div class="property-meta entry-meta clearfix">
+                           <div class="btn-small btn-warning text-center widget-advance-search pull-right"><a href="{{ path('em_frontend_hotelecaracteristique',{'idagence': data.id}) }}">Selectionner votre chambre</a></div>
+                       </div>
+                       <!-- .property-meta -->
+                   </div>
+                   <!-- .title-and-meta -->
+               </article>
+           {% endfor %}
+
+
+        <!-- .property-listing-simple-2 -->
+        <div class="pagination">
+            {{ knp_pagination_render(hotels) }}
+        </div>
+       </div>
+        <!-- appartements-->
+    <div class="appart-1">
+        {% for data in appartements %}
+            <article  class="property-listing-simple property-listing-simple-2 hentry clearfix">
+                <div class="property-thumbnail col-sm-5 zero-horizontal-padding">
+                    <div class="price-wrapper">
+                        <span class="price">A partir de : {{ data.prixinit|localizedcurrency('XOF') }}  </span>
+                    </div>
+                    <a href="{{ path('em_frontend_hotelecaracteristique',{'idagence': data.id}) }}">
+                        {{ render(controller('EmFrontendBundle:Frontend:listeImageAgence', {'entity': data })) }}
+                    </a>
+                </div>
+                <!-- .property-thumbnail -->
+                <div class="title-and-meta col-sm-7">
+                    <header class="entry-header">
+                        <h3 class="entry-title"><a href="{{ path('em_frontend_hotelecaracteristique',{'idagence': data.id}) }}" rel="bookmark">{{ data.nom }} | {{ data.ville}}</a></h3>
+                    </header>
+                    <div class="property-content">
+                        <p>{{ data.description }}</p>
+
+                    </div>
+                    <div class="property-meta entry-meta clearfix">
+                        <div class="btn-small btn-warning text-center widget-advance-search pull-right"><a href="{{ path('em_frontend_hotelecaracteristique',{'idagence': data.id}) }}">Selectionner votre chambre</a></div>
+                    </div>
+                    <!-- .property-meta -->
+                </div>
+                <!-- .title-and-meta -->
+            </article>
+        {% endfor %}
+
+        <!-- .property-listing-simple-2 -->
+        <div class="pagination">
+            {{ knp_pagination_render(appartements) }}
+        </div>
+     </div>
+        <!-- .pagination -->
+
+        <!-- residence -->
+      <div id="resid-1">
+        {% for data in residences %}
+            <article class="property-listing-simple property-listing-simple-2 hentry clearfix">
+                <div class="property-thumbnail col-sm-5 zero-horizontal-padding">
+                    <div class="price-wrapper">
+                        <span class="price">A partir de : {{ data.prixinit|localizedcurrency('XOF') }}  </span>
+                    </div>
+                    <a href="{{ path('em_frontend_hotelecaracteristique',{'idagence': data.id}) }}">
+                        {{ render(controller('EmFrontendBundle:Frontend:listeImageAgence', {'entity': data })) }}
+                    </a>
+                </div>
+                <!-- .property-thumbnail -->
+                <div class="title-and-meta col-sm-7">
+                    <header class="entry-header">
+                        <h3 class="entry-title">
+                         <a href="{{ path('em_frontend_hotelecaracteristique',{'idagence': data.id}) }}" rel="bookmark">{{ data.nom }} | {{ data.ville}}</a></h3>
+                    </header>
+                    <div class="property-content">
+                        <p>{{ data.description }}</p>
+
+                    </div>
+                    <div class="property-meta entry-meta clearfix">
+                        <div class="btn-small btn-warning text-center widget-advance-search pull-right"><a href="{{ path('em_frontend_hotelecaracteristique',{'idagence': data.id}) }}">Selectionner votre chambre</a></div>
+                    </div>
+                    <!-- .property-meta -->
+                </div>
+                <!-- .title-and-meta -->
+            </article>
+        {% endfor %}
+        <!-- .property-listing-simple-2 -->
+        <div class="pagination">
+            {{ knp_pagination_render(residences) }}
+        </div>
+      </div>
+        <!-- .pagination -->
+    </main>
+    <!-- .site-main -->
+</div>
+
+<div class="col-md-4 site-sidebar-content">
+    <aside class="sidebar">
+        <section class="widget widget-advance-search advance-search">
+            <h3 class="advance-search-widget-title"><i class="fa fa-search"></i>Trouvez votre etablissement</h3>
+            <form class="advance-search-form" action="#" method="get">
+                <div class="row field-wrap">
+                    <div class="option-bar col-xs-12 property-keyword">
+                        <div id="locationField" class="search-select">
+                            <input id="autocomplete" placeholder="Selectionnez votre destination"
+                                   onFocus="geolocate()" type="text" name="location"/>
+
+                        </div>
+                    </div>
+                    <div class="col-sx-12">
+                        <div class="option-bar col-xs-6 property-type">
+                            <div class="search-select">
+                                <input type="text" id="start" placeholder="Date d'arrivée" name="start" required="">
+                            </div>
+
+                        </div>
+                        <div class="option-bar col-xs-6  property-type">
+                            <div class="search-select">
+                                <input type="text" id="end" placeholder="Date de depart" name="end" required="">
+                                <input type="hidden" id="nbjour"  name="nbjour" value="1">
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="col-sx-12">
+                        <div class="option-bar col-xs-6  property-status">
+                            <select name="chambre" id="select-status" class="search-select" required="">
+                                <option value="Autres"  selected="selected" >Chambres </option>
+                                {# for data in status #}
+                                <option value="1" >1 </option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="Autres">Autres</option>
+
+                                {# endfor #}
+
+                            </select>
+                        </div>
+
+                        <div class="option-bar col-xs-6  property-status">
+                                <select name="adulte" id="select-status" class="search-select">
+                                    <option value="Autres" selected="selected">Adultes </option>
+                                    {# for data in status #}
+                                    <option value="1">1 </option>
+                                    <option value="2}">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="Autres">Autres</option>
+
+                                    {# endfor #}
+
+                                </select>
+
+                        </div>
+                    </div>
+
+
+                    <div class="option-bar col-xs-12 property-id">
+                        <select name="enfant" id="select-status" class="search-select">
+                            <option value="Autres" selected="selected">Enfants </option>
+                            {# for data in status #}
+                            <option value="1">1 </option>
+                            <option value="2}">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="Autres">Autres</option>
+
+                            {# endfor #}
+
+                        </select>
+                    </div>
+
+                    <div class="option-bar col-xs-12 submit-btn-wrappe">
+                        <input type="submit" value="Rechercher" class="form-submit-btn">
+                    </div>
+                </div>
+                <!-- .field-wrap -->
+                <!-- .extra-search-fields -->
+            </form>
+            <!-- .advance-search-form -->
+        </section>
+    </aside>
+    <!-- .sidebar -->
+</div>
+

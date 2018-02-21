@@ -1,0 +1,27 @@
+
+<div id="content-wrapper" class="site-content-wrapper site-pages">
+    <div id="content" class="site-content layout-boxed">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 site-main-content">
+                    <main id="main" class="site-main default-page clearfix">
+                        <article class="clearfix hentry">
+                            <div class="entry-content clearfix">
+                                <h1 class="entry-title">{{ entity.titre|upper }}</h1>
+                                {{ entity.contenu|raw }}
+                            </div>
+                            <footer class="entry-footer"></footer>
+                        </article>
+                    </main>
+                    <!-- .site-main -->
+                </div>
+                <!-- .site-main-content -->
+                {{ render(controller('EmFrontendBundle:Frontend:menuPageRight')) }}
+                <!-- .site-sidebar-content -->
+            </div>
+            <!-- .row -->
+        </div>
+        <!-- .container -->
+    </div>
+    <!-- .site-content -->
+</div>

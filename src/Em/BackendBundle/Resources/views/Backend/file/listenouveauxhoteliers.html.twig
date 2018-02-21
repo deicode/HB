@@ -1,0 +1,12 @@
+{% extends '::backend/backendLayout-B.html.twig' %}
+
+    {% block headLibelle %}
+        Gestion des utilisateurs Hôteliers sur Afrkhotel  <span class="text-primary">  Confirmer leur inscription </span>
+
+    {% endblock headLibelle %}
+
+{% block contenu %}
+
+    {% include('EmBackendBundle:Backend:fileContent/listenouveauxhoteliersContent.html.twig') %}
+
+{% endblock contenu %}

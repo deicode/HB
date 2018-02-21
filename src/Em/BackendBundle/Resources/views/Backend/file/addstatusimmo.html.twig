@@ -1,0 +1,12 @@
+{% extends '::backend/backendLayout.html.twig' %}
+
+    {% block headLibelle %}
+        Gestion des Status immobiliers <span class="text-primary"> <a href="{{ path('em_backend_listestatusimmo') }}"> Voir liste </a></span>
+
+    {% endblock headLibelle %}
+
+{% block contenu %}
+
+    {% include('EmBackendBundle:Backend:fileContent/addstatusimmoContent.html.twig') %}
+
+{% endblock contenu %}

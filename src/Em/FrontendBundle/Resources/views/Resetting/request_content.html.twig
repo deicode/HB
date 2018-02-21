@@ -1,0 +1,21 @@
+{% trans_default_domain 'FOSUserBundle' %}
+<div class="col-md-4">
+    <h3>Mot de passe oublié ?</h3>
+    <p></p>
+</div>
+<div class="col-md-4">
+
+    <p>
+        {% if invalid_username is defined %}
+        <a class="btn btn-danger">{{ 'resetting.request.invalid_username'|trans({'%username%': invalid_username}) }}</a>
+       {% endif %}
+    </p>
+    <form method="post" action="{{ path("em_frontend_resetting_byemail") }}">
+        <div class="form-group form-group-icon-left"><i class="fa fa-user input-icon input-icon-show"></i>
+            <label>Email</label>
+            <input class="form-control" placeholder="nom@gmail.com" type="email"  name="username" required="" />
+        </div>
+        <input class="btn btn-primary" type="submit" value="Valider" />
+
+    </form>
+</div>

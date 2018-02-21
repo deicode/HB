@@ -1,0 +1,12 @@
+{% extends '::backend/backendLayout.html.twig' %}
+
+    {% block headLibelle %}
+        Liste des slides de la page  <span class="text-primary">, Accueil</span>
+
+    {% endblock headLibelle %}
+
+{% block contenu %}
+
+    {% include('EmBackendBundle:Backend:fileContent/listeslidehomeContent.html.twig') %}
+
+{% endblock contenu %}

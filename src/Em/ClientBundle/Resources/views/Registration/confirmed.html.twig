@@ -1,0 +1,29 @@
+
+{% extends "FOSUserBundle::layoutregister.html.twig" %}
+
+  {% block RegistrationBox  %}
+      {% trans_default_domain 'FOSUserBundle' %}
+    <div class="login-container">
+        <h2>
+            <a href="#">E-mitic </a><!-- can use your logo-->
+        </h2>
+        <!-- BEGIN REGISTRATION BOX -->
+        <div id="login-box" class="login-box visible" style="width: 500px; background-color: #FFF">
+
+          <span class=" alert-success">
+            <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
+            {% if app.session is not empty %}
+                {% set targetUrl = app.session.get('_security.' ~ app.security.token.providerKey ~ '.target_path') %}
+                {% if targetUrl is not empty %}<p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>{% endif %}
+            {% endif %}
+
+              <div class="footer-wrap">
+                  <a href="{{ path('fos_user_security_login') }}"><i class="fa fa-angle-double-left"></i> Accedez à votre espace</a>
+              </div>
+           </span>
+        </div>
+
+    </div>
+
+
+{% endblock RegistrationBox %}

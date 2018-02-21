@@ -1,0 +1,101 @@
+<div id="content-wrapper" class="site-content-wrapper site-pages">
+    <div id="content" class="site-content layout-boxed">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-xs-12 site-main-content">
+                    <main id="main" class="site-main">
+                        <div class="row">
+                            <p>
+                                {% for flashMessage in app.session.flashbag.get('Notice')|slice(0,1) %}
+
+                                    <!-- main content -->
+                                    <button class="btn-small btn-success">Message ! {{ flashMessage }} </button>
+
+                                {% endfor %}
+                            </p>
+                        </div>
+                        <div class="row zero-horizontal-margin column-container">
+
+                            <div class="col-md-6 col-left-side contact-details">
+
+                                <div class="address-wrapper">
+                                    <h3 class="list-title">Adresse</h3>
+                                    <address>
+                                        <i class="fa fa-map-marker"></i> {{ informations.adresse }}
+                                    </address>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-sm-6">
+                                        <h3 class="list-title">Contact Details</h3>
+                                        <ul class="contacts-list">
+                                            <li class="phone">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="contacts-icon-container" width="24" height="24" viewBox="0 0 24 24">
+                                                    <path class="contacts-icon" fill-rule="evenodd" clip-rule="evenodd" fill="#0080BC" d="M1.027 4.846l-.018.37.01.181c.068 9.565 7.003 17.42 15.919 18.48.338.075 1.253.129 1.614.129.359 0 .744-.021 1.313-.318.328-.172.448-.688.308-1.016-.227-.528-.531-.578-.87-.625-.435-.061-.905 0-1.521 0-1.859 0-3.486-.835-4.386-1.192l.002.003-.076-.034c-.387-.156-.696-.304-.924-.422-3.702-1.765-6.653-4.943-8.186-8.896-.258-.568-1.13-2.731-1.152-6.009h.003l-.022-.223c0-1.727 1.343-3.128 2.999-3.128 1.658 0 3.001 1.401 3.001 3.128 0 1.56-1.096 2.841-2.526 3.079l.001.014c-.513.046-.914.488-.914 1.033 0 .281.251 1.028.251 1.028.015 0 .131.188.119.188-.194-.539 1.669 5.201 7.021 7.849-.001.011.636.309.636.309.47.3 1.083.145 1.37-.347.09-.151.133-.32.14-.488.356-1.306 1.495-2.271 2.863-2.271 1.652 0 2.991 1.398 2.991 3.12 0 .346-.066.671-.164.981-.3.594-.412 1.21.077 1.699.769.769 1.442-.144 1.442-.144.408-.755.643-1.625.643-2.554 0-2.884-2.24-5.222-5.007-5.222-1.947 0-3.633 1.164-4.46 2.858-2.536-1.342-4.556-3.59-5.656-6.344 1.848-.769 3.154-2.647 3.154-4.849 0-2.884-2.241-5.222-5.007-5.222-2.41 0-4.422 1.777-4.897 4.144l-.091.711z"/>
+                                                </svg>
+                                                <span class="hidden-xs">{{ informations.telephone }}</span><a class="visible-xs-inline-block" href="tel://1-800-555-1234" title="Make a Call">{{ informations.mobile }}</a>
+                                            </li>
+
+                                            <li class="fax">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="contacts-icon-container" width="24" height="24" viewBox="0 0 24 24">
+                                                    <path class="fax-fill-one" d="M6 20c0 1.105.896 2 2 2h8c1.104 0 2-.895 2-2v-8h-12v8zm2-6h8v2h-8v-2zm0 4h8v2h-8v-2zM17 2h-10c-1.104 0-2 .896-2 2v3h14v-3c0-1.105-.896-2-2-2z" fill="none"/>
+                                                    <circle cx="21" cy="11" r="1" fill="none"/>
+                                                    <path class="fax-fill-two" fill="#0080bc" d="M21.999 7h-.999v-5c0-1.105-.896-2-2-2h-14c-1.104 0-2 .895-2 2v5h-.999c-1.105 0-2 .896-2 2.001v7.999c0 1.104.895 2 2 2h.999v3c0 1.105.896 2 2 2h14c1.104 0 2-.895 2-2v-3h.999c1.104 0 2-.896 2-2v-7.999c0-1.105-.895-2.001-2-2.001zm-3.999 13c0 1.105-.896 2-2 2h-8c-1.104 0-2-.895-2-2v-8h12v8zm1-13h-14v-3c0-1.104.896-2 2-2h10c1.104 0 2 .895 2 2v3zm2 4.999c-.553 0-1-.448-1-1 0-.551.447-.999 1-.999s.999.448.999.999c0 .552-.446 1-.999 1zM8 14h8v2h-8zM8 18h8v2h-8z"/>
+                                                </svg>
+                                                {{ informations.telephone }}
+                                            </li>
+                                            <li class="email">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="contacts-icon-container" width="14px" height="14px" viewBox="0 0 14 14">
+                                                    <g class="contacts-icon" fill="#030104">
+                                                        <path d="M7 9l-1.732-1.516-4.952 4.245c.18.167.423.271.691.271h11.986c.267 0 .509-.104.688-.271l-4.949-4.245-1.732 1.516zM13.684 2.271c-.18-.168-.422-.271-.691-.271h-11.986c-.267 0-.509.104-.689.273l6.682 5.727 6.684-5.729zM0 2.878v8.308l4.833-4.107zM9.167 7.079l4.833 4.107v-8.311z"/>
+                                                    </g>
+                                                </svg>
+                                                <a href="mailto:robot@inspirythemes.com">{{ informations.email }}</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-right-side contact-form-wrapper">
+                                <section >
+                                    <h3 class="contact-form-heading">Envoyez Message</h3>
+                                    <form  class="contact-form" action="{{ path('em_frontend_contact') }}" method="post">
+                                        <p>
+                                            {{ form_widget(form.nomprenoms, {'attr': {'placeholder': 'Nom & prenoms*',  'class' : 'form-control'}}) }}
+
+                                        </p>
+                                        <p>
+                                            {{ form_widget(form.email, {'attr': {'placeholder': 'E-mail address*', 'class' : 'form-control'}}) }}
+                                        </p>
+                                        <p>
+                                            {{ form_widget(form.phone, {'attr': {'placeholder': 'Phone*', 'size' : '40', 'class' : 'form-control' }}) }}
+                                        </p>
+                                        <p>
+                                            {{ form_widget(form.sujet, {'attr': {'placeholder': 'Objet de votre demande*','class' : 'form-control' }}) }}
+                                            {{ form_widget(form._token, {'attr': {'type' : 'hidden'}}) }}
+
+                                        </p>
+                                        <p>
+                                            {{ form_widget(form.message, {'attr': {'placeholder': 'Message*','class' : 'form-control' }}) }}
+
+                                        </p>
+                                        <div class="clearfix">
+                                            <input type="submit" id="submit-button" name="submit" class="btn-small btn-orange pull-right" value="Envoyer Message">
+                                            <img src="{{ asset('bundles/emfrontend/assets/') }}images/ajax-loader.gif" id="ajax-loader" class="pull-right" alt="Loading...">
+                                        </div>
+                                    </form>
+                                </section>
+                            </div>
+                        </div>
+                    </main>
+                    <!-- .site-main -->
+                </div>
+                <!-- .site-main-content -->
+            </div>
+            <!-- .row -->
+        </div>
+        <!-- .container -->
+    </div>
+    <!-- .site-content -->
+</div>
